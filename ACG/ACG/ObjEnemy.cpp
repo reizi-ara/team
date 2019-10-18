@@ -7,7 +7,7 @@
 #include "GameHead.h"
 #include "ObjEnemy.h"
 
-//使用するネームスペース
+//使用するネームスペースdayo
 using namespace GameL;
 
 CObjEnemy::CObjEnemy(float x, float y)
