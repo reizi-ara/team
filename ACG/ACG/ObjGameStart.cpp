@@ -58,11 +58,18 @@ void CObjGameStart::Action()
 	//エンターキーを押してシーン：ゲームメインに移行する
 	if (Input::GetVKey(VK_RETURN) == true)
 	{
-		if (m_key_flag == true)
+		if (lavel_select==0)
 		{
 			Scene::SetScene(new CSceneMain());
 			m_key_flag = false;
 		}
+
+		else if (lavel_select == 1)
+		{
+			Scene::SetScene(new CSceneGameOver());
+			m_key_flag = false;
+		}
+
 	}
 	else
 	{
