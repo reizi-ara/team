@@ -291,6 +291,21 @@ void CObjHero::Draw()
 	src.m_right = 64.0f + src.m_left;
 	src.m_bottom = 64.0f + src.m_top;
 
+	if (p_life / p_maxlife <= 0.5)
+	{
+		src.m_top = 64.0f;
+		src.m_left = 64.0f * 7;
+		src.m_right = 64.0f + src.m_left;
+		src.m_bottom = 64.0f + src.m_top;
+	}
+	else if (p_life / p_maxlife <= 0.25)
+	{
+		src.m_top = 64.0f*2;
+		src.m_left = 64.0f * 7;
+		src.m_right = 64.0f + src.m_left;
+		src.m_bottom = 64.0f + src.m_top;
+	}
+
 	//•\Ž¦ˆÊ’u‚ÌÝ’è
 	dst.m_top = 0.0f;
 	dst.m_left = 0.0f;
