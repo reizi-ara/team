@@ -139,6 +139,7 @@ void CObjEnemy::Action()
 	{
 		this->SetStatus(false);
 	}
+
 	hit->SetPos(m_px + block->GetScroll(), m_py);
 
 }
