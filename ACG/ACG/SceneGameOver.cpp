@@ -5,6 +5,8 @@
 //GamrLで使用するヘッダー
 #include"GameL\SceneObjManager.h"
 #include"GameL\DrawFont.h"
+#include "GameL/DrawTexture.h"
+#include "GameL\Audio.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -26,7 +28,7 @@ CSceneGameOver::~CSceneGameOver()
 
 }
 
-//ゲームメイン初期化メゾット
+//ゲームオーバー初期化メゾット
 void CSceneGameOver::InitScene()
 {
 	//出力させる文字のグラフィックを作成
@@ -38,10 +40,23 @@ void CSceneGameOver::InitScene()
 	CObjGameOver*obj = new CObjGameOver();
 	Objs::InsertObj(obj, OBJ_GAME_OVER, 10);
 
+	//背景読み込み
+	Draw::LoadImageW(L"スタート画面仮置き.jpg", 2, TEX_SIZE_512);
+
+
+	//音楽読み込み
+	Audio::LoadAudio(0, L"雨.wav", BACK_MUSIC);
+
+	//ボリューム
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster((1.0 - v));
+
+	//音楽スタート
+	Audio::Start(0);
 
 }
 
-//ゲームメイン実行中メゾット
+//ゲームオーバー実行中メゾット
 void CSceneGameOver::Scene()
 {
 

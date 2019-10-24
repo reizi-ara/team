@@ -4,10 +4,12 @@
 #include "GameL\SceneManager.h"
 #include "GameL\HitBoxManager.h"
 #include "ObjHero.h"
+#include "GameL\SceneObjManager.h"
 
 #include "GameHead.h"
 #include "ObjEnemy.h"
 
+#include "ObjHero.h"
 //使用するネームスペースdayo
 using namespace GameL;
 
@@ -27,7 +29,7 @@ void CObjEnemy::Init()
 	m_ani_time = 0;
 	m_ani_frame = 1;	//静止フレームを初期にする
 
-	m_speed_power = 0.5f;	//通常速度
+	m_speed_power = 0.3f;	//通常速度
 	m_ani_max_time = 4;		//アニメーション間隔幅
 
 	m_move = true;
@@ -37,6 +39,7 @@ void CObjEnemy::Init()
 	m_hit_down = false;
 	m_hit_left = false;
 	m_hit_right = false;
+
 
 	//当たり判定用のHitBoxを作成
 	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_ENEMY, OBJ_ENEMY, 1);
@@ -54,8 +57,10 @@ void CObjEnemy::Action()
 		;
 	}
 
-	m_speed_power = 0.5f;//通常速度
+	m_speed_power = 0.2f;//通常速度
 	m_ani_max_time = 4;//アニメーション間隔幅
+
+	
 
 	//ブロック衝突で向き変更
 	if (m_hit_left == true)
@@ -92,6 +97,8 @@ void CObjEnemy::Action()
 	{
 		m_ani_frame = 0;
 	}
+
+	
 
 	//摩擦
 	m_vx += -(m_vx*0.098);
@@ -132,6 +139,8 @@ void CObjEnemy::Action()
 	{
 		this->SetStatus(false);
 	}
+	hit->SetPos(m_px + block->GetScroll(), m_py);
+
 }
 
 //ドロー
