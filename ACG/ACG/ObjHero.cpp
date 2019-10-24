@@ -139,6 +139,7 @@ void CObjHero::Action()
 
 	if (pbb->GetScroll() > 0)
 		pbb->SetScroll(0);
+
 	//ˆÚ“®•ûŒü‚ÉƒŒƒC‚ð”ò‚Î‚·
 	float vx;
 	if (m_vx > 0)
