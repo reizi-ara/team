@@ -42,7 +42,7 @@ void CObjHero::Init()
 	p_life = p_maxlife;
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_PLAYER, OBJ_HERO, 1);
+	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_PLAYER, OBJ_HERO, 1);
 }
 
 //アクション
@@ -58,6 +58,7 @@ void CObjHero::Action()
 	if (Input::GetVKey('T') && Input::GetVKey(VK_CONTROL))
 	{//ダメージ付与
 		GiveDamageToPlayer(6.0f);
+		
 	}
 
 	//HP0以下でゲームオーバへ移行
@@ -139,6 +140,7 @@ void CObjHero::Action()
 
 	if (pbb->GetScroll() > 0)
 		pbb->SetScroll(0);
+
 	//移動方向にレイを飛ばす
 	float vx;
 	if (m_vx > 0)
