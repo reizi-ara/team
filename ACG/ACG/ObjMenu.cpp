@@ -1,4 +1,4 @@
-#include "GameL\DrawTexTure.h"
+/*#include "GameL\DrawTexTure.h"
 #include "GameL\WinInputs.h"
 #include "GameL\SceneManager.h"
 #include "GameL\DrawFont.h"
@@ -19,7 +19,7 @@ typedef enum {
 
 static int NowSelect = eMenu_Game;    //現在の選択状態(初期はゲーム選択中)
 
-/*//更新
+//更新
 void CObjMenu::Action() {
 	if (Input::GetVKey('S')==1) {				//下キーが押されていたら
 		NowSelect = (NowSelect + 1) % eMenu_Num;//選択状態を一つ下げる
@@ -38,7 +38,7 @@ void CObjMenu::Action() {
 			break;
 		}
 	}
-}*/
+}
 
 
 //ドロー
@@ -77,4 +77,4 @@ void CObjMenu::Draw()
 		break;
 	}
 	Font::StrDraw(L"■", 250,y,32,c);
-}
+}*/

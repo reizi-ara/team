@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 //使用するヘッダーファイル
 #include "GameL\SceneManager.h"
 
@@ -16,4 +16,4 @@ public:
 	void Action();	//アクション
 	void Draw();	//ドロー
 private:
-};
+};*/
