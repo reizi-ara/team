@@ -11,5 +11,9 @@ class CObjMenu :public CObj
 public:
 	CObjMenu() {};
 	~CObjMenu() {};
+
+	void Init();	//イニシャライズ
+	void Action();	//アクション
+	void Draw();	//ドロー
 private:
 };

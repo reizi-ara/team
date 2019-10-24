@@ -13,6 +13,8 @@ enum OBJ_NAME
 
 	OBJ_GAME_START,
 	OBJ_GAME_OVER,
+
+	OBJ_MENU,
 };
 //------------------------------------------------
 

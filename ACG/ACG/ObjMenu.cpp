@@ -12,39 +12,37 @@ const static int CONFIG_Y = 270;    //「設定」文字のy位置
 
 typedef enum {
 	eMenu_Game,        //ゲーム
-	eMenu_Config,    //設定
+	eMenu_Config,      //設定
 
 	eMenu_Num,        //本項目の数
 } eMenu;
 
 static int NowSelect = eMenu_Game;    //現在の選択状態(初期はゲーム選択中)
 
-//更新
-/*void Menu_Update() {
-	if (Input::GetVKey('S')==1) {//下キーが押されていたら
+/*//更新
+void CObjMenu::Action() {
+	if (Input::GetVKey('S')==1) {				//下キーが押されていたら
 		NowSelect = (NowSelect + 1) % eMenu_Num;//選択状態を一つ下げる
 	}
-	if (Input::GetVKey('W') == 1) {//上キーが押されていたら
+	if (Input::GetVKey('W') == 1) {				//上キーが押されていたら
 		NowSelect = (NowSelect + (eMenu_Num - 1)) % eMenu_Num;//選択状態を一つ上げる
 	}
-	if (Input::GetVKey(VK_RETURN) == 1) {//エンターキーが押されたら
-		switch (NowSelect) {//現在選択中の状態によって処理を分岐
-		case eMenu_Game://ゲーム選択中なら
-			CObjMenu(eScene_Game);//シーンをゲーム画面に変更
+	if (Input::GetVKey(VK_RETURN) == 1) {		//エンターキーが押されたら
+		switch (NowSelect) {					//現在選択中の状態によって処理を分岐
+		case eMenu_Game:						//ゲーム選択中なら
+			CObjMenu(eScene_Game);				//シーンをゲーム画面に変更
 			break;
-		case eMenu_Config://設定選択中なら
-			SceneMgr_ChangeScene(eScene_Config);//シーンを設定画面に変更
+		
+		case eMenu_Config:						//設定選択中なら
+			CObjMenu(eScene_Config);			//シーンを設定画面に変更
 			break;
 		}
 	}
 }*/
 
+
 //ドロー
-void Menu_Draw() {
-	
-}
-//ドロー
-void CObjGameStart::Draw()
+void CObjMenu::Draw()
 {
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
