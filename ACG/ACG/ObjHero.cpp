@@ -286,7 +286,7 @@ void CObjHero::Draw()
 
 	//‘Ì—Íƒo[
 	src.m_top = 0.0f;
-	src.m_left = 0.0f;
+	src.m_left = 64.0f * 7;
 	src.m_right = 64.0f + src.m_left;
 	src.m_bottom = 64.0f + src.m_top;
 
