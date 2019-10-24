@@ -63,4 +63,7 @@ class CObjHero :public CObj
 		float p_maxlife;
 
 		bool flg_j;
+
+		//04:Ç»ÇµÅ@123:â∫à 3éÌ 567:è„à 3éÌ
+		int wepon_have;
 };
