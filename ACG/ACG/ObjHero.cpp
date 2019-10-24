@@ -66,7 +66,7 @@ void CObjHero::Action()
 		Scene::SetScene(new CSceneGameOver());
 	}
 
-	//Wでジャンプ
+	//Wでジャ
 	if (Input::GetVKey('W'))
 		if (m_hit_down)
 			m_vy = -20;
@@ -185,7 +185,7 @@ void CObjHero::Action()
 		&m_block_type
 	    );
 
-	//自身のHitBoxを持ってくる
+/*	//自身のHitBoxを持ってくる
 	CHitBox*hit = Hits::GetHitBox(this);
 	//敵と当たっているか確認
 	if (hit->CheckObjNameHit(OBJ_ENEMY) != nullptr)
@@ -201,6 +201,7 @@ void CObjHero::Action()
 			if ((r < 45 && r >= 0) || r > 315)
 			{
 				m_vx = -5.0f;
+				p_life -= 10;
 			}
 			if (r > 135 && r < 225)
 			{
@@ -226,15 +227,15 @@ void CObjHero::Action()
 				}
 			}
 		}
-	}
+	}*/
 
 
 	//表示位置の更新
 	m_px += m_vx;
 	m_py += m_vy;
 
-	//HitBoxの位置変更
-	hit->SetPos(m_px, m_py);
+/*	//HitBoxの位置変更
+	hit->SetPos(m_px, m_py);*/
 }
 
 //ドロー
