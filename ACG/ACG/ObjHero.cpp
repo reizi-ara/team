@@ -257,7 +257,7 @@ void CObjHero::Draw()
 	dst.m_bottom = 64.0f + m_py;
 
 	//ï`âÊ
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+	Draw::Draw(1, &src, &dst, c, 0.0f);
 
 
 
@@ -275,7 +275,7 @@ void CObjHero::Draw()
 	dst.m_bottom = 16.0f;
 
 	//ï`âÊ
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+	Draw::Draw(1, &src, &dst, c, 0.0f);
 
 
 	//ëÃóÕÉoÅ[
@@ -291,6 +291,6 @@ void CObjHero::Draw()
 	dst.m_bottom = 16.0f;
 
 	//ï`âÊ
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+	Draw::Draw(1, &src, &dst, c, 0.0f);
 
 }
