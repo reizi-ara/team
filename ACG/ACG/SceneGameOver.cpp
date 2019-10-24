@@ -40,6 +40,9 @@ void CSceneGameOver::InitScene()
 	CObjGameOver*obj = new CObjGameOver();
 	Objs::InsertObj(obj, OBJ_GAME_OVER, 10);
 
+	//背景読み込み
+	Draw::LoadImageW(L"スタート画面仮置き.jpg", 2, TEX_SIZE_512);
+
 
 	//音楽読み込み
 	Audio::LoadAudio(0, L"雨.wav", BACK_MUSIC);
