@@ -41,6 +41,16 @@ void CSceneGameStart::InitScene()
 	Objs::InsertObj(obj, OBJ_GAME_START, 10);//タイトルオブジェクト登録
 
 
+	//音楽読み込み
+	Audio::LoadAudio(0, L"タイトル.wav", BACK_MUSIC);
+
+	//ボリューム
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster((1.0 - v));
+
+	//音楽スタート
+	Audio::Start(0);
+
 }
 
 //ゲームスタート実行中メソッド
