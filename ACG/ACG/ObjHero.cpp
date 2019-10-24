@@ -60,6 +60,12 @@ void CObjHero::Action()
 		GiveDamageToPlayer(6.0f);
 	}
 
+	//HP0以下でゲームオーバへ移行
+	if (p_life <= 0)
+	{
+		Scene::SetScene(new CSceneGameOver());
+	}
+
 	//Wでジャンプ
 	if (Input::GetVKey('W'))
 		if (m_hit_down)
@@ -257,7 +263,7 @@ void CObjHero::Draw()
 	dst.m_bottom = 64.0f + m_py;
 
 	//描画
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+	Draw::Draw(1, &src, &dst, c, 0.0f);
 
 
 
@@ -275,7 +281,7 @@ void CObjHero::Draw()
 	dst.m_bottom = 16.0f;
 
 	//描画
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+	Draw::Draw(1, &src, &dst, c, 0.0f);
 
 
 	//体力バー
@@ -291,6 +297,6 @@ void CObjHero::Draw()
 	dst.m_bottom = 16.0f;
 
 	//描画
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+	Draw::Draw(1, &src, &dst, c, 0.0f);
 
 }

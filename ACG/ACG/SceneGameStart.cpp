@@ -5,6 +5,7 @@
 //GameLで使用するヘッダー
 #include "GameL\SceneObjManager.h"
 #include "GameL\DrawFont.h"
+#include "GameL/DrawTexture.h"
 #include "GameL\Audio.h"
 
 //使用するネームスペース
@@ -32,9 +33,13 @@ void CSceneGameStart::InitScene()
 	//出力させる文字のグラフィックを作成
 	Font::SetStrTex(L"かぼちゃの館");
 
+	//背景読み込み
+	Draw::LoadImageW(L"スタート画面仮置き.jpg", 2, TEX_SIZE_512);
+
 	//タイトルオブジェクト作成
 	CObjGameStart*obj = new CObjGameStart(); //タイトルオブジェクト作成
 	Objs::InsertObj(obj, OBJ_GAME_START, 10);//タイトルオブジェクト登録
+
 
 }
 
