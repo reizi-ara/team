@@ -131,9 +131,10 @@ void CObjEnemy::Action()
 	float p_y = obj->GetY();
 	p_x += 32.0f;
 	p_y += 32.0f;
-
-	if (p_x <= m_px + 64.0f&&
-		p_x >= m_px &&
+	CObjBlock* block3 = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	float sl = block3->GetScroll();
+	if (p_x-sl <= m_px + 64.0f&&
+		p_x - sl >= m_px &&
 		p_y <= m_py + 64.0f&&
 		p_y >= m_py)
 	{
