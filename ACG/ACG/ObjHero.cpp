@@ -117,7 +117,7 @@ void CObjHero::Action()
 
 	
 
-
+	//HP
 	if (m_ani_time>m_ani_max_time)
 	{
 		m_ani_frame += 1;
@@ -125,10 +125,6 @@ void CObjHero::Action()
 	}
 	if (m_ani_frame == 8)
 		m_ani_frame = 0;
-
-
-	
-
 	
 	m_vx += -(m_vx*0.098);//摩擦
 	m_vy += 9.8 / (16.0f);//自由落下運動
@@ -253,7 +249,7 @@ void CObjHero::Draw()
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
-			   //切り取り位置の設定
+	 //切り取り位置の設定
 	src.m_top = 0.0f+m_pose * 64;
 	src.m_left = 0.0f + AniData[m_ani_frame] * 64;
 	src.m_right = 64.0f + src.m_left;
@@ -318,5 +314,24 @@ void CObjHero::Draw()
 
 	//描画
 	Draw::Draw(1, &src, &dst, c, 0.0f);
+	wepon_have = 6;//仮置き
+	//アクション
+	if (Input::GetVKey(VK_RETURN)&&wepon_have>0&& wepon_have !=4)
+	{
+		//切り取り位置の設定
+		src.m_top = 0.0f + (wepon_have%4+4) * 64;
+		src.m_left = 0.0f + AniData[m_ani_frame] * 64;
+		src.m_right = 64.0f + src.m_left;
+		src.m_bottom = 64.0f + src.m_top;
+
+		//表示位置の設定
+		dst.m_top = 0.0f + m_py;
+		dst.m_left = (64.0f*m_posture) + m_px + (m_posture * 2 - 1)*32;
+		dst.m_right = (64 - 64.0f*m_posture) + m_px;
+		dst.m_bottom = 64.0f + m_py;
+
+		//描画
+		Draw::Draw(1, &src, &dst, c, 0.0f);
+	}
 
 }
