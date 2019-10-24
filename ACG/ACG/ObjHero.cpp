@@ -60,6 +60,12 @@ void CObjHero::Action()
 		GiveDamageToPlayer(6.0f);
 	}
 
+	//HP0以下でゲームオーバへ移行
+	if (p_life <= 0)
+	{
+		Scene::SetScene(new CSceneGameOver());
+	}
+
 	//Wでジャンプ
 	if (Input::GetVKey('W'))
 		if (m_hit_down)
