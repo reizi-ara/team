@@ -138,7 +138,7 @@ void CObjEnemy::Action()
 		p_y <= m_py + 64.0f&&
 		p_y >= m_py)
 	{
-		this->SetStatus(false);
+		obj->GiveDamageToPlayer(2.0f);
 	}
 
 	//hit->SetPos(m_px + block->GetScroll(), m_py);
