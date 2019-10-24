@@ -100,9 +100,9 @@ void CObjBlock::Action()
 	float hy = hero->GetY();
 
 	//後方スクロールライン
-	if (hx < WINDOW_SIZE_W /7*3)
+	if (hx < WINDOW_SIZE_W /7*2)
 	{
-		hero->SetX(WINDOW_SIZE_W / 7 * 3);				//主人公はラインを超えないようにする
+		hero->SetX(WINDOW_SIZE_W / 7 * 2);				//主人公はラインを超えないようにする
 		m_scroll -= hero->GetVX();  //主人公が本来動くべき分の値をm_scrollに加える
 	}
 
@@ -394,8 +394,8 @@ void CObjBlock::Draw()
 				//表示位置の設定
 				dst.m_top = i*64.0f;
 				dst.m_left = j*64.0f+m_scroll;
-				dst.m_right = dst.m_left + 64.0;
-				dst.m_bottom = dst.m_top + 64.0;
+				dst.m_right = dst.m_left + 64.0f;
+				dst.m_bottom = dst.m_top + 64.0f;
 				if (m_map[i][j] == 2)
 				{
 					//スタートブロック

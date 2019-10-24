@@ -3,6 +3,7 @@
 #include "GameL\WinInputs.h"
 #include "GameL\SceneManager.h"
 #include "GameL\HitBoxManager.h"
+#include "ObjHero.h"
 #include "GameL\SceneObjManager.h"
 
 #include "GameHead.h"
@@ -41,7 +42,10 @@ void CObjEnemy::Init()
 
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_ENEMY, OBJ_ENEMY, 1);
+	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_ENEMY, OBJ_ENEMY, 1);
+
+	float p_x = 0;
+	float p_y = 0;
 }
 
 //アクション
@@ -118,9 +122,25 @@ void CObjEnemy::Action()
 	//ブロック情報を持ってくる
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
-	//HitBoxの位置の変更
+/*	//HitBoxの位置の変更
 	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_px + block->GetScroll(), m_py);
+	hit->SetPos(m_px + block->GetScroll(), m_py);*/
+
+	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	float p_x = obj->GetX();
+	float p_y = obj->GetY();
+	p_x += 32.0f;
+	p_y += 32.0f;
+
+	if (p_x <= m_px + 64.0f&&
+		p_x >= m_px &&
+		p_y <= m_py + 64.0f&&
+		p_y >= m_py)
+	{
+		this->SetStatus(false);
+	}
+
+	//hit->SetPos(m_px + block->GetScroll(), m_py);
 
 }
 
