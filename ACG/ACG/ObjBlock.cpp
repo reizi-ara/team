@@ -7,6 +7,8 @@
 #include "GameHead.h"
 #include "ObjBlock.h"
 
+#include "main.h"
+
 //使用するネームスペース
 using namespace GameL;
 
@@ -98,16 +100,16 @@ void CObjBlock::Action()
 	float hy = hero->GetY();
 
 	//後方スクロールライン
-	if (hx < 80)
+	if (hx < WINDOW_SIZE_W /7*3)
 	{
-		hero->SetX(80);				//主人公はラインを超えないようにする
+		hero->SetX(WINDOW_SIZE_W / 7 * 3);				//主人公はラインを超えないようにする
 		m_scroll -= hero->GetVX();  //主人公が本来動くべき分の値をm_scrollに加える
 	}
 
 	//前方スクロール
-	if (hx > 300)
+	if (hx > WINDOW_SIZE_W / 7 * 4)
 	{
-		hero->SetX(300);//主人公はラインを超えないようにする
+		hero->SetX(WINDOW_SIZE_W / 7 * 4);//主人公はラインを超えないようにする
 		m_scroll -= hero->GetVX();//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
