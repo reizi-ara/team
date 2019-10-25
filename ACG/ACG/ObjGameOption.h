@@ -6,20 +6,19 @@
 using namespace GameL;
 
 //シーン：ゲームタイトル
-class CObjMenu : public CObj
+class CObjGameOption : public CObj
 {
 public:
-	CObjMenu() {};
-	~CObjMenu() {};
+	CObjGameOption() {};
+	~CObjGameOption() {};
 	void Init();		//イニシャライズ
 	void Action();		//アクション
 	void Draw();		//ドロー
-
-	int p_menuflag;		//メニュー展開フラグ
 private:
 	bool m_key_flag;//キーフラグ
-	int lavel_select;//選択時協調バー用
-	bool lavel_button;//一回発動用
-	bool lavel_button2;//一回発動用
+	int lavel_select_op;//選択時協調バー用
+	bool lavel_option;//一回発動用
+	bool lavel_option2;//一回発動用
+
 
 };

@@ -40,4 +40,6 @@ private:
 
 	//ˆÚ“®‚ÌŒü‚«§Œä
 	bool m_move;
+
+	float en_life;
 };
