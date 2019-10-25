@@ -54,10 +54,10 @@ void CObjEnemy::Action()
 	//落下
 	if (m_py > 1000.0f)
 	{
-		;
+		this->SetStatus(false);
 	}
 
-	m_speed_power = 0.2f;//通常速度
+	m_speed_power = 0.0f;//通常速度
 	m_ani_max_time = 4;//アニメーション間隔幅
 
 	
@@ -126,20 +126,33 @@ void CObjEnemy::Action()
 	CHitBox*hit = Hits::GetHitBox(this);
 	hit->SetPos(m_px + block->GetScroll(), m_py);*/
 
+	//対プレイヤー攻撃
 	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	float p_x = obj->GetX();
-	float p_y = obj->GetY();
-	p_x += 32.0f;
-	p_y += 32.0f;
+	float pl_x = obj->GetX();
+	float pl_y = obj->GetY();
+	pl_x += 32.0f;
+	pl_y += 32.0f;
 	CObjBlock* block3 = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	float sl = block3->GetScroll();
-	if (p_x-sl <= m_px + 64.0f&&
-		p_x - sl >= m_px &&
-		p_y <= m_py + 64.0f&&
-		p_y >= m_py)
+	float en_x = m_px+32.0f;
+	float en_y = m_py+32.0f;
+	if (pl_x-sl <= en_x + 48.0f&&
+		pl_x - sl >= en_x- 48.0f &&
+		pl_y <= en_y + 48.0f&&
+		pl_y >= en_y - 48.0f)
 	{
-		obj->GiveDamageToPlayer(2.0f);
+		obj->GiveDamageToPlayer(0.1f);
 	}
+
+	if (pl_x - sl <= en_x + 48.0f - 48.0f * (obj->Getposture() * 2 - 1) &&
+		pl_x - sl >= en_x - 48.0f - 48.0f * (obj->Getposture() * 2 - 1) &&
+		pl_y <= en_y + 80.0f &&
+		pl_y >= en_y - 80.0f)
+	{
+		obj->GiveDamageToPlayer(0.1f);
+	}
+
+	
 
 	//hit->SetPos(m_px + block->GetScroll(), m_py);
 
