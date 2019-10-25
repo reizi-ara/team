@@ -46,6 +46,9 @@ void CObjHero::Init()
 
 	//メニュー展開時の操作フラグ
 	p_menuflag = false;
+	//メニューバー位置
+	lavel_select = 0;
+
 
 	//当たり判定用のHitBoxを作成
 	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_PLAYER, OBJ_HERO, 1);
@@ -301,7 +304,7 @@ void CObjHero::Action()
 				{
 					if (lavel_select == 0)
 					{
-						Scene::SetScene(new CSceneMain());
+						Scene::SetScene(new CSceneGameOver());
 						m_key_flag = false;
 					}
 
@@ -310,7 +313,21 @@ void CObjHero::Action()
 						Scene::SetScene(new CSceneGameOver());
 						m_key_flag = false;
 					}
+					
+					else if (lavel_select == 2) {
+						Scene::SetScene(new CSceneGameOver());
+						m_key_flag = false;
+					}
 
+					else if (lavel_select == 3) {
+						Scene::SetScene(new CSceneGameOver());
+						m_key_flag = false;
+					}
+
+					else if (lavel_select == 4)
+					{
+						Scene::SetScene(nullptr);
+					}
 				}
 				else
 				{
