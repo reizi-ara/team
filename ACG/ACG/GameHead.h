@@ -64,6 +64,7 @@ struct UserData
 #include "ObjEnemy.h"
 #include "ObjGameStart.h"
 #include "ObjGameOver.h"
+#include "ObjMenu.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

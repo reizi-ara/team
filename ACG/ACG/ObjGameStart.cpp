@@ -69,7 +69,10 @@ void CObjGameStart::Action()
 			Scene::SetScene(new CSceneGameOver());
 			m_key_flag = false;
 		}
-
+		else if (lavel_select == 2)
+		{
+			Scene::SetScene(nullptr);
+		}
 	}
 	else
 	{
@@ -119,4 +122,3 @@ void CObjGameStart::Draw()
 	Font::StrDraw(L"オプション", 320, 390, 32, c);
 	Font::StrDraw(L"終了", 365, 440, 32, c);
 }
-
