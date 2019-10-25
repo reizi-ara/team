@@ -3,9 +3,11 @@
 #include "GameL\WinInputs.h"
 #include "GameL\SceneManager.h"
 #include "GameL\HitBoxManager.h"
+#include "GameL\SceneObjManager.h"
 
 #include "GameHead.h"
 #include "ObjHero.h"
+#include "ObjMenu.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -55,6 +57,7 @@ void CObjHero::Action()
 	{
 		p_menuflag = true;
 	}
+
 	
 
 	if (p_menuflag == false)
@@ -127,6 +130,7 @@ void CObjHero::Action()
 			}
 		}
 
+		
 		
 
 
@@ -250,6 +254,10 @@ void CObjHero::Action()
 			hit->SetPos(m_px, m_py);*/
 
 	}
+	else if (p_menuflag == true)
+	{
+
+	}
 }
 
 //ドロー
@@ -351,6 +359,11 @@ void CObjHero::Draw()
 
 			//描画
 			Draw::Draw(1, &src, &dst, c, 0.0f);
+			wepon_attack = wepon_have;
+		}
+		else
+		{
+			wepon_attack = 0;
 		}
 	}
 }

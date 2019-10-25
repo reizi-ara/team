@@ -33,7 +33,10 @@ class CObjHero :public CObj
 
 		void GiveDamageToPlayer(float damage) { p_life -= damage; }
 
-
+		int Getwepon() { return wepon_have; }
+		int Getposture() { return m_posture; }
+		int Getpose() { return m_pose; }
+		int Getattack() { return wepon_attack; }
 		//メニュー展開時の操作フラグ
 		int p_menuflag;
 
@@ -71,4 +74,5 @@ class CObjHero :public CObj
 
 		//04:なし　123:下位3種 567:上位3種
 		int wepon_have;
+		int wepon_attack;
 };
