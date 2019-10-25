@@ -75,4 +75,10 @@ class CObjHero :public CObj
 		//04:なし　123:下位3種 567:上位3種
 		int wepon_have;
 		int wepon_attack;
+
+		//メニュー
+		int lavel_select;
+		bool lavel_button;//一回発動用
+		bool lavel_button2;//一回発動用
+		bool m_key_flag;
 };
