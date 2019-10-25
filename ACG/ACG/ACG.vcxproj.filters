@@ -22,6 +22,9 @@
     <Filter Include="ソース ファイル\GameOver">
       <UniqueIdentifier>{4a182f94-3913-4b25-bb9c-8d0e0568de8c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\GameOption">
+      <UniqueIdentifier>{9657409b-363e-4f07-8537-e26b258287a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -93,6 +96,12 @@
     <ClCompile Include="ObjMenu.cpp">
       <Filter>ソース ファイル\GameMain</Filter>
     </ClCompile>
+    <ClCompile Include="ObjGameOption.cpp">
+      <Filter>ソース ファイル\GameOption</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGameOption.cpp">
+      <Filter>ソース ファイル\GameOption</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -163,6 +172,12 @@
     </ClInclude>
     <ClInclude Include="ObjMenu.h">
       <Filter>ソース ファイル\GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjGameOption.h">
+      <Filter>ソース ファイル\GameOption</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGameOption.h">
+      <Filter>ソース ファイル\GameOption</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
