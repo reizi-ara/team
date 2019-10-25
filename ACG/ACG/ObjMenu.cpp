@@ -9,12 +9,12 @@
 //使用するネームスペース
 using namespace GameL;
 
-void CObjGameMenu::Menu()
+void CObjMenu::Menu()
 {
 	;
 }
 //イニシャライズ
-void CObjGameMenu::Init()
+void CObjMenu::Init()
 {
 	lavel_select = 0;
 	lavel_button = true;
@@ -22,7 +22,7 @@ void CObjGameMenu::Init()
 }
 
 //アクション
-void CObjGameMenu::Action()
+void CObjMenu::Action()
 {
 	if (Input::GetVKey('S'))
 	{
@@ -80,11 +80,9 @@ void CObjGameMenu::Action()
 }
 
 //ドロー
-void CObjGameMenu::Draw()
+void CObjMenu::Draw()
 {
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-
-
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
@@ -117,8 +115,10 @@ void CObjGameMenu::Draw()
 	Draw::Draw(0, &src, &dst, c, 0.0f);
 
 
-	Font::StrDraw(L"スタート", 340, 340, 32, c);
-	Font::StrDraw(L"オプション", 320, 390, 32, c);
-	Font::StrDraw(L"終了", 365, 440, 32, c);
+	Font::StrDraw(L"アイテム", 340, 340, 32, c);
+	Font::StrDraw(L"装備", 320, 390, 32, c);
+	Font::StrDraw(L"キャラクター", 365, 440, 32, c);
+	Font::StrDraw(L"セーブ", 50, 490, 32, c);
+	Font::StrDraw(L"ゲーム終了", 50, 540, 32, c);
 }
 

@@ -67,6 +67,10 @@ void CSceneMain::InitScene()
 	//タイムオブジェクト作成
 	CObjTime*objt = new CObjTime();
 	Objs::InsertObj(objt, OBJ_TIME, 11);
+
+	//メニューオブジェクト作成
+	CObjMenu*objm = new CObjMenu();
+	Objs::InsertObj(objm, OBJ_MENU, 5);
 }
 
 //実行中メソッド

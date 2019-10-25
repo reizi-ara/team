@@ -6,11 +6,11 @@
 using namespace GameL;
 
 //シーン：ゲームタイトル
-class CObjGameMenu : public CObj
+class CObjMenu : public CObj
 {
 public:
-	CObjGameMenu() {};
-	~CObjGameMenu() {};
+	CObjMenu() {};
+	~CObjMenu() {};
 	void Menu();
 	void Init();		//イニシャライズ
 	void Action();		//アクション
