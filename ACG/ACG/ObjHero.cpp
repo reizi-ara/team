@@ -256,7 +256,9 @@ void CObjHero::Action()
 	}
 	else if (p_menuflag == true)
 	{
-
+		if (Input::GetVKey('R')) {
+			p_menuflag = false;
+		}
 	}
 }
 
