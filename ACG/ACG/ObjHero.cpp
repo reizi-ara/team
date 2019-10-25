@@ -344,6 +344,10 @@ void CObjHero::Draw()
 	int AniData[8] =
 	{
 		0,1,2,3,0,4,5,6
+	}; 
+	int AniData2[8] =
+	{
+		0,1,2,3,4,5,6,7
 	};
 	//•`‰æƒJƒ‰[î•ñ
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
@@ -425,7 +429,7 @@ void CObjHero::Draw()
 		{
 			//Ø‚èæ‚èˆÊ’u‚Ìİ’è
 			src.m_top = 0.0f + (wepon_have % 4 + 4) * 64;
-			src.m_left = 0.0f + AniData[m_ani_frame] * 64;
+			src.m_left = 0.0f + AniData2[m_ani_frame] * 64;
 			src.m_right = 64.0f + src.m_left;
 			src.m_bottom = 64.0f + src.m_top;
 
