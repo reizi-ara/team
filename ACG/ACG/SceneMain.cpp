@@ -7,6 +7,7 @@
 #include "GameL\DrawTexture.h"
 #include "GameL\DrawFont.h" 
 #include "GameL\UserData.h" 
+#include "GameL\Audio.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -67,6 +68,16 @@ void CSceneMain::InitScene()
 	//タイムオブジェクト作成
 	CObjTime*objt = new CObjTime();
 	Objs::InsertObj(objt, OBJ_TIME, 11);
+
+	//音楽読み込み
+	Audio::LoadAudio(0, L"閉ざされた部屋.wav", BACK_MUSIC);
+
+	//ボリューム
+	float v = Audio::VolumeMaster(0);
+	v = Audio::VolumeMaster((1.0 - v));
+
+	//音楽スタート
+	Audio::Start(0);
 }
 
 //実行中メソッド
