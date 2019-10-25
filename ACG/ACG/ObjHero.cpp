@@ -3,9 +3,11 @@
 #include "GameL\WinInputs.h"
 #include "GameL\SceneManager.h"
 #include "GameL\HitBoxManager.h"
+#include "GameL\SceneObjManager.h"
 
 #include "GameHead.h"
 #include "ObjHero.h"
+#include "ObjMenu.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -55,6 +57,7 @@ void CObjHero::Action()
 	{
 		p_menuflag = true;
 	}
+
 	
 
 	if (p_menuflag == false)
@@ -249,6 +252,10 @@ void CObjHero::Action()
 
 		/*	//HitBoxの位置変更
 			hit->SetPos(m_px, m_py);*/
+
+	}
+	else if (p_menuflag == true)
+	{
 
 	}
 }
