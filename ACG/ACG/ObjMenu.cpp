@@ -51,10 +51,10 @@ void CObjMenu::Action()
 		lavel_button2 = true;
 
 
-	if (lavel_select > 2)
+	if (lavel_select > 4)
 		lavel_select = 0;
 	if (lavel_select < 0)
-		lavel_select = 2;
+		lavel_select = 4;
 
 
 	/*//エンターキーを押してシーン：ゲームメインに移行する
