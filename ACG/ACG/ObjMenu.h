@@ -11,10 +11,11 @@ class CObjMenu : public CObj
 public:
 	CObjMenu() {};
 	~CObjMenu() {};
-	void Menu();
 	void Init();		//イニシャライズ
 	void Action();		//アクション
 	void Draw();		//ドロー
+
+	int p_menuflag;		//メニュー展開フラグ
 private:
 	bool m_key_flag;//キーフラグ
 	int lavel_select;//選択時協調バー用
