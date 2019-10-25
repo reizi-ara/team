@@ -14,6 +14,7 @@ using namespace GameL;
 //イニシャライズ
 void CObjGameStart::Init()
 {
+	m_key_flag = true;
 	lavel_select = 0;
 	lavel_button = true;
 	lavel_button2 = true;
@@ -58,6 +59,7 @@ void CObjGameStart::Action()
 	//エンターキーを押してシーン：ゲームメインに移行する
 	if (Input::GetVKey(VK_RETURN) == true)
 	{
+
 		if (lavel_select==0)
 		{
 			Scene::SetScene(new CSceneMain());

@@ -12,7 +12,7 @@ using namespace GameL;
 //イニシャライズ
 void CObjGameOver::Init()
 {
-
+	GetEnterFlag();
 }
 //アクション
 void CObjGameOver::Action()

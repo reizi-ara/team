@@ -14,6 +14,7 @@ public:
 	void Init();		//イニシャライズ
 	void Action();		//アクション
 	void Draw();		//ドロー
+	bool GetEnterFlag(){ return m_key_flag; }
 private:
 	bool m_key_flag;//キーフラグ
 	int lavel_select;//選択時協調バー用
