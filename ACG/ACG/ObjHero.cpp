@@ -128,6 +128,7 @@ void CObjHero::Action()
 		}
 
 		
+		
 
 
 
@@ -351,6 +352,11 @@ void CObjHero::Draw()
 
 			//•`‰æ
 			Draw::Draw(1, &src, &dst, c, 0.0f);
+			wepon_attack = wepon_have;
+		}
+		else
+		{
+			wepon_attack = 0;
 		}
 	}
 }

@@ -73,4 +73,5 @@ class CObjHero :public CObj
 
 		//04:Ç»ÇµÅ@123:â∫à 3éÌ 567:è„à 3éÌ
 		int wepon_have;
+		int wepon_attack;
 };
