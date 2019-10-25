@@ -32,6 +32,11 @@ class CObjHero :public CObj
 		void SetRight(bool b) { m_hit_right = b; }
 
 		void GiveDamageToPlayer(float damage) { p_life -= damage; }
+
+
+		//メニュー展開時の操作フラグ
+		int p_menuflag;
+
 	private:
 		float m_px;	//位置
 		float m_py;
