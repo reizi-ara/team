@@ -411,6 +411,15 @@ void CObjBlock::Draw()
 				{
 					;
 				}
+				else if (m_map[i][j] == 5)
+				{
+					src.m_top = 0.0f;
+					src.m_left = 0.0f;
+					src.m_right = 512.0f;
+					src.m_bottom = 512.0f;
+
+					Draw::Draw(5, &src, &dst, c, 0.0f);
+				}
 				else
 				{
 					BlockDraw(320.0f, 0.0f, &dst, d);

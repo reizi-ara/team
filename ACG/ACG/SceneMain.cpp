@@ -77,8 +77,8 @@ void CSceneMain::InitScene()
 	Objs::InsertObj(objm, OBJ_MENU, 5);
 
 	//ツタオブジェクト作成
-	CObjTuta*objs = new CObjTuta();
-	Objs::InsertObj(objs, OBJ_TUTA, 8);
+	CObjTuta*objr = new CObjTuta();
+	Objs::InsertObj(objr, OBJ_TUTA, 8);
 
 	//音楽読み込み
 	Audio::LoadAudio(0, L"閉ざされた部屋.wav", BACK_MUSIC);
