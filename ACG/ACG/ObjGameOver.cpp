@@ -12,7 +12,7 @@ using namespace GameL;
 //イニシャライズ
 void CObjGameOver::Init()
 {
-
+	m_key_flag = true;
 }
 //アクション
 void CObjGameOver::Action()

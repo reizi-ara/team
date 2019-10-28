@@ -37,8 +37,6 @@ class CObjHero :public CObj
 		int Getposture() { return m_posture; }
 		int Getpose() { return m_pose; }
 		int Getattack() { return wepon_attack; }
-		//メニュー展開時の操作フラグ
-		int p_menuflag;
 
 	private:
 		float m_px;	//位置
@@ -84,4 +82,7 @@ class CObjHero :public CObj
 		bool lavel_button4;//一回発動用
 		bool lavel_button5;//一回発動用
 		bool m_key_flag;
+
+		//メニュー展開時の操作フラグ
+		int p_menuflag;
 };
