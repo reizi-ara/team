@@ -131,6 +131,7 @@
     <ClCompile Include="ObjEnemy.cpp" />
     <ClCompile Include="ObjHero.cpp" />
     <ClCompile Include="ObjTime.cpp" />
+    <ClCompile Include="ObjTuta.cpp" />
     <ClCompile Include="SceneGameOption.cpp" />
     <ClCompile Include="SceneGameOver.cpp" />
     <ClCompile Include="SceneGameStart.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="ObjEnemy.h" />
     <ClInclude Include="ObjHero.h" />
     <ClInclude Include="ObjTime.h" />
+    <ClInclude Include="ObjTuta.h" />
     <ClInclude Include="SceneGameOption.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneGameStart.h" />
