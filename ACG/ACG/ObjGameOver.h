@@ -15,5 +15,6 @@ public:
 	void Draw();//ƒhƒ[
 
 private:
+	int m_key_flag;
 };
 
