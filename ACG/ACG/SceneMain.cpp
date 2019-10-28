@@ -57,6 +57,7 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
 	Draw::LoadImageW(L"player.png", 1, TEX_SIZE_512);
 	Draw::LoadImageW(L"背景.jpg", 3, TEX_SIZE_512);
+	Draw::LoadImageW(L"Tuta.png", 5, TEX_SIZE_512);
 
 	//主人公オブジェクトの作成
 	CObjHero*obj = new CObjHero();
@@ -73,6 +74,10 @@ void CSceneMain::InitScene()
 	//メニューオブジェクト作成
 	CObjMenu*objm = new CObjMenu();
 	Objs::InsertObj(objm, OBJ_MENU, 5);
+
+	//ツタオブジェクト作成
+	CObjTuta*objs = new CObjTuta();
+	Objs::InsertObj(objs, OBJ_TUTA, 8);
 
 	//音楽読み込み
 	Audio::LoadAudio(0, L"閉ざされた部屋.wav", BACK_MUSIC);

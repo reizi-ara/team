@@ -16,6 +16,8 @@ enum OBJ_NAME
 	OBJ_GAME_OPTION,
 
 	OBJ_MENU,
+
+	OBJ_TUTA,
 };
 //------------------------------------------------
 
@@ -67,6 +69,7 @@ struct UserData
 #include "ObjGameOver.h"
 #include "ObjMenu.h"
 #include "ObjGameOption.h"
+#include "ObjTuta.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
