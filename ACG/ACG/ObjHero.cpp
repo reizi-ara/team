@@ -260,10 +260,6 @@ void CObjHero::Action()
 	}
 	else if (p_menuflag == true)	//メニューテスト
 	{
-		if (Input::GetVKey('R')) {
-			p_menuflag = false;
-		}
-		else {
 			if (p_menuflag == true) {
 
 				if (Input::GetVKey('S'))
@@ -293,10 +289,10 @@ void CObjHero::Action()
 					lavel_button2 = true;
 
 
-				if (lavel_select > 4)
+				if (lavel_select > 5)
 					lavel_select = 0;
 				if (lavel_select < 0)
-					lavel_select = 4;
+					lavel_select = 5;
 
 
 				//エンターキーを押してシーン：ゲームメインに移行する
@@ -328,12 +324,17 @@ void CObjHero::Action()
 					{
 						Scene::SetScene(nullptr);
 					}
+
+					else if (lavel_select == 5)
+					{
+						p_menuflag = false;
+					}
+
 				}
 				else
 				{
 					m_key_flag = true;
 				}
-			}
 		}
 	}
 }
@@ -488,5 +489,6 @@ void CObjHero::Draw()
 		Font::StrDraw(L"キャラクター", 50, 200, 32, c);
 		Font::StrDraw(L"セーブ", 50, 250, 32, c);
 		Font::StrDraw(L"ゲーム終了", 50, 300, 32, c);
+		Font::StrDraw(L"戻る", 50, 350, 32, c);
 	}
 }
