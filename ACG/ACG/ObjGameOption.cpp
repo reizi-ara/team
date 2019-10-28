@@ -17,7 +17,7 @@ using namespace GameL;
 //イニシャライズ
 void CObjGameOption::Init()
 {
-	m_key_flag = true;
+	m_key_flag = false;
 	lavel_option = true;
 	lavel_option2 = true;
 	lavel_select_op = SERECT_MIN_OP;
@@ -62,10 +62,11 @@ void CObjGameOption::Action()
 	//エンターキーを押してシーン：ゲームメインに移行する
 	if (Input::GetVKey(VK_RETURN) == true)
 	{
-		if (lavel_select_op == 0)
+		if (m_key_flag == true)
 		{
-			Scene::SetScene(new CSceneGameStart());
 			m_key_flag = false;
+			Scene::SetScene(new CSceneGameStart());
+			
 		}
 	}
 	else

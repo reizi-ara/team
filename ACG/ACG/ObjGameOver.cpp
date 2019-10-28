@@ -12,7 +12,7 @@ using namespace GameL;
 //イニシャライズ
 void CObjGameOver::Init()
 {
-	m_key_flag = true;
+	m_key_flag = false;
 }
 //アクション
 void CObjGameOver::Action()
@@ -22,8 +22,9 @@ void CObjGameOver::Action()
 	{
 		if (m_key_flag == true)
 		{
-			Scene::SetScene(new CSceneGameStart());
 			m_key_flag = false;
+			Scene::SetScene(new CSceneGameStart());
+			
 		}
 	}
 	else

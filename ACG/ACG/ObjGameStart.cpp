@@ -14,7 +14,7 @@ using namespace GameL;
 //イニシャライズ
 void CObjGameStart::Init()
 {
-	m_key_flag = true;
+	m_key_flag = false;
 	lavel_select = 0;
 	lavel_button = true;
 	lavel_button2 = true;
@@ -59,21 +59,25 @@ void CObjGameStart::Action()
 	//エンターキーを押してシーン：ゲームメインに移行する
 	if (Input::GetVKey(VK_RETURN) == true)
 	{
+		if (m_key_flag == true)
+		{
+			if (lavel_select == 0)
+			{
+				m_key_flag = false;
+				Scene::SetScene(new CSceneMain());
 
-		if (lavel_select==0)
-		{
-			Scene::SetScene(new CSceneMain());
-			m_key_flag = false;
-		}
+			}
 
-		else if (lavel_select == 1)
-		{
-			Scene::SetScene(new CSceneGameOption());
-			m_key_flag = false;
-		}
-		else if (lavel_select == 2)
-		{
-			Scene::SetScene(nullptr);
+			else if (lavel_select == 1)
+			{
+				m_key_flag = false;
+				Scene::SetScene(new CSceneGameOption());
+
+			}
+			else if (lavel_select == 2)
+			{
+				Scene::SetScene(nullptr);
+			}
 		}
 	}
 	else
