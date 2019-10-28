@@ -12,8 +12,7 @@ using namespace GameL;
 //イニシャライズ
 void CObjGameOver::Init()
 {
-	CObjGameStart*obj = (CObjGameStart*)Objs::GetObj(OBJ_GAME_START);
-	bool m_key_flag = obj->GetEnterFlag();
+	GetEnterFlag();
 }
 //アクション
 void CObjGameOver::Action()

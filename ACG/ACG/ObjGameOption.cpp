@@ -17,8 +17,7 @@ using namespace GameL;
 //イニシャライズ
 void CObjGameOption::Init()
 {
-	CObjGameStart*obj = (CObjGameStart*)Objs::GetObj(OBJ_GAME_START);
-	bool m_key_flag = obj->GetEnterFlag();
+	m_key_flag = true;
 	lavel_option = true;
 	lavel_option2 = true;
 	lavel_select_op = SERECT_MIN_OP;
