@@ -9,6 +9,7 @@
 #include "GameHead.h"
 #include "ObjHero.h"
 #include "ObjMenu.h"
+#include "main.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -465,8 +466,8 @@ void CObjHero::Draw()
 		//背景の位置を設定し描画
 		dst.m_top = 0.0f;
 		dst.m_left = 0.0f;
-		dst.m_right = 800.0f;
-		dst.m_bottom = 600.0f;
+		dst.m_right = WINDOW_SIZE_W;
+		dst.m_bottom = WINDOW_SIZE_H;
 		Draw::Draw(1, &src, &dst, c, 0.0f);
 
 		//強調表示用バー

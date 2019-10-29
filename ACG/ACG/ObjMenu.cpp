@@ -50,10 +50,10 @@ void CObjMenu::Action()
 			lavel_button2 = true;
 
 
-		if (lavel_select > 4)
+		if (lavel_select > 5)
 			lavel_select = 0;
 		if (lavel_select < 0)
-			lavel_select = 4;
+			lavel_select = 5;
 
 
 		//エンターキーを押してシーン：ゲームメインに移行する
@@ -61,7 +61,7 @@ void CObjMenu::Action()
 		{
 			if (lavel_select == 0)
 			{
-				Scene::SetScene(new CSceneMain());
+				Scene::SetScene(new CSceneGameOver());
 				m_key_flag = false;
 			}
 
@@ -69,6 +69,26 @@ void CObjMenu::Action()
 			{
 				Scene::SetScene(new CSceneGameOver());
 				m_key_flag = false;
+			}
+
+			else if (lavel_select == 2) {
+				Scene::SetScene(new CSceneGameOver());
+				m_key_flag = false;
+			}
+
+			else if (lavel_select == 3) {
+				Scene::SetScene(new CSceneGameOver());
+				m_key_flag = false;
+			}
+
+			else if (lavel_select == 4)
+			{
+				Scene::SetScene(nullptr);
+			}
+
+			else if (lavel_select == 5)
+			{
+				p_menuflag = false;
 			}
 
 		}
@@ -82,7 +102,7 @@ void CObjMenu::Action()
 //ドロー
 void CObjMenu::Draw()
 {
-	if (p_menuflag == true) 
+	if (p_menuflag == true)				//メニュー
 	{
 		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
@@ -100,7 +120,7 @@ void CObjMenu::Draw()
 		dst.m_left = 0.0f;
 		dst.m_right = 800.0f;
 		dst.m_bottom = 600.0f;
-		Draw::Draw(2, &src, &dst, c, 0.0f);
+		Draw::Draw(1, &src, &dst, c, 0.0f);
 
 		//強調表示用バー
 		//切り取り位置の設定
@@ -110,18 +130,19 @@ void CObjMenu::Draw()
 		src.m_bottom = 512.0f;
 
 		//バーの位置を設定し描画
-		dst.m_top = 340.0f + lavel_select * 50;
-		dst.m_left = 300.0f;
-		dst.m_right = 520.0f;
-		dst.m_bottom = 380.0f + lavel_select * 50;
+		dst.m_top = 100.0f + lavel_select * 50;
+		dst.m_left = 250.0f;
+		dst.m_right = 30.0f;
+		dst.m_bottom = 140.0f + lavel_select * 50;
 		Draw::Draw(0, &src, &dst, c, 0.0f);
 
 
-		Font::StrDraw(L"アイテム", 340, 340, 32, c);
-		Font::StrDraw(L"装備", 320, 390, 32, c);
-		Font::StrDraw(L"キャラクター", 365, 440, 32, c);
-		Font::StrDraw(L"セーブ", 50, 490, 32, c);
-		Font::StrDraw(L"ゲーム終了", 50, 540, 32, c);
+		Font::StrDraw(L"アイテム", 50, 100, 32, c);
+		Font::StrDraw(L"装備", 50, 150, 32, c);
+		Font::StrDraw(L"キャラクター", 50, 200, 32, c);
+		Font::StrDraw(L"セーブ", 50, 250, 32, c);
+		Font::StrDraw(L"ゲーム終了", 50, 300, 32, c);
+		Font::StrDraw(L"戻る", 50, 350, 32, c);
 	}
 }
 
