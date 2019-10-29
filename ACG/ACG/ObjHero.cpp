@@ -150,7 +150,7 @@ void CObjHero::Action()
 
 		m_vx += -(m_vx*0.098);//摩擦
 		m_vy += 9.8 / (16.0f);//自由落下運動
-
+		/*
 		//高速移動用によるBlock判定
 		bool b;
 		float pxx, pyy, r;
@@ -197,7 +197,7 @@ void CObjHero::Action()
 			px = 0.0f;
 			py = 0.0f;
 		}
-
+		*/
 		//ブロックとの当たり判定実行
 		CObjBlock*pd = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 		pd->BlockHit(&m_px, &m_py, true,

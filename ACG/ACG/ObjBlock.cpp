@@ -107,9 +107,9 @@ void CObjBlock::Action()
 	}
 
 	//前方スクロール
-	if (hx > WINDOW_SIZE_W / 7 * 4)
+	if (hx > WINDOW_SIZE_W / 7 * 3.5f)
 	{
-		hero->SetX(WINDOW_SIZE_W / 7 * 4);//主人公はラインを超えないようにする
+		hero->SetX(WINDOW_SIZE_W / 7 * 3.5f);//主人公はラインを超えないようにする
 		m_scroll -= hero->GetVX();//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
@@ -188,7 +188,7 @@ void CObjBlock::BlockHit(
 	{
 		for (int j = 0; j < 100; j++)
 		{
-			if (m_map[i][j] > 0&&m_map[i][j]!=4)
+			if (m_map[i][j] > 0&&m_map[i][j]<4)
 			{
 				//要素番号を座標に変更
 				float bx = j*64.0f;
@@ -261,7 +261,6 @@ void CObjBlock::BlockHit(
 		}
 	}
 }
-
 //内積関数
 //引数1,2　float　ax,ay：Aベクトル
 //引数3,4　float　bx,by：Bベクトル
@@ -288,7 +287,6 @@ float  CObjBlock::Cross(float ax, float ay, float bx, float by)
 
 	return t;
 }
-
 //符号を求めるマクロ
 #define SGN(x)1-(x<=0)-(x<0)
 
@@ -356,7 +354,6 @@ bool CObjBlock::LineCrossPoint(
 
 	return true;
 }
-
 
 
 

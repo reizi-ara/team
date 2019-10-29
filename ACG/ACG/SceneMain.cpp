@@ -71,15 +71,15 @@ void CSceneMain::InitScene()
 	//タイムオブジェクト作成
 	CObjTime*objt = new CObjTime();
 	Objs::InsertObj(objt, OBJ_TIME, 11);
-
+	/*
 	//メニューオブジェクト作成
 	CObjMenu*objm = new CObjMenu();
 	Objs::InsertObj(objm, OBJ_MENU, 5);
-
+	
 	//ツタオブジェクト作成
 	CObjTuta*objr = new CObjTuta();
 	Objs::InsertObj(objr, OBJ_TUTA, 8);
-
+	*/
 	//音楽読み込み
 	Audio::LoadAudio(0, L"閉ざされた部屋.wav", BACK_MUSIC);
 
