@@ -7,6 +7,7 @@
 
 #include"GameHead.h"
 #include"ObjGameStart.h"
+#include"main.h"
 
 //使用するネームスペース
 using namespace GameL;
