@@ -31,7 +31,7 @@ void CObjEnemy::Init()
 	m_ani_time = 0;
 	m_ani_frame = 1;	//静止フレームを初期にする
 
-	m_speed_power = 0.3f;	//通常速度
+	m_speed_power = 0.0f;	//通常速度
 	m_ani_max_time = 4;		//アニメーション間隔幅
 
 	m_move = true;
@@ -59,7 +59,7 @@ void CObjEnemy::Action()
 		this->SetStatus(false);
 	}
 
-	m_speed_power = 0.0f;//通常速度
+	//通常速度
 	m_ani_max_time = 4;//アニメーション間隔幅
 
 	
@@ -138,6 +138,7 @@ void CObjEnemy::Action()
 	float sl = block3->GetScroll();
 	float en_x = m_px+32.0f;
 	float en_y = m_py+32.0f;
+	//与ダメージ
 	if (pl_x-sl <= en_x + 48.0f&&
 		pl_x - sl >= en_x- 48.0f &&
 		pl_y <= en_y + 48.0f&&
@@ -146,6 +147,7 @@ void CObjEnemy::Action()
 		obj->GiveDamageToPlayer(0.1f);
 	}
 
+	//被攻撃
 	if (pl_x - sl <= en_x + 48.0f - 48.0f * (obj->Getposture() * 2 - 1) &&
 		pl_x - sl >= en_x - 48.0f - 48.0f * (obj->Getposture() * 2 - 1) &&
 		pl_y <= en_y + 80.0f &&
@@ -156,6 +158,12 @@ void CObjEnemy::Action()
 		this->SetStatus(false);
 	}
 
+	//起動
+	if (pl_x - sl <= en_x + 48.0f +128.0f&&
+		pl_x - sl >= en_x - 48.0f - 128.0f)
+	{
+		m_speed_power = 0.2f;
+	}
 	
 
 	//hit->SetPos(m_px + block->GetScroll(), m_py);
