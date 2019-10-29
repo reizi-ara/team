@@ -23,7 +23,7 @@ void CObjBlock::Init()
 {
 	m_scroll = 0.0f;
 }
-
+/*
 //主人公と壁の交差判定関数
 //引数1,2　float　 x,y			:主人公の位置
 //引数3,4　float vx,vy			:主人公の移動ベクトル
@@ -90,7 +90,7 @@ bool CObjBlock::HeroBlockCrossPoint(
 
 
 }
-
+*/
 //アクション
 void CObjBlock::Action()
 {
@@ -107,9 +107,9 @@ void CObjBlock::Action()
 	}
 
 	//前方スクロール
-	if (hx > WINDOW_SIZE_W / 7 * 4)
+	if (hx > WINDOW_SIZE_W / 7 * 3.5f)
 	{
-		hero->SetX(WINDOW_SIZE_W / 7 * 4);//主人公はラインを超えないようにする
+		hero->SetX(WINDOW_SIZE_W / 7 * 3.5f);//主人公はラインを超えないようにする
 		m_scroll -= hero->GetVX();//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
@@ -129,6 +129,15 @@ void CObjBlock::Action()
 			//4があれば敵を出現
 			CObjEnemy*obje = new CObjEnemy(ex*64.0f, i*64.0f);
 			Objs::InsertObj(obje, OBJ_ENEMY, 10);
+
+			//敵の出現場所の値を0にする
+			m_map[i][ex] = 0;
+		}
+		if (m_map[i][ex] == 5)
+		{
+			//4があれば敵を出現
+			CObjTuta* obj21 = new CObjTuta(ex * 64.0f, i * 64.0f);
+			Objs::InsertObj(obj21, OBJ_TUTA, 10);
 
 			//敵の出現場所の値を0にする
 			m_map[i][ex] = 0;
@@ -188,7 +197,7 @@ void CObjBlock::BlockHit(
 	{
 		for (int j = 0; j < 100; j++)
 		{
-			if (m_map[i][j] > 0&&m_map[i][j]!=4)
+			if (m_map[i][j] > 0&&m_map[i][j]<4)
 			{
 				//要素番号を座標に変更
 				float bx = j*64.0f;
@@ -261,7 +270,7 @@ void CObjBlock::BlockHit(
 		}
 	}
 }
-
+/*
 //内積関数
 //引数1,2　float　ax,ay：Aベクトル
 //引数3,4　float　bx,by：Bベクトル
@@ -288,7 +297,6 @@ float  CObjBlock::Cross(float ax, float ay, float bx, float by)
 
 	return t;
 }
-
 //符号を求めるマクロ
 #define SGN(x)1-(x<=0)-(x<0)
 
@@ -361,8 +369,7 @@ bool CObjBlock::LineCrossPoint(
 
 
 
-
-
+*/
 
 //ドロー
 void CObjBlock::Draw()
@@ -381,8 +388,8 @@ void CObjBlock::Draw()
 	src.m_bottom = 600.0f;//900　　　427
 	dst.m_top = 0.0f;
 	dst.m_left = 0.0f;
-	dst.m_right = 800.0f;
-	dst.m_bottom = 600.0f;
+	dst.m_right = WINDOW_SIZE_W;
+	dst.m_bottom = WINDOW_SIZE_H;
 	Draw::Draw(3, &src, &dst, c, 0.0f);
 
 
@@ -408,6 +415,10 @@ void CObjBlock::Draw()
 					BlockDraw(320.0f + 64.0f, 64.0f, &dst, c);
 				}
 				else if (m_map[i][j] == 4)
+				{
+					;
+				}
+				else if (m_map[i][j] == 5)
 				{
 					;
 				}

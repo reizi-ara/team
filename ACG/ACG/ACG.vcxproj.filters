@@ -105,6 +105,9 @@
     <ClCompile Include="ObjTuta.cpp">
       <Filter>ソース ファイル\GameMain</Filter>
     </ClCompile>
+    <ClCompile Include="ObjMessageBox.cpp">
+      <Filter>ソース ファイル\GameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -183,6 +186,9 @@
       <Filter>ソース ファイル\GameOption</Filter>
     </ClInclude>
     <ClInclude Include="ObjTuta.h">
+      <Filter>ソース ファイル\GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMessageBox.h">
       <Filter>ソース ファイル\GameMain</Filter>
     </ClInclude>
   </ItemGroup>

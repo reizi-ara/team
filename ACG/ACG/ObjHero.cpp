@@ -9,6 +9,7 @@
 #include "GameHead.h"
 #include "ObjHero.h"
 #include "ObjMenu.h"
+#include "main.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -150,7 +151,7 @@ void CObjHero::Action()
 
 		m_vx += -(m_vx*0.098);//摩擦
 		m_vy += 9.8 / (16.0f);//自由落下運動
-
+		/*
 		//高速移動用によるBlock判定
 		bool b;
 		float pxx, pyy, r;
@@ -197,7 +198,7 @@ void CObjHero::Action()
 			px = 0.0f;
 			py = 0.0f;
 		}
-
+		*/
 		//ブロックとの当たり判定実行
 		CObjBlock*pd = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 		pd->BlockHit(&m_px, &m_py, true,
@@ -260,10 +261,6 @@ void CObjHero::Action()
 	}
 	else if (p_menuflag == true)	//メニューテスト
 	{
-		if (Input::GetVKey('R')) {
-			p_menuflag = false;
-		}
-		else {
 			if (p_menuflag == true) {
 
 				if (Input::GetVKey('S'))
@@ -293,10 +290,10 @@ void CObjHero::Action()
 					lavel_button2 = true;
 
 
-				if (lavel_select > 4)
+				if (lavel_select > 5)
 					lavel_select = 0;
 				if (lavel_select < 0)
-					lavel_select = 4;
+					lavel_select = 5;
 
 
 				//エンターキーを押してシーン：ゲームメインに移行する
@@ -328,12 +325,17 @@ void CObjHero::Action()
 					{
 						Scene::SetScene(nullptr);
 					}
+
+					else if (lavel_select == 5)
+					{
+						p_menuflag = false;
+					}
+
 				}
 				else
 				{
 					m_key_flag = true;
 				}
-			}
 		}
 	}
 }
@@ -464,8 +466,8 @@ void CObjHero::Draw()
 		//背景の位置を設定し描画
 		dst.m_top = 0.0f;
 		dst.m_left = 0.0f;
-		dst.m_right = 800.0f;
-		dst.m_bottom = 600.0f;
+		dst.m_right = WINDOW_SIZE_W;
+		dst.m_bottom = WINDOW_SIZE_H;
 		Draw::Draw(1, &src, &dst, c, 0.0f);
 
 		//強調表示用バー
@@ -488,5 +490,6 @@ void CObjHero::Draw()
 		Font::StrDraw(L"キャラクター", 50, 200, 32, c);
 		Font::StrDraw(L"セーブ", 50, 250, 32, c);
 		Font::StrDraw(L"ゲーム終了", 50, 300, 32, c);
+		Font::StrDraw(L"戻る", 50, 350, 32, c);
 	}
 }
