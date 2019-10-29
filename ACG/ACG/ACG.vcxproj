@@ -127,7 +127,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="ObjGameOption.cpp" />
-    <ClCompile Include="ObjMenu.cpp" />
+    <ClCompile Include="ObjMenu.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="ObjGameOver.cpp" />
     <ClCompile Include="ObjGameStart.cpp" />
     <ClCompile Include="ObjBlock.cpp" />
@@ -157,7 +159,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="ObjGameOption.h" />
-    <ClInclude Include="ObjMenu.h" />
+    <ClInclude Include="ObjMenu.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="ObjGameOver.h" />
     <ClInclude Include="ObjGameStart.h" />
     <ClInclude Include="main.h" />
