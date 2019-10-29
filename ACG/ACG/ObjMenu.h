@@ -21,5 +21,9 @@ private:
 	int lavel_select;//選択時協調バー用
 	bool lavel_button;//一回発動用
 	bool lavel_button2;//一回発動用
-
+	
+	bool p_itemflag;	//アイテムフラグ
+	bool p_equipflag;   //装備フラグ
+	bool p_charaflag;	//キャラクターフラグ
+	bool p_saveflag;	//セーブフラグ
 };
