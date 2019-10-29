@@ -37,6 +37,7 @@ void CObjGameOver::Action()
 void CObjGameOver::Draw()
 {
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+	float cR[4] = { 1.0f,0.0f,0.0f,1.0f };
 
 	RECT_F src;//ï`âÊå≥êÿÇËéÊÇËà íu
 	RECT_F dst;//ï`âÊêÊï\é¶à íu
@@ -54,9 +55,9 @@ void CObjGameOver::Draw()
 	dst.m_bottom = 600.0f;
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 
-	Font::StrDraw(L"YOU LOSE", 340, 150, 32, c);
-	Font::StrDraw(L"GAME OVER", 330, 225, 32, c);
-	Font::StrDraw(L"NEXT_CHALLENGE:ENTER_KEY", 220, 350, 32, c);
+	Font::StrDraw(L"YOU LOSE", 340, 150, 32, cR);
+	Font::StrDraw(L"GAME OVER", 330, 225, 32, cR);
+	Font::StrDraw(L"NEXT_CHALLENGE:ENTER_KEY", 220, 350, 32, cR);
 
 }
 

@@ -75,7 +75,7 @@ class CObjHero :public CObj
 		int wepon_attack;
 
 		//メニュー
-		int lavel_select;
+		int lavel_select;	//上下ボタンセレクト用
 		bool lavel_button;//一回発動用
 		bool lavel_button2;//一回発動用
 		bool lavel_button3;//一回発動用
@@ -84,5 +84,7 @@ class CObjHero :public CObj
 		bool m_key_flag;
 
 		//メニュー展開時の操作フラグ
-		int p_menuflag;
+		bool p_menuflag;
+		bool p_menu_close;
+
 };
