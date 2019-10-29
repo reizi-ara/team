@@ -105,45 +105,7 @@ void CObjMenu::Draw()
 {
 	if (p_menuflag == true)				//メニュー
 	{
-		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-		RECT_F src;//描画元切り取り位置
-		RECT_F dst;//描画先表示位置
-
-		//切り取り位置の設定
-		src.m_top = 0.0f;
-		src.m_left = 0.0f;
-		src.m_right = 960.0f;
-		src.m_bottom = 450.0f;
-
-		//背景の位置を設定し描画
-		dst.m_top = 0.0f;
-		dst.m_left = 0.0f;
-		dst.m_right = WINDOW_SIZE_W;
-		dst.m_bottom = WINDOW_SIZE_H;
-		Draw::Draw(2, &src, &dst, c, 0.0f);
-
-		//強調表示用バー
-		//切り取り位置の設定
-		src.m_top = 256.0f;
-		src.m_left = 0.0f;
-		src.m_right = 512.0f;
-		src.m_bottom = 512.0f;
-
-		//バーの位置を設定し描画
-		dst.m_top = 100.0f + lavel_select * 50;
-		dst.m_left = 250.0f;
-		dst.m_right = 30.0f;
-		dst.m_bottom = 140.0f + lavel_select * 50;
-		Draw::Draw(0, &src, &dst, c, 0.0f);
-
-
-		Font::StrDraw(L"アイテム", 50, 100, 32, c);
-		Font::StrDraw(L"装備", 50, 150, 32, c);
-		Font::StrDraw(L"キャラクター", 50, 200, 32, c);
-		Font::StrDraw(L"セーブ", 50, 250, 32, c);
-		Font::StrDraw(L"ゲーム終了", 50, 300, 32, c);
-		Font::StrDraw(L"戻る", 50, 350, 32, c);
 	}
 }
 
