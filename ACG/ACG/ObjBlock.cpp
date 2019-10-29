@@ -23,7 +23,7 @@ void CObjBlock::Init()
 {
 	m_scroll = 0.0f;
 }
-
+/*
 //主人公と壁の交差判定関数
 //引数1,2　float　 x,y			:主人公の位置
 //引数3,4　float vx,vy			:主人公の移動ベクトル
@@ -90,7 +90,7 @@ bool CObjBlock::HeroBlockCrossPoint(
 
 
 }
-
+*/
 //アクション
 void CObjBlock::Action()
 {
@@ -129,6 +129,15 @@ void CObjBlock::Action()
 			//4があれば敵を出現
 			CObjEnemy*obje = new CObjEnemy(ex*64.0f, i*64.0f);
 			Objs::InsertObj(obje, OBJ_ENEMY, 10);
+
+			//敵の出現場所の値を0にする
+			m_map[i][ex] = 0;
+		}
+		if (m_map[i][ex] == 5)
+		{
+			//4があれば敵を出現
+			CObjTuta* obj21 = new CObjTuta(ex * 64.0f, i * 64.0f);
+			Objs::InsertObj(obj21, OBJ_TUTA, 10);
 
 			//敵の出現場所の値を0にする
 			m_map[i][ex] = 0;
@@ -261,6 +270,7 @@ void CObjBlock::BlockHit(
 		}
 	}
 }
+/*
 //内積関数
 //引数1,2　float　ax,ay：Aベクトル
 //引数3,4　float　bx,by：Bベクトル
@@ -359,7 +369,7 @@ bool CObjBlock::LineCrossPoint(
 
 
 
-
+*/
 
 //ドロー
 void CObjBlock::Draw()
@@ -376,6 +386,7 @@ void CObjBlock::Draw()
 	src.m_left = 0.0f;
 	src.m_right = 800.0f;//ネタ：1600　　　背景640
 	src.m_bottom = 600.0f;//900　　　427
+
 	dst.m_top = 0.0f;
 	dst.m_left = 0.0f;
 	dst.m_right = WINDOW_SIZE_W;
@@ -410,12 +421,7 @@ void CObjBlock::Draw()
 				}
 				else if (m_map[i][j] == 5)
 				{
-					src.m_top = 0.0f;
-					src.m_left = 0.0f;
-					src.m_right = 512.0f;
-					src.m_bottom = 512.0f;
-
-					Draw::Draw(5, &src, &dst, c, 0.0f);
+					;
 				}
 				else
 				{

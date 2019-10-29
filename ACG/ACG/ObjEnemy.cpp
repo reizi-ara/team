@@ -9,8 +9,6 @@
 #include "GameHead.h"
 #include "ObjEnemy.h"
 
-#include "ObjHero.h"
-
 #define LIFE 80;
 //使用するネームスペースdayo
 using namespace GameL;

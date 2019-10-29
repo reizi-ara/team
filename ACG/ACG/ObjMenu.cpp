@@ -24,6 +24,12 @@ void CObjMenu::Action()
 {
 	if (p_menuflag == true) {
 
+		p_itemflag = true;	   //アイテムフラグ
+		p_equipflag= true;     //装備フラグ
+		p_charaflag= true;	   //キャラクターフラグ
+		p_saveflag = true;	   //セーブフラグ
+
+
 		if (Input::GetVKey('S'))
 		{
 			if (lavel_button == true)
@@ -57,7 +63,7 @@ void CObjMenu::Action()
 			lavel_select = 5;
 
 
-		//エンターキーを押してシーン：ゲームメインに移行する
+		//エンターキーを押して各メニューに移行
 		if (Input::GetVKey(VK_RETURN) == true)
 		{
 			if (lavel_select == 0)
