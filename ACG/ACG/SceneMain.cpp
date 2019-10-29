@@ -80,9 +80,9 @@ void CSceneMain::InitScene()
 	//ツタオブジェクト作成
 	CObjTuta*objr = new CObjTuta();
 	Objs::InsertObj(objr, OBJ_TUTA, 8);
-	*/
+	
 	CObjTuta*objs = new CObjTuta();
-	Objs::InsertObj(objs, OBJ_TUTA, 8);
+	Objs::InsertObj(objs, OBJ_TUTA, 8);*/
 	Draw::LoadImageW(L"メッセージウインドウ.png", 3, TEX_SIZE_512);
 	//音楽読み込み
 	Audio::LoadAudio(0, L"閉ざされた部屋.wav", BACK_MUSIC);
