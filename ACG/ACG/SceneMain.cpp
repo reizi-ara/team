@@ -56,7 +56,7 @@ void CSceneMain::InitScene()
 	//グラフィック読み込み
 	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
 	Draw::LoadImageW(L"player.png", 1, TEX_SIZE_512);
-	Draw::LoadImageW(L"背景.jpg", 3, TEX_SIZE_512);
+	//Draw::LoadImageW(L"背景.jpg", 3, TEX_SIZE_512);
 	Draw::LoadImageW(L"Tuta.png", 5, TEX_SIZE_512);
 	Draw::LoadImageW(L"紅魔館.jpg", 3, TEX_SIZE_512);
 	Draw::LoadImageW(L"メッセージウインドウ.png", 6, TEX_SIZE_512);

@@ -386,6 +386,7 @@ void CObjBlock::Draw()
 	src.m_left = 0.0f;
 	src.m_right = 800.0f;//ネタ：1600　　　背景640
 	src.m_bottom = 600.0f;//900　　　427
+
 	dst.m_top = 0.0f;
 	dst.m_left = 0.0f;
 	dst.m_right = WINDOW_SIZE_W;
