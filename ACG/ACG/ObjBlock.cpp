@@ -381,8 +381,8 @@ void CObjBlock::Draw()
 	src.m_bottom = 600.0f;//900Å@Å@Å@427
 	dst.m_top = 0.0f;
 	dst.m_left = 0.0f;
-	dst.m_right = 800.0f;
-	dst.m_bottom = 600.0f;
+	dst.m_right = WINDOW_SIZE_W;
+	dst.m_bottom = WINDOW_SIZE_H;
 	Draw::Draw(3, &src, &dst, c, 0.0f);
 
 
