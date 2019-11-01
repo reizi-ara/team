@@ -42,11 +42,11 @@ void CObjTuta::Init()
 	m_hit_right = false;
 
 	en_life = LIFE;
-	//当たり判定用のHitBoxを作成
-	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_ENEMY, OBJ_ENEMY, 1);
 
 	float p_x = 0;
 	float p_y = 0;
+
+	hit_length = 64.0f;
 }
 
 //アクション
@@ -61,10 +61,6 @@ void CObjTuta::Action()
 	//ブロック情報を持ってくる
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
-	/*	//HitBoxの位置の変更
-		CHitBox*hit = Hits::GetHitBox(this);
-		hit->SetPos(m_px + block->GetScroll(), m_py);*/
-
 		//対プレイヤー攻撃
 	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	float pl_x = obj->GetX();
@@ -75,14 +71,26 @@ void CObjTuta::Action()
 	float sl = block3->GetScroll();
 	float en_x = m_px + 32.0f;
 	float en_y = m_py + 32.0f;
-	//与ダメージ
-	if (pl_x - sl <= en_x + 48.0f &&
-		pl_x - sl >= en_x - 48.0f &&
-		pl_y <= en_y + 48.0f &&
-		pl_y >= en_y - 48.0f)
-	{
-		obj->GiveDamageToPlayer(0.1f);
+	
+	if (pl_x - sl <= en_x + hit_length &&
+	pl_x - sl >= en_x - hit_length &&
+		pl_y <= en_y + hit_length &&
+		pl_y >= en_y - hit_length)
+	{//接触時
+
+
+
+
+		//Rキー入力
+		if (Input::GetVKey('R'))
+		{
+
+
+
+		}
+
 	}
+	
 
 }
 

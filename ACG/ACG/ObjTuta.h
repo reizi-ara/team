@@ -43,4 +43,7 @@ private:
 	bool m_move;
 
 	float en_life;
+
+	int hit_length;
+	int sarch_length;
 };
