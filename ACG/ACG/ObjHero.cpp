@@ -151,54 +151,7 @@ void CObjHero::Action()
 
 		m_vx += -(m_vx*0.098);//摩擦
 		m_vy += 9.8 / (16.0f);//自由落下運動
-		/*
-		//高速移動用によるBlock判定
-		bool b;
-		float pxx, pyy, r;
-		CObjBlock*pbb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-
-		if (pbb->GetScroll() > 0)
-			pbb->SetScroll(0);
-
-		//移動方向にレイを飛ばす
-		float vx;
-		if (m_vx > 0)
-			vx = 500;
-		else
-			vx = -500;
-
-		//レイ判定
-		b = pbb->HeroBlockCrossPoint(m_px - pbb->GetScroll() + 32, m_py + 32, vx, 0.0f, &pxx, &pyy, &r);
-
-		if (b == true)
-		{
-			//交点取得
-			px = pxx + pbb->GetScroll();
-			py = pyy;
-
-			float aa = (m_px)-px;//A(交点→主人公の位置)ベクトル
-			float bb = (m_px + m_vx) - px;//B(交点→主人公の移動先位置)ベクトル
-
-										  //主人公の幅分のオフセット
-			if (vx > 0)
-				px += -64;
-			else
-				px += +2;
-
-			//AとBが逆を向いてる(主人公が移動先が壁を越えている)
-			if (aa*bb < 0)
-			{
-				//移動ベクトルを(交点→主人公の位置)ベクトルにする
-				m_vx = px - m_px;
-			}
-
-		}
-		else
-		{
-			px = 0.0f;
-			py = 0.0f;
-		}
-		*/
+		
 		//ブロックとの当たり判定実行
 		CObjBlock*pd = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 		pd->BlockHit(&m_px, &m_py, true,
@@ -206,50 +159,7 @@ void CObjHero::Action()
 			&m_block_type
 		);
 
-		/*	//自身のHitBoxを持ってくる
-			CHitBox*hit = Hits::GetHitBox(this);
-			//敵と当たっているか確認
-			if (hit->CheckObjNameHit(OBJ_ENEMY) != nullptr)
-			{
-				//主人公が敵とどの角度で当たっているかを確認
-				HIT_DATA**hit_data;
-				hit_data = hit->SearchObjNameHit(OBJ_ENEMY);
-
-				for (int i = 0; i < hit->GetCount(); i++)
-				{
-					//敵との左右に当たったら
-					float r = hit_data[i]->r;
-					if ((r < 45 && r >= 0) || r > 315)
-					{
-						m_vx = -5.0f;
-						p_life -= 10;
-					}
-					if (r > 135 && r < 225)
-					{
-						m_vx = +5.0f;
-					}
-					if (r >= 225 && r < 315)
-					{
-						//敵の移動方向を主人公の位置に加算
-						m_px += ((CObjEnemy*)hit_data[i]->o)->GetVx();
-
-						CObjBlock*b = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-						//頭にのせる処理
-						if (m_vy <- 1.0f)
-						{
-							//ジャンプしている場合は下記の影響を出ないようにする
-						}
-						else
-						{
-							//主人公が敵の頭に乗っているので、Yvecは0にして落下させない
-							//また、地面に当たっている判定にする
-							m_vy = 0.0f;
-							m_hit_down = true;
-						}
-					}
-				}
-			}*/
-
+		
 
 			//表示位置の更新
 		m_px += m_vx;
