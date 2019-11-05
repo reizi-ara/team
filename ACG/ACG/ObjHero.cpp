@@ -163,8 +163,6 @@ void CObjHero::Action()
 		m_px += m_vx;
 		m_py += m_vy;
 
-		/*	//HitBoxの位置変更
-			hit->SetPos(m_px, m_py);*/
 
 	}
 	else if (p_menuflag == true)	//メニューテスト
@@ -257,10 +255,7 @@ void CObjHero::Draw()
 	{
 		0,1,2,3,4,5,6,7
 	}; 
-	int AniData2[8] =
-	{
-		0,1,2,3,4,5,6,7
-	};
+	
 	//描画カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
@@ -281,58 +276,63 @@ void CObjHero::Draw()
 	dst.m_bottom = 64.0f + m_py;
 
 	//描画
-	Draw::Draw(1, &src, &dst, c, 0.0f);
+	Draw::Draw(0, &src, &dst, c, 0.0f);
 
 
 
 
 	//体力バー(枠)
-	src.m_top = 0.0f;
-	src.m_left = 0.0f;
-	src.m_right = 64.0f + src.m_left;
+	src.m_top = 128.0f;
+	src.m_left = 256.0f;
+	src.m_right = 256.0f + src.m_left;
 	src.m_bottom = 64.0f + src.m_top;
 
 	//表示位置の設定
-	dst.m_top = 0.0f;
-	dst.m_left = 0.0f;
-	dst.m_right = 256.0f;
-	dst.m_bottom = 16.0f;
+	dst.m_top = 8.0f;
+	dst.m_left = 8.0f;
+	dst.m_right = 256.0f + dst.m_left;
+	dst.m_bottom = 64.0f + dst.m_top;
 
 	//描画
-	Draw::Draw(1, &src, &dst, c, 0.0f);
+	Draw::Draw(0, &src, &dst, c, 0.0f);
 
 
 	//体力バー
-	if (p_life / p_maxlife > 0.5)
+	if (p_life / p_maxlife > 0.5)//ao
 	{
-		src.m_top = 0.0f;
-		src.m_left = 64.0f * 7;
+		src.m_top = 128.0f;
+		src.m_left = 64.0f * 3;
 		src.m_right = 64.0f + src.m_left;
 		src.m_bottom = 64.0f + src.m_top;
 	}
-	else if (p_life / p_maxlife <= 0.5&& p_life / p_maxlife > 0.25)
+	else if (p_life / p_maxlife <= 0.5&& p_life / p_maxlife > 0.25)//ki
 	{
-		src.m_top = 64.0f;
-		src.m_left = 64.0f * 7;
+		src.m_top = 128.0f;
+		src.m_left = 64.0f * 2;
 		src.m_right = 64.0f + src.m_left;
 		src.m_bottom = 64.0f + src.m_top;
 	}
-	else if (p_life / p_maxlife <= 0.25)
+	else if (p_life / p_maxlife <= 0.25)//aka
 	{
-		src.m_top = 64.0f*2;
-		src.m_left = 64.0f * 7;
+		src.m_top = 128.0f;
+		src.m_left = 64.0f * 1;
 		src.m_right = 64.0f + src.m_left;
 		src.m_bottom = 64.0f + src.m_top;
 	}
 
 	//表示位置の設定
-	dst.m_top = 0.0f;
-	dst.m_left = 0.0f;
-	dst.m_right = 256.0f*(p_life/p_maxlife);
-	dst.m_bottom = 16.0f;
+	dst.m_top = 24.0f;
+	dst.m_left = 16.0f;
+	dst.m_right = (256.0f-16.0f)*(p_life/p_maxlife)+dst.m_left;
+	dst.m_bottom = 32.0f+ dst.m_top;
 
 	//描画
-	Draw::Draw(1, &src, &dst, c, 0.0f);
+	Draw::Draw(0, &src, &dst, c, 0.0f);
+
+
+	//ここまで変更完了
+
+
 	wepon_have = 6;//仮置き
 
 	
@@ -341,7 +341,7 @@ void CObjHero::Draw()
 		{
 			//切り取り位置の設定
 			src.m_top = 0.0f + (wepon_have % 4 + 4) * 64;
-			src.m_left = 0.0f + AniData2[m_ani_frame] * 64;
+			src.m_left = 0.0f + AniData[m_ani_frame] * 64;
 			src.m_right = 64.0f + src.m_left;
 			src.m_bottom = 64.0f + src.m_top;
 
@@ -370,15 +370,15 @@ void CObjHero::Draw()
 		//切り取り位置の設定
 		src.m_top = 0.0f;
 		src.m_left = 0.0f;
-		src.m_right = 960.0f;
-		src.m_bottom = 450.0f;
+		src.m_right = 910.0f;
+		src.m_bottom = 512.0f;
 
 		//背景の位置を設定し描画
 		dst.m_top = 0.0f;
 		dst.m_left = 0.0f;
 		dst.m_right = WINDOW_SIZE_W;
 		dst.m_bottom = WINDOW_SIZE_H;
-		Draw::Draw(1, &src, &dst, c, 0.0f);
+		Draw::Draw(4, &src, &dst, c, 0.0f);
 
 		//強調表示用バー
 		//切り取り位置の設定

@@ -30,7 +30,7 @@ void CObjEnemy::Init()
 	m_ani_frame = 1;	//静止フレームを初期にする
 
 	m_speed_power = 0.0f;	//通常速度
-	m_ani_max_time = 4;		//アニメーション間隔幅
+	m_ani_max_time = 8;		//アニメーション間隔幅
 
 	m_move = true;
 
@@ -171,9 +171,9 @@ void CObjEnemy::Action()
 //ドロー
 void CObjEnemy::Draw()
 {
-	int AniData[4] =
+	int AniData[8] =
 	{
-		1,0,2,0,
+		0,1,2,3,4,5,6,7
 	};
 	//描画カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
@@ -182,7 +182,7 @@ void CObjEnemy::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top = 64.0f;
+	src.m_top = 0.0f;
 	src.m_left = 0.0f + AniData[m_ani_frame] * 64;
 	src.m_right = 64.0f + AniData[m_ani_frame] * 64;
 	src.m_bottom = src.m_top + 64.0f;
@@ -197,5 +197,5 @@ void CObjEnemy::Draw()
 	dst.m_bottom = 64.0f + m_py;
 
 	//描画
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+	Draw::Draw(1, &src, &dst, c, 0.0f);
 }

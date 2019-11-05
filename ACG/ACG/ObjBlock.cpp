@@ -33,22 +33,22 @@ void CObjBlock::Action()
 	float hy = hero->GetY();
 
 	//後方スクロールライン
-	if (hx < WINDOW_SIZE_W /7*2)
+	if (hx < WINDOW_SIZE_W /7*1.6f)
 	{
-		hero->SetX(WINDOW_SIZE_W / 7 * 2);				//主人公はラインを超えないようにする
+		hero->SetX(WINDOW_SIZE_W / 7 * 1.6f);				//主人公はラインを超えないようにする
 		m_scroll -= hero->GetVX();  //主人公が本来動くべき分の値をm_scrollに加える
 	}
 
 	//前方スクロール
-	if (hx > WINDOW_SIZE_W / 7 * 3.5f)
+	if (hx > WINDOW_SIZE_W / 7 * 4.0f)
 	{
-		hero->SetX(WINDOW_SIZE_W / 7 * 3.5f);//主人公はラインを超えないようにする
+		hero->SetX(WINDOW_SIZE_W / 7 * 4.0f);//主人公はラインを超えないようにする
 		m_scroll -= hero->GetVX();//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
 	//敵出現ライン
 	//主人公の位置+500を敵出現ラインにする
-	float line = hx + (-m_scroll) + 500;
+	float line = hx + (-m_scroll) + 600;
 
 	//敵出現ラインを要素番号化
 	int ex = ((int)line) / 64;
@@ -79,23 +79,7 @@ void CObjBlock::Action()
 }
 
 
-//BlockDrawMethod関数
-//引数1　float　ｘ：リソース切り取り位置X
-//引数2　float　ｙ：リソース切り取り位置Y
-//引数3　RECT＿F*ｄｓｔ：描画位置
-//引数4　float　ｃ[]：カラー情報
-//ブロックを64×64限定描画用。リソース切り取り位置のみｘ・ｙで
-//設定できる
-void CObjBlock::BlockDraw(float x, float y, RECT_F*dst, float c[])
-{
-	RECT_F src;
-	src.m_top = y;
-	src.m_left = x;
-	src.m_right = src.m_left + 64.0f;
-	src.m_bottom = src.m_top + 64.0f;
-	//描画
-	Draw::Draw(2, &src, dst, c, 0.0f);
-}
+
 
 //BlockHit関数
 //引数1　float*　ｘ　：判定を行うobjectのX位置
@@ -204,6 +188,24 @@ void CObjBlock::BlockHit(
 	}
 }
 
+//BlockDrawMethod関数
+//引数1　float　ｘ：リソース切り取り位置X
+//引数2　float　ｙ：リソース切り取り位置Y
+//引数3　RECT＿F*ｄｓｔ：描画位置
+//引数4　float　ｃ[]：カラー情報
+//引数5　int スプライトナンバー
+//ブロックを64×64限定描画用。リソース切り取り位置のみｘ・ｙで
+//設定できる
+void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[],int s)
+{
+	RECT_F src;
+	src.m_top = y;
+	src.m_left = x;
+	src.m_right = src.m_left + 64.0f;
+	src.m_bottom = src.m_top + 64.0f;
+	//描画
+	Draw::Draw(s, &src, dst, c, 0.0f);
+}
 
 //ドロー
 void CObjBlock::Draw()
@@ -215,7 +217,7 @@ void CObjBlock::Draw()
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
-	//背景表示
+	//背景表示!n
 	src.m_top = 512.0f;
 	src.m_left = 0.0f;
 	src.m_right = 910.0f;
@@ -241,15 +243,20 @@ void CObjBlock::Draw()
 				dst.m_left = j*64.0f+m_scroll;
 				dst.m_right = dst.m_left + 64.0f;
 				dst.m_bottom = dst.m_top + 64.0f;
-				if (m_map[i][j] == 2)
+				if (m_map[i][j] == 1)
+				{
+					//地面
+					BlockDraw(0.0f, 128.0f, &dst, d,2);
+				}
+				else if (m_map[i][j] == 2)
 				{
 					//スタートブロック
-					BlockDraw(320.0f + 64.0f, 0.0f, &dst, c);
+					BlockDraw(0.0f + 64.0f, 128.0f, &dst, c,2);
 				}
 				else if (m_map[i][j] == 3)
 				{
 					//ゴールブロック
-					BlockDraw(320.0f + 64.0f, 64.0f, &dst, c);
+					BlockDraw(0.0f + 128.0f, 128.0f, &dst, c,2);
 				}
 				else if (m_map[i][j] == 4)
 				{
@@ -261,7 +268,7 @@ void CObjBlock::Draw()
 				}
 				else
 				{
-					BlockDraw(320.0f, 0.0f, &dst, d);
+
 				}
 			}
 		}
