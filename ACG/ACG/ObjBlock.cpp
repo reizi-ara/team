@@ -94,7 +94,7 @@ void CObjBlock::BlockDraw(float x, float y, RECT_F*dst, float c[])
 	src.m_right = src.m_left + 64.0f;
 	src.m_bottom = src.m_top + 64.0f;
 	//描画
-	Draw::Draw(0, &src, dst, c, 0.0f);
+	Draw::Draw(2, &src, dst, c, 0.0f);
 }
 
 //BlockHit関数
@@ -209,23 +209,25 @@ void CObjBlock::BlockHit(
 void CObjBlock::Draw()
 {
 	//描画カラー情報
-	float c[4] = { 0.25f,0.25f,0.25f,1.0f };
+	float c[4] = { 0.8f,0.8f,0.8f,1.0f };
 	float d[4] = { 1.0f,0.15f,0.15f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
 	//背景表示
-	src.m_top = 0.0f;
+	src.m_top = 512.0f;
 	src.m_left = 0.0f;
-	src.m_right = 800.0f;//ネタ：1600　　　背景640
-	src.m_bottom = 600.0f;//900　　　427
+	src.m_right = 910.0f;
+	src.m_bottom = 512.0f+ src.m_top;
 
 	dst.m_top = 0.0f;
 	dst.m_left = 0.0f;
 	dst.m_right = WINDOW_SIZE_W;
 	dst.m_bottom = WINDOW_SIZE_H;
-	Draw::Draw(3, &src, &dst, c, 0.0f);
+	Draw::Draw(4, &src, &dst, c, 0.0f);
+
+
 
 
 	for (int i = 0; i < 10; i++)

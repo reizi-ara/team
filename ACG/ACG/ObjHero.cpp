@@ -92,8 +92,6 @@ void CObjHero::Action()
 			if (m_hit_down)
 				m_vy = -20;
 
-		//攻撃時オブジェクト生成
-		//if (Input::GetVKey('1'))
 
 
 
@@ -250,12 +248,14 @@ void CObjHero::Action()
 	}
 }
 
+
+
 //ドロー
 void CObjHero::Draw()
 {
 	int AniData[8] =
 	{
-		0,1,2,3,0,4,5,6
+		0,1,2,3,4,5,6,7
 	}; 
 	int AniData2[8] =
 	{

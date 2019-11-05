@@ -39,6 +39,8 @@ void CSceneGameOption::InitScene()
 	Draw::LoadImageW(L"スタート画面仮置き.jpg", 2, TEX_SIZE_512);
 	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
 
+	Draw::LoadImageW(L"splite4.png", 4, TEX_SIZE_1024);
+
 	//オプションオブジェクト作成
 	CObjGameOption*obj = new CObjGameOption(); //タイトルオブジェクト作成
 	Objs::InsertObj(obj, OBJ_GAME_OPTION, 10);//タイトルオブジェクト登録

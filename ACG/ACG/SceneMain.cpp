@@ -54,12 +54,28 @@ void CSceneMain::InitScene()
 	Font::SetStrTex(L"0123456789分秒");
 
 	//グラフィック読み込み
+	/*
 	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
 	Draw::LoadImageW(L"player.png", 1, TEX_SIZE_512);
 	//Draw::LoadImageW(L"背景.jpg", 3, TEX_SIZE_512);
 	Draw::LoadImageW(L"Tuta.png", 5, TEX_SIZE_512);
 	Draw::LoadImageW(L"紅魔館.jpg", 3, TEX_SIZE_512);
-	Draw::LoadImageW(L"メッセージウインドウ.png", 6, TEX_SIZE_512);
+	Draw::LoadImageW(L"メッセージウインドウ.png", 6, TEX_SIZE_512);*/
+
+	Draw::LoadImageW(L"メッセージウインドウ.png", 3, TEX_SIZE_512);
+
+	Draw::LoadImageW(L"splite0.png", 0, TEX_SIZE_512);
+	Draw::LoadImageW(L"splite1.png", 1, TEX_SIZE_512);
+	Draw::LoadImageW(L"splite2.png", 2, TEX_SIZE_512);
+	
+	//910:512*
+	Draw::LoadImageW(L"splite4.png", 4, TEX_SIZE_1024);
+	Draw::LoadImageW(L"splite5.png", 5, TEX_SIZE_1024);
+
+	
+
+
+	
 
 	//主人公オブジェクトの作成
 	CObjHero*obj = new CObjHero();
@@ -69,7 +85,7 @@ void CSceneMain::InitScene()
 	CObjBlock*objb = new CObjBlock(map);
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
 
-	//タイムオブジェクト作成
+	/*タイムオブジェクト作成
 	CObjTime*objt = new CObjTime();
 	Objs::InsertObj(objt, OBJ_TIME, 11);
 	/*
@@ -83,7 +99,8 @@ void CSceneMain::InitScene()
 	
 	CObjTuta*objs = new CObjTuta();
 	Objs::InsertObj(objs, OBJ_TUTA, 8);*/
-	Draw::LoadImageW(L"メッセージウインドウ.png", 3, TEX_SIZE_512);
+
+
 	//音楽読み込み
 	Audio::LoadAudio(0, L"閉ざされた部屋.wav", BACK_MUSIC);
 
