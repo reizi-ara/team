@@ -93,9 +93,6 @@
     <ClCompile Include="ObjGameOver.cpp">
       <Filter>ソース ファイル\GameOver</Filter>
     </ClCompile>
-    <ClCompile Include="ObjMenu.cpp">
-      <Filter>ソース ファイル\GameMain</Filter>
-    </ClCompile>
     <ClCompile Include="ObjGameOption.cpp">
       <Filter>ソース ファイル\GameOption</Filter>
     </ClCompile>
@@ -175,9 +172,6 @@
     </ClInclude>
     <ClInclude Include="ObjGameOver.h">
       <Filter>ソース ファイル\GameOver</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjMenu.h">
-      <Filter>ソース ファイル\GameMain</Filter>
     </ClInclude>
     <ClInclude Include="ObjGameOption.h">
       <Filter>ソース ファイル\GameOption</Filter>

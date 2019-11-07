@@ -8,17 +8,18 @@
 
 #include "GameHead.h"
 #include "ObjHero.h"
-#include "ObjMenu.h"
 #include "main.h"
 
 //使用するネームスペース
 using namespace GameL;
 
-#define PLAYERLIFE 100
+#define PLAYERLIFE 1000
 
 //イニシャライズ
 void CObjHero::Init()
 {
+	attack_set = false;
+	attack_flag = false;
 	m_px = 70.0f;	//位置
 	m_py = 64.0f;
 	m_vx = 0.0f;	//移動ベクトル
@@ -263,17 +264,29 @@ void CObjHero::Draw()
 	RECT_F dst;//描画先表示位置
 	if (p_menuflag == false)
 	{
+
+		if(m_pose==2.0f)
+		{
+			src.m_top = 0.0f + m_pose * 64;
+			src.m_left = 0.0f ;
+			src.m_right = 64.0f + src.m_left;
+			src.m_bottom = 64.0f + src.m_top;
+		}
+		else
+		{
+			src.m_top = 0.0f + m_pose * 64;
+			src.m_left = 0.0f + AniData[m_ani_frame] * 64;
+			src.m_right = 64.0f + src.m_left;
+			src.m_bottom = 64.0f + src.m_top;
+		}
 	 //切り取り位置の設定
-	src.m_top = 0.0f+m_pose * 64;
-	src.m_left = 0.0f + AniData[m_ani_frame] * 64;
-	src.m_right = 64.0f + src.m_left;
-	src.m_bottom = 64.0f + src.m_top;
+	
 
 	//表示位置の設定
-	dst.m_top = 0.0f + m_py;
+	dst.m_top = 0.0f + m_py-32.0f;
 	dst.m_left = (64.0f*m_posture) + m_px;
 	dst.m_right = (64 - 64.0f*m_posture) + m_px;
-	dst.m_bottom = 64.0f + m_py;
+	dst.m_bottom = 64.0f + m_py ;
 
 	//描画
 	Draw::Draw(0, &src, &dst, c, 0.0f);
@@ -330,17 +343,29 @@ void CObjHero::Draw()
 	Draw::Draw(0, &src, &dst, c, 0.0f);
 
 
-	//ここまで変更完了
 
-
-	wepon_have = 6;//仮置き
+	wepon_have = 5;//仮置き
 
 	
 		//アクション
-		if (Input::GetVKey(VK_RETURN) && wepon_have > 0 && wepon_have != 4)
+	if (Input::GetVKey(VK_RETURN))
+	{
+		if(attack_set == false&&attack_flag==false)
+		{
+			m_ani_frame = 0;
+			attack_set = true;
+			attack_flag = true;
+		}
+	}
+	else
+	{
+		attack_flag = false;
+	}
+
+		if (attack_set == true && wepon_have > 0 && wepon_have != 4)
 		{
 			//切り取り位置の設定
-			src.m_top = 0.0f + (wepon_have % 4 + 4) * 64;
+			src.m_top = 0.0f + wepon_have * 64;
 			src.m_left = 0.0f + AniData[m_ani_frame] * 64;
 			src.m_right = 64.0f + src.m_left;
 			src.m_bottom = 64.0f + src.m_top;
@@ -352,7 +377,7 @@ void CObjHero::Draw()
 			dst.m_bottom = 64.0f + m_py;
 
 			//描画
-			Draw::Draw(1, &src, &dst, c, 0.0f);
+			Draw::Draw(0, &src, &dst, c, 0.0f);
 			wepon_attack = wepon_have;
 		}
 		else
@@ -360,6 +385,12 @@ void CObjHero::Draw()
 			wepon_attack = 0;
 		}
 	}
+	if (m_ani_frame > 6)
+	{
+		attack_set = false;
+	}
+
+
 	if (p_menuflag == true)				//メニュー
 	{
 		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
@@ -382,17 +413,17 @@ void CObjHero::Draw()
 
 		//強調表示用バー
 		//切り取り位置の設定
-		src.m_top = 256.0f;
-		src.m_left = 0.0f;
-		src.m_right = 512.0f;
-		src.m_bottom = 512.0f;
+		src.m_top = 64.0f*5;
+		src.m_left = 64.0f * 5;
+		src.m_right = 64.0f * 5+192;
+		src.m_bottom = 64.0f * 5+64;
 
 		//バーの位置を設定し描画
 		dst.m_top = 100.0f + lavel_select * 50;
 		dst.m_left = 250.0f;
 		dst.m_right = 30.0f;
 		dst.m_bottom = 140.0f + lavel_select * 50;
-		Draw::Draw(0, &src, &dst, c, 0.0f);
+		Draw::Draw(2, &src, &dst, c, 0.0f);
 
 
 		Font::StrDraw(L"アイテム", 50, 100, 32, c);

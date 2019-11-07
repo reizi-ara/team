@@ -87,4 +87,6 @@ class CObjHero :public CObj
 		bool p_menuflag;
 		bool p_menu_close;
 
+		bool attack_set;
+		bool attack_flag;
 };
