@@ -13,7 +13,8 @@
 //使用するネームスペース
 using namespace GameL;
 
-#define PLAYERLIFE 1000
+#define PLAYERLIFE 100
+#define MUTEKITIME 120
 
 //イニシャライズ
 void CObjHero::Init()
@@ -52,6 +53,9 @@ void CObjHero::Init()
 	lavel_select = 0;
 
 
+	muteki_time = MUTEKITIME/2;
+	overplayerlife = p_life;
+	g_damage = 0;
 	//当たり判定用のHitBoxを作成
 	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_PLAYER, OBJ_HERO, 1);
 }
@@ -59,6 +63,19 @@ void CObjHero::Init()
 //アクション
 void CObjHero::Action()
 {
+	if (g_damage>0&&muteki_time<=0)
+	{
+		p_life -= g_damage;
+		
+		muteki_time = MUTEKITIME;
+	}
+	if(muteki_time > 0)
+	{
+		muteki_time--;
+	}
+	g_damage = 0;
+
+
 	if (Input::GetVKey('E'))
 	{
 		p_menuflag = true;
@@ -78,7 +95,7 @@ void CObjHero::Action()
 		}
 		if (Input::GetVKey('T') && Input::GetVKey(VK_CONTROL))
 		{//ダメージ付与
-			GiveDamageToPlayer(6.0f);
+			p_life-=1.0f;
 
 		}
 

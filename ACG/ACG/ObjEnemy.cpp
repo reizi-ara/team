@@ -10,6 +10,7 @@
 #include "ObjEnemy.h"
 
 #define LIFE 80;
+#define ATK 30;
 //使用するネームスペースdayo
 using namespace GameL;
 
@@ -43,7 +44,7 @@ void CObjEnemy::Init()
 	en_life = LIFE;
 	//当たり判定用のHitBoxを作成
 	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_ENEMY, OBJ_ENEMY, 1);
-
+	atk = ATK;
 	float p_x = 0;
 	float p_y = 0;
 }
@@ -142,7 +143,7 @@ void CObjEnemy::Action()
 		pl_y <= en_y + 48.0f&&
 		pl_y >= en_y - 48.0f)
 	{
-		obj->GiveDamageToPlayer(0.1f);
+		obj->GiveDamageToPlayer( atk );
 	}
 
 	//被攻撃
