@@ -95,7 +95,7 @@ void CObjHero::Action()
 		}
 		if (Input::GetVKey('T') && Input::GetVKey(VK_CONTROL))
 		{//ダメージ付与
-			GiveDamageToPlayer(10.0f);
+			p_life-=1.0f;
 
 		}
 
