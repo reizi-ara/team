@@ -43,4 +43,5 @@ private:
 	bool m_move;
 
 	float en_life;
+	float atk;
 };

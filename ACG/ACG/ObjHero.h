@@ -31,7 +31,7 @@ class CObjHero :public CObj
 		void SetLeft(bool b) { m_hit_left = b; }
 		void SetRight(bool b) { m_hit_right = b; }
 
-		void GiveDamageToPlayer(float damage) { p_life -= damage; }
+		void GiveDamageToPlayer(float damage) { g_damage= damage;  }
 
 		int Getwepon() { return wepon_have; }
 		int Getposture() { return m_posture; }
@@ -89,4 +89,8 @@ class CObjHero :public CObj
 
 		bool attack_set;
 		bool attack_flag;
+
+		int muteki_time;
+		float overplayerlife;
+		float g_damage;
 };
