@@ -37,7 +37,7 @@ void CSceneGameStart::InitScene()
 	Draw::LoadImageW(L"splite3.png", 2, TEX_SIZE_512);
 	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
 
-	Draw::LoadImageW(L"splite3.png", 3, TEX_SIZE_1024);
+	Draw::LoadImageW(L"splite3.png",3, TEX_SIZE_1024);
 
 	//タイトルオブジェクト作成
 	CObjGameStart*obj = new CObjGameStart(); //タイトルオブジェクト作成
