@@ -36,7 +36,7 @@ void CSceneGameOption::InitScene()
 	Font::SetStrTex(L"Ç≤ÇﬂÇÒÇ»Ç≥Ç¢");
 
 	//îwåiì«Ç›çûÇ›
-	Draw::LoadImageW(L"splite5.png", 2, TEX_SIZE_512);
+	Draw::LoadImageW(L"splite5.png", 2, TEX_SIZE_1024);
 	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
 
 	Draw::LoadImageW(L"splite4.png", 4, TEX_SIZE_1024);
