@@ -41,9 +41,7 @@ void CSceneGameOver::InitScene()
 	Objs::InsertObj(obj, OBJ_GAME_OVER, 10);
 
 	//îwåiì«Ç›çûÇ›
-	Draw::LoadImageW(L"splite5.png", 2, TEX_SIZE_512);
-
-	Draw::LoadImageW(L"splite3.png", 4, TEX_SIZE_1024);
+	Draw::LoadImageW(L"splite3.png", 3, TEX_SIZE_1024);
 
 	//âπäyì«Ç›çûÇ›
 	Audio::LoadAudio(0, L"âJ.wav", BACK_MUSIC);

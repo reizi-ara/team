@@ -44,17 +44,17 @@ void CObjGameOver::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top = 0.0f;
+	src.m_top = 512.0f;
 	src.m_left = 0.0f;
-	src.m_right = 960.0f;
-	src.m_bottom = 450.0f;
+	src.m_right = 910.0f;
+	src.m_bottom = 1024.0f;
 
 	//背景1の位置を設定し描画
 	dst.m_top = 0.0f;
 	dst.m_left = 0.0f;
 	dst.m_right = WINDOW_SIZE_W;
 	dst.m_bottom = WINDOW_SIZE_H;
-	Draw::Draw(2, &src, &dst, c, 0.0f);
+	Draw::Draw(3, &src, &dst, c, 0.0f);
 
 	Font::StrDraw(L"YOU LOSE", (WINDOW_SIZE_W/2)-130, 150, 48, cR);
 	Font::StrDraw(L"GAME OVER", (WINDOW_SIZE_W / 2) - 130, 225, 48, cR);
