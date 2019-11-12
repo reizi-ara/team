@@ -11,6 +11,8 @@
 
 #define LIFE 80;
 #define ATK 30;
+#define MUTEKI 30;
+#define DE_MAGE 50;//hidame
 //使用するネームスペースdayo
 using namespace GameL;
 
@@ -47,6 +49,8 @@ void CObjEnemy::Init()
 	atk = ATK;
 	float p_x = 0;
 	float p_y = 0;
+
+	muteki_time = MUTEKI;
 }
 
 //アクション
@@ -123,9 +127,6 @@ void CObjEnemy::Action()
 	//ブロック情報を持ってくる
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
-/*	//HitBoxの位置の変更
-	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_px + block->GetScroll(), m_py);*/
 
 	//対プレイヤー攻撃
 	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
@@ -146,14 +147,25 @@ void CObjEnemy::Action()
 		obj->GiveDamageToPlayer( atk );
 	}
 
+
+	muteki_time--;
 	//被攻撃
 	if (pl_x - sl <= en_x + 48.0f - 48.0f * (obj->Getposture() * 2 - 1) &&
 		pl_x - sl >= en_x - 48.0f - 48.0f * (obj->Getposture() * 2 - 1) &&
 		pl_y <= en_y + 80.0f &&
 		pl_y >= en_y - 80.0f&&
-		obj->Getattack() > 0 && obj->Getattack() != 4)
+		obj->Getattack() > 0 &&
+		obj->Getattack() != 4&&
+		muteki_time<=0)
 	{
-		en_life -= 1;
+
+		muteki_time = MUTEKI;
+		en_life -= DE_MAGE;
+	}
+
+	if (en_life <= 0)
+	{
+
 		this->SetStatus(false);
 	}
 
@@ -164,8 +176,6 @@ void CObjEnemy::Action()
 		m_speed_power = 0.2f;
 	}
 	
-
-	//hit->SetPos(m_px + block->GetScroll(), m_py);
 
 }
 

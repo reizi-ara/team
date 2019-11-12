@@ -17,6 +17,7 @@ public:
 
 	float GetVx() { return m_vx; }
 
+
 private:
 	float m_px;	//ˆÊ’u
 	float m_py;
@@ -44,4 +45,6 @@ private:
 
 	float en_life;
 	float atk;
+
+	int muteki_time;
 };
