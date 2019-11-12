@@ -108,14 +108,14 @@ void CObjHero::Action()
 		//Wでジャンプ
 		if (Input::GetVKey('W'))
 			if (m_hit_down)
-				m_vy = -20;
+				m_vy = -13;
 
 
 
 
 		if (Input::GetVKey(VK_SHIFT))
 		{//Shiftで速度アップ
-			m_speed_power = 1.1f;
+			m_speed_power = 0.8f;
 			m_ani_max_time = 2;
 		}
 		else
@@ -335,14 +335,14 @@ void CObjHero::Draw()
 		src.m_right = 64.0f + src.m_left;
 		src.m_bottom = 64.0f + src.m_top;
 	}
-	else if (p_life / p_maxlife <= 0.5&& p_life / p_maxlife > 0.25)//ki
+	else if (p_life / p_maxlife <= 0.5&& p_life / p_maxlife > 0.2)//ki
 	{
 		src.m_top = 128.0f;
 		src.m_left = 64.0f * 2;
 		src.m_right = 64.0f + src.m_left;
 		src.m_bottom = 64.0f + src.m_top;
 	}
-	else if (p_life / p_maxlife <= 0.25)//aka
+	else if (p_life / p_maxlife <= 0.2)//aka
 	{
 		src.m_top = 128.0f;
 		src.m_left = 64.0f * 1;
@@ -357,7 +357,8 @@ void CObjHero::Draw()
 	dst.m_bottom = 32.0f+ dst.m_top;
 
 	//描画
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+	if(p_life>0)
+		Draw::Draw(0, &src, &dst, c, 0.0f);
 
 
 

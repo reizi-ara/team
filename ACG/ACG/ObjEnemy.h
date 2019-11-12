@@ -47,4 +47,6 @@ private:
 	float atk;
 
 	int muteki_time;
+
+	bool awake;
 };

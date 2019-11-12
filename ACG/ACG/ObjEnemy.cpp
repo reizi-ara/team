@@ -11,8 +11,11 @@
 
 #define LIFE 80;
 #define ATK 30;
-#define MUTEKI 30;
+#define MUTEKI 50;
 #define DE_MAGE 50;//hidame
+#define SARCH 64*4
+#define SIZE 64*1
+
 //使用するネームスペースdayo
 using namespace GameL;
 
@@ -25,6 +28,7 @@ CObjEnemy::CObjEnemy(float x, float y)
 //イニシャライズ
 void CObjEnemy::Init()
 {
+	awake = false;
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 1.0f; //右向き0.0ｆ　左向き1.0ｆ
@@ -98,7 +102,7 @@ void CObjEnemy::Action()
 		m_ani_time = 0;
 	}
 
-	if (m_ani_frame == 4)
+	if (m_ani_frame == 8)
 	{
 		m_ani_frame = 0;
 	}
@@ -150,8 +154,8 @@ void CObjEnemy::Action()
 
 	muteki_time--;
 	//被攻撃
-	if (pl_x - sl <= en_x + 48.0f - 48.0f * (obj->Getposture() * 2 - 1) &&
-		pl_x - sl >= en_x - 48.0f - 48.0f * (obj->Getposture() * 2 - 1) &&
+	if (pl_x - sl <= en_x + SIZE - 48.0f * (obj->Getposture() * 2 - 1) &&
+		pl_x - sl >= en_x - SIZE - 48.0f * (obj->Getposture() * 2 - 1) &&
 		pl_y <= en_y + 80.0f &&
 		pl_y >= en_y - 80.0f&&
 		obj->Getattack() > 0 &&
@@ -161,6 +165,8 @@ void CObjEnemy::Action()
 
 		muteki_time = MUTEKI;
 		en_life -= DE_MAGE;
+
+		
 	}
 
 	if (en_life <= 0)
@@ -170,12 +176,19 @@ void CObjEnemy::Action()
 	}
 
 	//起動
-	if (pl_x - sl <= en_x + 48.0f +128.0f&&
-		pl_x - sl >= en_x - 48.0f - 128.0f)
+	if (pl_x - sl <= en_x + 48.0f +SARCH&&
+		pl_x - sl >= en_x - 48.0f - SARCH&&
+		awake == false)
 	{
-		m_speed_power = 0.2f;
+		awake = true;
 	}
 	
+	if(muteki_time>0&&awake==true)
+		m_speed_power = 0.0f;
+
+
+	if(muteki_time <= 0 && awake==true)
+		m_speed_power = 0.3f;
 
 }
 
