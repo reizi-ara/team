@@ -86,14 +86,14 @@ void CObjEnemy::Action()
 	{
 		m_vx += m_speed_power;
 		m_posture = 1.0f;
-		m_ani_time += 1;
+		m_ani_time += 2;
 	}
 
 	else if (m_move==true)
 	{
 		m_vx -= m_speed_power;
 		m_posture = 0.0f;
-		m_ani_time += 1;
+		m_ani_time += 2;
 	}
 
 	if (m_ani_time>m_ani_max_time)
@@ -188,7 +188,7 @@ void CObjEnemy::Action()
 
 
 	if(muteki_time <= 0 && awake==true)
-		m_speed_power = 0.3f;
+		m_speed_power += 0.01f;
 
 }
 
