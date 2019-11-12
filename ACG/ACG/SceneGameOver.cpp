@@ -41,7 +41,7 @@ void CSceneGameOver::InitScene()
 	Objs::InsertObj(obj, OBJ_GAME_OVER, 10);
 
 	//背景読み込み
-	Draw::LoadImageW(L"スタート画面仮置き.jpg", 2, TEX_SIZE_512);
+	//Draw::LoadImageW(L"スタート画面仮置き.jpg", 2, TEX_SIZE_512);
 
 	Draw::LoadImageW(L"splite3.png", 4, TEX_SIZE_1024);
 
