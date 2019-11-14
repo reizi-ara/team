@@ -18,6 +18,8 @@ enum OBJ_NAME
 	OBJ_MENU,
 
 	OBJ_TUTA,
+
+	OBJ_MAPCHANGER,
 };
 //------------------------------------------------
 
@@ -69,6 +71,7 @@ struct UserData
 #include "ObjGameOver.h"
 #include "ObjGameOption.h"
 #include "ObjTuta.h"
+#include "ObjMapChanger.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

@@ -8,6 +8,7 @@
 #include "ObjBlock.h"
 
 #include "main.h"
+#include "ObjMapChanger.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -27,6 +28,42 @@ void CObjBlock::Init()
 //アクション
 void CObjBlock::Action()
 {
+	//マップチェンジャーから情報を持ってくる
+	CObjMapChanger*MapChanger = (CObjMapChanger*)Objs::GetObj(OBJ_MAPCHANGER);
+	if (MapChanger == nullptr)
+	{
+		;
+	}
+	else
+	{
+		m_chg = MapChanger->GetTT();
+	}
+	//メインからマップ2のアドレスを持ってくる
+	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	int* map2 = sceneM->GetM1();
+	int count = 0;//1000回数えるよう
+
+	//マップ情報を移す
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 100; j++)
+		{
+
+			map[i][j] = *(map2 + count);
+			count++;
+
+		}
+
+	}
+	if (m_chg == 1)
+	{
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int)*(10 * 100));
+
+	}
+
+
+
 	//主人公の位置を取得
 	CObjHero*hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	float hx = hero->GetX();
@@ -76,6 +113,15 @@ void CObjBlock::Action()
 			m_map[i][ex] = 0;
 
 		}
+
+		if (m_map[i][ex] == 9)
+		{
+			//9があれば移動を出現
+			CObjMapChanger* obj9 = new CObjMapChanger(ex * 64.0f, i * 64.0f,0);
+			Objs::InsertObj(obj9, OBJ_MAPCHANGER, 10);
+
+		}
+
 	}
 }
 

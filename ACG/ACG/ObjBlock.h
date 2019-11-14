@@ -18,6 +18,7 @@ class CObjBlock :public CObj
 		void SetScroll(float s) { m_scroll = s; }
 		float GetScroll() { return m_scroll; }
 
+
 		//ƒuƒƒbƒN‚Æ“–‚½‚è”»’è
 		void BlockHit(
 			float *x, float *y, bool scroll_on,
@@ -45,4 +46,9 @@ class CObjBlock :public CObj
 			float b1x, float b1y, float b2x, float b2y,
 			float* out_px, float* out_py
 		);
+
+		int map[10][100];
+
+		int m_chg;
+
 };

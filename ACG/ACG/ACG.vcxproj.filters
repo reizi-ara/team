@@ -102,6 +102,9 @@
     <ClCompile Include="ObjTuta.cpp">
       <Filter>ソース ファイル\GameMain</Filter>
     </ClCompile>
+    <ClCompile Include="ObjMapChanger.cpp">
+      <Filter>ソース ファイル\GameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -177,6 +180,9 @@
       <Filter>ソース ファイル\GameOption</Filter>
     </ClInclude>
     <ClInclude Include="ObjTuta.h">
+      <Filter>ソース ファイル\GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMapChanger.h">
       <Filter>ソース ファイル\GameMain</Filter>
     </ClInclude>
   </ItemGroup>

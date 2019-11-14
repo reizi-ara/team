@@ -129,6 +129,7 @@
     <ClCompile Include="ObjBlock.cpp" />
     <ClCompile Include="ObjEnemy.cpp" />
     <ClCompile Include="ObjHero.cpp" />
+    <ClCompile Include="ObjMapChanger.cpp" />
     <ClCompile Include="ObjTime.cpp" />
     <ClCompile Include="ObjTuta.cpp" />
     <ClCompile Include="SceneGameOption.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="ObjBlock.h" />
     <ClInclude Include="ObjEnemy.h" />
     <ClInclude Include="ObjHero.h" />
+    <ClInclude Include="ObjMapChanger.h" />
     <ClInclude Include="ObjTime.h" />
     <ClInclude Include="ObjTuta.h" />
     <ClInclude Include="SceneGameOption.h" />

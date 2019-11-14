@@ -94,4 +94,43 @@ void CSceneMain::InitScene()
 void CSceneMain::Scene()
 {
 
+
+	CObjMapChanger*MapChanger = (CObjMapChanger*)Objs::GetObj(OBJ_MAPCHANGER);
+
+	if (MapChanger == nullptr)
+	{
+		;
+	}
+	else
+	{
+
+		m_chg = MapChanger->GetTT();
+
+	}
+
+	if (m_chg == 1)
+	{
+
+		unique_ptr<wchar_t> p;//ステージ情報ポインター
+		int size;			 //ステージ情報の大きさ
+		p = Save::ExternalDataOpen(L"仮マップ１.csv", &size);//外部データ読み込み
+
+		int count = 1;
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 0; j < 100; j++)
+			{
+				int w = 0;
+				swscanf_s(&p.get()[count], L"%d", &w);
+
+				map2[i][j] = w;
+				count += 2;
+			}
+		}
+
+
+
+
+	}
+
 }
