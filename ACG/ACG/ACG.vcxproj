@@ -123,9 +123,6 @@
     <ClCompile Include="GameL\SetWindow.cpp" />
     <ClCompile Include="GameL\UserData.cpp" />
     <ClCompile Include="GameL\WinInputs.cpp" />
-    <ClCompile Include="ObjMessageBox.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="ObjGameOption.cpp" />
     <ClCompile Include="ObjGameOver.cpp" />
     <ClCompile Include="ObjGameStart.cpp" />
@@ -152,9 +149,6 @@
     <ClInclude Include="GameL\SetWindow.h" />
     <ClInclude Include="GameL\UserData.h" />
     <ClInclude Include="GameL\WinInputs.h" />
-    <ClInclude Include="ObjMessageBox.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="ObjGameOption.h" />
     <ClInclude Include="ObjGameOver.h" />
     <ClInclude Include="ObjGameStart.h" />
