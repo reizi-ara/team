@@ -29,7 +29,7 @@ CObjEnemy::CObjEnemy(float x, float y ,float l,float a,float t)
 //イニシャライズ
 void CObjEnemy::Init()
 {
-	awake = false;
+	awake =true;
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 1.0f; //右向き0.0ｆ　左向き1.0ｆ
@@ -72,10 +72,12 @@ void CObjEnemy::Action()
 	if (m_hit_left == true)
 	{
 		m_move = true;
+		m_speed_power = 0.0f;
 	}
 	if (m_hit_right == true)
 	{
 		m_move = false;
+		m_speed_power = 0.0f;
 	}
 
 	//方向
@@ -162,7 +164,6 @@ void CObjEnemy::Action()
 
 		muteki_time = MUTEKI;
 		en_life -= DE_MAGE;
-
 		
 	}
 
@@ -180,13 +181,17 @@ void CObjEnemy::Action()
 		awake = true;
 	}
 	
-	if(muteki_time>0&&awake==true)
+	if(muteki_time+5>0&&awake==true)
 		m_speed_power = 0.0f;
 
 
-	if(muteki_time <= 0 && awake==true)
+	if (muteki_time <= 0 && awake == true)
+	{
 		m_speed_power += 0.01f;
-
+		//m_speed_power = 1.0f;
+	}
+	if(m_speed_power>3.0f)
+		m_speed_power = 3.0f;
 }
 
 //ドロー

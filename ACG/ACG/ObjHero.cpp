@@ -97,8 +97,16 @@ void CObjHero::Action()
 		{//ダメージ付与
 			p_life-=1.0f;
 
+		}if (Input::GetVKey('H') && Input::GetVKey(VK_CONTROL))
+		{//ダメージ付与
+			p_life += 5.0f;
 		}
+		p_life += 0.2f;
 
+
+
+		if (p_life > p_maxlife)
+			p_life = p_maxlife;
 		//HP0以下でゲームオーバへ移行
 		if (p_life <= 0)
 		{
