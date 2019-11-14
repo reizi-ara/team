@@ -9,8 +9,6 @@
 #include "GameHead.h"
 #include "ObjEnemy.h"
 
-#define LIFE 80;
-#define ATK 30;
 #define MUTEKI 50;
 #define DE_MAGE 50;//hidame
 #define SARCH 64*4
@@ -19,10 +17,13 @@
 //使用するネームスペースdayo
 using namespace GameL;
 
-CObjEnemy::CObjEnemy(float x, float y)
+CObjEnemy::CObjEnemy(float x, float y ,float l,float a,float t)
 {
 	m_px = x;	//位置
 	m_py = y;
+	en_life=l;
+	atk=a;
+	type_n=t;
 }
 
 //イニシャライズ
@@ -47,10 +48,6 @@ void CObjEnemy::Init()
 	m_hit_left = false;
 	m_hit_right = false;
 
-	en_life = LIFE;
-	//当たり判定用のHitBoxを作成
-	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_ENEMY, OBJ_ENEMY, 1);
-	atk = ATK;
 	float p_x = 0;
 	float p_y = 0;
 

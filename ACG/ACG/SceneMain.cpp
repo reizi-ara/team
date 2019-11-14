@@ -54,13 +54,6 @@ void CSceneMain::InitScene()
 	Font::SetStrTex(L"0123456789分秒");
 
 	//グラフィック読み込み
-	/*
-	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
-	Draw::LoadImageW(L"player.png", 1, TEX_SIZE_512);
-	//Draw::LoadImageW(L"背景.jpg", 3, TEX_SIZE_512);
-	Draw::LoadImageW(L"Tuta.png", 5, TEX_SIZE_512);
-	Draw::LoadImageW(L"紅魔館.jpg", 3, TEX_SIZE_512);
-	Draw::LoadImageW(L"メッセージウインドウ.png", 6, TEX_SIZE_512);*/
 
 	Draw::LoadImageW(L"メッセージウインドウ.png", 3, TEX_SIZE_512);
 
@@ -86,23 +79,6 @@ void CSceneMain::InitScene()
 	//blockオブジェクト作成
 	CObjBlock*objb = new CObjBlock(map);
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
-
-	/*タイムオブジェクト作成
-	CObjTime*objt = new CObjTime();
-	Objs::InsertObj(objt, OBJ_TIME, 11);
-	/*
-	//メニューオブジェクト作成
-	CObjMenu*objm = new CObjMenu();
-	Objs::InsertObj(objm, OBJ_MENU, 5);
-	
-	//ツタオブジェクト作成
-	CObjTuta*objr = new CObjTuta();
-	Objs::InsertObj(objr, OBJ_TUTA, 8);
-	
-	CObjTuta*objs = new CObjTuta();
-	Objs::InsertObj(objs, OBJ_TUTA, 8);*/
-
-
 	//音楽読み込み
 	Audio::LoadAudio(0, L"閉ざされた部屋.wav", BACK_MUSIC);
 

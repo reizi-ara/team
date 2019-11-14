@@ -59,8 +59,8 @@ void CObjBlock::Action()
 		//列から4を探す
 		if(m_map[i][ex]==4)
 		{
-			//4があれば敵を出現
-			CObjEnemy*obje = new CObjEnemy(ex*64.0f, i*64.0f);
+			//4があれば敵を出現(x,y,life,atk,Nos)
+			CObjEnemy* obje = new CObjEnemy(ex * 64.0f, i * 64.0f, 100, 30, 1);
 			Objs::InsertObj(obje, OBJ_ENEMY, 10);
 
 			//敵の出現場所の値を0にする
@@ -68,12 +68,13 @@ void CObjBlock::Action()
 		}
 		if (m_map[i][ex] == 5)
 		{
-			//4があれば敵を出現
-			CObjTuta* obj21 = new CObjTuta(ex * 64.0f, i * 64.0f);
-			Objs::InsertObj(obj21, OBJ_TUTA, 10);
+			//4があれば敵を出現(x,y,type)
+			CObjTuta* obje = new CObjTuta(ex * 64.0f, i * 64.0f,0);
+			Objs::InsertObj(obje, OBJ_ENEMY, 10);
 
 			//敵の出現場所の値を0にする
 			m_map[i][ex] = 0;
+
 		}
 	}
 }

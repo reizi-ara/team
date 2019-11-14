@@ -14,10 +14,12 @@
 //使用するネームスペースdayo
 using namespace GameL;
 
-CObjTuta::CObjTuta(float x, float y)
+CObjTuta::CObjTuta(float x, float y,float t)
 {
 	m_px = x;	//位置
 	m_py = y;
+
+	type = t;
 }
 
 //イニシャライズ
@@ -47,6 +49,9 @@ void CObjTuta::Init()
 	float p_y = 0;
 
 	hit_length = 64.0f;
+
+	size = 0;
+	isplayerhit = false;
 }
 
 //アクション
@@ -54,19 +59,19 @@ void CObjTuta::Action()
 {
 
 	//通常速度
-	m_ani_max_time = 4;//アニメーション間隔幅
+	m_ani_max_time = 8;//アニメーション間隔幅
 
 
 
-	//ブロック情報を持ってくる
+	//当たり判定
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
-		//対プレイヤー攻撃
 	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	float pl_x = obj->GetX();
 	float pl_y = obj->GetY();
 	pl_x += 32.0f;
 	pl_y += 32.0f;
+
 	CObjBlock* block3 = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	float sl = block3->GetScroll();
 	float en_x = m_px + 32.0f;
@@ -77,20 +82,30 @@ void CObjTuta::Action()
 		pl_y <= en_y + hit_length &&
 		pl_y >= en_y - hit_length)
 	{//接触時
-
-
-
-
-		//Rキー入力
-		if (Input::GetVKey('R'))
-		{
-
-
-
-		}
-
+		isplayerhit = true;
 	}
-	
+	else
+	{
+		isplayerhit = false;
+	}
+	//当たり判定ここまで
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
@@ -114,10 +129,10 @@ void CObjTuta::Draw()
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//表示位置の設定
-	dst.m_top = 0.0f + m_py;
-	dst.m_left = 0.0f + m_px + block->GetScroll();
-	dst.m_right = 64.0f + m_px + block->GetScroll();
-	dst.m_bottom = 64.0f + m_py;
+	dst.m_top = 0.0f + m_py-size;
+	dst.m_left = 0.0f + m_px + block->GetScroll() - size;
+	dst.m_right = 64.0f + m_px + block->GetScroll()+size;
+	dst.m_bottom = 64.0f + m_py + size;
 
 	//描画
 	Draw::Draw(0, &src, &dst, c, 0.0f);

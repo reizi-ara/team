@@ -9,7 +9,7 @@ using namespace GameL;
 class CObjEnemy :public CObj
 {
 public:
-	CObjEnemy(float x, float y);
+	CObjEnemy(float x, float y, float l, float a, float t);
 	~CObjEnemy() {};
 	void Init();	//イニシャライズ
 	void Action();  //アクション
@@ -45,8 +45,10 @@ private:
 
 	float en_life;
 	float atk;
+	int type_n;
 
 	int muteki_time;
 
 	bool awake;
+
 };

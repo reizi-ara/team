@@ -9,7 +9,7 @@ using namespace GameL;
 class CObjTuta : public CObj
 { 
 	public:
-		CObjTuta(float x,float y) ;
+		CObjTuta(float x, float y, float t) ;
 		~CObjTuta() {};
 		void Init();	//イニシャライズ
 		void Action();  //アクション
@@ -46,4 +46,9 @@ private:
 
 	int hit_length;
 	int sarch_length;
+
+	int size;
+	int awake;
+	int type;
+	bool isplayerhit;
 };
