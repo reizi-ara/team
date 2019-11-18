@@ -90,7 +90,7 @@ class CObjHero :public CObj
 		bool attack_set;
 		bool attack_flag;
 
-		int muteki_time;
+		float muteki_time;
 		float overplayerlife;
 		float g_damage;
 };

@@ -134,7 +134,12 @@ void CObjHero::Action()
 
 		//キーの入力方向
 		if (Input::GetVKey('S'))//しゃがみ
+		{
 			m_pose = 2.0f;
+			m_ani_time += 1;
+			if (muteki_time > 0)
+				muteki_time += 0.5;
+		}
 		else
 		{
 			if (Input::GetVKey('D'))
@@ -394,11 +399,11 @@ void CObjHero::Draw()
 			src.m_top = 0.0f + wepon_have * 64;
 			src.m_left = 0.0f + AniData[m_ani_frame] * 64;
 			src.m_right = 64.0f + src.m_left;
-			src.m_bottom = 64.0f + src.m_top;
+			src.m_bottom = 64.0f + src.m_top+46.0f;
 
 			//表示位置の設定
 			dst.m_top = 0.0f + m_py;
-			dst.m_left = (64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48;
+			dst.m_left = (64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48*3;
 			dst.m_right = (64 - 64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48;
 			dst.m_bottom = 64.0f + m_py;
 

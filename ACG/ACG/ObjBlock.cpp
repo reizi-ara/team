@@ -119,6 +119,8 @@ void CObjBlock::Action()
 			//9があれば移動を出現
 			CObjMapChanger* obj9 = new CObjMapChanger(ex * 64.0f, i * 64.0f,0);
 			Objs::InsertObj(obj9, OBJ_MAPCHANGER, 10);
+			//敵の出現場所の値を0にする
+			m_map[i][ex] = 0;
 
 		}
 
@@ -258,8 +260,7 @@ void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[],int s)
 void CObjBlock::Draw()
 {
 	//描画カラー情報
-	float c[4] = { 0.8f,0.8f,0.8f,1.0f };
-	float d[4] = { 1.0f,0.15f,0.15f,1.0f };
+	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
@@ -293,7 +294,7 @@ void CObjBlock::Draw()
 				if (m_map[i][j] == 1)
 				{
 					//地面
-					BlockDraw(0.0f, 128.0f, &dst, d,2);
+					BlockDraw(0.0f, 128.0f, &dst, c,2);
 				}
 				else if (m_map[i][j] == 2)
 				{

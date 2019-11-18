@@ -51,4 +51,6 @@ private:
 
 	bool awake;
 
+	bool dir_act;
+
 };

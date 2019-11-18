@@ -29,7 +29,8 @@ CObjEnemy::CObjEnemy(float x, float y ,float l,float a,float t)
 //イニシャライズ
 void CObjEnemy::Init()
 {
-	awake =true;
+	
+	awake =false;
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 1.0f; //右向き0.0ｆ　左向き1.0ｆ
@@ -41,7 +42,7 @@ void CObjEnemy::Init()
 	m_ani_max_time = 8;		//アニメーション間隔幅
 
 	m_move = true;
-
+	dir_act = m_move;
 	//blockとの衝突確認用
 	m_hit_up = false;
 	m_hit_down = false;
@@ -68,17 +69,9 @@ void CObjEnemy::Action()
 
 	
 
-	//ブロック衝突で向き変更
-	if (m_hit_left == true)
-	{
-		m_move = true;
-		m_speed_power = 0.0f;
-	}
-	if (m_hit_right == true)
-	{
-		m_move = false;
-		m_speed_power = 0.0f;
-	}
+	
+
+
 
 	//方向
 	if (m_move==false)
@@ -112,7 +105,7 @@ void CObjEnemy::Action()
 	m_vx += -(m_vx*0.098);
 
 	//自由落下運動
-	m_vy += 1.8 / (16.0f);
+	m_vy += 1.8 / (4.0f);
 
 	//ブロックタイプ検知用の変数がないためのダミー
 	int d;
@@ -131,7 +124,7 @@ void CObjEnemy::Action()
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 
-	//対プレイヤー攻撃
+	//座標
 	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	float pl_x = obj->GetX();
 	float pl_y = obj->GetY();
@@ -141,11 +134,31 @@ void CObjEnemy::Action()
 	float sl = block3->GetScroll();
 	float en_x = m_px+32.0f;
 	float en_y = m_py+32.0f;
+
+
+	//ブロック衝突で向き変更
+	if (m_hit_left == true)
+		m_move = true;
+	if (m_hit_right == true)
+		m_move = false;
+	if(pl_x - sl <= en_x - 48.0f * 6)
+		m_move = true;
+	if(pl_x - sl >= en_x + 48.0f * 6)
+		m_move = false;
+
+	if(dir_act==m_move)
+	{ }
+	else
+	{
+		dir_act = m_move;
+		m_speed_power = 0.0f;
+	}
 	//与ダメージ
 	if (pl_x-sl <= en_x + 48.0f&&
 		pl_x - sl >= en_x- 48.0f &&
 		pl_y <= en_y + 48.0f&&
-		pl_y >= en_y - 48.0f)
+		pl_y >= en_y - 48.0f&&
+		m_vx!=0)
 	{
 		obj->GiveDamageToPlayer( atk );
 	}
@@ -153,8 +166,8 @@ void CObjEnemy::Action()
 
 	muteki_time--;
 	//被攻撃
-	if (pl_x - sl <= en_x + SIZE - 48.0f * (obj->Getposture() * 2 - 1) &&
-		pl_x - sl >= en_x - SIZE - 48.0f * (obj->Getposture() * 2 - 1) &&
+	if (pl_x - sl <= en_x + SIZE - 48.0f * (obj->Getposture() * 2 - 1)*2 &&
+		pl_x - sl >= en_x - SIZE - 48.0f * (obj->Getposture() * 2 - 1) *2&&
 		pl_y <= en_y + 80.0f &&
 		pl_y >= en_y - 80.0f&&
 		obj->Getattack() > 0 &&
@@ -181,9 +194,11 @@ void CObjEnemy::Action()
 		awake = true;
 	}
 	
-	if(muteki_time+5>0&&awake==true)
+	if (muteki_time + 5 > 0 && awake == true)
+	{
+		m_vx = 0.0f;
 		m_speed_power = 0.0f;
-
+	}
 
 	if (muteki_time <= 0 && awake == true)
 	{
@@ -208,7 +223,7 @@ void CObjEnemy::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top = 0.0f;
+	src.m_top = 0.0f+64.0*(type_n-1);
 	src.m_left = 0.0f + AniData[m_ani_frame] * 64;
 	src.m_right = 64.0f + AniData[m_ani_frame] * 64;
 	src.m_bottom = src.m_top + 64.0f;
