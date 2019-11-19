@@ -9,7 +9,7 @@
 #include "GameHead.h"
 #include "ObjEnemy.h"
 
-#define MUTEKI 50;
+#define MUTEKI 20;
 #define DE_MAGE 50;//hidame
 #define SARCH 64*4
 #define SIZE 64*1
@@ -177,7 +177,6 @@ void CObjEnemy::Action()
 
 		muteki_time = MUTEKI;
 		en_life -= DE_MAGE;
-		
 	}
 
 	if (en_life <= 0)
@@ -196,9 +195,18 @@ void CObjEnemy::Action()
 	
 	if (muteki_time + 5 > 0 && awake == true)
 	{
-		m_vx = 0.0f;
-		m_speed_power = 0.0f;
+		if (m_move == false)
+		{
+			m_vx = -m_speed_power * 10;
+		}
+
+		else if (m_move == true)
+		{
+			m_vx = +m_speed_power * 10;
+		}
 	}
+	if (muteki_time == 0)
+		m_speed_power = 0;
 
 	if (muteki_time <= 0 && awake == true)
 	{

@@ -97,7 +97,7 @@ void CObjBlock::Action()
 		if(m_map[i][ex]==4)
 		{
 			//4があれば敵を出現(x,y,life,atk,Nos)
-			CObjEnemy* obje = new CObjEnemy(ex * 64.0f, i * 64.0f, 100, 30, 1);
+			CObjEnemy* obje = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 1);
 			Objs::InsertObj(obje, OBJ_ENEMY, 10);
 
 			//敵の出現場所の値を0にする
@@ -194,7 +194,7 @@ void CObjBlock::BlockHit(
 						r = 360.0f - abs(r);
 
 					//lenがある一定の長さのより短い場合判定に入る
-					if (len < 88.0f)
+					if (len < 86.0f)
 					{
 						//角度で上下左右を判定
 						if ((r<45 && r>0) || r>315)
