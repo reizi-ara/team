@@ -136,6 +136,7 @@
     <ClCompile Include="SceneGameOver.cpp" />
     <ClCompile Include="SceneGameStart.cpp" />
     <ClCompile Include="SceneMain.cpp" />
+    <ClCompile Include="Objhand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameHead.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneGameStart.h" />
     <ClInclude Include="SceneMain.h" />
+    <ClInclude Include="Objhand.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
