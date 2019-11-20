@@ -87,6 +87,7 @@ void CObjhand::Action()
 		{
 			isplayerhit = false;
 		}
+
 		
 
 	//“–‚½‚è”»’è‚±‚±‚Ü‚Å
