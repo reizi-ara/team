@@ -286,6 +286,10 @@ void CObjHero::Draw()
 	{
 		0,1,2,3,4,5,6,7
 	}; 
+	int AniData3[8] =
+	{
+		0,2,4,6,4,5,6,7
+	};
 	
 	//•`‰æƒJƒ‰[î•ñ
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
@@ -397,14 +401,14 @@ void CObjHero::Draw()
 		{
 			//Ø‚èæ‚èˆÊ’u‚Ìİ’è
 			src.m_top = 0.0f + wepon_have * 64;
-			src.m_left = 0.0f + AniData[m_ani_frame] * 64;
+			src.m_left = 0.0f + AniData3[m_ani_frame] * 64;
 			src.m_right = 64.0f + src.m_left;
 			src.m_bottom = 64.0f + src.m_top+46.0f;
 
 			//•\¦ˆÊ’u‚Ìİ’è
 			dst.m_top = 0.0f + m_py;
-			dst.m_left = (64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48*3;
-			dst.m_right = (64 - 64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48;
+			dst.m_left = (64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48 ;
+			dst.m_right = (64 - 64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48 ;
 			dst.m_bottom = 64.0f + m_py;
 
 			//•`‰æ
@@ -416,7 +420,7 @@ void CObjHero::Draw()
 			wepon_attack = 0;
 		}
 	}
-	if (m_ani_frame > 6)
+	if (m_ani_frame > 2)
 	{
 		attack_set = false;
 	}

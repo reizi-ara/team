@@ -166,8 +166,8 @@ void CObjEnemy::Action()
 
 	muteki_time--;
 	//”íUŒ‚
-	if (pl_x - sl <= en_x + SIZE - 48.0f * (obj->Getposture() * 2 - 1)*2 &&
-		pl_x - sl >= en_x - SIZE - 48.0f * (obj->Getposture() * 2 - 1) *2&&
+	if (pl_x - sl <= en_x + SIZE - 40.0f * (obj->Getposture() * 2 - 1) &&
+		pl_x - sl >= en_x - SIZE - 40.0f * (obj->Getposture() * 2 - 1)&&
 		pl_y <= en_y + 80.0f &&
 		pl_y >= en_y - 80.0f&&
 		obj->Getattack() > 0 &&
