@@ -276,7 +276,7 @@ void CObjBlock::Draw()
 	RECT_F dst;//ï`âÊêÊï\é¶à íu
 
 	//îwåiï\é¶!n
-	src.m_top = 512.0f;
+	src.m_top = 512.0f*0;
 	src.m_left = 0.0f;
 	src.m_right = 910.0f;
 	src.m_bottom = 512.0f+ src.m_top;
@@ -285,7 +285,7 @@ void CObjBlock::Draw()
 	dst.m_left = 0.0f;
 	dst.m_right = WINDOW_SIZE_W;
 	dst.m_bottom = WINDOW_SIZE_H;
-	Draw::Draw(4, &src, &dst, c, 0.0f);
+	Draw::Draw(5, &src, &dst, c, 0.0f);
 
 
 
