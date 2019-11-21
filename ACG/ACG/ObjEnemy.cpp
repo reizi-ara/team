@@ -51,6 +51,7 @@ void CObjEnemy::Init()
 
 	float p_x = 0;
 	float p_y = 0;
+	time = 0;
 
 	muteki_time = MUTEKI;
 }
@@ -134,8 +135,14 @@ void CObjEnemy::Action()
 	float sl = block3->GetScroll();
 	float en_x = m_px+32.0f;
 	float en_y = m_py+32.0f;
-
-
+	if (type_n == 2)
+	{
+		time++;
+		if (time % 120 == 0)
+			m_vy = -10;
+		if (time > 120)
+			time = 0;
+	}
 	//ブロック衝突で向き変更
 	if (m_hit_left == true)
 		m_move = true;
@@ -210,11 +217,13 @@ void CObjEnemy::Action()
 
 	if (muteki_time <= 0 && awake == true)
 	{
-		m_speed_power += 0.01f;
-		//m_speed_power = 1.0f;
+		m_speed_power += 0.011f;
 	}
-	if(m_speed_power>3.0f)
-		m_speed_power = 3.0f;
+	if(m_speed_power>1.6f)
+		m_speed_power = 1.6f;
+
+
+
 }
 
 //ドロー

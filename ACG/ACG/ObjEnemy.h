@@ -53,4 +53,5 @@ private:
 
 	bool dir_act;
 
+	int time;
 };
