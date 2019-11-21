@@ -99,11 +99,11 @@ void CObjHero::Action()
 		{//ダメージ付与
 			p_life-=1.0f;
 
-		}if (Input::GetVKey('H') && Input::GetVKey(VK_CONTROL))
+		}if (Input::GetVKey('H'))
 		{//ダメージ回復
 			p_life += 5.0f;
 		}
-		p_life += 0.2f;
+		p_life += 0.1f;
 
 
 
@@ -118,19 +118,19 @@ void CObjHero::Action()
 		//Wでジャンプ
 		if (Input::GetVKey('W'))
 			if (m_hit_down)
-				m_vy = -13;
+				m_vy = -15;
 
 
 
 
 		if (Input::GetVKey(VK_SHIFT))
 		{//Shiftで速度アップ
-			m_speed_power = 0.8f;
+			m_speed_power = 1.4f;
 			m_ani_max_time = 2;
 		}
 		else
 		{//通常速度
-			m_speed_power = 0.5f;
+			m_speed_power = 0.8f;
 			m_ani_max_time = 4;
 		}
 
@@ -180,7 +180,7 @@ void CObjHero::Action()
 		if (m_ani_frame == 8)
 			m_ani_frame = 0;
 
-		m_vx += -(m_vx*0.098);//摩擦
+		m_vx += -(m_vx*0.2);//摩擦
 		m_vy += 9.8 / (16.0f);//自由落下運動
 		
 		//ブロックとの当たり判定実行
