@@ -1,22 +1,21 @@
 #pragma once
-//使用するヘッダー
+//使用するヘッダーファイル
 #include "GameL\SceneObjManager.h"
 
 //使用するネームスペース
 using namespace GameL;
 
-//オブジェクト：敵
-class CObjEnemy :public CObj
+//シーン：ゲームタイトル
+class CObjThorn : public CObj
 {
 public:
-	CObjEnemy(float x, float y, float l, float a, float t);
-	~CObjEnemy() {};
+	CObjThorn(float x, float y, float t,float s);
+	~CObjThorn() {};
 	void Init();	//イニシャライズ
 	void Action();  //アクション
 	void Draw();	//ドロー
 
 	float GetVx() { return m_vx; }
-
 
 private:
 	float m_px;	//位置
@@ -44,17 +43,17 @@ private:
 	bool m_move;
 
 	float en_life;
-	float atk;
-	int type_n;
 
-	int muteki_time;
+	int hit_length;
+	int sarch_length;
 
-	bool awake;
-
-	bool dir_act;
+	int size;
+	int awake;
+	int type;
+	bool isplayerhit;
 
 	int time;
-	int destryNum;//削除用
-	int MdestryNum;
+	float Downspeed;
 
+	bool arw;
 };

@@ -123,14 +123,23 @@ void CObjBlock::Action()
 		//列から4を探す
 		if(m_map[i][ex]==4)
 		{
-			//4があれば敵を出現(x,y,life,atk,Nos)
+			//4があれば敵を出現(x,y,life,atk,type)
 			CObjEnemy* obje = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 1);
 			Objs::InsertObj(obje, OBJ_ENEMY, 10);
 
 			//敵の出現場所の値を0にする
 			m_map[i][ex] = 0;
 		}
-		if (m_map[i][ex] == 5)
+		if (m_map[i][ex] == 8)
+		{
+			//4があれば敵を出現(x,y,life,atk,type)
+			CObjEnemy* obje = new CObjEnemy(ex * 64.0f, i * 64.0f, 80, 10, 2);
+			Objs::InsertObj(obje, OBJ_ENEMY, 10);
+
+			//敵の出現場所の値を0にする
+			m_map[i][ex] = 0;
+		}
+		/*if (m_map[i][ex] == 5)
 		{
 			//4があれば敵を出現(x,y,type)
 			CObjTuta* obje = new CObjTuta(ex * 64.0f, i * 64.0f,0);
@@ -139,13 +148,33 @@ void CObjBlock::Action()
 			//敵の出現場所の値を0にする
 			m_map[i][ex] = 0;
 
-		}
+		}*/
 
 		if (m_map[i][ex] == 9)
 		{
 			//9があれば移動を出現
 			CObjMapChanger* obj9 = new CObjMapChanger(ex * 64.0f, i * 64.0f,0);
 			Objs::InsertObj(obj9, OBJ_MAPCHANGER, 10);
+			//敵の出現場所の値を0にする
+			m_map[i][ex] = 0;
+
+		}
+		if(m_map[i][ex] == 5)
+		{
+			//4があれば敵を出現(x,y,type)
+			CObjhand* obje = new CObjhand(ex * 64.0f, i * 64.0f, 0,15);
+			Objs::InsertObj(obje, OBJ_HAND, 10);
+
+			//敵の出現場所の値を0にする
+			m_map[i][ex] = 0;
+
+		}
+		if (m_map[i][ex] == 6)
+		{
+			//4があれば敵を出現(x,y,type)
+			CObjThorn* obje = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0);
+			Objs::InsertObj(obje, OBJ_THORN, 10);
+
 			//敵の出現場所の値を0にする
 			m_map[i][ex] = 0;
 
@@ -293,7 +322,7 @@ void CObjBlock::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//背景表示!n
-	src.m_top = 512.0f;
+	src.m_top = 512.0f*0;
 	src.m_left = 0.0f;
 	src.m_right = 910.0f;
 	src.m_bottom = 512.0f+ src.m_top;
@@ -302,7 +331,7 @@ void CObjBlock::Draw()
 	dst.m_left = 0.0f;
 	dst.m_right = WINDOW_SIZE_W;
 	dst.m_bottom = WINDOW_SIZE_H;
-	Draw::Draw(4, &src, &dst, c, 0.0f);
+	Draw::Draw(5, &src, &dst, c, 0.0f);
 
 
 

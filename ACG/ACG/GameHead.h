@@ -20,6 +20,9 @@ enum OBJ_NAME
 	OBJ_TUTA,
 
 	OBJ_MAPCHANGER,
+
+	OBJ_HAND,
+	OBJ_THORN,
 };
 //------------------------------------------------
 
@@ -72,6 +75,8 @@ struct UserData
 #include "ObjGameOption.h"
 #include "ObjTuta.h"
 #include "ObjMapChanger.h"
+#include "Objhand.h"
+#include "ObjThorn.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

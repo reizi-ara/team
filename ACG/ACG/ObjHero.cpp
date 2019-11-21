@@ -56,6 +56,7 @@ void CObjHero::Init()
 	muteki_time = MUTEKITIME/2;
 	overplayerlife = p_life;
 	g_damage = 0;
+	sohuran = 1;
 	//当たり判定用のHitBoxを作成
 	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_PLAYER, OBJ_HERO, 1);
 }
@@ -97,11 +98,11 @@ void CObjHero::Action()
 		{//ダメージ付与
 			p_life-=1.0f;
 
-		}if (Input::GetVKey('H') && Input::GetVKey(VK_CONTROL))
-		{//ダメージ付与
+		}if (Input::GetVKey('H'))
+		{//ダメージ回復
 			p_life += 5.0f;
 		}
-		p_life += 0.2f;
+		p_life += 0.1f;
 
 
 
@@ -116,19 +117,19 @@ void CObjHero::Action()
 		//Wでジャンプ
 		if (Input::GetVKey('W'))
 			if (m_hit_down)
-				m_vy = -13;
+				m_vy = -15;
 
 
 
 
 		if (Input::GetVKey(VK_SHIFT))
 		{//Shiftで速度アップ
-			m_speed_power = 0.8f;
+			m_speed_power = 1.4f;
 			m_ani_max_time = 2;
 		}
 		else
 		{//通常速度
-			m_speed_power = 0.5f;
+			m_speed_power = 0.8f;
 			m_ani_max_time = 4;
 		}
 
@@ -142,14 +143,14 @@ void CObjHero::Action()
 		}
 		else
 		{
-			if (Input::GetVKey('D'))
+			if (Input::GetVKey('D'))//右に移動
 			{
 				m_vx += m_speed_power;
 				m_posture = 1.0f;
 				m_pose = 1.0f;
 				m_ani_time += 1;
 			}
-			else if (Input::GetVKey('A'))
+			else if (Input::GetVKey('A'))//左に移動
 			{
 				m_vx -= m_speed_power;
 				m_posture = 0.0f;
@@ -178,7 +179,7 @@ void CObjHero::Action()
 		if (m_ani_frame == 8)
 			m_ani_frame = 0;
 
-		m_vx += -(m_vx*0.098);//摩擦
+		m_vx += -(m_vx*0.2);//摩擦
 		m_vy += 9.8 / (16.0f);//自由落下運動
 		
 		//ブロックとの当たり判定実行
@@ -191,8 +192,8 @@ void CObjHero::Action()
 		
 
 			//表示位置の更新
-		m_px += m_vx;
-		m_py += m_vy;
+		m_px += m_vx * sohuran;
+		m_py += m_vy * sohuran;
 
 
 	}
@@ -286,6 +287,10 @@ void CObjHero::Draw()
 	{
 		0,1,2,3,4,5,6,7
 	}; 
+	int AniData3[8] =
+	{
+		0,2,4,6,4,5,6,7
+	};
 	
 	//描画カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
@@ -397,14 +402,14 @@ void CObjHero::Draw()
 		{
 			//切り取り位置の設定
 			src.m_top = 0.0f + wepon_have * 64;
-			src.m_left = 0.0f + AniData[m_ani_frame] * 64;
+			src.m_left = 0.0f + AniData3[m_ani_frame] * 64;
 			src.m_right = 64.0f + src.m_left;
 			src.m_bottom = 64.0f + src.m_top+46.0f;
 
 			//表示位置の設定
 			dst.m_top = 0.0f + m_py;
-			dst.m_left = (64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48*3;
-			dst.m_right = (64 - 64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48;
+			dst.m_left = (64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48 ;
+			dst.m_right = (64 - 64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48 ;
 			dst.m_bottom = 64.0f + m_py;
 
 			//描画
@@ -416,7 +421,7 @@ void CObjHero::Draw()
 			wepon_attack = 0;
 		}
 	}
-	if (m_ani_frame > 6)
+	if (m_ani_frame > 2)
 	{
 		attack_set = false;
 	}

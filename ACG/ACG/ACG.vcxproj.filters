@@ -105,6 +105,12 @@
     <ClCompile Include="ObjMapChanger.cpp">
       <Filter>ソース ファイル\GameMain</Filter>
     </ClCompile>
+    <ClCompile Include="Objhand.cpp">
+      <Filter>ソース ファイル\GameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjThorn.cpp">
+      <Filter>ソース ファイル\GameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -183,6 +189,12 @@
       <Filter>ソース ファイル\GameMain</Filter>
     </ClInclude>
     <ClInclude Include="ObjMapChanger.h">
+      <Filter>ソース ファイル\GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="Objhand.h">
+      <Filter>ソース ファイル\GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjThorn.h">
       <Filter>ソース ファイル\GameMain</Filter>
     </ClInclude>
   </ItemGroup>
