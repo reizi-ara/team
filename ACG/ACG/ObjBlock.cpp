@@ -38,30 +38,57 @@ void CObjBlock::Action()
 	{
 		m_chg = MapChanger->GetTT();
 	}
+
 	//メインからマップ2のアドレスを持ってくる
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 	int* map2 = sceneM->GetM1();
+	bool One_chg = sceneM->GetONEs();
 	int count = 0;//1000回数えるよう
 
-	//マップ情報を移す
-	for (int i = 0; i < 10; i++)
+	if (m_chg == 1&&One_chg==true)
 	{
-		for (int j = 0; j < 100; j++)
+		
+		//マップ情報を移す
+		for (int i = 0; i < 10; i++)
 		{
+			for (int j = 0; j < 100; j++)
+			{
 
-			map[i][j] = *(map2 + count);
-			count++;
+				map[i][j] = *(map2 + count);
+				count++;
+
+			}
 
 		}
 
-	}
-	if (m_chg == 1)
-	{
 		//マップデータをコピー
-		memcpy(m_map, map, sizeof(int)*(10 * 100));
+		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
+		One_chg = false;
 
 	}
+	if (m_chg == 2&& One_chg == true)
+	{
+		
+		//マップ情報を移す
+		for (int i = 0; i < MAP_Y; i++)
+		{
+			for (int j = 0; j < MAP_X; j++)
+			{
 
+				map[i][j] = *(map2 + count);
+				count++;
+
+			}
+
+		}
+
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
+		
+		One_chg = false;
+
+
+	}
 
 
 	//主人公の位置を取得
@@ -322,4 +349,9 @@ void CObjBlock::Draw()
 		}
 	}
 }
+
+
+
+
+
 

@@ -10,6 +10,8 @@
 #include "GameHead.h"
 #include "ObjMapChanger.h"
 
+#include "GameL/UserData.h"
+
 //使用するネームスペースdayo
 using namespace GameL;
 
@@ -38,6 +40,7 @@ void CObjMapChanger::Init()
 	size = 0;
 	isplayerhit = false;
 
+	m_OneChg = false;
 	m_change = 0;
 }
 
@@ -62,7 +65,8 @@ void CObjMapChanger::Action()
 	if (pl_x - sl <= en_x + hit_length &&
 	pl_x - sl >= en_x - hit_length &&
 		pl_y <= en_y + hit_length &&
-		pl_y >= en_y - hit_length)
+		pl_y >= en_y - hit_length
+		&& m_OneChg == false)
 	{//接触時
 		isplayerhit = true;
 
@@ -72,20 +76,19 @@ void CObjMapChanger::Action()
 		CObjBlock*objB = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 		objB->SetScroll(0);
 
+		m_change++;
 
+		m_OneChg = true;
 
 	}
 	else
 	{
 		isplayerhit = false;
+
+		m_OneChg = false;
 	}
 	//当たり判定ここまで
 
-	//マップ変更用
-	if (isplayerhit == true)
-	{
-		m_change++;
-	}
 
 
 
@@ -123,3 +126,30 @@ void CObjMapChanger::Draw()
 	//描画
 	Draw::Draw(0, &src, &dst, c, 0.0f);
 }
+
+/*
+void MapChanger(int m, int m_map[MAP_Y][MAP_X],unique_ptr<wchar_t>* a)
+{
+	int size;
+
+	int map[MAP_Y][MAP_X];
+
+	a[m]=Save::ExternalDataOpen(L"仮マップ１.csv", &size);//外部データ読み込み
+
+	int count = 1;
+	for (int i = 0; i < MAP_Y; i++)
+	{
+		for (int j = 0; j < MAP_X; j++)
+		{
+			int w = 0;
+			swscanf_s(&a[m].get()[count], L"%d", &w);
+
+			map[i][j] = w;
+			count += 2;
+		}
+	}
+	//マップデータをコピー
+	memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
+	
+
+}*/

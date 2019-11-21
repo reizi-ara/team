@@ -31,10 +31,13 @@ CSceneMain::~CSceneMain()
 //初期化メソッド
 void CSceneMain::InitScene()
 {
+	One_chg = false;
+	m_chg = 0;
+
 	//外部データの読み込み(ステージ情報）
-	unique_ptr<wchar_t> p;//ステージ情報ポインター
+	//unique_ptr<wchar_t> p;//ステージ情報ポインター
 	int size;			 //ステージ情報の大きさ
-	p = Save::ExternalDataOpen(L"マップ.csv", &size);//外部データ読み込み
+	p[0] = Save::ExternalDataOpen(L"マップ.csv", &size);//外部データ読み込み
 
 	int map[10][100];
 	int count = 1;
@@ -43,7 +46,7 @@ void CSceneMain::InitScene()
 		for (int j = 0; j < 100; j++)
 		{
 			int w = 0;
-			swscanf_s(&p.get()[count], L"%d", &w);
+			swscanf_s(&p[0].get()[count], L"%d", &w);
 
 			map[i][j] = w;
 			count += 2;
@@ -103,17 +106,16 @@ void CSceneMain::Scene()
 	}
 	else
 	{
-
 		m_chg = MapChanger->GetTT();
-
+		One_chg = MapChanger->GetONE();
 	}
 
 	if (m_chg == 1)
 	{
 
-		unique_ptr<wchar_t> p;//ステージ情報ポインター
+		unique_ptr<wchar_t> p1;//ステージ情報ポインター
 		int size;			 //ステージ情報の大きさ
-		p = Save::ExternalDataOpen(L"仮マップ１.csv", &size);//外部データ読み込み
+		p1 = Save::ExternalDataOpen(L"仮マップ１.csv", &size);//外部データ読み込み
 
 		int count = 1;
 		for (int i = 0; i < 10; i++)
@@ -121,16 +123,43 @@ void CSceneMain::Scene()
 			for (int j = 0; j < 100; j++)
 			{
 				int w = 0;
-				swscanf_s(&p.get()[count], L"%d", &w);
+				swscanf_s(&p1.get()[count], L"%d", &w);
+
+				map2[i][j] = w;
+				count += 2;
+			}
+		}
+		//One_chg = false;
+
+	}
+
+
+	if (m_chg == 2)
+	{
+
+		unique_ptr<wchar_t> p2;//ステージ情報ポインター
+		int size;			 //ステージ情報の大きさ
+		p2 = Save::ExternalDataOpen(L"マップ2.csv", &size);//外部データ読み込み
+
+		int count = 1;
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 0; j < 100; j++)
+			{
+				int w = 0;
+				swscanf_s(&p2.get()[count], L"%d", &w);
 
 				map2[i][j] = w;
 				count += 2;
 			}
 		}
 
-
-
-
+		//One_chg = false;
 	}
 
+
+
 }
+
+
+

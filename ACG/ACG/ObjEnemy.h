@@ -53,4 +53,7 @@ private:
 
 	bool dir_act;
 
+	int destryNum;//íœ—p
+	int MdestryNum;
+
 };

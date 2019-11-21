@@ -8,6 +8,7 @@
 
 #include "GameHead.h"
 #include "ObjEnemy.h"
+#include "ObjMapChanger.h"
 
 #define MUTEKI 20;
 #define DE_MAGE 50;//hidame
@@ -53,6 +54,17 @@ void CObjEnemy::Init()
 	float p_y = 0;
 
 	muteki_time = MUTEKI;
+
+	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	if (sceneM == nullptr)
+	{
+		;
+	}
+	else
+	{
+		destryNum = sceneM->GetDS();
+
+	}
 }
 
 //アクション
@@ -66,11 +78,6 @@ void CObjEnemy::Action()
 
 	//通常速度
 	m_ani_max_time = 4;//アニメーション間隔幅
-
-	
-
-	
-
 
 
 	//方向
@@ -215,6 +222,19 @@ void CObjEnemy::Action()
 	}
 	if(m_speed_power>3.0f)
 		m_speed_power = 3.0f;
+
+
+
+	//削除用処理
+	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	MdestryNum = sceneM->GetDS();
+
+	if (destryNum != MdestryNum)
+	{
+		this->SetStatus(false);
+	}
+
+
 }
 
 //ドロー
