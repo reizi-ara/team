@@ -37,6 +37,7 @@ class CObjHero :public CObj
 		int Getposture() { return m_posture; }
 		int Getpose() { return m_pose; }
 		int Getattack() { return wepon_attack; }
+		void GiveSpeed(float speed) { sohuran = speed; }
 
 	private:
 		float m_px;	//ˆÊ’u
@@ -93,4 +94,6 @@ class CObjHero :public CObj
 		float muteki_time;
 		float overplayerlife;
 		float g_damage;
+
+		float sohuran;
 };

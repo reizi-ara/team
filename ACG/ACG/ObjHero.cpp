@@ -56,6 +56,7 @@ void CObjHero::Init()
 	muteki_time = MUTEKITIME/2;
 	overplayerlife = p_life;
 	g_damage = 0;
+	sohuran = 1;
 	//当たり判定用のHitBoxを作成
 	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_PLAYER, OBJ_HERO, 1);
 }
@@ -98,7 +99,7 @@ void CObjHero::Action()
 			p_life-=1.0f;
 
 		}if (Input::GetVKey('H') && Input::GetVKey(VK_CONTROL))
-		{//ダメージ付与
+		{//ダメージ回復
 			p_life += 5.0f;
 		}
 		p_life += 0.1f;
@@ -142,14 +143,14 @@ void CObjHero::Action()
 		}
 		else
 		{
-			if (Input::GetVKey('D'))
+			if (Input::GetVKey('D'))//右に移動
 			{
 				m_vx += m_speed_power;
 				m_posture = 1.0f;
 				m_pose = 1.0f;
 				m_ani_time += 1;
 			}
-			else if (Input::GetVKey('A'))
+			else if (Input::GetVKey('A'))//左に移動
 			{
 				m_vx -= m_speed_power;
 				m_posture = 0.0f;
@@ -191,8 +192,8 @@ void CObjHero::Action()
 		
 
 			//表示位置の更新
-		m_px += m_vx;
-		m_py += m_vy;
+		m_px += m_vx * sohuran;
+		m_py += m_vy * sohuran;
 
 
 	}

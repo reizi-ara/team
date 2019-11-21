@@ -130,12 +130,14 @@
     <ClCompile Include="ObjEnemy.cpp" />
     <ClCompile Include="ObjHero.cpp" />
     <ClCompile Include="ObjMapChanger.cpp" />
+    <ClCompile Include="ObjThorn.cpp" />
     <ClCompile Include="ObjTime.cpp" />
     <ClCompile Include="ObjTuta.cpp" />
     <ClCompile Include="SceneGameOption.cpp" />
     <ClCompile Include="SceneGameOver.cpp" />
     <ClCompile Include="SceneGameStart.cpp" />
     <ClCompile Include="SceneMain.cpp" />
+    <ClCompile Include="Objhand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameHead.h" />
@@ -158,12 +160,14 @@
     <ClInclude Include="ObjEnemy.h" />
     <ClInclude Include="ObjHero.h" />
     <ClInclude Include="ObjMapChanger.h" />
+    <ClInclude Include="ObjThorn.h" />
     <ClInclude Include="ObjTime.h" />
     <ClInclude Include="ObjTuta.h" />
     <ClInclude Include="SceneGameOption.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneGameStart.h" />
     <ClInclude Include="SceneMain.h" />
+    <ClInclude Include="Objhand.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
