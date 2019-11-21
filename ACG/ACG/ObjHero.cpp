@@ -98,7 +98,7 @@ void CObjHero::Action()
 		{//ダメージ付与
 			p_life-=1.0f;
 
-		}if (Input::GetVKey('H') && Input::GetVKey(VK_CONTROL))
+		}if (Input::GetVKey('H'))
 		{//ダメージ回復
 			p_life += 5.0f;
 		}
@@ -117,7 +117,7 @@ void CObjHero::Action()
 		//Wでジャンプ
 		if (Input::GetVKey('W'))
 			if (m_hit_down)
-				m_vy = -13;
+				m_vy = -15;
 
 
 
