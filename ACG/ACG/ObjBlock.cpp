@@ -133,6 +133,16 @@ void CObjBlock::Action()
 			m_map[i][ex] = 0;
 
 		}
+		if (m_map[i][ex] == 6)
+		{
+			//4‚ª‚ ‚ê‚Î“G‚ğoŒ»(x,y,type)
+			CObjThorn* obje = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0);
+			Objs::InsertObj(obje, OBJ_THORN, 10);
+
+			//“G‚ÌoŒ»êŠ‚Ì’l‚ğ0‚É‚·‚é
+			m_map[i][ex] = 0;
+
+		}
 
 	}
 }
