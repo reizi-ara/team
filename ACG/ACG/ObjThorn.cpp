@@ -10,7 +10,8 @@
 #include "GameHead.h"
 #include "ObjThorn.h"
 
-#define LIFE 80;
+#define LIFE 120;
+#define SIZE 64*1
 //使用するネームスペースdayo
 using namespace GameL;
 
@@ -49,7 +50,7 @@ void CObjThorn::Init()
 	float p_x = 0;
 	float p_y = 0;
 
-	hit_length = 64.0f;
+	hit_length = 70.0f;
 
 	size = 0;
 	isplayerhit = false;
@@ -82,10 +83,13 @@ void CObjThorn::Action()
 	{
 		//接触時
 		isplayerhit = true;
+
 	}
 	else
 	{
 		isplayerhit = false;
+		obj->GiveSpeed(1.0f);
+
 	}
 
 
@@ -95,6 +99,7 @@ void CObjThorn::Action()
 	if (isplayerhit == true)
 	{
 		obj->GiveSpeed(Downspeed);
+		en_life--;
 		time++;
 		if (time % 16 == 0)
 			m_ani_frame += 1;
@@ -102,17 +107,16 @@ void CObjThorn::Action()
 		{
 			m_ani_frame = 3;
 		}
-		isplayerhit = false;
 	}
 
-	if (arw != isplayerhit)
+
+	if (en_life < 0)
 	{
-
+		obj->SetVX(0.0f);
+		obj->SetVY(0.0f);
 		obj->GiveSpeed(1.0f);
-		arw = isplayerhit;
+		this->SetStatus(false);
 	}
-
-
 
 
 

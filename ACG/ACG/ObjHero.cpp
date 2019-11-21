@@ -10,6 +10,7 @@
 #include "ObjHero.h"
 #include "main.h"
 
+
 //使用するネームスペース
 using namespace GameL;
 
@@ -191,10 +192,6 @@ void CObjHero::Action()
 
 		
 
-			//表示位置の更新
-		m_px += m_vx * sohuran;
-		m_py += m_vy * sohuran;
-
 
 	}
 	else if (p_menuflag == true)	//メニューテスト
@@ -276,6 +273,12 @@ void CObjHero::Action()
 				}
 		}
 	}
+
+
+	//表示位置の更新
+	m_px += m_vx * sohuran;
+	m_py += m_vy * sohuran;
+
 }
 
 

@@ -103,7 +103,7 @@ void CObjBlock::Action()
 			//敵の出現場所の値を0にする
 			m_map[i][ex] = 0;
 		}
-	/*	if (m_map[i][ex] == 5)
+		/*if (m_map[i][ex] == 5)
 		{
 			//4があれば敵を出現(x,y,type)
 			CObjTuta* obje = new CObjTuta(ex * 64.0f, i * 64.0f,0);
@@ -136,7 +136,7 @@ void CObjBlock::Action()
 		if (m_map[i][ex] == 6)
 		{
 			//4があれば敵を出現(x,y,type)
-			CObjThorn* obje = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0);
+			CObjThorn* obje = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0.1f);
 			Objs::InsertObj(obje, OBJ_THORN, 10);
 
 			//敵の出現場所の値を0にする
