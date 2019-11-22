@@ -57,4 +57,6 @@ private:
 	int destryNum;//íœ—p
 	int MdestryNum;
 
+	bool atk_kb;
+
 };

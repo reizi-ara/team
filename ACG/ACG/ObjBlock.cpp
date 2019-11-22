@@ -139,16 +139,16 @@ void CObjBlock::Action()
 			//敵の出現場所の値を0にする
 			m_map[i][ex] = 0;
 		}
-		/*if (m_map[i][ex] == 5)
+		if (m_map[i][ex] == 2)
 		{
 			//4があれば敵を出現(x,y,type)
-			CObjTuta* obje = new CObjTuta(ex * 64.0f, i * 64.0f,0);
+			CObjEnemy* obje = new CObjEnemy(ex * 64.0f, i * 64.0f, 80, 10, 3);
 			Objs::InsertObj(obje, OBJ_ENEMY, 10);
 
 			//敵の出現場所の値を0にする
 			m_map[i][ex] = 0;
 
-		}*/
+		}
 
 		if (m_map[i][ex] == 9)
 		{
@@ -349,26 +349,19 @@ void CObjBlock::Draw()
 				dst.m_bottom = dst.m_top + 64.0f;
 				if (m_map[i][j] == 1)
 				{
-					//地面
 					BlockDraw(0.0f, 128.0f, &dst, c,2);
 				}
 				else if (m_map[i][j] == 2)
 				{
-					//スタートブロック
-					BlockDraw(0.0f + 64.0f, 128.0f, &dst, c,2);
 				}
 				else if (m_map[i][j] == 3)
 				{
-					//ゴールブロック
-					BlockDraw(0.0f + 128.0f, 128.0f, &dst, c,2);
 				}
 				else if (m_map[i][j] == 4)
 				{
-					;
 				}
 				else if (m_map[i][j] == 5)
 				{
-					;
 				}
 				else
 				{
