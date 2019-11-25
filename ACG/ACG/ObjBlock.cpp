@@ -120,66 +120,45 @@ void CObjBlock::Action()
 	//敵出現ラインの列を検索
 	for(int i=0;i<10;i++)
 	{
-		//列から4を探す
-		if(m_map[i][ex]==4)
-		{
-			//4があれば敵を出現(x,y,life,atk,type)
-			CObjEnemy* obje = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 1);
-			Objs::InsertObj(obje, OBJ_ENEMY, 10);
-
-			//敵の出現場所の値を0にする
+		if (m_map[i][ex] == 20) {//敵1(PJ
+			CObjEnemy* obj20 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 1);
+			Objs::InsertObj(obj20, OBJ_ENEMY, 10);
 			m_map[i][ex] = 0;
 		}
-		if (m_map[i][ex] == 8)
-		{
-			//4があれば敵を出現(x,y,life,atk,type)
-			CObjEnemy* obje = new CObjEnemy(ex * 64.0f, i * 64.0f, 80, 10, 2);
-			Objs::InsertObj(obje, OBJ_ENEMY, 10);
-
-			//敵の出現場所の値を0にする
+		if (m_map[i][ex] == 21) {//敵2(Jump
+			CObjEnemy* obj21 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 2);
+			Objs::InsertObj(obj21, OBJ_ENEMY, 10);
 			m_map[i][ex] = 0;
 		}
-		if (m_map[i][ex] == 2)
-		{
-			//4があれば敵を出現(x,y,type)
-			CObjEnemy* obje = new CObjEnemy(ex * 64.0f, i * 64.0f, 80, 10, 3);
-			Objs::InsertObj(obje, OBJ_ENEMY, 10);
-
-			//敵の出現場所の値を0にする
+		if (m_map[i][ex] == 22) {//敵3
+			CObjEnemy* obj22 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 3);
+			Objs::InsertObj(obj22, OBJ_ENEMY, 10);
 			m_map[i][ex] = 0;
-
+		}
+		if (m_map[i][ex] == 23) {//敵4
+			CObjEnemy* obj23 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 4);
+			Objs::InsertObj(obj23, OBJ_ENEMY, 10);
+			m_map[i][ex] = 0;
 		}
 
-		if (m_map[i][ex] == 9)
-		{
-			//9があれば移動を出現
-			CObjMapChanger* obj9 = new CObjMapChanger(ex * 64.0f, i * 64.0f,0);
-			Objs::InsertObj(obj9, OBJ_MAPCHANGER, 10);
-			//敵の出現場所の値を0にする
+		if (m_map[i][ex] == 30) {//蔦
+			CObjThorn* obj30 = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0.1f);
+			Objs::InsertObj(obj30, OBJ_THORN, 10);
 			m_map[i][ex] = 0;
-
 		}
-		if(m_map[i][ex] == 5)
-		{
-			//4があれば敵を出現(x,y,type)
-			CObjhand* obje = new CObjhand(ex * 64.0f, i * 64.0f, 0,15);
-			Objs::InsertObj(obje, OBJ_HAND, 10);
-
-			//敵の出現場所の値を0にする
+		if (m_map[i][ex] == 31)	{//触腕
+			CObjhand* obj31 = new CObjhand(ex * 64.0f, i * 64.0f, 0, 15);
+			Objs::InsertObj(obj31, OBJ_HAND, 10);
 			m_map[i][ex] = 0;
-
-		}
-		if (m_map[i][ex] == 6)
-		{
-			//4があれば敵を出現(x,y,type)
-			CObjThorn* obje = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0.1f);
-			Objs::InsertObj(obje, OBJ_THORN, 10);
-
-			//敵の出現場所の値を0にする
-			m_map[i][ex] = 0;
-
 		}
 
+		if (m_map[i][ex] == 40) {//次マップ移動扉
+			CObjMapChanger* obj40 = new CObjMapChanger(ex * 64.0f, i * 64.0f,0);
+			Objs::InsertObj(obj40, OBJ_MAPCHANGER, 10);
+			m_map[i][ex] = 0;
+		}
+
+		
 	}
 }
 
@@ -219,7 +198,7 @@ void CObjBlock::BlockHit(
 	{
 		for (int j = 0; j < 100; j++)
 		{
-			if (m_map[i][j] > 0&&m_map[i][j]<4)
+			if (m_map[i][j] > 0&&m_map[i][j]<=9)
 			{
 				//要素番号を座標に変更
 				float bx = j*64.0f;
@@ -316,7 +295,8 @@ void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[],int s)
 void CObjBlock::Draw()
 {
 	//描画カラー情報
-	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+	float c[4]  = { 1.0f,1.0f,1.0f,1.0f };
+	float cr[4] = { 0.7f,0.7f,0.7f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
@@ -353,15 +333,39 @@ void CObjBlock::Draw()
 				}
 				else if (m_map[i][j] == 2)
 				{
+					BlockDraw(64.0f, 128.0f, &dst, c, 2);
 				}
 				else if (m_map[i][j] == 3)
 				{
+					BlockDraw(128.0f, 128.0f, &dst, c, 2);
 				}
 				else if (m_map[i][j] == 4)
 				{
+					BlockDraw(192.0f, 128.0f, &dst, c, 2);
 				}
 				else if (m_map[i][j] == 5)
 				{
+					BlockDraw(256.0f, 128.0f, &dst, c, 2);
+				}
+				else if (m_map[i][j] == 6)
+				{
+					BlockDraw(320.0f, 128.0f, &dst, c, 2);
+				}
+				else if (m_map[i][j] == 13)
+				{
+					BlockDraw(128.0f, 128.0f, &dst, cr, 2);
+				}
+				else if (m_map[i][j] == 14)
+				{
+					BlockDraw(192.0f, 128.0f, &dst, cr, 2);
+				}
+				else if (m_map[i][j] == 15)
+				{
+					BlockDraw(256.0f, 128.0f, &dst, cr, 2);
+				}
+				else if (m_map[i][j] == 16)
+				{
+					BlockDraw(320.0f, 128.0f, &dst, cr, 2);
 				}
 				else
 				{
