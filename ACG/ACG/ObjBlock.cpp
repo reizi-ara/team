@@ -179,6 +179,16 @@ void CObjBlock::Action()
 			m_map[i][ex] = 0;
 
 		}
+		if (m_map[i][ex] == 7)
+		{
+			//4‚ª‚ ‚ê‚Î“G‚ğoŒ»(x,y,type)
+			CObjMessage* obje = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
+			Objs::InsertObj(obje, OBJ_MESSAGE, 15);
+
+			//“G‚ÌoŒ»êŠ‚Ì’l‚ğ0‚É‚·‚é
+			m_map[i][ex] = 0;
+
+		}
 
 	}
 }

@@ -111,6 +111,9 @@
     <ClCompile Include="ObjThorn.cpp">
       <Filter>ソース ファイル\GameMain</Filter>
     </ClCompile>
+    <ClCompile Include="Objmessage.cpp">
+      <Filter>ソース ファイル\GameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -195,6 +198,9 @@
       <Filter>ソース ファイル\GameMain</Filter>
     </ClInclude>
     <ClInclude Include="ObjThorn.h">
+      <Filter>ソース ファイル\GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="Objmessage.h">
       <Filter>ソース ファイル\GameMain</Filter>
     </ClInclude>
   </ItemGroup>

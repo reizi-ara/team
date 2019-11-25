@@ -237,7 +237,7 @@ void CObjHero::Action()
 				{
 					if (lavel_select == 0)
 					{
-						Scene::SetScene(new CSceneGameOver());
+						Scene::SetScene(new CSceneGameOver());	
 						m_key_flag = false;
 					}
 
