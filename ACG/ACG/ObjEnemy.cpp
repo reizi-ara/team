@@ -175,8 +175,29 @@ void CObjEnemy::Action()
 		m_vx!=0)
 	{
 		obj->GiveDamageToPlayer( atk );
-	}
+		if (atk_kb == false)
+		{
+			if (pl_x - sl <= en_x)
+			{
+				obj->SetVX(-10);
+			}
 
+			else if (pl_x - sl > en_x)
+			{
+				obj->SetVX(10);
+			}
+		}
+		atk_kb = true;
+
+		
+
+	}
+	else 
+	{
+			atk_kb = false;
+	}
+	
+	
 
 	muteki_time--;
 	//”íUŒ‚
@@ -207,16 +228,18 @@ void CObjEnemy::Action()
 		awake = true;
 	}
 	
-	if (muteki_time + 5 > 0 && awake == true)
+	if (muteki_time  > 0 && awake == true)
 	{
-		if (m_move == false)
-		{
-			m_vx = -m_speed_power * 10;
-		}
-
-		else if (m_move == true)
+		if (pl_x - sl <= en_x)
 		{
 			m_vx = +m_speed_power * 10;
+			//obj->SetVX(10);
+		}
+
+		else if (pl_x - sl > en_x)
+		{
+			m_vx = -m_speed_power * 10;
+			//obj->SetVX(-10);
 		}
 	}
 	if (muteki_time == 0)

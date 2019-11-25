@@ -45,7 +45,10 @@ void CSceneMain::InitScene()
 
 	MapRead(m_chg, map2, p);//マップロード関数？
 
-	//int map[10][100];
+			map[i][j] = w;
+			count += 3;
+		}
+	}
 
 	//Font作成
 	Font::SetStrTex(L"0123456789分秒");

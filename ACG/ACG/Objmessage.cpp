@@ -8,24 +8,23 @@
 #include "GameL\SceneObjManager.h"
 
 #include "GameHead.h"
-#include "ObjThorn.h"
+#include "Objmessage.h"
+#include "main.h"
 
-#define LIFE 1200;
-#define SIZE 64*1
+#define LIFE 80;
 //使用するネームスペースdayo
 using namespace GameL;
 
-CObjThorn::CObjThorn(float x, float y, float t,float s)
+CObjMessage::CObjMessage(float x, float y, float t)
 {
 	m_px = x;	//位置
 	m_py = y;
 
 	type = t;
-	Downspeed = s;
 }
 
 //イニシャライズ
-void CObjThorn::Init()
+void CObjMessage::Init()
 {
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
@@ -50,18 +49,22 @@ void CObjThorn::Init()
 	float p_x = 0;
 	float p_y = 0;
 
-	hit_length = 70.0f;
+	hit_length = 64.0f;
 
 	size = 0;
 	isplayerhit = false;
-
-	time = 0;
-	arw = isplayerhit;
+	Message_flag = false;
 }
 
 //アクション
-void CObjThorn::Action()
+void CObjMessage::Action()
 {
+
+	//通常速度
+	m_ani_max_time = 8;//アニメーション間隔幅
+
+
+
 	//当たり判定
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
@@ -80,43 +83,42 @@ void CObjThorn::Action()
 		pl_x - sl >= en_x - hit_length &&
 		pl_y <= en_y + hit_length &&
 		pl_y >= en_y - hit_length)
-	{
-		//接触時
+	{//接触時
 		isplayerhit = true;
-
 	}
 	else
 	{
 		isplayerhit = false;
-		obj->GiveSpeed(1.0f);
-
 	}
-
-
-
 	//当たり判定ここまで
 
 	if (isplayerhit == true)
 	{
-		obj->GiveSpeed(Downspeed);
-		en_life--;
-		time++;
-		if (time % 16 == 0)
-			m_ani_frame += 1;
-		if (m_ani_frame == 5)
+		if (Input::GetVKey('Q') == true)
 		{
-			m_ani_frame = 3;
+			Message_flag = true;
+			obj->SetVX(0.0f);
+			obj->SetVY(0.0f);
+		}
+		
+	}
+
+	if (Message_flag == true)
+	{
+		if (Input::GetVKey(VK_RETURN) == true)
+		{
+			Message_flag = false;
 		}
 	}
 
 
-	if (en_life < 0)
-	{
-		obj->SetVX(0.0f);
-		obj->SetVY(0.0f);
-		obj->GiveSpeed(1.0f);
-		this->SetStatus(false);
-	}
+
+
+
+
+
+
+
 
 
 
@@ -127,13 +129,8 @@ void CObjThorn::Action()
 }
 
 //ドロー
-void CObjThorn::Draw()
+void CObjMessage::Draw()
 {
-
-	int AniData[5] =
-	{
-		0,1,2,3,4
-	};
 
 	//描画カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
@@ -142,10 +139,10 @@ void CObjThorn::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top = 0.0f;
-	src.m_left = 0.0f + AniData[m_ani_frame] * 64;;
-	src.m_right = 64.0f + AniData[m_ani_frame] * 64;;
-	src.m_bottom = 64.0f;
+	src.m_top = 64.0f*4;
+	src.m_left = 64.0f*2;
+	src.m_right = 64.0f*4;
+	src.m_bottom = 64.0f*6;
 
 	//ブロック情報を持ってくる
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
@@ -158,4 +155,25 @@ void CObjThorn::Draw()
 
 	//描画
 	Draw::Draw(2, &src, &dst, c, 0.0f);
+
+	if (Message_flag == true)
+	{
+		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+
+		RECT_F src;//描画元切り取り位置
+		RECT_F dst;//描画先表示位置
+
+		//切り取り位置の設定
+		src.m_top = 64.0f*6;
+		src.m_left = 64.0f*0;
+		src.m_right = 64.0f*8;
+		src.m_bottom = 64.0f*8;
+
+		//背景の位置を設定し描画
+		dst.m_top =WINDOW_SIZE_H*0.7;
+		dst.m_left = 0.0f;
+		dst.m_right = WINDOW_SIZE_W;
+		dst.m_bottom = WINDOW_SIZE_H;
+		Draw::Draw(2, &src, &dst, c, 0.0f);
+	}
 }

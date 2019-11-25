@@ -23,6 +23,7 @@ enum OBJ_NAME
 
 	OBJ_HAND,
 	OBJ_THORN,
+	OBJ_MESSAGE
 };
 //------------------------------------------------
 
@@ -77,6 +78,7 @@ struct UserData
 #include "ObjMapChanger.h"
 #include "Objhand.h"
 #include "ObjThorn.h"
+#include "Objmessage.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

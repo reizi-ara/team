@@ -228,6 +228,7 @@ void CObjHero::Action()
 				if (lavel_select > 5)
 					lavel_select = 0;
 				if (lavel_select < 0)
+
 					lavel_select = 5;
 
 
@@ -236,7 +237,7 @@ void CObjHero::Action()
 				{
 					if (lavel_select == 0)
 					{
-						Scene::SetScene(new CSceneGameOver());
+						Scene::SetScene(new CSceneGameOver());	
 						m_key_flag = false;
 					}
 
