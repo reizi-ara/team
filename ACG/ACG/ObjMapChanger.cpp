@@ -41,7 +41,9 @@ void CObjMapChanger::Init()
 	isplayerhit = false;
 
 	m_OneChg = false;
-	m_change = 0;
+	m_change = 1;
+
+	mmmm = false;
 }
 
 //ƒAƒNƒVƒ‡ƒ“
@@ -75,10 +77,14 @@ void CObjMapChanger::Action()
 
 		CObjBlock*objB = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 		objB->SetScroll(0);
+		
 
-		m_change++;
+		CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+		sceneM->SetMMMMMM(m_change);
 
 		m_OneChg = true;
+
+		objB->SetM_CHG(mmmm);
 
 	}
 	else

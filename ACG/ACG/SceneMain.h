@@ -22,6 +22,8 @@ class CSceneMain :public CScene
 		int GetDS() { return m_chg; }
 
 		int GetONEs() { return One_chg; }
+
+		void SetMMMMMM (int a) { m_chg += a; }
 	
 	private:
 		int m_chg;	//マップチェンジ
@@ -29,8 +31,11 @@ class CSceneMain :public CScene
 
 		int map2[10][100];	//マップ情報２
 
-
+		bool OneRead;
 
 		unique_ptr<wchar_t> p[5];//ステージ情報ポインター
 
+		void MapRead(int m_chg, int map[MAP_Y][MAP_X], unique_ptr<wchar_t>* p);
+
 };
+

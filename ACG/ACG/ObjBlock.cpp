@@ -13,6 +13,7 @@
 //使用するネームスペース
 using namespace GameL;
 
+
 CObjBlock::CObjBlock(int map[10][100])
 {
 	//マップデータをコピー
@@ -22,6 +23,7 @@ CObjBlock::CObjBlock(int map[10][100])
 //イニシャライズ
 void CObjBlock::Init()
 {
+	mmmm = false;
 	m_scroll = 0.0f;
 }
 
@@ -34,9 +36,10 @@ void CObjBlock::Action()
 	{
 		;
 	}
-	else
+	else if(mmmm=false)
 	{
 		m_chg = MapChanger->GetTT();
+		mmmm = true;
 	}
 
 	//メインからマップ2のアドレスを持ってくる
@@ -45,50 +48,62 @@ void CObjBlock::Action()
 	bool One_chg = sceneM->GetONEs();
 	int count = 0;//1000回数えるよう
 
-	if (m_chg == 1&&One_chg==true)
+	if (m_chg == 0 && One_chg == true)
 	{
-		
-		//マップ情報を移す
-		for (int i = 0; i < 10; i++)
-		{
-			for (int j = 0; j < 100; j++)
-			{
-
-				map[i][j] = *(map2 + count);
-				count++;
-
-			}
-
-		}
+		Transfer(map, map2);
 
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
 		One_chg = false;
 
 	}
-	if (m_chg == 2&& One_chg == true)
+	else if (m_chg == 1&&One_chg==true)
 	{
 		
-		//マップ情報を移す
-		for (int i = 0; i < MAP_Y; i++)
-		{
-			for (int j = 0; j < MAP_X; j++)
-			{
-
-				map[i][j] = *(map2 + count);
-				count++;
-
-			}
-
-		}
+		Transfer(map, map2);
 
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
-		
+		One_chg = false;
+
+	}
+	else if (m_chg == 2 && One_chg == true)
+	{
+
+		Transfer(map, map2);
+
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
+
 		One_chg = false;
 
 
 	}
+	else if (m_chg == 3 && One_chg == true)
+	{
+
+		Transfer(map, map2);
+
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
+
+		One_chg = false;
+
+
+	}
+	else if (m_chg == 4 && One_chg == true)
+	{
+
+		Transfer(map, map2);
+
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
+
+		One_chg = false;
+
+
+	}
+
 
 
 	//主人公の位置を取得
@@ -380,6 +395,25 @@ void CObjBlock::Draw()
 }
 
 
+
+
+
+void CObjBlock::Transfer(int map[MAP_Y][MAP_X],int* map2)
+{
+	int count = 0;
+	//マップ情報を移す
+	for (int i = 0; i < MAP_Y; i++)
+	{
+		for (int j = 0; j < MAP_X; j++)
+		{
+
+			map[i][j] = *(map2 + count);
+			count++;
+
+		}
+
+	}
+}
 
 
 

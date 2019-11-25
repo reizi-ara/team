@@ -31,27 +31,21 @@ CSceneMain::~CSceneMain()
 //初期化メソッド
 void CSceneMain::InitScene()
 {
-	One_chg = false;
+	OneRead = false;
 	m_chg = 0;
 
 	//外部データの読み込み(ステージ情報）
 	//unique_ptr<wchar_t> p;//ステージ情報ポインター
 	int size;			 //ステージ情報の大きさ
 	p[0] = Save::ExternalDataOpen(L"マップ.csv", &size);//外部データ読み込み
+	p[1] = Save::ExternalDataOpen(L"仮マップ１.csv", &size);//外部データ読み込み
+	p[2] = Save::ExternalDataOpen(L"マップ2.csv", &size);//外部データ読み込み
+	p[3] = Save::ExternalDataOpen(L"マップ.csv", &size);//外部データ読み込み
+	p[4] = Save::ExternalDataOpen(L"仮マップ１.csv", &size);//外部データ読み込み
 
-	int map[10][100];
-	int count = 1;
-	for (int i = 0; i < 10; i++)
-	{
-		for (int j = 0; j < 100; j++)
-		{
-			int w = 0;
-			swscanf_s(&p[0].get()[count], L"%d", &w);
+	MapRead(m_chg, map2, p);//マップロード関数？
 
-			map[i][j] = w;
-			count += 2;
-		}
-	}
+	//int map[10][100];
 
 	//Font作成
 	Font::SetStrTex(L"0123456789分秒");
@@ -70,18 +64,18 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"splite4.png", 4, TEX_SIZE_1024);
 	Draw::LoadImageW(L"splite5.png", 5, TEX_SIZE_1024);
 
-	
-
-
-	
 
 	//主人公オブジェクトの作成
 	CObjHero*obj = new CObjHero();
 	Objs::InsertObj(obj, OBJ_HERO, 10);
 
 	//blockオブジェクト作成
-	CObjBlock*objb = new CObjBlock(map);
+	CObjBlock*objb = new CObjBlock(map2);
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
+
+
+	
+
 	//音楽読み込み
 	Audio::LoadAudio(0, L"閉ざされた部屋.wav", BACK_MUSIC);
 
@@ -106,60 +100,58 @@ void CSceneMain::Scene()
 	}
 	else
 	{
-		m_chg = MapChanger->GetTT();
-		One_chg = MapChanger->GetONE();
+		OneRead = MapChanger->GetONE();
 	}
 
-	if (m_chg == 1)
+	if (m_chg == 0 && OneRead == true)
 	{
-
-		unique_ptr<wchar_t> p1;//ステージ情報ポインター
-		int size;			 //ステージ情報の大きさ
-		p1 = Save::ExternalDataOpen(L"仮マップ１.csv", &size);//外部データ読み込み
-
-		int count = 1;
-		for (int i = 0; i < 10; i++)
-		{
-			for (int j = 0; j < 100; j++)
-			{
-				int w = 0;
-				swscanf_s(&p1.get()[count], L"%d", &w);
-
-				map2[i][j] = w;
-				count += 2;
-			}
-		}
-		//One_chg = false;
+		MapRead(m_chg, map2, p);
+		OneRead = false;
 
 	}
-
-
-	if (m_chg == 2)
+	else if (m_chg == 1 && OneRead == true)
 	{
+		MapRead(m_chg, map2, p);
+		OneRead = false;
 
-		unique_ptr<wchar_t> p2;//ステージ情報ポインター
-		int size;			 //ステージ情報の大きさ
-		p2 = Save::ExternalDataOpen(L"マップ2.csv", &size);//外部データ読み込み
-
-		int count = 1;
-		for (int i = 0; i < 10; i++)
-		{
-			for (int j = 0; j < 100; j++)
-			{
-				int w = 0;
-				swscanf_s(&p2.get()[count], L"%d", &w);
-
-				map2[i][j] = w;
-				count += 2;
-			}
-		}
-
-		//One_chg = false;
 	}
+	else if (m_chg == 2 && OneRead == true)
+	{
+		MapRead(m_chg, map2, p);
+		OneRead = false;
+	}
+	if (m_chg == 3 && OneRead == true)
+	{
+		MapRead(m_chg, map2, p);
+		OneRead = false;
 
+	}
+	else if (m_chg == 4 && OneRead == true)
+	{
+		MapRead(m_chg, map2, p);
+		OneRead = false;
 
+	}
 
 }
+
+void CSceneMain::MapRead(int m_chg, int map[MAP_Y][MAP_X], unique_ptr<wchar_t>* p)
+{
+	int count = 1;
+	for (int i = 0; i < MAP_Y; i++)
+	{
+		for (int j = 0; j < MAP_X; j++)
+		{
+			int w = 0;
+			swscanf_s(&p[m_chg].get()[count], L"%d", &w);
+
+			map[i][j] = w;
+			count += 2;
+		}
+	}
+
+}
+
 
 
 

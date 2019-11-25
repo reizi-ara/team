@@ -44,6 +44,8 @@ private:
 
 	int m_change;
 
+	bool mmmm;
+
 
 
 };

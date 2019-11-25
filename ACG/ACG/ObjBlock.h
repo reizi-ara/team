@@ -2,6 +2,9 @@
 //使用するヘッダー
 #include "GameL\SceneObjManager.h"
 #include "GameL\DrawTexture.h"
+
+#include "SceneMain.h"
+
 //使用するネームスペース
 using namespace GameL;
 
@@ -15,8 +18,12 @@ class CObjBlock :public CObj
 		void Action();  //アクション
 		void Draw();	//ドロー
 
+		void Transfer(int map[MAP_Y][MAP_X], int * map2);
+
 		void SetScroll(float s) { m_scroll = s; }
 		float GetScroll() { return m_scroll; }
+
+		void SetM_CHG(bool mmmm) { m_chg = mmmm; }
 
 
 		//ブロックと当たり判定
@@ -25,6 +32,8 @@ class CObjBlock :public CObj
 			bool*up, bool* down, bool* left, bool *right,
 			float* vx, float*vy, int* bt
 		);
+
+		
 
 	private:
 		void BlockDraw(float x, float y, RECT_F*dst, float c[],int s);
@@ -37,6 +46,9 @@ class CObjBlock :public CObj
 
 		int m_chg;
 
+		bool mmmm;//アクション入って1回だけ
+
 		//unique_ptr<wchar_t> p[5];
 
+		
 };
