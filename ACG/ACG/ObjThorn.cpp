@@ -10,7 +10,7 @@
 #include "GameHead.h"
 #include "ObjThorn.h"
 
-#define LIFE 120;
+#define LIFE 1200;
 #define SIZE 64*1
 //使用するネームスペースdayo
 using namespace GameL;
