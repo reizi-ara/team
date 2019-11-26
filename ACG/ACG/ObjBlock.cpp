@@ -157,15 +157,10 @@ void CObjBlock::Action()
 			Objs::InsertObj(obj40, OBJ_MAPCHANGER, 10);
 			m_map[i][ex] = 0;
 		}
-		if (m_map[i][ex] == 7)
-		{
-			//4があれば敵を出現(x,y,type)
+		if (m_map[i][ex] == 50)	{//本棚１
 			CObjMessage* obje = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
 			Objs::InsertObj(obje, OBJ_MESSAGE, 15);
-
-			//敵の出現場所の値を0にする
 			m_map[i][ex] = 0;
-
 		}
 
 		
