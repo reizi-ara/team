@@ -54,6 +54,7 @@ void CObjMessage::Init()
 	size = 0;
 	isplayerhit = false;
 	Message_flag = false;
+
 }
 
 //ƒAƒNƒVƒ‡ƒ“
@@ -85,10 +86,12 @@ void CObjMessage::Action()
 		pl_y >= en_y - hit_length)
 	{//ÚG
 		isplayerhit = true;
+		obj->SetMessageflag(isplayerhit);
 	}
 	else
 	{
 		isplayerhit = false;
+		obj->SetMessageflag(isplayerhit);
 	}
 	//“–‚½‚è”»’è‚±‚±‚Ü‚Å
 
@@ -108,10 +111,9 @@ void CObjMessage::Action()
 		if (Input::GetVKey(VK_RETURN) == true)
 		{
 			Message_flag = false;
+
 		}
 	}
-
-
 
 
 
@@ -155,6 +157,27 @@ void CObjMessage::Draw()
 
 	//•`‰æ
 	Draw::Draw(2, &src, &dst, c, 0.0f);
+
+	/*if (isplayerhit == true)
+	{
+		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+
+		RECT_F src;//•`‰æŒ³Ø‚èæ‚èˆÊ’u
+		RECT_F dst;//•`‰ææ•\¦ˆÊ’u
+
+		//Ø‚èæ‚èˆÊ’u‚Ìİ’è
+		src.m_top = 0.0f;
+		src.m_left = 0.0f;
+		src.m_right = 64.0f;
+		src.m_bottom = 64.0f;
+
+		//”wŒi‚ÌˆÊ’u‚ğİ’è‚µ•`‰æ
+		dst.m_top = 0.0f;
+		dst.m_left = 0.0f;
+		dst.m_right = 32.0f;
+		dst.m_bottom = 32.0f;
+		Draw::Draw(8, &src, &dst, c, 0.0f);
+	}*/
 
 	if (Message_flag == true)
 	{

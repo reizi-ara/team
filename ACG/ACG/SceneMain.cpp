@@ -63,6 +63,7 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"splite0.png", 0, TEX_SIZE_512);
 	Draw::LoadImageW(L"splite1.png", 1, TEX_SIZE_512);
 	Draw::LoadImageW(L"splite2.png", 2, TEX_SIZE_512);
+	Draw::LoadImageW(L"フキダシ3.png", 8, TEX_SIZE_512);
 	
 	
 	//910:512*

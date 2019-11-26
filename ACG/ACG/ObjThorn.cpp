@@ -15,13 +15,15 @@
 //使用するネームスペースdayo
 using namespace GameL;
 
-CObjThorn::CObjThorn(float x, float y, float t,float s)
+CObjThorn::CObjThorn(float x, float y, float t,float s,int w)
 {
 	m_px = x;	//位置
 	m_py = y;
 
 	type = t;
 	Downspeed = s;
+
+	size = (w-1)*64;
 }
 
 //イニシャライズ
@@ -52,7 +54,6 @@ void CObjThorn::Init()
 
 	hit_length = 70.0f;
 
-	size = 0;
 	isplayerhit = false;
 
 	time = 0;
@@ -76,8 +77,8 @@ void CObjThorn::Action()
 	float en_x = m_px + 32.0f;
 	float en_y = m_py + 32.0f;
 
-	if (pl_x - sl <= en_x + hit_length &&
-		pl_x - sl >= en_x - hit_length &&
+	if (pl_x - sl <= en_x + hit_length+size &&
+		pl_x - sl >= en_x - hit_length-size &&
 		pl_y <= en_y + hit_length &&
 		pl_y >= en_y - hit_length)
 	{

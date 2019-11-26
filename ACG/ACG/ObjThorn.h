@@ -9,7 +9,7 @@ using namespace GameL;
 class CObjThorn : public CObj
 {
 public:
-	CObjThorn(float x, float y, float t,float s);
+	CObjThorn(float x, float y, float t,float s,int w);
 	~CObjThorn() {};
 	void Init();	//イニシャライズ
 	void Action();  //アクション
