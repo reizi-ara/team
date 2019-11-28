@@ -84,17 +84,20 @@ void CObjMessage2::Action()
 	CObjMessage* window = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
 	book_isplayerhit = window->Getwindow_flag();
 
-
-	if (book_isplayerhit == true)
+	if (Message_flag == false)
 	{
-		if (Input::GetVKey('Q') == true)
+		if (book_isplayerhit == true)
 		{
-			Message_flag = true;
-			obj->SetVX(0.0f);
-			obj->SetVY(0.0f);
-		}
+			if (Input::GetVKey('Q') == true)
+			{
+				Message_flag = true;
+				obj->SetVX(0.0f);
+				obj->SetVY(0.0f);
+			}
 
+		}
 	}
+
 
 	if (Message_flag == true)
 	{
