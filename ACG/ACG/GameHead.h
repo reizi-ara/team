@@ -20,6 +20,7 @@ enum OBJ_NAME
 	OBJ_TUTA,
 
 	OBJ_MAPCHANGER,
+	OBJ_MAPBACKER,
 
 	OBJ_HAND,
 	OBJ_THORN,
@@ -79,6 +80,7 @@ struct UserData
 #include "Objhand.h"
 #include "ObjThorn.h"
 #include "Objmessage.h"
+#include "ObjMapBacker.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

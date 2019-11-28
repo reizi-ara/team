@@ -37,18 +37,13 @@ void CSceneMain::InitScene()
 	//外部データの読み込み(ステージ情報）
 	//unique_ptr<wchar_t> p;//ステージ情報ポインター
 	int size;			 //ステージ情報の大きさ
-	p[0] = Save::ExternalDataOpen(L"マップ.csv", &size);//外部データ読み込み
-	p[1] = Save::ExternalDataOpen(L"仮マップ１.csv", &size);//外部データ読み込み
-	p[2] = Save::ExternalDataOpen(L"マップ2.csv", &size);//外部データ読み込み
-	p[3] = Save::ExternalDataOpen(L"マップ.csv", &size);//外部データ読み込み
-	p[4] = Save::ExternalDataOpen(L"仮マップ１.csv", &size);//外部データ読み込み
+	p[0] = Save::ExternalDataOpen(L"map_0.csv", &size);//外部データ読み込み
+	p[1] = Save::ExternalDataOpen(L"map_1.csv", &size);//外部データ読み込み
+	p[2] = Save::ExternalDataOpen(L"map_2.csv", &size);//外部データ読み込み
+	p[3] = Save::ExternalDataOpen(L"map_3.csv", &size);//外部データ読み込み
+	p[4] = Save::ExternalDataOpen(L"map_4.csv", &size);//外部データ読み込み
 
 	MapRead(m_chg, map2, p);//マップロード関数？
-
-			map[i][j] = w;
-			count += 3;
-		}
-	}
 
 	//Font作成
 	Font::SetStrTex(L"0123456789分秒");
@@ -149,7 +144,7 @@ void CSceneMain::MapRead(int m_chg, int map[MAP_Y][MAP_X], unique_ptr<wchar_t>* 
 			swscanf_s(&p[m_chg].get()[count], L"%d", &w);
 
 			map[i][j] = w;
-			count += 2;
+			count += 3;
 		}
 	}
 

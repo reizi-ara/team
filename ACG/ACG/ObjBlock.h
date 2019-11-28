@@ -18,7 +18,6 @@ class CObjBlock :public CObj
 		void Action();  //アクション
 		void Draw();	//ドロー
 
-		void Transfer(int map[MAP_Y][MAP_X], int * map2);
 
 		void SetScroll(float s) { m_scroll = s; }
 		float GetScroll() { return m_scroll; }
@@ -43,12 +42,17 @@ class CObjBlock :public CObj
 
 
 		int map[10][100];
+		int* map2;
 
 		int m_chg;
 
 		bool mmmm;//アクション入って1回だけ
+		bool One_chg;
+		bool ikkai;
 
 		//unique_ptr<wchar_t> p[5];
 
-		
+
+		void Transfer(int map[MAP_Y][MAP_X], int * map2);
+
 };

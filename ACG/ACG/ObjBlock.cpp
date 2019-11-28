@@ -9,6 +9,7 @@
 
 #include "main.h"
 #include "ObjMapChanger.h"
+#include "ObjMapBacker.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -36,22 +37,45 @@ void CObjBlock::Action()
 	{
 		;
 	}
-	else if(mmmm=false)
+	else
 	{
-		m_chg = MapChanger->GetTT();
-		mmmm = true;
+
+		if (mmmm == false) {
+
+			//ikkai = MapChanger->GetONE();
+
+			m_chg = MapChanger->GetTT();
+			mmmm = true;
+
+		}
 	}
 
-	//メインからマップ2のアドレスを持ってくる
-	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
-	int* map2 = sceneM->GetM1();
-	bool One_chg = sceneM->GetONEs();
+	
+	if (MapChanger == nullptr)
+	{
+		;
+	}
+	else
+	{
+		ikkai = MapChanger->GetONE();
+	}
+
+
+
+	if (ikkai == true)
+	{
+		//メインからマップ2のアドレスを持ってくる
+		CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+		map2 = sceneM->GetM1();
+		One_chg = sceneM->GetONEs();
+
+	}
+	
 	int count = 0;//1000回数えるよう
 
 	if (m_chg == 0 && One_chg == true)
 	{
 		Transfer(map, map2);
-
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
 		One_chg = false;
@@ -59,22 +83,19 @@ void CObjBlock::Action()
 	}
 	else if (m_chg == 1&&One_chg==true)
 	{
-		
 		Transfer(map, map2);
-
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
+		
 		One_chg = false;
 
 	}
 	else if (m_chg == 2 && One_chg == true)
 	{
-
 		Transfer(map, map2);
-
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
-
+		
 		One_chg = false;
 
 
@@ -83,7 +104,6 @@ void CObjBlock::Action()
 	{
 
 		Transfer(map, map2);
-
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
 
@@ -95,7 +115,6 @@ void CObjBlock::Action()
 	{
 
 		Transfer(map, map2);
-
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
 
@@ -103,8 +122,6 @@ void CObjBlock::Action()
 
 
 	}
-
-
 
 	//主人公の位置を取得
 	CObjHero*hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
@@ -172,6 +189,13 @@ void CObjBlock::Action()
 			Objs::InsertObj(obj40, OBJ_MAPCHANGER, 10);
 			m_map[i][ex] = 0;
 		}
+
+		if (m_map[i][ex] == 41) {//次マップ移動扉
+			CObjMapBacker* obj40 = new CObjMapBacker(ex * 64.0f, i * 64.0f, 0);
+			Objs::InsertObj(obj40, OBJ_MAPBACKER, 10);
+			m_map[i][ex] = 0;
+		}
+
 		if (m_map[i][ex] == 7)
 		{
 			//4があれば敵を出現(x,y,type)
