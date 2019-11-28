@@ -56,4 +56,8 @@ private:
 	float Downspeed;
 
 	bool arw;
+	int type_;
+
+	int muteki_time;
+	int Revival_time;
 };

@@ -141,14 +141,19 @@ void CObjBlock::Action()
 			m_map[i][ex] = 0;
 		}
 
-		if (m_map[i][ex] == 30) {//í”
-			CObjThorn* obj30 = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0.1f);
-			Objs::InsertObj(obj30, OBJ_THORN, 10);
+		if (m_map[i][ex] == 30)	{//êGòr
+			CObjhand* obj30 = new CObjhand(ex * 64.0f, i * 64.0f, 0, 15);
+			Objs::InsertObj(obj30, OBJ_HAND, 10);
 			m_map[i][ex] = 0;
 		}
-		if (m_map[i][ex] == 31)	{//êGòr
-			CObjhand* obj31 = new CObjhand(ex * 64.0f, i * 64.0f, 0, 15);
-			Objs::InsertObj(obj31, OBJ_HAND, 10);
+		if (m_map[i][ex] == 33) {//í”
+			CObjThorn* obj33 = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0.1f,3);
+			Objs::InsertObj(obj33, OBJ_THORN, 10);
+			m_map[i][ex] = 0;
+		}
+		if (m_map[i][ex] == 37) {//í”
+			CObjThorn* obj37 = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0.1f, 7);
+			Objs::InsertObj(obj37, OBJ_THORN, 10);
 			m_map[i][ex] = 0;
 		}
 
