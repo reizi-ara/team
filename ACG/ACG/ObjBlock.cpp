@@ -110,36 +110,40 @@ void CObjBlock::Action()
 		m_scroll -= hero->GetVX();//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
-	//敵出現ライン
+	/*/敵出現ライン
 	//主人公の位置+500を敵出現ラインにする
 	float line = hx + (-m_scroll) + 600;
 
 	//敵出現ラインを要素番号化
 	int ex = ((int)line) / 64;
-
+	*/
 	//敵出現ラインの列を検索
-	for(int i=0;i<10;i++)
-	{
-		if (m_map[i][ex] == 20) {//敵1(PJ
-			CObjEnemy* obj20 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 1);
-			Objs::InsertObj(obj20, OBJ_ENEMY, 10);
-			m_map[i][ex] = 0;
-		}
-		if (m_map[i][ex] == 21) {//敵2(Jump
-			CObjEnemy* obj21 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 2);
-			Objs::InsertObj(obj21, OBJ_ENEMY, 10);
-			m_map[i][ex] = 0;
-		}
-		if (m_map[i][ex] == 22) {//敵3
-			CObjEnemy* obj22 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 3);
-			Objs::InsertObj(obj22, OBJ_ENEMY, 10);
-			m_map[i][ex] = 0;
-		}
-		if (m_map[i][ex] == 23) {//敵4
-			CObjEnemy* obj23 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 4);
-			Objs::InsertObj(obj23, OBJ_ENEMY, 10);
-			m_map[i][ex] = 0;
-		}
+	for (int ex = 0; ex < 100; ex++) {
+		for (int i = 0; i < 10; i++)
+		{
+			if (m_map[i][ex] == 0) {
+				;
+			}
+			else if (m_map[i][ex] == 20) {//敵1(PJ
+				CObjEnemy* obj20 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 1);
+				Objs::InsertObj(obj20, OBJ_ENEMY, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 21) {//敵2(Jump
+				CObjEnemy* obj21 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 2);
+				Objs::InsertObj(obj21, OBJ_ENEMY, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 22) {//敵3
+				CObjEnemy* obj22 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 3);
+				Objs::InsertObj(obj22, OBJ_ENEMY, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 23) {//敵4
+				CObjEnemy* obj23 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 4);
+				Objs::InsertObj(obj23, OBJ_ENEMY, 10);
+				m_map[i][ex] = 0;
+			}
 
 		if (m_map[i][ex] == 30)	{//触腕
 			CObjhand* obj30 = new CObjhand(ex * 64.0f, i * 64.0f, 0, 15);
@@ -157,18 +161,19 @@ void CObjBlock::Action()
 			m_map[i][ex] = 0;
 		}
 
-		if (m_map[i][ex] == 40) {//次マップ移動扉
-			CObjMapChanger* obj40 = new CObjMapChanger(ex * 64.0f, i * 64.0f,0);
-			Objs::InsertObj(obj40, OBJ_MAPCHANGER, 10);
-			m_map[i][ex] = 0;
-		}
-		if (m_map[i][ex] == 50)	{//本棚１
-			CObjMessage* obje = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
-			Objs::InsertObj(obje, OBJ_MESSAGE, 15);
-			m_map[i][ex] = 0;
-		}
+			else if (m_map[i][ex] == 40) {//次マップ移動扉
+				CObjMapChanger* obj40 = new CObjMapChanger(ex * 64.0f, i * 64.0f, 0);
+				Objs::InsertObj(obj40, OBJ_MAPCHANGER, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 50) {//本棚１
+				CObjMessage* obje = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
+				Objs::InsertObj(obje, OBJ_MESSAGE, 15);
+				m_map[i][ex] = 0;
+			}
 
-		
+
+		}
 	}
 }
 
