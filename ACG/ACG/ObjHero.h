@@ -38,6 +38,7 @@ class CObjHero :public CObj
 		int Getpose() { return m_pose; }
 		int Getattack() { return wepon_attack; }
 		void GiveSpeed(float speed) { sohuran = speed; }
+		void SetMessageflag(bool att) { Message_flag = att; }
 
 	private:
 		float m_px;	//ˆÊ’u
@@ -96,4 +97,5 @@ class CObjHero :public CObj
 		float g_damage;
 
 		float sohuran;
+		bool Message_flag;
 };

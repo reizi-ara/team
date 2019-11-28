@@ -10,18 +10,23 @@
 #include "GameHead.h"
 #include "ObjThorn.h"
 
-#define LIFE 1200;
+#define LIFE 90
 #define SIZE 64*1
+#define DE_MAGE 50
+#define MUTEKI 20;
 //使用するネームスペースdayo
 using namespace GameL;
 
-CObjThorn::CObjThorn(float x, float y, float t,float s)
+CObjThorn::CObjThorn(float x, float y, float t,float s,int w)
 {
 	m_px = x;	//位置
 	m_py = y;
 
 	type = t;
 	Downspeed = s;
+
+	type = w;
+	size = (w-1)*32;
 }
 
 //イニシャライズ
@@ -52,78 +57,102 @@ void CObjThorn::Init()
 
 	hit_length = 70.0f;
 
-	size = 0;
 	isplayerhit = false;
 
 	time = 0;
 	arw = isplayerhit;
+
+	muteki_time = 0;
+
+	time = 0;
+	Revival_time = 0;
 }
 
 //アクション
 void CObjThorn::Action()
 {
-	//当たり判定
-	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-
-	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	float pl_x = obj->GetX();
-	float pl_y = obj->GetY();
-	pl_x += 32.0f;
-	pl_y += 32.0f;
-
-	CObjBlock* block3 = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	float sl = block3->GetScroll();
-	float en_x = m_px + 32.0f;
-	float en_y = m_py + 32.0f;
-
-	if (pl_x - sl <= en_x + hit_length &&
-		pl_x - sl >= en_x - hit_length &&
-		pl_y <= en_y + hit_length &&
-		pl_y >= en_y - hit_length)
+	if (en_life > 0)
 	{
-		//接触時
-		isplayerhit = true;
+		//当たり判定
+		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
-	}
-	else
-	{
-		isplayerhit = false;
-		obj->GiveSpeed(1.0f);
+		CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+		float pl_x = obj->GetX();
+		float pl_y = obj->GetY();
+		pl_x += 32.0f;
+		pl_y += 32.0f;
 
-	}
+		CObjBlock* block3 = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+		float sl = block3->GetScroll();
+		float en_x = m_px + 32.0f;
+		float en_y = m_py + 32.0f;
 
-
-
-	//当たり判定ここまで
-
-	if (isplayerhit == true)
-	{
-		obj->GiveSpeed(Downspeed);
-		en_life--;
-		time++;
-		if (time % 16 == 0)
-			m_ani_frame += 1;
-		if (m_ani_frame == 5)
+		if (pl_x - sl <= en_x + hit_length + size &&
+			pl_x - sl >= en_x - hit_length - size &&
+			pl_y <= en_y + hit_length &&
+			pl_y >= en_y - hit_length)
 		{
-			m_ani_frame = 3;
+			//接触時
+			isplayerhit = true;
+
 		}
+		else
+		{
+			isplayerhit = false;
+			obj->GiveSpeed(1.0f);
+
+		}
+
+
+
+		//当たり判定ここまで
+
+		muteki_time--;
+		if (isplayerhit == true)
+		{
+			obj->GiveSpeed(Downspeed);
+			time++;
+			if (time % 16 == 0)
+				m_ani_frame += 1;
+			if (m_ani_frame == 5)
+			{
+				m_ani_frame = 3;
+			}
+			if (obj->Getattack() > 0 &&
+				obj->Getattack() != 4 &&
+				muteki_time <= 0)
+			{
+				muteki_time = MUTEKI;
+				en_life -= DE_MAGE;
+			}
+		}
+
+
+		if (en_life < 0)
+		{
+			obj->SetVX(0.0f);
+			obj->SetVY(0.0f);
+			obj->GiveSpeed(1.0f);
+		}
+
+
+
+
+
 	}
-
-
-	if (en_life < 0)
+	
+	if (en_life <= 0)
 	{
-		obj->SetVX(0.0f);
-		obj->SetVY(0.0f);
-		obj->GiveSpeed(1.0f);
-		this->SetStatus(false);
+		m_ani_frame = 0;
+		Revival_time++;
+		if (Revival_time == 90)
+		{
+			en_life = LIFE;
+			Revival_time = 0;
+		}
+		
 	}
-
-
-
-
-
-
-
+	
 }
 
 //ドロー
@@ -143,19 +172,22 @@ void CObjThorn::Draw()
 
 	//切り取り位置の設定
 	src.m_top = 0.0f;
-	src.m_left = 0.0f + AniData[m_ani_frame] * 64;;
-	src.m_right = 64.0f + AniData[m_ani_frame] * 64;;
+	src.m_left = 0.0f + AniData[m_ani_frame] * 64;
+	src.m_right = 64.0f + AniData[m_ani_frame] * 64;
 	src.m_bottom = 64.0f;
 
 	//ブロック情報を持ってくる
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
-	//表示位置の設定
-	dst.m_top = 0.0f + m_py - size;
-	dst.m_left = 0.0f + m_px + block->GetScroll() - size;
-	dst.m_right = 64.0f + m_px + block->GetScroll() + size;
-	dst.m_bottom = 64.0f + m_py + size;
+	for (int z = 0; z < type; z++)
+	{
+		//表示位置の設定
+		dst.m_top = 0.0f + m_py;
+		dst.m_left = 0.0f + m_px + block->GetScroll() - size+64*z;
+		dst.m_right = dst.m_left+ 64.0f;
+		dst.m_bottom = 64.0f + m_py;
 
-	//描画
-	Draw::Draw(2, &src, &dst, c, 0.0f);
+		//描画
+		Draw::Draw(2, &src, &dst, c, 0.0f);
+	}
 }

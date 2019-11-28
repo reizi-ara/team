@@ -60,11 +60,13 @@ void CObjHero::Init()
 	sohuran = 1;
 	//当たり判定用のHitBoxを作成
 	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_PLAYER, OBJ_HERO, 1);
+	Message_flag = false;
 }
 
 //アクション
 void CObjHero::Action()
 {
+	
 	if (g_damage>0&&muteki_time<=0)
 	{
 		p_life -= g_damage;
@@ -280,6 +282,9 @@ void CObjHero::Action()
 	m_px += m_vx * sohuran;
 	m_py += m_vy * sohuran;
 
+	CObjMessage* obj = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
+	
+
 }
 
 
@@ -304,10 +309,10 @@ void CObjHero::Draw()
 	if (p_menuflag == false)
 	{
 
-		if(m_pose==2.0f)
+		if (m_pose == 2.0f)
 		{
 			src.m_top = 0.0f + m_pose * 64;
-			src.m_left = 0.0f ;
+			src.m_left = 0.0f;
 			src.m_right = 64.0f + src.m_left;
 			src.m_bottom = 64.0f + src.m_top;
 		}
@@ -318,118 +323,120 @@ void CObjHero::Draw()
 			src.m_right = 64.0f + src.m_left;
 			src.m_bottom = 64.0f + src.m_top;
 		}
-	 //切り取り位置の設定
-	
-
-	//表示位置の設定
-	dst.m_top = 0.0f + m_py-16.0f;
-	dst.m_left = (64.0f*m_posture) + m_px;
-	dst.m_right = (64 - 64.0f*m_posture) + m_px;
-	dst.m_bottom = 64.0f + m_py ;
-
-	//描画
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+		//切り取り位置の設定
 
 
+	   //表示位置の設定
+		dst.m_top = 0.0f + m_py - 16.0f;
+		dst.m_left = (64.0f*m_posture) + m_px;
+		dst.m_right = (64 - 64.0f*m_posture) + m_px;
+		dst.m_bottom = 64.0f + m_py;
 
-
-	//体力バー(枠)
-	src.m_top = 128.0f;
-	src.m_left = 256.0f;
-	src.m_right = 256.0f + src.m_left;
-	src.m_bottom = 64.0f + src.m_top;
-
-	//表示位置の設定
-	dst.m_top = 8.0f;
-	dst.m_left = 8.0f;
-	dst.m_right = 256.0f + dst.m_left;
-	dst.m_bottom = 64.0f + dst.m_top;
-
-	//描画
-	Draw::Draw(0, &src, &dst, c, 0.0f);
-
-
-	//体力バー
-	if (p_life / p_maxlife > 0.5)//ao
-	{
-		src.m_top = 128.0f;
-		src.m_left = 64.0f * 3;
-		src.m_right = 64.0f + src.m_left;
-		src.m_bottom = 64.0f + src.m_top;
-	}
-	else if (p_life / p_maxlife <= 0.5&& p_life / p_maxlife > 0.2)//ki
-	{
-		src.m_top = 128.0f;
-		src.m_left = 64.0f * 2;
-		src.m_right = 64.0f + src.m_left;
-		src.m_bottom = 64.0f + src.m_top;
-	}
-	else if (p_life / p_maxlife <= 0.2)//aka
-	{
-		src.m_top = 128.0f;
-		src.m_left = 64.0f * 1;
-		src.m_right = 64.0f + src.m_left;
-		src.m_bottom = 64.0f + src.m_top;
-	}
-
-	//表示位置の設定
-	dst.m_top = 24.0f;
-	dst.m_left = 16.0f;
-	dst.m_right = (256.0f-16.0f)*(p_life/p_maxlife)+dst.m_left;
-	dst.m_bottom = 32.0f+ dst.m_top;
-
-	//描画
-	if(p_life>0)
+		//描画
 		Draw::Draw(0, &src, &dst, c, 0.0f);
 
 
 
-	wepon_have = 5;//仮置き
 
-	
-		//アクション
-	if (Input::GetVKey(VK_RETURN))
-	{
-		if(attack_set == false&&attack_flag==false)
-		{
-			m_ani_frame = 0;
-			attack_set = true;
-			attack_flag = true;
-		}
-	}
-	else
-	{
-		attack_flag = false;
-	}
+		//体力バー(枠)
+		src.m_top = 128.0f;
+		src.m_left = 256.0f;
+		src.m_right = 256.0f + src.m_left;
+		src.m_bottom = 64.0f + src.m_top;
 
-		if (attack_set == true && wepon_have > 0 && wepon_have != 4)
+		//表示位置の設定
+		dst.m_top = 8.0f;
+		dst.m_left = 8.0f;
+		dst.m_right = 256.0f + dst.m_left;
+		dst.m_bottom = 64.0f + dst.m_top;
+
+		//描画
+		Draw::Draw(0, &src, &dst, c, 0.0f);
+
+
+		//体力バー
+		if (p_life / p_maxlife > 0.5)//ao
 		{
-			//切り取り位置の設定
-			src.m_top = 0.0f + wepon_have * 64;
-			src.m_left = 0.0f + AniData3[m_ani_frame] * 64;
+			src.m_top = 128.0f;
+			src.m_left = 64.0f * 3;
 			src.m_right = 64.0f + src.m_left;
-			src.m_bottom = 64.0f + src.m_top+46.0f;
-
-			//表示位置の設定
-			dst.m_top = 0.0f + m_py;
-			dst.m_left = (64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48 ;
-			dst.m_right = (64 - 64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48 ;
-			dst.m_bottom = 64.0f + m_py;
-
-			//描画
-			Draw::Draw(0, &src, &dst, c, 0.0f);
-			wepon_attack = wepon_have;
+			src.m_bottom = 64.0f + src.m_top;
 		}
-		else
+		else if (p_life / p_maxlife <= 0.5&& p_life / p_maxlife > 0.2)//ki
 		{
-			wepon_attack = 0;
+			src.m_top = 128.0f;
+			src.m_left = 64.0f * 2;
+			src.m_right = 64.0f + src.m_left;
+			src.m_bottom = 64.0f + src.m_top;
+		}
+		else if (p_life / p_maxlife <= 0.2)//aka
+		{
+			src.m_top = 128.0f;
+			src.m_left = 64.0f * 1;
+			src.m_right = 64.0f + src.m_left;
+			src.m_bottom = 64.0f + src.m_top;
+		}
+
+		//表示位置の設定
+		dst.m_top = 24.0f;
+		dst.m_left = 16.0f;
+		dst.m_right = (256.0f - 16.0f)*(p_life / p_maxlife) + dst.m_left;
+		dst.m_bottom = 32.0f + dst.m_top;
+
+		//描画
+		if (p_life > 0)
+			Draw::Draw(0, &src, &dst, c, 0.0f);
+
+
+
+		wepon_have = 5;//仮置き
+
+
+			//アクション
+		if (Message_flag == false)
+		{
+			if (Input::GetVKey(VK_RETURN))
+			{
+				if (attack_set == false && attack_flag == false)
+				{
+					m_ani_frame = 0;
+					attack_set = true;
+					attack_flag = true;
+				}
+			}
+			else
+			{
+				attack_flag = false;
+			}
+
+			if (attack_set == true && wepon_have > 0 && wepon_have != 4)
+			{
+				//切り取り位置の設定
+				src.m_top = 0.0f + wepon_have * 64;
+				src.m_left = 0.0f + AniData3[m_ani_frame] * 64;
+				src.m_right = 64.0f + src.m_left;
+				src.m_bottom = 64.0f + src.m_top + 46.0f;
+
+				//表示位置の設定
+				dst.m_top = 0.0f + m_py;
+				dst.m_left = (64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48;
+				dst.m_right = (64 - 64.0f*m_posture) + m_px + (m_posture * 2 - 1) * 48;
+				dst.m_bottom = 64.0f + m_py;
+
+				//描画
+				Draw::Draw(0, &src, &dst, c, 0.0f);
+				wepon_attack = wepon_have;
+			}
+			else
+			{
+				wepon_attack = 0;
+			}
+		}
+		if (m_ani_frame > 2)
+		{
+			attack_set = false;
 		}
 	}
-	if (m_ani_frame > 2)
-	{
-		attack_set = false;
-	}
-
 
 	if (p_menuflag == true)				//メニュー
 	{
