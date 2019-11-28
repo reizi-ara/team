@@ -26,6 +26,9 @@ CObjMapChanger::CObjMapChanger(float x, float y,float t)
 //イニシャライズ
 void CObjMapChanger::Init()
 {
+	//CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	//destroy = sceneM->GetDS();
+
 	//blockとの衝突確認用
 	m_hit_up = false;
 	m_hit_down = false;
@@ -71,21 +74,24 @@ void CObjMapChanger::Action()
 		&& m_OneChg == false)
 	{//接触時
 		isplayerhit = true;
+		m_OneChg = true;
 
 		CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-		obj->SetX(2*64);
+		obj->SetX(2 * 64);
+		obj->SetY(7 * 64);
 
 		CObjBlock*objB = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 		objB->SetScroll(0);
 		objB->SetM_CHG(mmmm);
+		objB->Set_ikkai(m_OneChg);//ブロックのマップアドレスをtrueにする部分
 
 		CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 		sceneM->SetMMMMMM(m_change);
 		sceneM->SetASDF(m_OneChg);
 
-		m_OneChg = true;
-
 		
+
+		this->SetStatus(false);
 
 		
 
@@ -118,7 +124,7 @@ void CObjMapChanger::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top = 64.0f*3;
+	src.m_top = 64.0f*4;
 	src.m_left = 64.0f*4;
 	src.m_right = 64.0f*5;
 	src.m_bottom = 64.0f*6;
@@ -127,7 +133,7 @@ void CObjMapChanger::Draw()
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//表示位置の設定
-	dst.m_top = -64.0f*2 + m_py-size;
+	dst.m_top = -64.0f*1 + m_py-size;
 	dst.m_left = 0.0f + m_px + block->GetScroll() - size;
 	dst.m_right = 64.0f + m_px + block->GetScroll()+size;
 	dst.m_bottom = 64.0f + m_py + size;

@@ -15,10 +15,10 @@
 using namespace GameL;
 
 
-CObjBlock::CObjBlock(int map[10][100])
+CObjBlock::CObjBlock(int map[MAP_Y][MAP_X])
 {
 	//マップデータをコピー
-	memcpy(m_map, map, sizeof(int)*(10 * 100));
+	memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
 }
 
 //イニシャライズ
@@ -26,41 +26,12 @@ void CObjBlock::Init()
 {
 	mmmm = false;
 	m_scroll = 0.0f;
+	ikkai = true;
 }
 
 //アクション
 void CObjBlock::Action()
 {
-	//マップチェンジャーから情報を持ってくる
-	CObjMapChanger*MapChanger = (CObjMapChanger*)Objs::GetObj(OBJ_MAPCHANGER);
-	if (MapChanger == nullptr)
-	{
-		;
-	}
-	else
-	{
-
-		if (mmmm == false) {
-
-			//ikkai = MapChanger->GetONE();
-
-			m_chg = MapChanger->GetTT();
-			mmmm = true;
-
-		}
-	}
-
-	
-	if (MapChanger == nullptr)
-	{
-		;
-	}
-	else
-	{
-		ikkai = MapChanger->GetONE();
-	}
-
-
 
 	if (ikkai == true)
 	{
@@ -68,6 +39,7 @@ void CObjBlock::Action()
 		CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 		map2 = sceneM->GetM1();
 		One_chg = sceneM->GetONEs();
+		ikkai = false;
 
 	}
 	
@@ -142,16 +114,10 @@ void CObjBlock::Action()
 		m_scroll -= hero->GetVX();//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
-	/*/敵出現ライン
-	//主人公の位置+500を敵出現ラインにする
-	float line = hx + (-m_scroll) + 600;
-
-	//敵出現ラインを要素番号化
-	int ex = ((int)line) / 64;
-	*/
+	
 	//敵出現ラインの列を検索
-	for (int ex = 0; ex < 100; ex++) {
-		for (int i = 0; i < 10; i++)
+	for (int ex = 0; ex < MAP_X; ex++) {
+		for (int i = 0; i < MAP_Y; i++)
 		{
 			if (m_map[i][ex] == 0) {
 				;
@@ -177,25 +143,30 @@ void CObjBlock::Action()
 				m_map[i][ex] = 0;
 			}
 
-		if (m_map[i][ex] == 30)	{//触腕
-			CObjhand* obj30 = new CObjhand(ex * 64.0f, i * 64.0f, 0, 15);
-			Objs::InsertObj(obj30, OBJ_HAND, 10);
-			m_map[i][ex] = 0;
-		}
-		if (m_map[i][ex] == 33) {//蔦
-			CObjThorn* obj33 = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0.1f,3);
-			Objs::InsertObj(obj33, OBJ_THORN, 10);
-			m_map[i][ex] = 0;
-		}
-		if (m_map[i][ex] == 37) {//蔦
-			CObjThorn* obj37 = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0.1f, 7);
-			Objs::InsertObj(obj37, OBJ_THORN, 10);
-			m_map[i][ex] = 0;
-		}
+			else if (m_map[i][ex] == 30) {//触腕
+				CObjhand* obj30 = new CObjhand(ex * 64.0f, i * 64.0f, 0, 15);
+				Objs::InsertObj(obj30, OBJ_HAND, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 33) {//蔦
+				CObjThorn* obj33 = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0.1f, 3);
+				Objs::InsertObj(obj33, OBJ_THORN, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 37) {//蔦
+				CObjThorn* obj37 = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0.1f, 7);
+				Objs::InsertObj(obj37, OBJ_THORN, 10);
+				m_map[i][ex] = 0;
+			}
 
 			else if (m_map[i][ex] == 40) {//次マップ移動扉
 				CObjMapChanger* obj40 = new CObjMapChanger(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obj40, OBJ_MAPCHANGER, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 41) {//次マップ移動扉
+				CObjMapBacker* obj41 = new CObjMapBacker(ex * 64.0f, i * 64.0f, 0);
+				Objs::InsertObj(obj41, OBJ_MAPBACKER, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 50) {//本棚１
@@ -241,9 +212,9 @@ void CObjBlock::BlockHit(
 	*bt = 0;
 
 	//m_mapの全要素にアクセス
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < MAP_Y; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		for (int j = 0; j < MAP_X; j++)
 		{
 			if (m_map[i][j] > 0&&m_map[i][j]<=9)
 			{

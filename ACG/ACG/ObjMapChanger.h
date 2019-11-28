@@ -17,8 +17,8 @@ public:
 	void Action();  //アクション
 	void Draw();	//ドロー
 
-	int GetTT() { return m_change; }
-	int GetONE() { return m_OneChg; }
+	//int GetTT() { return m_change; }
+	//int GetONE() { return m_OneChg; }
 
 
 	//void MapChanger(int m, int m_map[MAP_Y][MAP_X], unique_ptr<wchar_t>* a);
@@ -46,6 +46,9 @@ private:
 	int m_change;
 
 	bool mmmm;
+
+	
+	int destroy;//マップが変わると削除する用
 
 
 

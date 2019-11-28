@@ -18,8 +18,8 @@ public:
 	void Action();  //アクション
 	void Draw();	//ドロー
 
-	int GetTT() { return m_change; }
-	int GetONE() { return m_OneChg; }
+	//int GetTT() { return m_change; }
+	//int GetONE() { return m_OneChg; }
 
 private:
 	float m_px;	//位置

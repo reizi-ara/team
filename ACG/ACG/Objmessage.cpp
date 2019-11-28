@@ -55,6 +55,18 @@ void CObjMessage::Init()
 	isplayerhit = false;
 	Message_flag = false;
 
+	//削除用
+	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	if (sceneM == nullptr)
+	{
+		;
+	}
+	else
+	{
+		destryNum = sceneM->GetDS();
+
+	}
+
 }
 
 //アクション
@@ -123,7 +135,14 @@ void CObjMessage::Action()
 
 
 
+	//削除用処理
+	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	MdestryNum = sceneM->GetDS();
 
+	if (destryNum != MdestryNum)
+	{
+		this->SetStatus(false);
+	}
 
 
 

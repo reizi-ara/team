@@ -90,18 +90,6 @@ void CSceneMain::InitScene()
 void CSceneMain::Scene()
 {
 
-
-	CObjMapChanger*MapChanger = (CObjMapChanger*)Objs::GetObj(OBJ_MAPCHANGER);
-
-	if (MapChanger == nullptr)
-	{
-		;
-	}
-	else
-	{
-		OneRead = MapChanger->GetONE();
-	}
-
 	if (m_chg == 0 && OneRead == true)
 	{
 		MapRead(m_chg, map2, p);
