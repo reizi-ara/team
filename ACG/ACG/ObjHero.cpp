@@ -294,7 +294,7 @@ void CObjHero::Draw()
 {
 	int AniData[8] =
 	{
-		0,1,2,3,4,5,6,7
+		0,1,2,4,3,2,4,5
 	}; 
 	int AniData3[8] =
 	{
