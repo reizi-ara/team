@@ -6,6 +6,7 @@
 #include "GameL\HitBoxManager.h"
 #include "ObjHero.h"
 #include "GameL\SceneObjManager.h"
+#include"GameL\DrawFont.h"
 
 #include "GameHead.h"
 #include "Objmessage2.h"
@@ -141,5 +142,10 @@ void CObjMessage2::Draw()
 		dst.m_right = WINDOW_SIZE_W;
 		dst.m_bottom = WINDOW_SIZE_H;
 		Draw::Draw(2, &src, &dst, c, 0.0f);
+
+		Font::StrDraw(L"この不気味な洋館に迷い込んで数日が経った。", 150, 550, 25, c);
+		Font::StrDraw(L"もしかすると私以外に迷い込んだ人間がいるかもしれない。", 150, 575, 25, c);
+		Font::StrDraw(L"何か分かったことがあればこのメモに記そうと思う。", 150, 600, 25, c);
+		Font::StrDraw(L"著者：田幡", 750, 675, 20, c);
 	}
 }

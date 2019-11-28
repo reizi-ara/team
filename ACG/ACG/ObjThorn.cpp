@@ -141,7 +141,7 @@ void CObjThorn::Action()
 
 	}
 	
-	if (en_life <= 0)
+	/*if (en_life <= 0)
 	{
 		m_ani_frame = 0;
 		Revival_time++;
@@ -151,7 +151,7 @@ void CObjThorn::Action()
 			Revival_time = 0;
 		}
 		
-	}
+	}*/
 	
 }
 
