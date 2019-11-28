@@ -168,7 +168,7 @@ void CObjBlock::Action()
 			}
 			else if (m_map[i][ex] == 50) {//–{’I‚P
 				CObjMessage* obje = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
-				Objs::InsertObj(obje, OBJ_MESSAGE, 15);
+				Objs::InsertObj(obje, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
 

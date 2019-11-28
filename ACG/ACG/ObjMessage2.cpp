@@ -8,14 +8,14 @@
 #include "GameL\SceneObjManager.h"
 
 #include "GameHead.h"
-#include "Objmessage.h"
+#include "Objmessage2.h"
 #include "main.h"
 
 #define LIFE 80;
 //使用するネームスペースdayo
 using namespace GameL;
 
-CObjMessage::CObjMessage(float x, float y, float t)
+CObjMessage2::CObjMessage2(float x, float y, float t)
 {
 	m_px = x;	//位置
 	m_py = y;
@@ -24,7 +24,7 @@ CObjMessage::CObjMessage(float x, float y, float t)
 }
 
 //イニシャライズ
-void CObjMessage::Init()
+void CObjMessage2::Init()
 {
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
@@ -52,13 +52,13 @@ void CObjMessage::Init()
 	hit_length = 64.0f;
 
 	size = 0;
-	isplayerhit = false;
 	Message_flag = false;
+	book_isplayerhit = false;
 
 }
 
 //アクション
-void CObjMessage::Action()
+void CObjMessage2::Action()
 {
 
 	//通常速度
@@ -80,31 +80,19 @@ void CObjMessage::Action()
 	float en_x = m_px + 32.0f;
 	float en_y = m_py + 32.0f;
 
-	if (pl_x - sl <= en_x + hit_length &&
-		pl_x - sl >= en_x - hit_length &&
-		pl_y <= en_y + hit_length &&
-		pl_y >= en_y - hit_length)
-	{//接触時
-		isplayerhit = true;
-		obj->SetMessageflag(isplayerhit);
-	}
-	else
-	{
-		isplayerhit = false;
-		obj->SetMessageflag(isplayerhit);
-	}
-	//当たり判定ここまで
+	CObjMessage* window = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
+	book_isplayerhit = window->Getwindow_flag();
 
-	if (isplayerhit == true)
+
+	if (book_isplayerhit == true)
 	{
 		if (Input::GetVKey('Q') == true)
 		{
-			CObjMessage2* obje = new CObjMessage2(64.0f, 64.0f, 0);
-			Objs::InsertObj(obje, OBJ_MESSAGE2, 15);
+			Message_flag = true;
 			obj->SetVX(0.0f);
 			obj->SetVY(0.0f);
 		}
-		
+
 	}
 
 	if (Message_flag == true)
@@ -132,34 +120,9 @@ void CObjMessage::Action()
 }
 
 //ドロー
-void CObjMessage::Draw()
+void CObjMessage2::Draw()
 {
-
-	//描画カラー情報
-	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-
-	RECT_F src;//描画元切り取り位置
-	RECT_F dst;//描画先表示位置
-
-	//切り取り位置の設定
-	src.m_top = 64.0f*4;
-	src.m_left = 64.0f*2;
-	src.m_right = 64.0f*4;
-	src.m_bottom = 64.0f*6;
-	//x上海紅茶館->o大英紅茶館
-	//ブロック情報を持ってくる
-	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-
-	//表示位置の設定
-	dst.m_top = 0.0f + m_py - size-32;
-	dst.m_left = 0.0f + m_px + block->GetScroll() - size-32;
-	dst.m_right = 64.0f + m_px + block->GetScroll() + size+32;
-	dst.m_bottom = 64.0f + m_py + size;
-
-	//描画
-	Draw::Draw(2, &src, &dst, c, 0.0f);
-
-	/*if (isplayerhit == true)
+	if (Message_flag == true)
 	{
 		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
@@ -167,37 +130,16 @@ void CObjMessage::Draw()
 		RECT_F dst;//描画先表示位置
 
 		//切り取り位置の設定
-		src.m_top = 0.0f;
-		src.m_left = 0.0f;
-		src.m_right = 64.0f;
-		src.m_bottom = 64.0f;
+		src.m_top = 64.0f * 6;
+		src.m_left = 64.0f * 0;
+		src.m_right = 64.0f * 8;
+		src.m_bottom = 64.0f * 8;
 
 		//背景の位置を設定し描画
-		dst.m_top = 0.0f;
-		dst.m_left = 0.0f;
-		dst.m_right = 32.0f;
-		dst.m_bottom = 32.0f;
-		Draw::Draw(8, &src, &dst, c, 0.0f);
-	}*/
-
-	/*if (Message_flag == true)
-	{
-		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-
-		RECT_F src;//描画元切り取り位置
-		RECT_F dst;//描画先表示位置
-
-		//切り取り位置の設定
-		src.m_top = 64.0f*6;
-		src.m_left = 64.0f*0;
-		src.m_right = 64.0f*8;
-		src.m_bottom = 64.0f*8;
-
-		//背景の位置を設定し描画
-		dst.m_top =WINDOW_SIZE_H*0.7;
+		dst.m_top = WINDOW_SIZE_H * 0.7;
 		dst.m_left = 0.0f;
 		dst.m_right = WINDOW_SIZE_W;
 		dst.m_bottom = WINDOW_SIZE_H;
 		Draw::Draw(2, &src, &dst, c, 0.0f);
-	}*/
+	}
 }
