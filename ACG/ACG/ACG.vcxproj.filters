@@ -114,6 +114,9 @@
     <ClCompile Include="Objmessage.cpp">
       <Filter>ソース ファイル\GameMain</Filter>
     </ClCompile>
+    <ClCompile Include="ObjMessage2.cpp">
+      <Filter>ソース ファイル\GameMain</Filter>
+    </ClCompile>
     <ClCompile Include="ObjMapBacker.cpp">
       <Filter>ソース ファイル\GameMain</Filter>
     </ClCompile>
@@ -204,6 +207,9 @@
       <Filter>ソース ファイル\GameMain</Filter>
     </ClInclude>
     <ClInclude Include="Objmessage.h">
+      <Filter>ソース ファイル\GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMessage2.h">
       <Filter>ソース ファイル\GameMain</Filter>
     </ClInclude>
     <ClInclude Include="ObjMapBacker.h">

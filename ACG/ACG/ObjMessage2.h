@@ -6,17 +6,16 @@
 using namespace GameL;
 
 //シーン：ゲームタイトル
-class CObjMessage : public CObj
+class CObjMessage2 : public CObj
 {
 public:
-	CObjMessage(float x, float y, float t);
-	~CObjMessage() {};
+	CObjMessage2(float x, float y, float t);
+	~CObjMessage2() {};
 	void Init();	//イニシャライズ
 	void Action();  //アクション
 	void Draw();	//ドロー
 
 	float GetVx() { return m_vx; }
-	bool Getwindow_flag() { return isplayerhit; }
 
 private:
 	float m_px;	//位置
@@ -51,13 +50,8 @@ private:
 	int size;
 	int awake;
 	int type;
-	bool isplayerhit;
+	bool book_isplayerhit;
 	bool Message_flag;
-
-
-	//削除用
-	int destryNum;
-	int MdestryNum;
-
 };
+
 

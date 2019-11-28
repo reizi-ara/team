@@ -148,13 +148,13 @@ void CObjBlock::Action()
 				Objs::InsertObj(obj30, OBJ_HAND, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 33) {//’Ó
-				CObjThorn* obj33 = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0.1f, 3);
+			else if (m_map[i][ex] == 33) {//’Ó3
+				CObjThorn* obj33 = new CObjThorn(ex * 64.0f, i * 64.0f, 0.0f, 0.1f, 3);
 				Objs::InsertObj(obj33, OBJ_THORN, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 37) {//’Ó
-				CObjThorn* obj37 = new CObjThorn(ex * 64.0f, i * 64.0f, 0, 0.1f, 7);
+			else if (m_map[i][ex] == 37) {//’Ó7
+				CObjThorn* obj37 = new CObjThorn(ex * 64.0f, i * 64.0f, 0.0f, 0.1f, 7);
 				Objs::InsertObj(obj37, OBJ_THORN, 10);
 				m_map[i][ex] = 0;
 			}
@@ -171,7 +171,7 @@ void CObjBlock::Action()
 			}
 			else if (m_map[i][ex] == 50) {//–{’I‚P
 				CObjMessage* obje = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
-				Objs::InsertObj(obje, OBJ_MESSAGE, 15);
+				Objs::InsertObj(obje, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
 

@@ -109,7 +109,7 @@ void CObjThorn::Action()
 			isplayerhit = true;
 
 		}
-		else
+		else if(isplayerhit == true)
 		{
 			isplayerhit = false;
 			obj->GiveSpeed(1.0f);
@@ -141,7 +141,7 @@ void CObjThorn::Action()
 		}
 
 
-		if (en_life < 0)
+		if (en_life <= 0)
 		{
 			obj->SetVX(0.0f);
 			obj->SetVY(0.0f);
@@ -154,11 +154,11 @@ void CObjThorn::Action()
 
 	}
 	
-	if (en_life <= 0)
+	if (en_life < 0)
 	{
 		m_ani_frame = 0;
 		Revival_time++;
-		if (Revival_time == 90)
+		if (Revival_time > 90)
 		{
 			en_life = LIFE;
 			Revival_time = 0;

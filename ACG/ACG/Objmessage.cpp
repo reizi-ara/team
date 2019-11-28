@@ -111,7 +111,8 @@ void CObjMessage::Action()
 	{
 		if (Input::GetVKey('Q') == true)
 		{
-			Message_flag = true;
+			CObjMessage2* obje = new CObjMessage2(64.0f, 64.0f, 0);
+			Objs::InsertObj(obje, OBJ_MESSAGE2, 15);
 			obj->SetVX(0.0f);
 			obj->SetVY(0.0f);
 		}
@@ -198,7 +199,7 @@ void CObjMessage::Draw()
 		Draw::Draw(8, &src, &dst, c, 0.0f);
 	}*/
 
-	if (Message_flag == true)
+	/*if (Message_flag == true)
 	{
 		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
@@ -217,5 +218,5 @@ void CObjMessage::Draw()
 		dst.m_right = WINDOW_SIZE_W;
 		dst.m_bottom = WINDOW_SIZE_H;
 		Draw::Draw(2, &src, &dst, c, 0.0f);
-	}
+	}*/
 }

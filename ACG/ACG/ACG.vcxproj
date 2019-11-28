@@ -132,6 +132,7 @@
     <ClCompile Include="ObjHero.cpp" />
     <ClCompile Include="ObjMapChanger.cpp" />
     <ClCompile Include="Objmessage.cpp" />
+    <ClCompile Include="ObjMessage2.cpp" />
     <ClCompile Include="ObjThorn.cpp" />
     <ClCompile Include="ObjTime.cpp" />
     <ClCompile Include="ObjTuta.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="ObjHero.h" />
     <ClInclude Include="ObjMapChanger.h" />
     <ClInclude Include="Objmessage.h" />
+    <ClInclude Include="ObjMessage2.h" />
     <ClInclude Include="ObjThorn.h" />
     <ClInclude Include="ObjTime.h" />
     <ClInclude Include="ObjTuta.h" />
