@@ -49,85 +49,26 @@ void CObjMessage2::Init()
 
 	float p_x = 0;
 	float p_y = 0;
-
-	hit_length = 64.0f;
-
-	size = 0;
-	Message_flag = false;
-	book_isplayerhit = false;
-
 }
 
 //アクション
 void CObjMessage2::Action()
 {
-
-	//通常速度
-	m_ani_max_time = 8;//アニメーション間隔幅
-
-
-
-	//当たり判定
-	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-
-	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	float pl_x = obj->GetX();
-	float pl_y = obj->GetY();
-	pl_x += 32.0f;
-	pl_y += 32.0f;
-
-	CObjBlock* block3 = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	float sl = block3->GetScroll();
-	float en_x = m_px + 32.0f;
-	float en_y = m_py + 32.0f;
-
-	CObjMessage* window = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
-	book_isplayerhit = window->Getwindow_flag();
-
-	if (Message_flag == false)
+	
+	if (Input::GetVKey(VK_RETURN) == true)
 	{
-		if (book_isplayerhit == true)
-		{
-			if (Input::GetVKey('Q') == true)
-			{
-				Message_flag = true;
-				obj->SetVX(0.0f);
-				obj->SetVY(0.0f);
-			}
+		CObjMessage* objM = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
+		
+		objM->Toarrivewindow(0);
+		this->SetStatus(false);
 
-		}
 	}
-
-
-	if (Message_flag == true)
-	{
-		if (Input::GetVKey(VK_RETURN) == true)
-		{
-			Message_flag = false;
-
-		}
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 //ドロー
 void CObjMessage2::Draw()
 {
-	if (Message_flag == true)
-	{
+	
 		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 		RECT_F src;//描画元切り取り位置
@@ -150,5 +91,5 @@ void CObjMessage2::Draw()
 		Font::StrDraw(L"もしかすると私以外に迷い込んだ人間がいるかもしれない。", 150, 575, 25, c);
 		Font::StrDraw(L"何か分かったことがあればこのメモに記そうと思う。", 150, 600, 25, c);
 		Font::StrDraw(L"著者：田幡", 750, 675, 20, c);
-	}
+	
 }

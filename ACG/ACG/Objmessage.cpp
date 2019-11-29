@@ -53,7 +53,7 @@ void CObjMessage::Init()
 
 	size = 0;
 	isplayerhit = false;
-	Message_flag = false;
+	Message_flag =0;
 
 	//íœ—p
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
@@ -104,30 +104,23 @@ void CObjMessage::Action()
 	{
 		isplayerhit = false;
 		obj->SetMessageflag(isplayerhit);
-	}
-	//“–‚½‚è”»’è‚±‚±‚Ü‚Å
 
-	if (isplayerhit == true)
+	}
+
+	CObjMessage2* obje = new CObjMessage2(64.0f, 64.0f, 0);
+	//“–‚½‚è”»’è‚±‚±‚Ü‚Å
+	if (isplayerhit&& Message_flag == 0)
 	{
 		if (Input::GetVKey('Q') == true)
 		{
-			CObjMessage2* obje = new CObjMessage2(64.0f, 64.0f, 0);
 			Objs::InsertObj(obje, OBJ_MESSAGE2, 15);
+			
 			obj->SetVX(0.0f);
 			obj->SetVY(0.0f);
+			Message_flag = 1;
 		}
 		
 	}
-
-	if (Message_flag == true)
-	{
-		if (Input::GetVKey(VK_RETURN) == true)
-		{
-			Message_flag = false;
-
-		}
-	}
-
 
 
 
