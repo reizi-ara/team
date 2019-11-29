@@ -69,8 +69,12 @@ void CObjHero::Action()
 	
 	if (g_damage>0&&muteki_time<=0)
 	{
-		p_life -= g_damage;
-		
+		if (Input::GetVKey('S')) {
+			p_life -= g_damage*0.7;
+		}
+		else {
+			p_life -= g_damage;
+		}
 		muteki_time = MUTEKITIME;
 	}
 	if(muteki_time > 0)
@@ -91,21 +95,16 @@ void CObjHero::Action()
 	{
 
 
-		//Ct+Rシーンリセット
-		if (Input::GetVKey('R') && Input::GetVKey(VK_CONTROL))
-		{
-			//場外に出たらリスタート
+		//Rシーンリセット
+		if (Input::GetVKey('R')){
 			Scene::SetScene(new CSceneMain());
 		}
-		if (Input::GetVKey('T') && Input::GetVKey(VK_CONTROL))
-		{//ダメージ付与
-			p_life-=1.0f;
-
-		}if (Input::GetVKey('H'))
-		{//ダメージ回復
-			p_life += 5.0f;
+		if (Input::GetVKey('T')){
+			p_life-=2.0f;
 		}
-		p_life += 0.1f;
+		if (Input::GetVKey('H')){
+			p_life+= 2.0f;
+		}
 
 
 
@@ -121,8 +120,6 @@ void CObjHero::Action()
 		if (Input::GetVKey('W'))
 			if (m_hit_down)
 				m_vy = -15;
-
-
 
 
 		if (Input::GetVKey(VK_SHIFT))
