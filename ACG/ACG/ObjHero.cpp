@@ -75,6 +75,8 @@ void CObjHero::Action()
 		else {
 			p_life -= g_damage;
 		}
+		CObjEffect* objef = new CObjEffect(m_px, m_py, 2);
+		Objs::InsertObj(objef, OBJ_THORN, 11);
 		muteki_time = MUTEKITIME;
 	}
 	if(muteki_time > 0)

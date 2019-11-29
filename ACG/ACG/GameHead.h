@@ -80,6 +80,7 @@ struct UserData
 #include "ObjMapChanger.h"
 #include "Objhand.h"
 #include "ObjThorn.h"
+#include "ObjEffect.h"
 #include "Objmessage.h"
 #include "ObjMessage2.h"
 #include "ObjMapBacker.h"
