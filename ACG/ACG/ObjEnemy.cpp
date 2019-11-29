@@ -143,12 +143,12 @@ void CObjEnemy::Action()
 	float sl = block3->GetScroll();
 	float en_x = m_px+32.0f;
 	float en_y = m_py+32.0f;
-	if (type_n == 2)
+	if (type_n == 2 || type_n == 3||type_n == 4)
 	{
 		time++;
-		if (time % 120 == 0)
-			m_vy = -10;
-		if (time > 120)
+		if (time % (80+type_n*20) == 0)
+			m_vy = -(10+(type_n-2));
+		if (time > (80 + type_n * 20))
 			time = 0;
 	}
 	//ブロック衝突で向き変更
