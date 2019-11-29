@@ -54,5 +54,12 @@ private:
 	int type;
 	bool isplayerhit;
 	int Message_flag;
+
+
+
+	//íœ—p
+	int destryNum;
+	int MdestryNum;
+
 };
 

@@ -9,79 +9,62 @@
 
 #include "main.h"
 #include "ObjMapChanger.h"
+#include "ObjMapBacker.h"
 
 //使用するネームスペース
 using namespace GameL;
 
-CObjBlock::CObjBlock(int map[10][100])
+
+CObjBlock::CObjBlock(int map[MAP_Y][MAP_X])
 {
 	//マップデータをコピー
-	memcpy(m_map, map, sizeof(int)*(10 * 100));
+	memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
 }
 
 //イニシャライズ
 void CObjBlock::Init()
 {
+	mmmm = false;
 	m_scroll = 0.0f;
+	ikkai = true;
 }
 
 //アクション
 void CObjBlock::Action()
 {
-	//マップチェンジャーから情報を持ってくる
-	CObjMapChanger*MapChanger = (CObjMapChanger*)Objs::GetObj(OBJ_MAPCHANGER);
-	if (MapChanger == nullptr)
-	{
-		;
-	}
-	else
-	{
-		m_chg = MapChanger->GetTT();
-	}
 
-	//メインからマップ2のアドレスを持ってくる
-	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
-	int* map2 = sceneM->GetM1();
-	bool One_chg = sceneM->GetONEs();
+	if (ikkai == true)
+	{
+		//メインからマップ2のアドレスを持ってくる
+		CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+		map2 = sceneM->GetM1();
+		One_chg = sceneM->GetONEs();
+		ikkai = false;
+
+	}
+	
 	int count = 0;//1000回数えるよう
 
-	if (m_chg == 1&&One_chg==true)
+	if (m_chg == 0 && One_chg == true)
 	{
-		
-		//マップ情報を移す
-		for (int i = 0; i < 10; i++)
-		{
-			for (int j = 0; j < 100; j++)
-			{
-
-				map[i][j] = *(map2 + count);
-				count++;
-
-			}
-
-		}
-
+		Transfer(map, map2);
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
 		One_chg = false;
 
 	}
-	if (m_chg == 2&& One_chg == true)
+	else if (m_chg == 1&&One_chg==true)
 	{
+		Transfer(map, map2);
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
 		
-		//マップ情報を移す
-		for (int i = 0; i < MAP_Y; i++)
-		{
-			for (int j = 0; j < MAP_X; j++)
-			{
+		One_chg = false;
 
-				map[i][j] = *(map2 + count);
-				count++;
-
-			}
-
-		}
-
+	}
+	else if (m_chg == 2 && One_chg == true)
+	{
+		Transfer(map, map2);
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
 		
@@ -89,7 +72,28 @@ void CObjBlock::Action()
 
 
 	}
+	else if (m_chg == 3 && One_chg == true)
+	{
 
+		Transfer(map, map2);
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
+
+		One_chg = false;
+
+
+	}
+	else if (m_chg == 4 && One_chg == true)
+	{
+
+		Transfer(map, map2);
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
+
+		One_chg = false;
+
+
+	}
 
 	//主人公の位置を取得
 	CObjHero*hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
@@ -110,16 +114,10 @@ void CObjBlock::Action()
 		m_scroll -= hero->GetVX();//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
-	/*/敵出現ライン
-	//主人公の位置+500を敵出現ラインにする
-	float line = hx + (-m_scroll) + 600;
-
-	//敵出現ラインを要素番号化
-	int ex = ((int)line) / 64;
-	*/
+	
 	//敵出現ラインの列を検索
-	for (int ex = 0; ex < 100; ex++) {
-		for (int i = 0; i < 10; i++)
+	for (int ex = 0; ex < MAP_X; ex++) {
+		for (int i = 0; i < MAP_Y; i++)
 		{
 			if (m_map[i][ex] == 0) {
 				;
@@ -166,6 +164,11 @@ void CObjBlock::Action()
 				Objs::InsertObj(obj40, OBJ_MAPCHANGER, 10);
 				m_map[i][ex] = 0;
 			}
+			else if (m_map[i][ex] == 41) {//次マップ移動扉
+				CObjMapBacker* obj41 = new CObjMapBacker(ex * 64.0f, i * 64.0f, 0);
+				Objs::InsertObj(obj41, OBJ_MAPBACKER, 10);
+				m_map[i][ex] = 0;
+			}
 			else if (m_map[i][ex] == 50) {//本棚１
 				CObjMessage* obje = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obje, OBJ_MESSAGE, 10);
@@ -209,9 +212,9 @@ void CObjBlock::BlockHit(
 	*bt = 0;
 
 	//m_mapの全要素にアクセス
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < MAP_Y; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		for (int j = 0; j < MAP_X; j++)
 		{
 			if (m_map[i][j] > 0&&m_map[i][j]<=9)
 			{
@@ -392,6 +395,25 @@ void CObjBlock::Draw()
 }
 
 
+
+
+
+void CObjBlock::Transfer(int map[MAP_Y][MAP_X],int* map2)
+{
+	int count = 0;
+	//マップ情報を移す
+	for (int i = 0; i < MAP_Y; i++)
+	{
+		for (int j = 0; j < MAP_X; j++)
+		{
+
+			map[i][j] = *(map2 + count);
+			count++;
+
+		}
+
+	}
+}
 
 
 

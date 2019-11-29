@@ -8,14 +8,14 @@
 #include "GameL\SceneObjManager.h"
 
 #include "GameHead.h"
-#include "ObjMapChanger.h"
+#include "ObjMapBacker.h"
 
 #include "GameL/UserData.h"
 
 //使用するネームスペースdayo
 using namespace GameL;
 
-CObjMapChanger::CObjMapChanger(float x, float y,float t)
+CObjMapBacker::CObjMapBacker(float x, float y, float t)
 {
 	m_px = x;	//位置
 	m_py = y;
@@ -24,10 +24,10 @@ CObjMapChanger::CObjMapChanger(float x, float y,float t)
 }
 
 //イニシャライズ
-void CObjMapChanger::Init()
+void CObjMapBacker::Init()
 {
 	//CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
-	//destroy = sceneM->GetDS();
+	//int destoryTT=sceneM->
 
 	//blockとの衝突確認用
 	m_hit_up = false;
@@ -44,13 +44,13 @@ void CObjMapChanger::Init()
 	isplayerhit = false;
 
 	m_OneChg = false;
-	m_change = 1;
+	m_change = -1;
 
 	mmmm = false;
 }
 
 //アクション
-void CObjMapChanger::Action()
+void CObjMapBacker::Action()
 {
 
 	//当たり判定
@@ -66,22 +66,24 @@ void CObjMapChanger::Action()
 	float sl = block3->GetScroll();
 	float en_x = m_px + 32.0f;
 	float en_y = m_py + 32.0f;
-	
+
 	if (pl_x - sl <= en_x + hit_length &&
-	pl_x - sl >= en_x - hit_length &&
+		pl_x - sl >= en_x - hit_length &&
 		pl_y <= en_y + hit_length &&
 		pl_y >= en_y - hit_length
 		&& m_OneChg == false)
 	{//接触時
+		
+
 		isplayerhit = true;
 		m_OneChg = true;
 
 		CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-		obj->SetX(6 * 64);
-		obj->SetY(7 * 64);
+		obj->SetX(30 * 64);
+		obj->SetY(2 * 64);
 
 		CObjBlock*objB = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-		objB->SetScroll(5);
+		objB->SetScroll(-73*64);
 		objB->SetM_CHG(mmmm);
 		objB->Set_ikkai(m_OneChg);//ブロックのマップアドレスをtrueにする部分
 
@@ -89,11 +91,9 @@ void CObjMapChanger::Action()
 		sceneM->SetMMMMMM(m_change);
 		sceneM->SetASDF(m_OneChg);
 
-		
 
 		this->SetStatus(false);
 
-		
 
 	}
 	else
@@ -114,9 +114,9 @@ void CObjMapChanger::Action()
 }
 
 //ドロー
-void CObjMapChanger::Draw()
+void CObjMapBacker::Draw()
 {
-	
+
 	//描画カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
@@ -124,18 +124,18 @@ void CObjMapChanger::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top = 64.0f*4;
-	src.m_left = 64.0f*4;
-	src.m_right = 64.0f*5;
-	src.m_bottom = 64.0f*6;
+	src.m_top = 64.0f * 4;
+	src.m_left = 64.0f * 4;
+	src.m_right = 64.0f * 5;
+	src.m_bottom = 64.0f * 6;
 
 	//ブロック情報を持ってくる
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//表示位置の設定
-	dst.m_top = -64.0f*1 + m_py-size;
+	dst.m_top = -64.0f * 1 + m_py - size;
 	dst.m_left = 0.0f + m_px + block->GetScroll() - size;
-	dst.m_right = 64.0f + m_px + block->GetScroll()+size;
+	dst.m_right = 64.0f + m_px + block->GetScroll() + size;
 	dst.m_bottom = 64.0f + m_py + size;
 
 	//描画

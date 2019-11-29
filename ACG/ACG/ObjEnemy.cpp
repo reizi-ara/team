@@ -9,6 +9,7 @@
 #include "GameHead.h"
 #include "ObjEnemy.h"
 #include "ObjMapChanger.h"
+#include "ObjMapBacker.h"
 
 #define MUTEKI 20;
 #define DE_MAGE 50;//hidame

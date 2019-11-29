@@ -1,4 +1,5 @@
 #pragma once
+#pragma once
 //使用するヘッダーファイル
 #include "GameL\SceneObjManager.h"
 
@@ -8,11 +9,11 @@ using namespace GameL;
 
 
 //シーン：ゲームタイトル
-class CObjMapChanger : public CObj
+class CObjMapBacker : public CObj
 {
 public:
-	CObjMapChanger(float x, float y, float t);
-	~CObjMapChanger() {};
+	CObjMapBacker(float x, float y, float t);
+	~CObjMapBacker() {};
 	void Init();	//イニシャライズ
 	void Action();  //アクション
 	void Draw();	//ドロー
@@ -20,14 +21,11 @@ public:
 	//int GetTT() { return m_change; }
 	//int GetONE() { return m_OneChg; }
 
-
-	//void MapChanger(int m, int m_map[MAP_Y][MAP_X], unique_ptr<wchar_t>* a);
-
 private:
 	float m_px;	//位置
 	float m_py;
 
-	 //blockとの衝突状態確認用
+	//blockとの衝突状態確認用
 	bool m_hit_up;
 	bool m_hit_down;
 	bool m_hit_left;
@@ -41,15 +39,11 @@ private:
 	int type;
 	bool isplayerhit;
 
+	//マップ変更用変数群
 	bool m_OneChg;
-
-	int m_change;
-
 	bool mmmm;
 
-	
-	int destroy;//マップが変わると削除する用
-
+	int m_change;
 
 
 };
