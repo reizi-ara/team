@@ -163,9 +163,9 @@ void CObjMessage::Draw()
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//•\Ž¦ˆÊ’u‚ÌÝ’è
-	dst.m_top = 0.0f + m_py - size;
-	dst.m_left = 0.0f + m_px + block->GetScroll() - size-32;
-	dst.m_right = 64.0f + m_px + block->GetScroll() + size+32;
+	dst.m_top = -64.0f + m_py - size;
+	dst.m_left = 0.0f-16.0f + m_px + block->GetScroll() - size;
+	dst.m_right = 64.0f+16.0f + m_px + block->GetScroll() + size;
 	dst.m_bottom = 64.0f + m_py + size;
 
 	//•`‰æ
