@@ -43,15 +43,7 @@ private:
 	bool m_move;
 
 	float en_life;
-
-	int hit_length;
-	int sarch_length;
-
-	int size;
-	int awake;
 	int type;
-	bool book_isplayerhit;
-	bool Message_flag;
 };
 
 

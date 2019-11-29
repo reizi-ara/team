@@ -17,6 +17,7 @@ public:
 
 	float GetVx() { return m_vx; }
 	bool Getwindow_flag() { return isplayerhit; }
+	void Toarrivewindow(int a) { Message_flag=a; }
 
 private:
 	float m_px;	//ˆÊ’u
@@ -52,6 +53,13 @@ private:
 	int awake;
 	int type;
 	bool isplayerhit;
-	bool Message_flag;
+	int Message_flag;
+
+
+
+	//íœ—p
+	int destryNum;
+	int MdestryNum;
+
 };
 

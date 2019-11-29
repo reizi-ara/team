@@ -60,4 +60,8 @@ private:
 
 	int muteki_time;
 	int Revival_time;
+
+	//íœ—p
+	int destryNum;
+	int MdestryNum;
 };
