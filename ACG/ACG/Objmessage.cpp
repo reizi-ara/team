@@ -170,7 +170,7 @@ void CObjMessage::Draw()
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//表示位置の設定
-	dst.m_top = 0.0f + m_py - size-32;
+	dst.m_top = 0.0f + m_py - size;
 	dst.m_left = 0.0f + m_px + block->GetScroll() - size-32;
 	dst.m_right = 64.0f + m_px + block->GetScroll() + size+32;
 	dst.m_bottom = 64.0f + m_py + size;
@@ -178,45 +178,5 @@ void CObjMessage::Draw()
 	//描画
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 
-	/*if (isplayerhit == true)
-	{
-		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-		RECT_F src;//描画元切り取り位置
-		RECT_F dst;//描画先表示位置
-
-		//切り取り位置の設定
-		src.m_top = 0.0f;
-		src.m_left = 0.0f;
-		src.m_right = 64.0f;
-		src.m_bottom = 64.0f;
-
-		//背景の位置を設定し描画
-		dst.m_top = 0.0f;
-		dst.m_left = 0.0f;
-		dst.m_right = 32.0f;
-		dst.m_bottom = 32.0f;
-		Draw::Draw(8, &src, &dst, c, 0.0f);
-	}*/
-
-	/*if (Message_flag == true)
-	{
-		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-
-		RECT_F src;//描画元切り取り位置
-		RECT_F dst;//描画先表示位置
-
-		//切り取り位置の設定
-		src.m_top = 64.0f*6;
-		src.m_left = 64.0f*0;
-		src.m_right = 64.0f*8;
-		src.m_bottom = 64.0f*8;
-
-		//背景の位置を設定し描画
-		dst.m_top =WINDOW_SIZE_H*0.7;
-		dst.m_left = 0.0f;
-		dst.m_right = WINDOW_SIZE_W;
-		dst.m_bottom = WINDOW_SIZE_H;
-		Draw::Draw(2, &src, &dst, c, 0.0f);
-	}*/
 }
