@@ -77,11 +77,11 @@ void CObjMapChanger::Action()
 		m_OneChg = true;
 
 		CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-		obj->SetX(2 * 64);
+		obj->SetX(6 * 64);
 		obj->SetY(7 * 64);
 
 		CObjBlock*objB = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-		objB->SetScroll(0);
+		objB->SetScroll(5);
 		objB->SetM_CHG(mmmm);
 		objB->Set_ikkai(m_OneChg);//ブロックのマップアドレスをtrueにする部分
 
