@@ -14,18 +14,17 @@
 #define MUTEKI 20;
 #define DE_MAGE 50;//hidame
 #define SARCH 64*4
-#define SIZE 64*1
+#define SIZE 64*2
 
 //使用するネームスペースdayo
 using namespace GameL;
 
-CObjBoss::CObjBoss(float x, float y, float l, float a, float t)
+CObjBoss::CObjBoss(float x, float y, float l, float a)
 {
 	m_px = x;	//位置
 	m_py = y;
 	en_life = l;
 	atk = a;
-	type_n = t;
 }
 
 //イニシャライズ
@@ -107,7 +106,7 @@ void CObjBoss::Action()
 		m_ani_frame = 0;
 	}
 
-
+	
 
 	//摩擦
 	m_vx += -(m_vx*0.098);
@@ -143,11 +142,29 @@ void CObjBoss::Action()
 	float en_x = m_px + 32.0f;
 	float en_y = m_py + 32.0f;
 	
+	//ブロック衝突で向き変更
+	if (m_hit_left == true)
+		m_move = true;
+	if (m_hit_right == true)
+		m_move = false;
+	if (pl_x - sl <= en_x - 48.0f * 6)
+		m_move = true;
+	if (pl_x - sl >= en_x + 48.0f * 6)
+		m_move = false;
+	if (dir_act == m_move)
+	{
+	}
+	else
+	{
+		dir_act = m_move;
+		m_speed_power = 0.0f;
+	}
+
 	//与ダメージ
-	if (pl_x - sl <= en_x + 48.0f&&
-		pl_x - sl >= en_x - 48.0f &&
-		pl_y <= en_y + 48.0f&&
-		pl_y >= en_y - 48.0f&&
+	if (pl_x - sl <= en_x + 128.0f&&
+		pl_x - sl >= en_x - 128.0f &&
+		pl_y <= en_y + 16.0f&&
+		pl_y >= en_y - 240.0f&&
 		m_vx != 0)
 	{
 		obj->GiveDamageToPlayer(atk);
@@ -208,13 +225,13 @@ void CObjBoss::Action()
 	{
 		if (pl_x - sl <= en_x)
 		{
-			m_vx = +m_speed_power * 10;
+			m_vx = +m_speed_power * 1;
 			//obj->SetVX(10);
 		}
 
 		else if (pl_x - sl > en_x)
 		{
-			m_vx = -m_speed_power * 10;
+			m_vx = -m_speed_power * 1;
 			//obj->SetVX(-10);
 		}
 	}
@@ -227,6 +244,7 @@ void CObjBoss::Action()
 	}
 	if (m_speed_power > 1.6f)
 		m_speed_power = 1.6f;
+
 
 
 
@@ -257,20 +275,21 @@ void CObjBoss::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top = 0.0f + 64.0*(type_n - 1);
-	src.m_left = 0.0f + AniData[m_ani_frame] * 64;
-	src.m_right = 128.0f/2 + AniData[m_ani_frame] * 64;
+	src.m_top = 0.0f;
+	src.m_left = 0.0f + AniData[m_ani_frame] * 256;
+	src.m_right = 256.0f + src.m_left;
 	src.m_bottom = src.m_top + 256.0f;
 
 	//ブロック情報を持ってくる
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//表示位置の設定
-	dst.m_top = 0.0f + m_py;
-	dst.m_left = (64.0f*m_posture) + m_px + block->GetScroll();
-	dst.m_right = (64-64.0f*m_posture) + m_px + block->GetScroll();
-	dst.m_bottom = 64.0f*4 + m_py;
+	dst.m_top = -192.0f + m_py;
+	dst.m_left = (256*m_posture ) + m_px + block->GetScroll()-128;
+	dst.m_right = (256-256.0f*m_posture) + m_px + block->GetScroll()-128;
+	dst.m_bottom = 64.0f + m_py;
 
+	
 	//描画
 	Draw::Draw(7, &src, &dst, c, 0.0f);
 }
