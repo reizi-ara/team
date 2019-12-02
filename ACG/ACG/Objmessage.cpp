@@ -109,9 +109,11 @@ void CObjMessage::Action()
 
 	CObjMessage2* obje = new CObjMessage2(64.0f, 64.0f, 0);
 	//“–‚½‚è”»’è‚±‚±‚Ü‚Å
+	
+
 	if (isplayerhit&& Message_flag == 0)
 	{
-		if (Input::GetVKey('Q') == true)
+		if (Input::GetVKey('Q') == true&&obj->GetP_MenuFlag()==false)
 		{
 			Objs::InsertObj(obje, OBJ_MESSAGE2, 15);
 			
@@ -121,11 +123,6 @@ void CObjMessage::Action()
 		}
 		
 	}
-
-
-
-
-
 
 
 

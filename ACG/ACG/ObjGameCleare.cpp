@@ -38,29 +38,24 @@ void CObjGameClear::Action()
 void CObjGameClear::Draw()
 {
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-	float cR[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	/*
+	
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top = 512.0f;
+	src.m_top = 0.0f;
 	src.m_left = 0.0f;
-	src.m_right = 910.0f;
-	src.m_bottom = 1024.0f;
+	src.m_right = 128*7;
+	src.m_bottom = 1024/2;
 
 	//背景1の位置を設定し描画
 	dst.m_top = 0.0f;
 	dst.m_left = 0.0f;
 	dst.m_right = WINDOW_SIZE_W;
 	dst.m_bottom = WINDOW_SIZE_H;
-	Draw::Draw(3, &src, &dst, c, 0.0f);
-	*/
-
-	//Font::StrDraw(L"戦っていたのは一体何だったのだろう", (WINDOW_SIZE_W / 2) -500, 150, 48, cR);
-	//Font::StrDraw(L"謎である。", (WINDOW_SIZE_W / 2) - 130, 225, 48, cR);
-	//Font::StrDraw(L"NEXT_CHALLENGE:ENTER_KEY", (WINDOW_SIZE_W / 2) - 500, 350, 48, cR);
+	Draw::Draw(8, &src, &dst, c, 0.0f);
+	
 
 }
 
