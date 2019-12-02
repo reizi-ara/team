@@ -251,8 +251,8 @@ void CObjBoss::Draw()
 	//切り取り位置の設定
 	src.m_top = 0.0f + 64.0*(type_n - 1);
 	src.m_left = 0.0f + AniData[m_ani_frame] * 64;
-	src.m_right = 128.0f*2 + AniData[m_ani_frame] * 64;
-	src.m_bottom = src.m_top + 64.0f;
+	src.m_right = 128.0f/2 + AniData[m_ani_frame] * 64;
+	src.m_bottom = src.m_top + 256.0f;
 
 	//ブロック情報を持ってくる
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
@@ -264,5 +264,5 @@ void CObjBoss::Draw()
 	dst.m_bottom = 64.0f*4 + m_py;
 
 	//描画
-	Draw::Draw(1, &src, &dst, c, 0.0f);
+	Draw::Draw(7, &src, &dst, c, 0.0f);
 }
