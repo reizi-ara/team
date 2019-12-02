@@ -26,6 +26,7 @@ enum OBJ_NAME
 	OBJ_THORN,
 	OBJ_MESSAGE,
 	OBJ_MESSAGE2,
+	OBJ_BOSS
 };
 //------------------------------------------------
 
@@ -83,6 +84,7 @@ struct UserData
 #include "Objmessage.h"
 #include "ObjMessage2.h"
 #include "ObjMapBacker.h"
+#include "ObjBoss.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

@@ -174,6 +174,10 @@ void CObjBlock::Action()
 				Objs::InsertObj(obje, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
+			/*else if (m_map[i][ex] == 20) {//“G1(PJ
+				CObjBoss* obj = new CObjBoss(ex * 64.0f, i * 64.0f, 1700, 50, 1);
+				Objs::InsertObj(obj, OBJ_BOSS, 10);
+				m_map[i][ex] = 0;*/
 
 
 		}

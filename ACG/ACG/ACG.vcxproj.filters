@@ -94,6 +94,9 @@
     <ClCompile Include="GameL\SceneObjManager.cpp">
       <Filter>リソースファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ObjBoss.cpp">
+      <Filter>GameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\SetWindow.h">
@@ -188,6 +191,9 @@
     </ClInclude>
     <ClInclude Include="GameL\SceneObjManager.h">
       <Filter>リソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjBoss.h">
+      <Filter>GameMain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
