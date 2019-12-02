@@ -49,19 +49,20 @@ void CObjMessage2::Init()
 
 	float p_x = 0;
 	float p_y = 0;
+	time = 0;
 }
 
 //ƒAƒNƒVƒ‡ƒ“
 void CObjMessage2::Action()
 {
-	
-	if (Input::GetVKey(VK_RETURN) == true)
+	if (time < 60)
+		time++;
+	if (Input::GetVKey(VK_RETURN) == true&&time>=60)
 	{
 		CObjMessage* objM = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
 		
 		objM->Toarrivewindow(0);
 		this->SetStatus(false);
-
 	}
 }
 

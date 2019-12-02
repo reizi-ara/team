@@ -66,17 +66,19 @@ void CObjHero::Init()
 //ƒAƒNƒVƒ‡ƒ“
 void CObjHero::Action()
 {
-	
+	if (g_damage > 0) {
+		CObjEffect* objef = new CObjEffect(m_px, m_py, 2);
+		Objs::InsertObj(objef, OBJ_THORN, 15);
+	}
 	if (g_damage>0&&muteki_time<=0)
 	{
 		if (Input::GetVKey('S')) {
-			p_life -= g_damage*0.5;
+			p_life -= g_damage*0.333;
 		}
 		else {
 			p_life -= g_damage;
 		}
-		CObjEffect* objef = new CObjEffect(m_px, m_py, 2);
-		Objs::InsertObj(objef, OBJ_THORN, 11);
+		
 		muteki_time = MUTEKITIME;
 	}
 	if(muteki_time > 0)

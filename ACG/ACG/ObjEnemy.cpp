@@ -202,6 +202,7 @@ void CObjEnemy::Action()
 
 	muteki_time--;
 	//”íUŒ‚
+	
 	if (pl_x - sl <= en_x + SIZE - 40.0f * (obj->Getposture() * 2 - 1) &&
 		pl_x - sl >= en_x - SIZE - 40.0f * (obj->Getposture() * 2 - 1)&&
 		pl_y <= en_y + 80.0f &&
@@ -210,7 +211,6 @@ void CObjEnemy::Action()
 		obj->Getattack() != 4&&
 		muteki_time<=0)
 	{
-
 		muteki_time = MUTEKI;
 		en_life -= DE_MAGE;
 	}

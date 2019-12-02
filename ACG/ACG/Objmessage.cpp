@@ -66,6 +66,7 @@ void CObjMessage::Init()
 		destryNum = sceneM->GetDS();
 
 	}
+	time = 0;
 
 }
 
@@ -109,19 +110,17 @@ void CObjMessage::Action()
 
 	CObjMessage2* obje = new CObjMessage2(64.0f, 64.0f, 0);
 	//“–‚½‚è”»’è‚±‚±‚Ü‚Å
-	
-
-	if (isplayerhit&& Message_flag == 0)
+	if (isplayerhit && Message_flag == 0)
 	{
-		if (Input::GetVKey('Q') == true&&obj->GetP_MenuFlag()==false)
+		if (Input::GetVKey(VK_RETURN) == true)
 		{
 			Objs::InsertObj(obje, OBJ_MESSAGE2, 15);
-			
+
 			obj->SetVX(0.0f);
 			obj->SetVY(0.0f);
 			Message_flag = 1;
 		}
-		
+
 	}
 
 
