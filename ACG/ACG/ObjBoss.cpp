@@ -256,7 +256,14 @@ void CObjBoss::Action()
 		Scene::SetScene(new CSceneGameClear());
 	}
 
+	//íœ—pˆ—
+	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	MdestryNum = sceneM->GetDS();
 
+	if (destryNum != MdestryNum)
+	{
+		this->SetStatus(false);
+	}
 
 
 }
