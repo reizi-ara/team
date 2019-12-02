@@ -7,7 +7,7 @@
 #include "GameL\SceneObjManager.h"
 
 #include "GameHead.h"
-#include "ObjEnemy.h"
+#include "ObjBoss.h"
 #include "ObjMapChanger.h"
 #include "ObjMapBacker.h"
 
@@ -272,5 +272,5 @@ void CObjBoss::Draw()
 	dst.m_bottom = 64.0f*4 + m_py;
 
 	//•`‰æ
-	Draw::Draw(1, &src, &dst, c, 0.0f);
+	Draw::Draw(7, &src, &dst, c, 0.0f);
 }

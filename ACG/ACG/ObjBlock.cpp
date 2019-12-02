@@ -142,6 +142,11 @@ void CObjBlock::Action()
 				Objs::InsertObj(obj23, OBJ_ENEMY, 10);
 				m_map[i][ex] = 0;
 			}
+			else if (m_map[i][ex] == 27) {//boss
+				CObjEnemy* obj27 = new CObjEnemy(ex * 64.0f, i * 64.0f,1170, 50, 1);
+				Objs::InsertObj(obj27, OBJ_ENEMY, 10);
+				m_map[i][ex] = 0;
+			}
 
 			else if (m_map[i][ex] == 30) {//êGòr
 				CObjhand* obj30 = new CObjhand(ex * 64.0f, i * 64.0f, 0, 15);
