@@ -37,8 +37,10 @@ class CObjHero :public CObj
 		int Getposture() { return m_posture; }
 		int Getpose() { return m_pose; }
 		int Getattack() { return wepon_attack; }
+
 		void GiveSpeed(float speed) { sohuran = speed; }
 		void SetMessageflag(bool att) { Message_flag = att; }
+		bool GetP_MenuFlag() { return p_menuflag; }
 
 	private:
 		float m_px;	//ˆÊ’u

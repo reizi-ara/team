@@ -125,11 +125,6 @@ void CObjMessage::Action()
 
 
 
-
-
-
-
-
 	//íœ—pˆ—
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 	MdestryNum = sceneM->GetDS();
