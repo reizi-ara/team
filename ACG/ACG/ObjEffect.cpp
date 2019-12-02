@@ -20,16 +20,16 @@ void CObjEffect::Init()
 void CObjEffect::Action()
 {
 	time++;
-	if (time < 3)
+	if (time > 8)
 		this->SetStatus(0);
 }
 
 //ドロー
 void CObjEffect::Draw()
 {
-	int AniData[4] =
+	int AniData[8] =
 	{
-		0,1,2,3
+		0,0,1,1,2,2,3,3
 	};
 	//描画カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };

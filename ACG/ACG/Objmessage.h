@@ -61,5 +61,7 @@ private:
 	int destryNum;
 	int MdestryNum;
 
+	int time;
+
 };
 
