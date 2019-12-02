@@ -70,11 +70,13 @@ void CObjHero::Action()
 	if (g_damage>0&&muteki_time<=0)
 	{
 		if (Input::GetVKey('S')) {
-			p_life -= g_damage*0.7;
+			p_life -= g_damage*0.5;
 		}
 		else {
 			p_life -= g_damage;
 		}
+		CObjEffect* objef = new CObjEffect(m_px, m_py, 2);
+		Objs::InsertObj(objef, OBJ_THORN, 11);
 		muteki_time = MUTEKITIME;
 	}
 	if(muteki_time > 0)
@@ -136,6 +138,7 @@ void CObjHero::Action()
 		//キーの入力方向
 		if (Input::GetVKey('S'))//しゃがみ
 		{
+			p_life += 0.1;
 			m_pose = 2.0f;
 			m_ani_time += 1;
 			if (muteki_time > 0)
@@ -391,7 +394,9 @@ void CObjHero::Draw()
 
 			//アクション
 		if (Message_flag == false)
-		{
+		{if(Input::GetVKey('S'))
+		{ }
+		else {
 			if (Input::GetVKey(VK_RETURN))
 			{
 				if (attack_set == false && attack_flag == false)
@@ -405,7 +410,7 @@ void CObjHero::Draw()
 			{
 				attack_flag = false;
 			}
-
+		}
 			if (attack_set == true && wepon_have > 0 && wepon_have != 4)
 			{
 				//切り取り位置の設定
