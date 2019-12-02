@@ -143,7 +143,7 @@ void CObjBlock::Action()
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 27) {//boss
-				CObjEnemy* obj27 = new CObjEnemy(ex * 64.0f, i * 64.0f,1170, 50, 1);
+				CObjBoss* obj27 = new CObjBoss(ex * 64.0f, i * 64.0f,1170, 50, 1);
 				Objs::InsertObj(obj27, OBJ_ENEMY, 10);
 				m_map[i][ex] = 0;
 			}

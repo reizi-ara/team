@@ -233,6 +233,14 @@ void CObjBoss::Action()
 	if (m_speed_power > 3.0f)
 		m_speed_power = 3.0f;
 
+	if (en_life <= 0)
+	{
+		Scene::SetScene(new CSceneGameClear());
+	}
+
+
+
+
 }
 
 //ƒhƒ[
