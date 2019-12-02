@@ -210,6 +210,9 @@
     <ClInclude Include="ObjGameClear.h">
       <Filter>GameClear</Filter>
     </ClInclude>
+    <ClInclude Include="ObjBoss.h">
+      <Filter>GameMain</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="リソースファイル">
