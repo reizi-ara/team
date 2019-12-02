@@ -56,9 +56,5 @@ void CObjGameOver::Draw()
 	dst.m_bottom = WINDOW_SIZE_H;
 	Draw::Draw(3, &src, &dst, c, 0.0f);
 
-	//Font::StrDraw(L"YOU LOSE", (WINDOW_SIZE_W/2)-130, 150, 48, cR);
-	//Font::StrDraw(L"GAME OVER", (WINDOW_SIZE_W / 2) - 130, 225, 48, cR);
-	//Font::StrDraw(L"NEXT_CHALLENGE:ENTER_KEY", (WINDOW_SIZE_W / 2) - 130, 350, 48, cR);
-
 }
 
