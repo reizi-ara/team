@@ -251,7 +251,7 @@ void CObjBoss::Draw()
 	//切り取り位置の設定
 	src.m_top = 0.0f + 64.0*(type_n - 1);
 	src.m_left = 0.0f + AniData[m_ani_frame] * 64;
-	src.m_right = 64.0f + AniData[m_ani_frame] * 64;
+	src.m_right = 128.0f*2 + AniData[m_ani_frame] * 64;
 	src.m_bottom = src.m_top + 64.0f;
 
 	//ブロック情報を持ってくる

@@ -10,7 +10,7 @@ class CObjBoss :public CObj
 {
 public:
 	CObjBoss(float x, float y, float l, float a, float t);
-	~CObjEnemy() {};
+	~CObjBoss() {};
 	void Init();	//イニシャライズ
 	void Action();  //アクション
 	void Draw();	//ドロー
