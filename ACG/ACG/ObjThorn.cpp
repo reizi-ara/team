@@ -67,6 +67,8 @@ void CObjThorn::Init()
 	time = 0;
 	Revival_time = 0;
 
+	ani_slowBack = 0;
+
 	//íœ—p
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 	if (sceneM == nullptr)
@@ -113,7 +115,20 @@ void CObjThorn::Action()
 		{
 			isplayerhit = false;
 			obj->GiveSpeed(1.0f);
+			
 
+		}
+		else
+		{
+			if (m_ani_frame != 0)
+			{
+				ani_slowBack++;
+			}
+			if (ani_slowBack >= 30)
+			{
+				m_ani_frame--;
+				ani_slowBack = 0;
+			}
 		}
 
 

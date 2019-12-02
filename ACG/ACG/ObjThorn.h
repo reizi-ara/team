@@ -61,6 +61,8 @@ private:
 	int muteki_time;
 	int Revival_time;
 
+	int ani_slowBack;
+
 	//íœ—p
 	int destryNum;
 	int MdestryNum;

@@ -16,28 +16,28 @@ using namespace GameL;
 #include"GameHead.h"
 
 //コンストラクタ
-CSceneGameOver::CSceneGameOver()
+CSceneGameClear::CSceneGameClear()
 
 {
 
 }
 
 //デストラクタ
-CSceneGameOver::~CSceneGameOver()
+CSceneGameClear::~CSceneGameClear()
 {
 
 }
 
 //ゲームオーバー初期化メゾット
-void CSceneGameOver::InitScene()
+void CSceneGameClear::InitScene()
 {
 	//出力させる文字のグラフィックを作成
-	//Font::SetStrTex(L"YOU LOSE");
-	//Font::SetStrTex(L"GAME OVER");
+	//Font::SetStrTex(L"私が戦っていたのは何だったのだろう");
+	//Font::SetStrTex(L"謎である");
 	//Font::SetStrTex(L"NEXT_CHALLENGE:ENTER_KEY");
 
 	//ゲームオーバーオブジェクト作成
-	CObjGameOver*obj = new CObjGameOver();
+	CObjGameClear*obj = new CObjGameClear();
 	Objs::InsertObj(obj, OBJ_GAME_OVER, 10);
 
 	//背景読み込み
@@ -56,7 +56,7 @@ void CSceneGameOver::InitScene()
 }
 
 //ゲームオーバー実行中メゾット
-void CSceneGameOver::Scene()
+void CSceneGameClear::Scene()
 {
 
 }
