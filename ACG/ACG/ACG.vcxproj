@@ -126,6 +126,7 @@
     <ClCompile Include="ObjBoss.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="ObjEffect.cpp" />
     <ClCompile Include="ObjMapBacker.cpp" />
     <ClCompile Include="ObjGameOption.cpp" />
     <ClCompile Include="ObjGameOver.cpp" />
@@ -158,9 +159,6 @@
     <ClInclude Include="GameL\SetWindow.h" />
     <ClInclude Include="GameL\UserData.h" />
     <ClInclude Include="GameL\WinInputs.h" />
-    <ClInclude Include="ObjBoss.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="ObjMapBacker.h" />
     <ClInclude Include="ObjGameOption.h" />
     <ClInclude Include="ObjGameOver.h" />
