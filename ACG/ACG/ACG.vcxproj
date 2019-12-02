@@ -123,6 +123,7 @@
     <ClCompile Include="GameL\SetWindow.cpp" />
     <ClCompile Include="GameL\UserData.cpp" />
     <ClCompile Include="GameL\WinInputs.cpp" />
+    <ClCompile Include="ObjGameCleare.cpp" />
     <ClCompile Include="ObjMapBacker.cpp" />
     <ClCompile Include="ObjGameOption.cpp" />
     <ClCompile Include="ObjGameOver.cpp" />
@@ -136,6 +137,7 @@
     <ClCompile Include="ObjThorn.cpp" />
     <ClCompile Include="ObjTime.cpp" />
     <ClCompile Include="ObjTuta.cpp" />
+    <ClCompile Include="SceneGameClear.cpp" />
     <ClCompile Include="SceneGameOption.cpp" />
     <ClCompile Include="SceneGameOver.cpp" />
     <ClCompile Include="SceneGameStart.cpp" />
@@ -155,6 +157,7 @@
     <ClInclude Include="GameL\SetWindow.h" />
     <ClInclude Include="GameL\UserData.h" />
     <ClInclude Include="GameL\WinInputs.h" />
+    <ClInclude Include="ObjGameClear.h" />
     <ClInclude Include="ObjMapBacker.h" />
     <ClInclude Include="ObjGameOption.h" />
     <ClInclude Include="ObjGameOver.h" />
@@ -169,6 +172,7 @@
     <ClInclude Include="ObjThorn.h" />
     <ClInclude Include="ObjTime.h" />
     <ClInclude Include="ObjTuta.h" />
+    <ClInclude Include="SceneGameClear.h" />
     <ClInclude Include="SceneGameOption.h" />
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneGameStart.h" />
