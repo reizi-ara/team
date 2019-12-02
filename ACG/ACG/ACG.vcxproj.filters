@@ -94,8 +94,17 @@
     <ClCompile Include="GameL\SceneObjManager.cpp">
       <Filter>リソースファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ObjBoss.cpp">
+      <Filter>GameMain</Filter>
+    </ClCompile>
     <ClCompile Include="ObjEffect.cpp">
       <Filter>GameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGameClear.cpp">
+      <Filter>GameClear</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjGameCleare.cpp">
+      <Filter>GameClear</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +204,12 @@
     <ClInclude Include="ObjEffect.h">
       <Filter>GameMain</Filter>
     </ClInclude>
+    <ClInclude Include="SceneGameClear.h">
+      <Filter>GameClear</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjGameClear.h">
+      <Filter>GameClear</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="リソースファイル">
@@ -217,6 +232,9 @@
     </Filter>
     <Filter Include="Map関係">
       <UniqueIdentifier>{bb888848-cc53-485f-b4e0-528efe66de92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameClear">
+      <UniqueIdentifier>{03c3949a-7826-48f9-9c50-8a62d1326aab}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

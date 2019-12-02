@@ -14,6 +14,7 @@ enum OBJ_NAME
 	OBJ_GAME_START,
 	OBJ_GAME_OVER,
 	OBJ_GAME_OPTION,
+	OBJ_GAME_CLEAR,
 
 	OBJ_MENU,
 
@@ -26,6 +27,7 @@ enum OBJ_NAME
 	OBJ_THORN,
 	OBJ_MESSAGE,
 	OBJ_MESSAGE2,
+	OBJ_BOSS
 };
 //------------------------------------------------
 
@@ -84,6 +86,8 @@ struct UserData
 #include "Objmessage.h"
 #include "ObjMessage2.h"
 #include "ObjMapBacker.h"
+#include "ObjGameClear.h"
+#include "ObjBoss.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
@@ -91,6 +95,7 @@ struct UserData
 #include "SceneGameStart.h"
 #include "SceneGameOver.h"
 #include "SceneGameOption.h"
+#include "SceneGameClear.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------
