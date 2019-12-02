@@ -198,8 +198,6 @@ void CObjHero::Action()
 	}
 	else if (p_menuflag == true)	//メニューテスト
 	{
-			if (p_menuflag == true) {
-
 				if (Input::GetVKey('S'))
 				{
 					if (lavel_button == true)
@@ -267,6 +265,7 @@ void CObjHero::Action()
 					else if (lavel_select == 5)
 					{
 						p_menuflag = false;
+						
 					}
 
 				}
@@ -274,7 +273,9 @@ void CObjHero::Action()
 				{
 					m_key_flag = true;
 				}
-		}
+		
+				m_vx = 0;
+				m_vy = 0;
 	}
 
 
