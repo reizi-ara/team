@@ -55,9 +55,9 @@ void CObjMessage2::Init()
 //ƒAƒNƒVƒ‡ƒ“
 void CObjMessage2::Action()
 {
-	if (time < 60)
+	if (time < 30)
 		time++;
-	if (Input::GetVKey(VK_RETURN) == true&&time>=60)
+	if (Input::GetVKey(VK_RETURN) == true&&time>=30)
 	{
 		CObjMessage* objM = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
 		

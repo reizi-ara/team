@@ -46,6 +46,8 @@ private:
 	float en_life;
 	int type;
 	int time;
+	
+	int close;
 };
 
 

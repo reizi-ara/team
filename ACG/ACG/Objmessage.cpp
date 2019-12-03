@@ -68,6 +68,7 @@ void CObjMessage::Init()
 	}
 	time = 0;
 
+	Unfold = 0;
 }
 
 //ƒAƒNƒVƒ‡ƒ“
@@ -109,7 +110,19 @@ void CObjMessage::Action()
 	}
 
 	CObjMessage2* obje = new CObjMessage2(64.0f, 64.0f, 0);
-	//“–‚½‚è”»’è‚±‚±‚Ü‚Å
+	CObjMessage2* objM = (CObjMessage2*)Objs::GetObj(OBJ_MESSAGE2);
+	
+	
+	if (Unfold==0&&time < 30)
+	{
+		time++;
+	}
+	if (time >= 30)
+	{
+		Message_flag = 0;
+		Unfold = 1;
+		time = 0;
+	}
 	if (isplayerhit && Message_flag == 0)
 	{
 		if (Input::GetVKey(VK_RETURN) == true)
@@ -120,8 +133,8 @@ void CObjMessage::Action()
 			obj->SetVY(0.0f);
 			Message_flag = 1;
 		}
-
 	}
+
 
 
 

@@ -17,7 +17,7 @@ public:
 
 	float GetVx() { return m_vx; }
 	bool Getwindow_flag() { return isplayerhit; }
-	void Toarrivewindow(int a) { Message_flag=a; }
+	void Toarrivewindow(int a) { Unfold =a; }
 
 private:
 	float m_px;	//ˆÊ’u
@@ -62,6 +62,7 @@ private:
 	int MdestryNum;
 
 	int time;
+	int Unfold;
 
 };
 
