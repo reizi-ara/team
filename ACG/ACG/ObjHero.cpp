@@ -9,7 +9,7 @@
 #include "GameHead.h"
 #include "ObjHero.h"
 #include "main.h"
-
+#include "GameL/Audio.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -150,6 +150,8 @@ void CObjHero::Action()
 		{
 			if (Input::GetVKey('D'))//右に移動
 			{
+				
+				
 				m_vx += m_speed_power;
 				m_posture = 1.0f;
 				m_pose = 1.0f;
@@ -157,6 +159,8 @@ void CObjHero::Action()
 			}
 			else if (Input::GetVKey('A'))//左に移動
 			{
+				
+
 				m_vx -= m_speed_power;
 				m_posture = 0.0f;
 				m_pose = 1.0f;
@@ -182,7 +186,15 @@ void CObjHero::Action()
 			m_ani_time = 0;
 		}
 		if (m_ani_frame == 8)
+		{
+			if (Input::GetVKey('A') || Input::GetVKey('D'))
+			{
+				Audio::Start(1);//効果音
+			}
 			m_ani_frame = 0;
+		}
+
+
 
 		m_vx += -(m_vx*0.2);//摩擦
 		m_vy += 9.8 / (16.0f);//自由落下運動
