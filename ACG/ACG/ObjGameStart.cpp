@@ -91,12 +91,13 @@ void CObjGameStart::Action()
 void CObjGameStart::Draw()
 {
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-	
+	float b[4] = { 1.0f,1.0f,1.0f,0.5f };
 
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
+	//背景
 	//切り取り位置の設定
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
@@ -110,22 +111,59 @@ void CObjGameStart::Draw()
 	dst.m_bottom = WINDOW_SIZE_H;
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 
-	//強調表示用バー
+
+
+
+	//スタートボタン
 	//切り取り位置の設定
-	src.m_top = 256.0f;
+	src.m_top = 0.0f;
+	src.m_left = 64.0f*4;
+	src.m_right = 64.0f * 8;
+	src.m_bottom = 64.0f;
+
+	//背景の位置を設定し描画
+	dst.m_top = WINDOW_SIZE_H / 2;
+	dst.m_left = WINDOW_SIZE_W / 2 - 150;
+	dst.m_right = WINDOW_SIZE_W / 2 + 150;
+	dst.m_bottom = WINDOW_SIZE_H / 2 + 80;
+	if (lavel_select == 0)
+		Draw::Draw(6, &src, &dst, c, 0.0f);
+	else
+		Draw::Draw(6, &src, &dst, b, 0.0f);
+
+	//オプションボタン
+	//切り取り位置の設定
+	src.m_top = 64.0f * 3;
 	src.m_left = 0.0f;
-	src.m_right = 512.0f;
-	src.m_bottom = 512.0f;
+	src.m_right = 64.0f * 4;
+	src.m_bottom = 64.0f * 4;
 
-	//バーの位置を設定し描画
-	dst.m_top = 340.0f+lavel_select*50;
-	dst.m_left = 300.0f;
-	dst.m_right = 520.0f;
-	dst.m_bottom = 380.0f+lavel_select*50;
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+	//背景の位置を設定し描画
+	dst.m_top = WINDOW_SIZE_H / 2 + 80;
+	dst.m_left = WINDOW_SIZE_W / 2 - 150;
+	dst.m_right = WINDOW_SIZE_W / 2 + 150;
+	dst.m_bottom = WINDOW_SIZE_H / 2 + 160;
+	if (lavel_select == 1)
+		Draw::Draw(6, &src, &dst, c, 0.0f);
+	else
+		Draw::Draw(6, &src, &dst, b, 0.0f);
+
+	//ゲーム終了ボタン
+	//切り取り位置の設定
+	src.m_top = 0.0f;
+	src.m_left = 0.0f;
+	src.m_right = 64.0f * 4;
+	src.m_bottom = 64.0f;
+
+	//背景の位置を設定し描画
+	dst.m_top = WINDOW_SIZE_H / 2 + 160;
+	dst.m_left = WINDOW_SIZE_W / 2 - 150;
+	dst.m_right = WINDOW_SIZE_W / 2 + 150;
+	dst.m_bottom = WINDOW_SIZE_H / 2 + 240;
+	if (lavel_select == 2)
+		Draw::Draw(6, &src, &dst, c, 0.0f);
+	else
+		Draw::Draw(6, &src, &dst, b, 0.0f);
 
 
-	Font::StrDraw(L"スタート", 340, 340, 32, c);
-	Font::StrDraw(L"オプション", 320, 390, 32, c);
-	Font::StrDraw(L"終了", 365, 440, 32, c);
 }
