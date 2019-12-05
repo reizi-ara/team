@@ -14,7 +14,7 @@
 #define MUTEKI 20;
 #define DE_MAGE 50;//hidame
 #define SARCH 64*4
-#define SIZE 64*4
+#define SIZE 64*3
 
 //使用するネームスペースdayo
 using namespace GameL;
@@ -57,24 +57,14 @@ void CObjBoss::Init()
 	muteki_time = MUTEKI;
 
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
-	if (sceneM == nullptr)
-	{
-		;
-	}
-	else
-	{
-		destryNum = sceneM->GetDS();
-	}
+	if (sceneM == nullptr) {}
+	else destryNum = sceneM->GetDS();
 }
 
 //アクション
 void CObjBoss::Action()
 {
-	//落下
-	if (m_py > 1000.0f)
-	{
-		this->SetStatus(false);
-	}
+	
 
 	//通常速度
 	m_ani_max_time = 4;//アニメーション間隔幅
@@ -108,11 +98,7 @@ void CObjBoss::Action()
 
 	
 
-	//摩擦
-	m_vx += -(m_vx*0.098);
-
-	//自由落下運動
-	m_vy += 1.8 / (4.0f);
+	
 
 	//ブロックタイプ検知用の変数がないためのダミー
 	int d;
@@ -131,7 +117,6 @@ void CObjBoss::Action()
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 
-	//座標
 	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	float pl_x = obj->GetX();
 	float pl_y = obj->GetY();
@@ -151,152 +136,128 @@ void CObjBoss::Action()
 		m_move = true;
 	if (pl_x - sl >= en_x + 48.0f * 6)
 		m_move = false;
-	if (dir_act == m_move)
-	{
-	}
-	else
-	{
+	if (dir_act == m_move){}
+	else{
 		dir_act = m_move;
 		m_speed_power = 0.0f;
 	}
 
-	//与ダメージ
-	if (pl_x - sl <= en_x + 128.0f&&
-		pl_x - sl >= en_x - 128.0f &&
-		pl_y <= en_y + 16.0f&&
-		pl_y >= en_y - 240.0f&&
-		m_vx != 0)
-	{
-		obj->GiveDamageToPlayer(atk);
-		if (atk_kb == false)
-		{
-			if (pl_x - sl <= en_x)
-			{
-				obj->SetVX(-10);
-			}
-
-			else if (pl_x - sl > en_x)
-			{
-				obj->SetVX(10);
-			}
-		}
-		atk_kb = true;
-
-
-
-	}
-	else
-	{
-		atk_kb = false;
-	}
+	
 
 
 
 	muteki_time--;
-	//被攻撃
-	if (pl_x - sl <= en_x + SIZE - 40.0f * (obj->Getposture() * 2 - 1) &&
-		pl_x - sl >= en_x - SIZE - 40.0f * (obj->Getposture() * 2 - 1) &&
-		pl_y <= en_y + 80.0f &&
-		pl_y >= en_y - 80.0f&&
-		obj->Getattack() > 0 &&
-		obj->Getattack() != 4 &&
-		muteki_time <= 0)
-	{
+	
 
-		muteki_time = MUTEKI;
-		en_life -= DE_MAGE;
+	
+
+	
+
+	if (muteki_time > 0 && awake == true){
+		if (pl_x - sl <= en_x){
+			m_vx = +m_speed_power * 1;
+		}
+		else if (pl_x - sl > en_x){
+			m_vx = -m_speed_power * 1;
+		}
 	}
 
-	if (en_life <= 0)
-	{
+	if (muteki_time == 0)
+		m_speed_power = 0;
 
-		this->SetStatus(false);
-	}
+	if (muteki_time <= 0 && awake == true)
+		m_speed_power += 0.011f;
+	
+	if (m_speed_power > 1.6f)
+		m_speed_power = 1.6f;
+
+	if (m_speed_power > 3.0f)
+		m_speed_power = 3.0f;
+
+	//新版
+
+	//自動運動
+	m_vx += -(m_vx * 0.098);
+	m_vy += 1.8 / (4.0f);
 
 	//起動
 	if (pl_x - sl <= en_x + 48.0f + SARCH &&
 		pl_x - sl >= en_x - 48.0f - SARCH &&
 		awake == false)
-	{
 		awake = true;
+
+	//被攻撃
+	if (pl_x - sl <= en_x + SIZE - 40.0f * (obj->Getposture() * 2 - 1) &&
+		pl_x - sl >= en_x - SIZE - 40.0f * (obj->Getposture() * 2 - 1) &&
+		pl_y <= en_y + 80.0f &&
+		pl_y >= en_y - 80.0f &&
+		obj->Getattack() > 0 &&
+		obj->Getattack() != 4 &&
+		muteki_time <= 0) {
+		muteki_time = MUTEKI;
+		en_life -= DE_MAGE;
 	}
 
-	if (muteki_time > 0 && awake == true)
-	{
-		if (pl_x - sl <= en_x)
-		{
-			m_vx = +m_speed_power * 1;
-			//obj->SetVX(10);
+	//与攻撃
+	if (pl_x - sl <= en_x + 128.0f &&
+		pl_x - sl >= en_x - 128.0f &&
+		pl_y <= en_y + 16.0f &&
+		pl_y >= en_y - 240.0f &&
+		m_vx != 0) {
+		obj->GiveDamageToPlayer(atk);
+		if (atk_kb == false) {
+			if (pl_x - sl <= en_x) {
+				obj->SetVX(-10);
+			}
+			else if (pl_x - sl > en_x) {
+				obj->SetVX(10);
+			}
 		}
-
-		else if (pl_x - sl > en_x)
-		{
-			m_vx = -m_speed_power * 1;
-			//obj->SetVX(-10);
-		}
+		atk_kb = true;
 	}
-	if (muteki_time == 0)
-		m_speed_power = 0;
-
-	if (muteki_time <= 0 && awake == true)
-	{
-		m_speed_power += 0.011f;
-	}
-	if (m_speed_power > 1.6f)
-		m_speed_power = 1.6f;
-
-
-
-
-	if (m_speed_power > 3.0f)
-		m_speed_power = 3.0f;
-
-	if (en_life <= 0)
-	{
-		Scene::SetScene(new CSceneGameClear());
+	else {
+		atk_kb = false;
 	}
 
-	//削除用処理
+	//シーン移動削除処理
+
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 	MdestryNum = sceneM->GetDS();
-
-	if (destryNum != MdestryNum)
-	{
+	if (destryNum != MdestryNum){
 		this->SetStatus(false);
 	}
 
+	//プレイヤー勝利
+	if (en_life <= 0)
+		this->SetStatus(false);
+	if (en_life <= 0) 
+		Scene::SetScene(new CSceneGameClear());
+
+	//落下時
+	if (m_py > 1000.0f)
+		this->SetStatus(false);
+	
 
 }
 
 //ドロー
 void CObjBoss::Draw()
 {
-	int AniData[8] =
-	{
-		0,1,2,3,4,5,6,7
+	int AniData[4]=
+	{//横・縦
+		0,1,2,3
 	};
-	//描画カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-
-	RECT_F src;//描画元切り取り位置
-	RECT_F dst;//描画先表示位置
-
-	//切り取り位置の設定
+	RECT_F src;
+	RECT_F dst;
 	src.m_top = 0.0f;
-	src.m_left = 0.0f + AniData[m_ani_frame] * 256;
-	src.m_right = 256.0f + src.m_left;
+	src.m_left = AniData[m_ani_frame] * 256.0f;
+	src.m_right = src.m_left + 256.0f;
 	src.m_bottom = src.m_top + 256.0f;
-
-	//ブロック情報を持ってくる
-	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-
-	//表示位置の設定
+	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	dst.m_top = -192.0f + m_py;
-	dst.m_left = (256*m_posture ) + m_px + block->GetScroll()-128;
-	dst.m_right = (256-256.0f*m_posture) + m_px + block->GetScroll()-128;
+	dst.m_left = (256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
+	dst.m_right = (256.0f - 256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
 	dst.m_bottom = 64.0f + m_py;
-
-	
-	//描画
 	Draw::Draw(7, &src, &dst, c, 0.0f);
 }
