@@ -57,12 +57,15 @@ void CObjMessage2::Action()
 {
 	if (time < 30)
 		time++;
-	if (Input::GetVKey(VK_RETURN) == true&&time>=30)
+	if (Input::GetVKey(VK_RETURN)&& time >= 30 ||
+		Input::GetVKey('W')||
+		Input::GetVKey('A')||
+		Input::GetVKey('D'))
 	{
-		CObjMessage* objM = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
-		
-		objM->Toarrivewindow(0);
-		this->SetStatus(false);
+			CObjMessage* objM = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
+
+			objM->Toarrivewindow(0);
+			this->SetStatus(false);
 	}
 }
 

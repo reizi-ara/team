@@ -14,7 +14,7 @@
 #define MUTEKI 20;
 #define DE_MAGE 50;//hidame
 #define SARCH 64*4
-#define SIZE 64*2
+#define SIZE 64*4
 
 //使用するネームスペースdayo
 using namespace GameL;
