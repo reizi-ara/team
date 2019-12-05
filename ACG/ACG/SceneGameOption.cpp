@@ -30,16 +30,12 @@ CSceneGameOption::~CSceneGameOption()
 //ゲームスタート初期化メソッド
 void CSceneGameOption::InitScene()
 {
-	//出力させる文字のグラフィックを作成
-	Font::SetStrTex(L"戻る");
 	Font::SetStrTex(L"まだ作ってません。");
 	Font::SetStrTex(L"ごめんなさい");
 
 	//背景読み込み
 	Draw::LoadImageW(L"splite5.png", 2, TEX_SIZE_1024);
-	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
-
-	Draw::LoadImageW(L"splite4.png", 4, TEX_SIZE_1024);
+	Draw::LoadImageW(L"splite6.png", 6, TEX_SIZE_512);
 
 	//オプションオブジェクト作成
 	CObjGameOption*obj = new CObjGameOption(); //タイトルオブジェクト作成

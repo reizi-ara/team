@@ -98,22 +98,21 @@ void CObjGameOption::Draw()
 	dst.m_bottom = WINDOW_SIZE_H;
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 
-	//強調表示用バー
+
+
+	//戻るボタン
 	//切り取り位置の設定
-	src.m_top = 256.0f;
+	src.m_top = 64.0f;
 	src.m_left = 0.0f;
-	src.m_right = 512.0f;
-	src.m_bottom = 512.0f;
+	src.m_right = 64.0f * 4;
+	src.m_bottom = 64.0f * 2;
 
 	//バーの位置を設定し描画
-	dst.m_top = 340.0f + lavel_select_op * 50;
-	dst.m_left = 300.0f;
-	dst.m_right = 520.0f;
-	dst.m_bottom = 380.0f + lavel_select_op * 50;
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+	dst.m_top = WINDOW_SIZE_H / 2;
+	dst.m_left = WINDOW_SIZE_W / 2 - 150;
+	dst.m_right = WINDOW_SIZE_W / 2 + 150;
+	dst.m_bottom = WINDOW_SIZE_H / 2 + 80;
+	Draw::Draw(6, &src, &dst, c, 0.0f);
 
 
-	Font::StrDraw(L"戻る", 380, 340, 32, c);
-	Font::StrDraw(L"まだ作ってません。", 280, 390, 32, c);
-	Font::StrDraw(L"ごめんなさい", 320, 440, 32, c);
 }
