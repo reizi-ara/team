@@ -42,8 +42,12 @@ void CSceneGameStart::InitScene()
 	Objs::InsertObj(obj, OBJ_GAME_START, 10);//タイトルオブジェクト登録
 
 
-	//音楽読み込み
+	//BGM音楽読み込み
 	Audio::LoadAudio(0, L"s_title.wav", BACK_MUSIC);
+	
+	//SE
+	Audio::LoadAudio(1, L"s_select.wav", EFFECT);
+	Audio::LoadAudio(2, L"s_ok.wav", EFFECT);
 
 	//ボリューム
 	float v = Audio::VolumeMaster(0);
@@ -52,8 +56,7 @@ void CSceneGameStart::InitScene()
 	//音楽スタート
 	Audio::Start(0);
 
-	//セレクト用SE
-	Audio::LoadAudio(1, L"s_select.wav", EFFECT);
+	
 
 
 }

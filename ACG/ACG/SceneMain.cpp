@@ -76,6 +76,7 @@ void CSceneMain::InitScene()
 	//音楽読み込み
 	Audio::LoadAudio(0, L"s_mainstage.wav", BACK_MUSIC);
 	Audio::LoadAudio(1, L"s_Boss.wav", BACK_MUSIC);//ボスのBGM
+	Audio::LoadAudio(2, L"s_menu.wav", BACK_MUSIC);//メニューのBGM
 
 	Audio::LoadAudio(5, L"s_walk.wav", EFFECT);//歩きと走りSE
 	Audio::LoadAudio(6, L"s_door.wav", EFFECT);//ドアSE

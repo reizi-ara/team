@@ -77,6 +77,7 @@ void CObjHero::Action()
 		}
 		else {
 			p_life -= g_damage;
+			Audio::Start(7);//効果音
 		}
 		
 		muteki_time = MUTEKITIME;
@@ -91,6 +92,9 @@ void CObjHero::Action()
 	if (Input::GetVKey('E'))
 	{
 		p_menuflag = true;
+
+		Audio::Stop(0);//メインBGMストップ
+		Audio::Start(2);//メニューBGMスタート
 	}
 
 	
@@ -277,6 +281,8 @@ void CObjHero::Action()
 
 					else if (lavel_select == 5)
 					{
+						Audio::Stop(2);//メニューBGMストップ
+						Audio::Start(0);//メインBGMスタート
 						p_menuflag = false;
 						
 					}
