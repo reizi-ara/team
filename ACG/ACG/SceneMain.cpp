@@ -74,9 +74,15 @@ void CSceneMain::InitScene()
 	
 
 	//音楽読み込み
-	Audio::LoadAudio(0, L"閉ざされた部屋.wav", BACK_MUSIC);
+	Audio::LoadAudio(0, L"s_mainstage.wav", BACK_MUSIC);
+	Audio::LoadAudio(1, L"s_Boss.wav", BACK_MUSIC);//ボスのBGM
 
-	Audio::LoadAudio(1, L"walk.wav", EFFECT);
+	Audio::LoadAudio(5, L"s_walk.wav", EFFECT);//歩きと走りSE
+	Audio::LoadAudio(6, L"s_door.wav", EFFECT);//ドアSE
+	Audio::LoadAudio(7, L"s_attack.wav", EFFECT);//攻撃時SE
+	Audio::LoadAudio(8, L"s_ok.wav", EFFECT);//決定SE
+	Audio::LoadAudio(9, L"s_select.wav", EFFECT);//セレクトSE
+
 
 	//ボリューム
 	float v = Audio::VolumeMaster(0);

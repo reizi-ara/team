@@ -43,7 +43,7 @@ void CSceneGameStart::InitScene()
 
 
 	//音楽読み込み
-	Audio::LoadAudio(0, L"タイトル.wav", BACK_MUSIC);
+	Audio::LoadAudio(0, L"s_title.wav", BACK_MUSIC);
 
 	//ボリューム
 	float v = Audio::VolumeMaster(0);
@@ -53,7 +53,7 @@ void CSceneGameStart::InitScene()
 	Audio::Start(0);
 
 	//セレクト用SE
-	Audio::LoadAudio(1, L"select.wav", EFFECT);
+	Audio::LoadAudio(1, L"s_select.wav", EFFECT);
 
 
 }

@@ -10,6 +10,7 @@
 #include "GameHead.h"
 #include "ObjMapChanger.h"
 
+#include "GameL/Audio.h"
 #include "GameL/UserData.h"
 
 //使用するネームスペースdayo
@@ -26,9 +27,6 @@ CObjMapChanger::CObjMapChanger(float x, float y,float t)
 //イニシャライズ
 void CObjMapChanger::Init()
 {
-	//CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
-	//destroy = sceneM->GetDS();
-
 	//blockとの衝突確認用
 	m_hit_up = false;
 	m_hit_down = false;
@@ -73,6 +71,9 @@ void CObjMapChanger::Action()
 		pl_y >= en_y - hit_length
 		&& m_OneChg == false)
 	{//接触時
+
+		Audio::Start(6);//効果音
+
 		isplayerhit = true;
 		m_OneChg = true;
 

@@ -58,8 +58,8 @@ void CObjHero::Init()
 	overplayerlife = p_life;
 	g_damage = 0;
 	sohuran = 1;
-	//“–‚½‚è”»’è—p‚ÌHitBox‚ðì¬
-	//Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_PLAYER, OBJ_HERO, 1);
+	
+
 	Message_flag = false;
 }
 
@@ -189,7 +189,7 @@ void CObjHero::Action()
 		{
 			if (Input::GetVKey('A') || Input::GetVKey('D'))
 			{
-				Audio::Start(1);//Œø‰Ê‰¹
+				Audio::Start(5);//Œø‰Ê‰¹
 			}
 			m_ani_frame = 0;
 		}
@@ -242,7 +242,6 @@ void CObjHero::Action()
 				if (lavel_select > 5)
 					lavel_select = 0;
 				if (lavel_select < 0)
-
 					lavel_select = 5;
 
 

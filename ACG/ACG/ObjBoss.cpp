@@ -10,6 +10,7 @@
 #include "ObjBoss.h"
 #include "ObjMapChanger.h"
 #include "ObjMapBacker.h"
+#include "GameL/Audio.h"
 
 #define MUTEKI 20;
 #define DE_MAGE 50;//hidame
@@ -30,6 +31,8 @@ CObjBoss::CObjBoss(float x, float y, float l, float a)
 //イニシャライズ
 void CObjBoss::Init()
 {
+	Audio::Stop(0);//効果音ストップ
+	Audio::Start(1);//効果音スタート
 
 	awake = false;
 	m_vx = 0.0f;	//移動ベクトル
@@ -64,7 +67,7 @@ void CObjBoss::Init()
 //アクション
 void CObjBoss::Action()
 {
-	
+
 
 	//通常速度
 	m_ani_max_time = 4;//アニメーション間隔幅

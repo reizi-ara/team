@@ -31,10 +31,6 @@ CSceneGameClear::~CSceneGameClear()
 //ゲームオーバー初期化メゾット
 void CSceneGameClear::InitScene()
 {
-	//出力させる文字のグラフィックを作成
-	//Font::SetStrTex(L"私が戦っていたのは何だったのだろう");
-	//Font::SetStrTex(L"謎である");
-	//Font::SetStrTex(L"NEXT_CHALLENGE:ENTER_KEY");
 
 	//ゲームオーバーオブジェクト作成
 	CObjGameClear*obj = new CObjGameClear();
@@ -44,7 +40,7 @@ void CSceneGameClear::InitScene()
 	Draw::LoadImageW(L"splite3.png", 3, TEX_SIZE_1024);
 
 	//音楽読み込み
-	Audio::LoadAudio(0, L"雨.wav", BACK_MUSIC);
+	Audio::LoadAudio(0, L"s_over.wav", BACK_MUSIC);
 
 	//ボリューム
 	float v = Audio::VolumeMaster(0);

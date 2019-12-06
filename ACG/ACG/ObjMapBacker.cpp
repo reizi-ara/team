@@ -10,6 +10,7 @@
 #include "GameHead.h"
 #include "ObjMapBacker.h"
 
+#include "GameL/Audio.h"
 #include "GameL/UserData.h"
 
 //使用するネームスペースdayo
@@ -26,8 +27,7 @@ CObjMapBacker::CObjMapBacker(float x, float y, float t)
 //イニシャライズ
 void CObjMapBacker::Init()
 {
-	//CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
-	//int destoryTT=sceneM->
+
 
 	//blockとの衝突確認用
 	m_hit_up = false;
@@ -74,6 +74,7 @@ void CObjMapBacker::Action()
 		&& m_OneChg == false)
 	{//接触時
 		
+		Audio::Start(6);//効果音
 
 		isplayerhit = true;
 		m_OneChg = true;
