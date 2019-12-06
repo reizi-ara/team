@@ -76,6 +76,8 @@ void CSceneMain::InitScene()
 	//‰¹Šy“Ç‚İ‚İ
 	Audio::LoadAudio(0, L"•Â‚´‚³‚ê‚½•”‰®.wav", BACK_MUSIC);
 
+	Audio::LoadAudio(1, L"walk.wav", EFFECT);
+
 	//ƒ{ƒŠƒ…[ƒ€
 	float v = Audio::VolumeMaster(0);
 	v = Audio::VolumeMaster((1.0 - v));

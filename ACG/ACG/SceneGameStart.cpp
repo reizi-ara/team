@@ -52,6 +52,10 @@ void CSceneGameStart::InitScene()
 	//音楽スタート
 	Audio::Start(0);
 
+	//セレクト用SE
+	Audio::LoadAudio(1, L"select.wav", EFFECT);
+
+
 }
 
 //ゲームスタート実行中メソッド

@@ -8,6 +8,7 @@
 #include"GameHead.h"
 #include"ObjGameStart.h"
 #include"main.h"
+#include"GameL/Audio.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -28,6 +29,8 @@ void CObjGameStart::Action()
 	{
 		if (lavel_button == true)
 		{
+			Audio::Start(1);//効果音
+
 			lavel_select++;
 
 			lavel_button = false;
@@ -41,6 +44,8 @@ void CObjGameStart::Action()
 	{
 		if (lavel_button2 == true)
 		{
+			Audio::Start(1);//効果音
+
 			lavel_select--;
 
 			lavel_button2 = false;
