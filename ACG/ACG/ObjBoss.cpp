@@ -67,121 +67,19 @@ void CObjBoss::Init()
 //アクション
 void CObjBoss::Action()
 {
-
-
-	//通常速度
-	m_ani_max_time = 4;//アニメーション間隔幅
-
-
-	//方向
-	if (m_move == false)
-	{
-		m_vx += m_speed_power;
-		m_posture = 1.0f;
-		m_ani_time += 2;
-	}
-
-	else if (m_move == true)
-	{
-		m_vx -= m_speed_power;
-		m_posture = 0.0f;
-		m_ani_time += 2;
-	}
-
-	if (m_ani_time > m_ani_max_time)
-	{
-		m_ani_frame += 1;
-		m_ani_time = 0;
-	}
-
-	if (m_ani_frame == 8)
-	{
-		m_ani_frame = 0;
-	}
-
-	
-
-	
-
-	//ブロックタイプ検知用の変数がないためのダミー
-	int d;
-	//ブロックとの当たり判定実行
-	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	pb->BlockHit(&m_px, &m_py, false,
-		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
-		&d
-	);
-
-	//表示位置の更新
-	m_px += m_vx;
-	m_py += m_vy;
-
 	//ブロック情報を持ってくる
-	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-
-
-	CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	float pl_x = obj->GetX();
 	float pl_y = obj->GetY();
+	float sl = block->GetScroll();
 	pl_x += 32.0f;
 	pl_y += 32.0f;
-	CObjBlock* block3 = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	float sl = block3->GetScroll();
 	float en_x = m_px + 32.0f;
 	float en_y = m_py + 32.0f;
-	
-	//ブロック衝突で向き変更
-	if (m_hit_left == true)
-		m_move = true;
-	if (m_hit_right == true)
-		m_move = false;
-	if (pl_x - sl <= en_x - 48.0f * 6)
-		m_move = true;
-	if (pl_x - sl >= en_x + 48.0f * 6)
-		m_move = false;
-	if (dir_act == m_move){}
-	else{
-		dir_act = m_move;
-		m_speed_power = 0.0f;
-	}
-
-	
-
-
-
-	muteki_time--;
-	
-
-	
-
-	
-
-	if (muteki_time > 0 && awake == true){
-		if (pl_x - sl <= en_x){
-			m_vx = +m_speed_power * 1;
-		}
-		else if (pl_x - sl > en_x){
-			m_vx = -m_speed_power * 1;
-		}
-	}
-
-	if (muteki_time == 0)
-		m_speed_power = 0;
-
-	if (muteki_time <= 0 && awake == true)
-		m_speed_power += 0.011f;
-	
-	if (m_speed_power > 1.6f)
-		m_speed_power = 1.6f;
-
-	if (m_speed_power > 3.0f)
-		m_speed_power = 3.0f;
-
-	//新版
 
 	//自動運動
 	m_vx += -(m_vx * 0.098);
-	m_vy += 1.8 / (4.0f);
 
 	//起動
 	if (pl_x - sl <= en_x + 48.0f + SARCH &&
@@ -222,8 +120,14 @@ void CObjBoss::Action()
 		atk_kb = false;
 	}
 
-	//シーン移動削除処理
+	//ブロックとの当たり判定実行
+	int d;
+	CObjBlock* pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	pb->BlockHit(&m_px, &m_py, false,
+		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+		&d);
 
+	//シーン移動削除処理
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 	MdestryNum = sceneM->GetDS();
 	if (destryNum != MdestryNum){
@@ -235,11 +139,94 @@ void CObjBoss::Action()
 		this->SetStatus(false);
 	if (en_life <= 0) 
 		Scene::SetScene(new CSceneGameClear());
-
-	//落下時
-	if (m_py > 1000.0f)
-		this->SetStatus(false);
 	
+	//表示位置の更新
+	m_px += m_vx;
+	m_py += m_vy;
+
+
+	//-------------------------------------------------------------
+
+
+
+	//通常速度
+	m_ani_max_time = 8;//アニメーション間隔幅
+
+
+	//方向
+	if (m_move == false)
+	{
+		m_vx += m_speed_power;
+		m_posture = 1.0f;
+		m_ani_time += 2;
+	}
+
+	else if (m_move == true)
+	{
+		m_vx -= m_speed_power;
+		m_posture = 0.0f;
+		m_ani_time += 2;
+	}
+
+	if (m_ani_time > m_ani_max_time)
+	{
+		m_ani_frame += 1;
+		m_ani_time = 0;
+	}
+
+	if (m_ani_frame == 8)
+	{
+		m_ani_frame = 0;
+	}
+
+
+
+
+
+
+
+
+	//ブロック衝突で向き変更
+	if (m_hit_left == true)
+		m_move = true;
+	if (m_hit_right == true)
+		m_move = false;
+	if (pl_x - sl <= en_x - 48.0f * 6)
+		m_move = true;
+	if (pl_x - sl >= en_x + 48.0f * 6)
+		m_move = false;
+	if (dir_act == m_move) {}
+	else {
+		dir_act = m_move;
+		m_speed_power = 0.0f;
+	}
+
+
+	muteki_time--;
+
+	if (muteki_time > 0 && awake == true) {
+		if (pl_x - sl <= en_x) {
+			m_vx = +m_speed_power * 1;
+		}
+		else if (pl_x - sl > en_x) {
+			m_vx = -m_speed_power * 1;
+		}
+	}
+
+	if (muteki_time == 0)
+		m_speed_power = 0;
+
+	if (muteki_time <= 0 && awake == true)
+		m_speed_power += 0.011f;
+
+	if (m_speed_power > 1.6f)
+		m_speed_power = 1.6f;
+
+	if (m_speed_power > 3.0f)
+		m_speed_power = 3.0f;
+
+
+
 
 }
 
@@ -254,7 +241,7 @@ void CObjBoss::Draw()
 	RECT_F src;
 	RECT_F dst;
 	src.m_top = 0.0f;
-	src.m_left = AniData[m_ani_frame] * 256.0f;
+	src.m_left = AniData[m_ani_frame/2] * 256.0f;
 	src.m_right = src.m_left + 256.0f;
 	src.m_bottom = src.m_top + 256.0f;
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
