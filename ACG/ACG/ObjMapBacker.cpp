@@ -68,6 +68,9 @@ void CObjMapBacker::Action()
 
 	//当たり判定
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	float sl = block->GetScroll();
+	float en_x = m_px + 32.0f;
+	float en_y = m_py + 32.0f;
 
 	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	float pl_x = obj->GetX();
@@ -75,10 +78,7 @@ void CObjMapBacker::Action()
 	pl_x += 32.0f;
 	pl_y += 32.0f;
 
-	CObjBlock* block3 = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	float sl = block3->GetScroll();
-	float en_x = m_px + 32.0f;
-	float en_y = m_py + 32.0f;
+	
 
 	if (pl_x - sl <= en_x + hit_length &&
 		pl_x - sl >= en_x - hit_length &&
@@ -92,14 +92,14 @@ void CObjMapBacker::Action()
 		isplayerhit = true;
 		m_OneChg = true;
 
-		CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+		//CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
 		obj->SetX(30 * 64);
 		obj->SetY(2 * 64);
 
-		CObjBlock*objB = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-		objB->SetScroll(-73*64);
-		objB->SetM_CHG(mmmm);
-		objB->Set_ikkai(m_OneChg);//ブロックのマップアドレスをtrueにする部分
+		//CObjBlock*objB = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+		block->SetScroll(-73*64);
+		block->SetM_CHG(mmmm);
+		block->Set_ikkai(m_OneChg);//ブロックのマップアドレスをtrueにする部分
 
 		CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 		sceneM->SetMMMMMM(m_change);
