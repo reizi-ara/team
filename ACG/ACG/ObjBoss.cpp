@@ -178,8 +178,12 @@ void CObjBoss::Action()
 	if (muteki_time <= 0 && awake == true) {
 		time_1++;
 
-		//m_vy += 0.1;
-
+		if (10 <= time_1 && time_1 < 150) {
+			m_py += 1;
+		}
+		if (150 <= time_1 && time_1 < 160) {
+			m_px += 5;
+		}
 
 
 
