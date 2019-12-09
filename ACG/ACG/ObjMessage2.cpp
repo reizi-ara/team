@@ -11,6 +11,7 @@
 #include "GameHead.h"
 #include "Objmessage2.h"
 #include "main.h"
+#include "GameL/Audio.h"
 
 #define LIFE 80;
 //使用するネームスペースdayo
@@ -27,6 +28,8 @@ CObjMessage2::CObjMessage2(float x, float y, float t)
 //イニシャライズ
 void CObjMessage2::Init()
 {
+	Audio::Start(10);//本開きSE
+
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 1.0f; //右向き0.0ｆ　左向き1.0ｆ
@@ -65,7 +68,11 @@ void CObjMessage2::Action()
 			CObjMessage* objM = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
 
 			objM->Toarrivewindow(0);
+
+			Audio::Start(11);//本閉じSE
+			
 			this->SetStatus(false);
+			
 	}
 }
 

@@ -47,6 +47,19 @@ void CObjMapBacker::Init()
 	m_change = -1;
 
 	mmmm = false;
+
+	//削除用
+	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	if (sceneM == nullptr)
+	{
+		;
+	}
+	else
+	{
+		destryNum = sceneM->GetDS();
+
+	}
+
 }
 
 //アクション
@@ -93,9 +106,6 @@ void CObjMapBacker::Action()
 		sceneM->SetASDF(m_OneChg);
 
 
-		this->SetStatus(false);
-
-
 	}
 	else
 	{
@@ -108,6 +118,14 @@ void CObjMapBacker::Action()
 
 
 
+		//削除用処理
+	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	MdestryNum = sceneM->GetDS();
+
+	if (destryNum != MdestryNum)
+	{
+		this->SetStatus(false);
+	}
 
 
 

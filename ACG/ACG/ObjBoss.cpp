@@ -136,7 +136,9 @@ void CObjBoss::Action()
 
 	//ƒvƒŒƒCƒ„[Ÿ—˜
 	if (en_life <= 0)
+	{
 		this->SetStatus(false);
+	}
 	if (en_life <= 0) 
 		Scene::SetScene(new CSceneGameClear());
 	
