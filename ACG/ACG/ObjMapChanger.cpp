@@ -45,6 +45,18 @@ void CObjMapChanger::Init()
 	m_change = 1;
 
 	mmmm = false;
+
+	//削除用
+	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	if (sceneM == nullptr)
+	{
+		;
+	}
+	else
+	{
+		destryNum = sceneM->GetDS();
+
+	}
 }
 
 //アクション
@@ -92,10 +104,6 @@ void CObjMapChanger::Action()
 
 		
 
-		this->SetStatus(false);
-
-		
-
 	}
 	else
 	{
@@ -109,6 +117,14 @@ void CObjMapChanger::Action()
 
 
 
+		//削除用処理
+	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	MdestryNum = sceneM->GetDS();
+
+	if (destryNum != MdestryNum)
+	{
+		this->SetStatus(false);
+	}
 
 
 

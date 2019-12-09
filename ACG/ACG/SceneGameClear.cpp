@@ -40,7 +40,7 @@ void CSceneGameClear::InitScene()
 	Draw::LoadImageW(L"splite3.png", 3, TEX_SIZE_1024);
 
 	//‰¹Šy“Ç‚İ‚İ
-	Audio::LoadAudio(0, L"s_over.wav", BACK_MUSIC);
+	Audio::LoadAudio(0, L"s_end.wav", BACK_MUSIC);
 
 	//ƒ{ƒŠƒ…[ƒ€
 	float v = Audio::VolumeMaster(0);

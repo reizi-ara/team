@@ -45,5 +45,9 @@ private:
 
 	int m_change;
 
+	//íœ—p
+	int destryNum;
+	int MdestryNum;
+
 
 };

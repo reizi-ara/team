@@ -74,14 +74,19 @@ void CSceneMain::InitScene()
 	
 
 	//音楽読み込み
-	Audio::LoadAudio(0, L"s_mainstage.wav", BACK_MUSIC);
+	//BGM群
+	Audio::LoadAudio(0, L"s_mainstage.wav", BACK_MUSIC);//メインBGM
 	Audio::LoadAudio(1, L"s_Boss.wav", BACK_MUSIC);//ボスのBGM
+	Audio::LoadAudio(2, L"s_menu.wav", BACK_MUSIC);//メニューのBGM
 
+	//SE群
 	Audio::LoadAudio(5, L"s_walk.wav", EFFECT);//歩きと走りSE
 	Audio::LoadAudio(6, L"s_door.wav", EFFECT);//ドアSE
 	Audio::LoadAudio(7, L"s_attack.wav", EFFECT);//攻撃時SE
 	Audio::LoadAudio(8, L"s_ok.wav", EFFECT);//決定SE
 	Audio::LoadAudio(9, L"s_select.wav", EFFECT);//セレクトSE
+	Audio::LoadAudio(10, L"s_book_open.wav", EFFECT);//本開け
+	Audio::LoadAudio(11, L"s_book_close.wav", EFFECT);//本閉じ
 
 
 	//ボリューム

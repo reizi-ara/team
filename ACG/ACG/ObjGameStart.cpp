@@ -65,6 +65,7 @@ void CObjGameStart::Action()
 	//エンターキーを押してシーン：ゲームメインに移行する
 	if (Input::GetVKey(VK_RETURN) == true)
 	{
+		Audio::Start(2);//効果音
 		if (m_key_flag == true)
 		{
 			if (lavel_select == 0)

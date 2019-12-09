@@ -105,7 +105,7 @@ void CObjThorn::Action()
 		if (pl_x - sl <= en_x + hit_length + size &&
 			pl_x - sl >= en_x - hit_length - size &&
 			pl_y <= en_y + hit_length &&
-			pl_y >= en_y - hit_length)
+			pl_y >= en_y - hit_length+16)
 		{
 			//ÚG
 			isplayerhit = true;

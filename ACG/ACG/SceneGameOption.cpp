@@ -37,6 +37,11 @@ void CSceneGameOption::InitScene()
 	Draw::LoadImageW(L"splite5.png", 2, TEX_SIZE_1024);
 	Draw::LoadImageW(L"splite6.png", 6, TEX_SIZE_512);
 
+	//SE
+	Audio::LoadAudio(1, L"s_select.wav", EFFECT);
+	Audio::LoadAudio(2, L"s_ok.wav", EFFECT);
+
+
 	//オプションオブジェクト作成
 	CObjGameOption*obj = new CObjGameOption(); //タイトルオブジェクト作成
 	Objs::InsertObj(obj, OBJ_GAME_OPTION, 10);//タイトルオブジェクト登録

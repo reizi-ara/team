@@ -77,6 +77,7 @@ void CObjHero::Action()
 		}
 		else {
 			p_life -= g_damage;
+			Audio::Start(7);//効果音
 		}
 		
 		muteki_time = MUTEKITIME;
@@ -91,6 +92,9 @@ void CObjHero::Action()
 	if (Input::GetVKey('E'))
 	{
 		p_menuflag = true;
+
+		Audio::Stop(0);//メインBGMストップ
+		Audio::Start(2);//メニューBGMスタート
 	}
 
 	
@@ -220,6 +224,8 @@ void CObjHero::Action()
 
 						lavel_button = false;
 
+						Audio::Start(9);//SE
+
 					}
 				}
 				else
@@ -232,6 +238,8 @@ void CObjHero::Action()
 						lavel_select--;
 
 						lavel_button2 = false;
+
+						Audio::Start(9);//SE
 
 					}
 				}
@@ -250,33 +258,42 @@ void CObjHero::Action()
 				{
 					if (lavel_select == 0)
 					{
+						Audio::Start(8);//SE
 						Scene::SetScene(new CSceneGameOver());	
 						m_key_flag = false;
+						
 					}
 
 					else if (lavel_select == 1)
 					{
+						Audio::Start(8);//SE
 						Scene::SetScene(new CSceneGameOver());
 						m_key_flag = false;
 					}
 					
 					else if (lavel_select == 2) {
+						Audio::Start(8);//SE
 						Scene::SetScene(new CSceneGameOver());
 						m_key_flag = false;
 					}
 
 					else if (lavel_select == 3) {
+						Audio::Start(8);//SE
 						Scene::SetScene(new CSceneGameOver());
 						m_key_flag = false;
 					}
 
 					else if (lavel_select == 4)
 					{
+						Audio::Start(8);//SE
 						Scene::SetScene(nullptr);
 					}
 
 					else if (lavel_select == 5)
 					{
+						Audio::Start(8);//SE
+						Audio::Stop(2);//メニューBGMストップ
+						Audio::Start(0);//メインBGMスタート
 						p_menuflag = false;
 						
 					}
