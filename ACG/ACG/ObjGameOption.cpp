@@ -7,6 +7,7 @@
 #include"GameHead.h"
 #include"main.h"
 #include"ObjGameStart.h"
+#include"GameL/Audio.h"
 
 #define SERECT_MIN_OP (0)
 #define SERECT_MAX_OP (0)
@@ -30,6 +31,8 @@ void CObjGameOption::Action()
 	{
 		if (lavel_option == true)
 		{
+			Audio::Start(1);//SE
+
 			lavel_select_op++;
 
 			lavel_option = false;
@@ -43,6 +46,8 @@ void CObjGameOption::Action()
 	{
 		if (lavel_option2 == true)
 		{
+			Audio::Start(1);//SE
+
 			lavel_select_op--;
 
 			lavel_option2 = false;
@@ -64,6 +69,8 @@ void CObjGameOption::Action()
 	{
 		if (m_key_flag == true)
 		{
+			Audio::Start(2);//SE
+
 			m_key_flag = false;
 			Scene::SetScene(new CSceneGameStart());
 			

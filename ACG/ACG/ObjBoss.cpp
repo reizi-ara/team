@@ -12,10 +12,9 @@
 #include "ObjMapBacker.h"
 #include "GameL/Audio.h"
 
-#define MUTEKI 20;
-#define DE_MAGE 50;//hidame
-#define SARCH 64*4
-#define SIZE 64*3
+#define MUTEKI 8;
+#define DE_MAGE 10;//hidame
+#define SARCH 400
 
 //使用するネームスペースdayo
 using namespace GameL;
@@ -23,7 +22,7 @@ using namespace GameL;
 CObjBoss::CObjBoss(float x, float y, float l, float a)
 {
 	m_px = x;	//位置
-	m_py = y;
+	m_py = y-300;
 	en_life = l;
 	atk = a;
 }
@@ -43,25 +42,20 @@ void CObjBoss::Init()
 	m_ani_frame = 1;	//静止フレームを初期にする
 
 	m_speed_power = 0.0f;	//通常速度
-	m_ani_max_time = 8;		//アニメーション間隔幅
 
 	m_move = true;
 	dir_act = m_move;
-	//blockとの衝突確認用
-	m_hit_up = false;
-	m_hit_down = false;
-	m_hit_left = false;
-	m_hit_right = false;
 
 	float p_x = 0;
 	float p_y = 0;
-	time = 0;
 
 	muteki_time = MUTEKI;
 
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 	if (sceneM == nullptr) {}
 	else destryNum = sceneM->GetDS();
+
+	time_1 = 0;
 }
 
 //アクション
@@ -79,19 +73,20 @@ void CObjBoss::Action()
 	float en_y = m_py + 32.0f;
 
 	//自動運動
-	m_vx += -(m_vx * 0.098);
+	m_vx += -(m_vx * 0.1);
+	m_vx += -(m_vx * 0.1);
 
 	//起動
-	if (pl_x - sl <= en_x + 48.0f + SARCH &&
-		pl_x - sl >= en_x - 48.0f - SARCH &&
+	if (pl_x - sl <= en_x + SARCH &&
+		pl_x - sl >= en_x - SARCH &&
 		awake == false)
 		awake = true;
 
 	//被攻撃
-	if (pl_x - sl <= en_x + SIZE - 40.0f * (obj->Getposture() * 2 - 1) &&
-		pl_x - sl >= en_x - SIZE - 40.0f * (obj->Getposture() * 2 - 1) &&
-		pl_y <= en_y + 80.0f &&
-		pl_y >= en_y - 80.0f &&
+	if (pl_x - sl <= en_x + 24 - (32 * (obj->Getposture() * 2 - 1)) &&
+		pl_x - sl >= en_x - 88 - (32 * (obj->Getposture() * 2 - 1)) &&
+		pl_y <= en_y -96.0f &&
+		pl_y >= en_y - 220.0f &&
 		obj->Getattack() > 0 &&
 		obj->Getattack() != 4 &&
 		muteki_time <= 0) {
@@ -100,18 +95,17 @@ void CObjBoss::Action()
 	}
 
 	//与攻撃
-	if (pl_x - sl <= en_x + 128.0f &&
-		pl_x - sl >= en_x - 128.0f &&
-		pl_y <= en_y + 16.0f &&
-		pl_y >= en_y - 240.0f &&
-		m_vx != 0) {
-		obj->GiveDamageToPlayer(atk);
+	if (pl_x - sl <= en_x + 24.0f &&
+		pl_x - sl >= en_x - 88.0f &&
+		pl_y <= en_y -96.0f &&
+		pl_y >= en_y - 224.0f ) {
+		obj->GiveDamageToPlayer(atk/100);
 		if (atk_kb == false) {
 			if (pl_x - sl <= en_x) {
-				obj->SetVX(-10);
+				obj->SetVX(-50);
 			}
 			else if (pl_x - sl > en_x) {
-				obj->SetVX(10);
+				obj->SetVX(50);
 			}
 		}
 		atk_kb = true;
@@ -120,13 +114,7 @@ void CObjBoss::Action()
 		atk_kb = false;
 	}
 
-	//ブロックとの当たり判定実行
-	int d;
-	CObjBlock* pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	pb->BlockHit(&m_px, &m_py, false,
-		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
-		&d);
-
+	//ブロックとの当たり判定実行しない
 	//シーン移動削除処理
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 	MdestryNum = sceneM->GetDS();
@@ -136,7 +124,9 @@ void CObjBoss::Action()
 
 	//プレイヤー勝利
 	if (en_life <= 0)
+	{
 		this->SetStatus(false);
+	}
 	if (en_life <= 0) 
 		Scene::SetScene(new CSceneGameClear());
 	
@@ -145,89 +135,72 @@ void CObjBoss::Action()
 	m_py += m_vy;
 
 
-	//-------------------------------------------------------------
-
-
-
-	//通常速度
-	m_ani_max_time = 8;//アニメーション間隔幅
-
-
-	//方向
-	if (m_move == false)
-	{
-		m_vx += m_speed_power;
-		m_posture = 1.0f;
-		m_ani_time += 2;
-	}
-
-	else if (m_move == true)
-	{
-		m_vx -= m_speed_power;
-		m_posture = 0.0f;
-		m_ani_time += 2;
-	}
-
-	if (m_ani_time > m_ani_max_time)
-	{
-		m_ani_frame += 1;
-		m_ani_time = 0;
-	}
-
-	if (m_ani_frame == 8)
-	{
-		m_ani_frame = 0;
-	}
-
-
-
-
-
-
-
-
-	//ブロック衝突で向き変更
-	if (m_hit_left == true)
+	//向き変更
+	if (pl_x - sl <= en_x)
 		m_move = true;
-	if (m_hit_right == true)
+	if (pl_x - sl > en_x)
 		m_move = false;
-	if (pl_x - sl <= en_x - 48.0f * 6)
-		m_move = true;
-	if (pl_x - sl >= en_x + 48.0f * 6)
-		m_move = false;
-	if (dir_act == m_move) {}
-	else {
+	if (dir_act != m_move) {
 		dir_act = m_move;
 		m_speed_power = 0.0f;
 	}
 
-
-	muteki_time--;
-
-	if (muteki_time > 0 && awake == true) {
-		if (pl_x - sl <= en_x) {
-			m_vx = +m_speed_power * 1;
-		}
-		else if (pl_x - sl > en_x) {
-			m_vx = -m_speed_power * 1;
-		}
+	//アニメーション
+	if (m_move == false) {//向き
+		m_posture = 1.0f;
+		m_ani_time += 2;
+	}
+	else if (m_move == true) {
+		m_posture = 0.0f;
+		m_ani_time += 2;
+	}
+	if (m_ani_time > 8) {
+		m_ani_frame += 1;
+		m_ani_time = 0;
+	}
+	if (m_ani_frame == 8) {//ループ処理
+		m_ani_frame = 0;
 	}
 
+	//ノックバック
+	muteki_time--;
+	if (muteki_time > 0 && awake == true) {
+		if (pl_x - sl <= en_x) {
+			m_vx = (5+m_speed_power) * 0.8f;
+		}
+		else if (pl_x - sl > en_x) {
+			m_vx = (-5-m_speed_power)*0.8f;
+		}
+	}
 	if (muteki_time == 0)
-		m_speed_power = 0;
+		m_speed_power *= 0.7f;
+	//-------------------------------------------------------------
+	if (muteki_time <= 0 && awake == true) {
+		time_1++;
 
-	if (muteki_time <= 0 && awake == true)
-		m_speed_power += 0.011f;
-
-	if (m_speed_power > 1.6f)
-		m_speed_power = 1.6f;
-
-	if (m_speed_power > 3.0f)
-		m_speed_power = 3.0f;
+		if (10 <= time_1 && time_1 < 150) {
+			m_py += 1;
+		}
+		if (150 <= time_1 && time_1 < 160) {
+			m_px += 5;
+		}
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+	}
 }
 
 //ドロー

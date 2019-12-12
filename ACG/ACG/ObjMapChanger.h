@@ -47,9 +47,8 @@ private:
 
 	bool mmmm;
 
-	
-	int destroy;//マップが変わると削除する用
-
-
+	//削除用
+	int destryNum;
+	int MdestryNum;
 
 };
