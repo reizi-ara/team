@@ -107,8 +107,5 @@ void CObjGameClear::Draw()
 		Font::StrDraw(L"b", 150, 600, 25, c);
 		Font::StrDraw(L"íòé“ÅFìcî¶", 750, 675, 20, c);
 	}
-
-	
-
 }
 
