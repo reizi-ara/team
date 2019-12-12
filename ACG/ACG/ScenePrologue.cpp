@@ -16,25 +16,25 @@ using namespace GameL;
 #include"GameHead.h"
 
 //コンストラクタ
-CSceneGameClear::CSceneGameClear()
+CScenePrologue::CScenePrologue()
 
 {
 
 }
 
 //デストラクタ
-CSceneGameClear::~CSceneGameClear()
+CScenePrologue::~CScenePrologue()
 {
 
 }
 
 //ゲームオーバー初期化メゾット
-void CSceneGameClear::InitScene()
+void CScenePrologue::InitScene()
 {
 
 	//ゲームオーバーオブジェクト作成
-	CObjGameClear*obj = new CObjGameClear();
-	Objs::InsertObj(obj, OBJ_GAME_OVER, 10);
+	CObjPrologue*obj = new CObjPrologue();
+	Objs::InsertObj(obj, OBJ_PROLOGUE, 10);
 
 	//背景読み込み
 	Draw::LoadImageW(L"splite3.png", 3, TEX_SIZE_1024);
@@ -53,7 +53,7 @@ void CSceneGameClear::InitScene()
 }
 
 //ゲームオーバー実行中メゾット
-void CSceneGameClear::Scene()
+void CScenePrologue::Scene()
 {
 
 }

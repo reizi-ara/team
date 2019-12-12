@@ -106,6 +106,12 @@
     <ClCompile Include="ObjGameCleare.cpp">
       <Filter>GameClear</Filter>
     </ClCompile>
+    <ClCompile Include="ScenePrologue.cpp">
+      <Filter>プロローグ</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjPrologue.cpp">
+      <Filter>プロローグ</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\SetWindow.h">
@@ -213,6 +219,12 @@
     <ClInclude Include="ObjBoss.h">
       <Filter>GameMain</Filter>
     </ClInclude>
+    <ClInclude Include="ObjPrologue.h">
+      <Filter>プロローグ</Filter>
+    </ClInclude>
+    <ClInclude Include="ScenePrologue.h">
+      <Filter>プロローグ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="リソースファイル">
@@ -238,6 +250,9 @@
     </Filter>
     <Filter Include="GameClear">
       <UniqueIdentifier>{03c3949a-7826-48f9-9c50-8a62d1326aab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="プロローグ">
+      <UniqueIdentifier>{305f1e12-4022-4b7d-bceb-5aacd96dec4b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

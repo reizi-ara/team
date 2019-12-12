@@ -100,7 +100,7 @@ void CSceneMain::InitScene()
 //実行中メソッド
 void CSceneMain::Scene()
 {
-
+	//マップ読み込み
 	if (m_chg == 0 && OneRead == true)
 	{
 		MapRead(m_chg, map2, p);

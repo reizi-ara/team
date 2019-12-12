@@ -5,11 +5,11 @@
 using namespace GameL;
 
 //オブジェクト:主人公
-class CObjGameClear : public CObj
+class CObjPrologue : public CObj
 {
 public:
-	CObjGameClear() {};
-	~CObjGameClear() {};
+	CObjPrologue() {};
+	~CObjPrologue() {};
 	void Init();     //イニシャライズ
 	void Action();  //アクション
 	void Draw();//ドロー
