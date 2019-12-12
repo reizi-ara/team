@@ -14,23 +14,41 @@ using namespace GameL;
 void CObjGameClear::Init()
 {
 	m_key_flag = false;
+	ReturnKey_flag = false;
+	time=0;
+	Endnum = 0;
+	one_flag = true;
 }
 //アクション
 void CObjGameClear::Action()
 {
+	time++;
 	//エンターキーを押してシーン：ゲームタイトルに移行する
-	if (Input::GetVKey(VK_RETURN) == true)
+	if (Endnum >= 2)
 	{
-		if (m_key_flag == true)
+		if (Input::GetVKey(VK_RETURN) == true)
 		{
-			m_key_flag = false;
-			Scene::SetScene(new CSceneGameStart());
+			if (m_key_flag == true)
+			{
+				m_key_flag = false;
+				Scene::SetScene(new CSceneGameStart());
 
+			}
+		}
+
+		else
+		{
+			m_key_flag = true;
 		}
 	}
-	else
+
+	//メッセージ関連
+	if (Input::GetVKey(VK_RETURN) == true&&time>=60)
 	{
-		m_key_flag = true;
+		one_flag = false;
+		//ReturnKey_flag = true;
+		Endnum += 1;		
+		time = 0;
 	}
 }
 
@@ -55,6 +73,41 @@ void CObjGameClear::Draw()
 	dst.m_right = WINDOW_SIZE_W;
 	dst.m_bottom = WINDOW_SIZE_H;
 	Draw::Draw(8, &src, &dst, c, 0.0f);
+
+	//切り取り位置の設定
+	src.m_top = 64.0f * 6;
+	src.m_left = 64.0f * 0;
+	src.m_right = 64.0f * 8;
+	src.m_bottom = 64.0f * 8;
+
+	//背景の位置を設定し描画
+	dst.m_top = WINDOW_SIZE_H * 0.7;
+	dst.m_left = 0.0f;
+	dst.m_right = WINDOW_SIZE_W;
+	dst.m_bottom = WINDOW_SIZE_H;
+	Draw::Draw(2, &src, &dst, c, 0.0f);
+	if (Endnum == 0)
+	{
+		Font::StrDraw(L"この不気味な洋館に迷い込んで数日が経った。", 150, 550, 25, c);
+		Font::StrDraw(L"もしかすると私以外に迷い込んだ人間がいるかもしれない。", 150, 575, 25, c);
+		Font::StrDraw(L"何か分かったことがあればこのメモに記そうと思う。", 150, 600, 25, c);
+		Font::StrDraw(L"著者：田幡", 750, 675, 20, c);
+	}
+	else if (Endnum == 1)
+	{
+		Font::StrDraw(L"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 150, 550, 25, c);
+		Font::StrDraw(L"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 150, 575, 25, c);
+		Font::StrDraw(L"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 150, 600, 25, c);
+		Font::StrDraw(L"著者：田幡", 750, 675, 20, c);
+	}
+	else if (Endnum == 2)
+	{
+		Font::StrDraw(L"b", 150, 550, 25, c);
+		Font::StrDraw(L"b", 150, 575, 25, c);
+		Font::StrDraw(L"b", 150, 600, 25, c);
+		Font::StrDraw(L"著者：田幡", 750, 675, 20, c);
+	}
+
 	
 
 }

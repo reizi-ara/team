@@ -16,5 +16,9 @@ public:
 
 private:
 	bool m_key_flag;
+	bool ReturnKey_flag;
+	int time;
+	int Endnum;
+	bool one_flag;
 };
 
