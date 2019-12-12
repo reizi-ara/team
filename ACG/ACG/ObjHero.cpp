@@ -74,6 +74,7 @@ void CObjHero::Action()
 	{
 		if (Input::GetVKey('S')) {
 			p_life -= g_damage*0.333;
+			Audio::Start(7);//Œø‰Ê‰¹
 		}
 		else {
 			p_life -= g_damage;

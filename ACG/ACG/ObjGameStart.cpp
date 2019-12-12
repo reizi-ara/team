@@ -71,7 +71,7 @@ void CObjGameStart::Action()
 			if (lavel_select == 0)
 			{
 				m_key_flag = false;
-				Scene::SetScene(new CSceneMain());
+				Scene::SetScene(new CScenePrologue());
 
 			}
 

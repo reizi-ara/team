@@ -138,6 +138,7 @@
     <ClCompile Include="ObjMapChanger.cpp" />
     <ClCompile Include="Objmessage.cpp" />
     <ClCompile Include="ObjMessage2.cpp" />
+    <ClCompile Include="ObjPrologue.cpp" />
     <ClCompile Include="ObjThorn.cpp" />
     <ClCompile Include="ObjTime.cpp" />
     <ClCompile Include="ObjTuta.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="SceneGameStart.cpp" />
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="Objhand.cpp" />
+    <ClCompile Include="ScenePrologue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameHead.h" />
@@ -175,6 +177,7 @@
     <ClInclude Include="ObjMapChanger.h" />
     <ClInclude Include="Objmessage.h" />
     <ClInclude Include="ObjMessage2.h" />
+    <ClInclude Include="ObjPrologue.h" />
     <ClInclude Include="ObjThorn.h" />
     <ClInclude Include="ObjTime.h" />
     <ClInclude Include="ObjTuta.h" />
@@ -184,6 +187,7 @@
     <ClInclude Include="SceneGameStart.h" />
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="Objhand.h" />
+    <ClInclude Include="ScenePrologue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

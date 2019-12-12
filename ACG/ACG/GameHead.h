@@ -15,6 +15,7 @@ enum OBJ_NAME
 	OBJ_GAME_OVER,
 	OBJ_GAME_OPTION,
 	OBJ_GAME_CLEAR,
+	OBJ_PROLOGUE,
 
 	OBJ_MENU,
 
@@ -71,23 +72,28 @@ struct UserData
 //------------------------------------------------
 
 //ゲームシーンオブジェクトヘッダ------------------
-#include "ObjHero.h"
+
 #include "ObjBlock.h"
 #include "ObjTime.h"
-#include "ObjEnemy.h"
-#include "ObjGameStart.h"
-#include "ObjGameOver.h"
-#include "ObjGameOption.h"
-#include "ObjTuta.h"
 #include "ObjMapChanger.h"
-#include "Objhand.h"
-#include "ObjThorn.h"
+#include "ObjMapBacker.h"
 #include "ObjEffect.h"
 #include "Objmessage.h"
 #include "ObjMessage2.h"
-#include "ObjMapBacker.h"
-#include "ObjGameClear.h"
+
+#include "ObjHero.h"
+#include "ObjEnemy.h"
+#include "Objhand.h"
 #include "ObjBoss.h"
+#include "ObjThorn.h"
+#include "ObjTuta.h"
+
+#include "ObjGameStart.h"
+#include "ObjGameOption.h"
+#include "ObjPrologue.h"
+#include "ObjGameOver.h"
+#include "ObjGameClear.h"
+
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
@@ -96,9 +102,10 @@ struct UserData
 #include "SceneGameOver.h"
 #include "SceneGameOption.h"
 #include "SceneGameClear.h"
+#include "ScenePrologue.h"
 //-----------------------------------------------
 
 //シーンスタートクラス---------------------------
 //ゲーム開始時のシーンクラス登録
-#define SET_GAME_START CSceneGameClear
+#define SET_GAME_START CSceneGameStart
 //-----------------------------------------------
