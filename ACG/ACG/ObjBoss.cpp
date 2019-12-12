@@ -22,7 +22,7 @@ using namespace GameL;
 CObjBoss::CObjBoss(float x, float y, float l, float a)
 {
 	m_px = x;	//位置
-	m_py = y-300;
+	m_py = y - 500;
 	en_life = l;
 	atk = a;
 }
@@ -51,11 +51,13 @@ void CObjBoss::Init()
 
 	muteki_time = MUTEKI;
 
-	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	CSceneMain* sceneM = (CSceneMain*)Scene::GetScene();
 	if (sceneM == nullptr) {}
 	else destryNum = sceneM->GetDS();
 
 	time_1 = 0;
+
+	form = 0;
 }
 
 //アクション
@@ -85,7 +87,7 @@ void CObjBoss::Action()
 	//被攻撃
 	if (pl_x - sl <= en_x + 24 - (32 * (obj->Getposture() * 2 - 1)) &&
 		pl_x - sl >= en_x - 88 - (32 * (obj->Getposture() * 2 - 1)) &&
-		pl_y <= en_y -96.0f &&
+		pl_y <= en_y - 96.0f &&
 		pl_y >= en_y - 220.0f &&
 		obj->Getattack() > 0 &&
 		obj->Getattack() != 4 &&
@@ -97,9 +99,9 @@ void CObjBoss::Action()
 	//与攻撃
 	if (pl_x - sl <= en_x + 24.0f &&
 		pl_x - sl >= en_x - 88.0f &&
-		pl_y <= en_y -96.0f &&
-		pl_y >= en_y - 224.0f ) {
-		obj->GiveDamageToPlayer(atk/100);
+		pl_y <= en_y - 96.0f &&
+		pl_y >= en_y - 224.0f) {
+		obj->GiveDamageToPlayer(atk / 100);
 		if (atk_kb == false) {
 			if (pl_x - sl <= en_x) {
 				obj->SetVX(-50);
@@ -116,9 +118,9 @@ void CObjBoss::Action()
 
 	//ブロックとの当たり判定実行しない
 	//シーン移動削除処理
-	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+	CSceneMain* sceneM = (CSceneMain*)Scene::GetScene();
 	MdestryNum = sceneM->GetDS();
-	if (destryNum != MdestryNum){
+	if (destryNum != MdestryNum) {
 		this->SetStatus(false);
 	}
 
@@ -127,9 +129,9 @@ void CObjBoss::Action()
 	{
 		this->SetStatus(false);
 	}
-	if (en_life <= 0) 
+	if (en_life <= 0)
 		Scene::SetScene(new CSceneGameClear());
-	
+
 	//表示位置の更新
 	m_px += m_vx;
 	m_py += m_vy;
@@ -166,10 +168,10 @@ void CObjBoss::Action()
 	muteki_time--;
 	if (muteki_time > 0 && awake == true) {
 		if (pl_x - sl <= en_x) {
-			m_vx = (5+m_speed_power) * 0.8f;
+			m_vx = (5 + m_speed_power) * 0.8f;
 		}
 		else if (pl_x - sl > en_x) {
-			m_vx = (-5-m_speed_power)*0.8f;
+			m_vx = (-5 - m_speed_power) * 0.8f;
 		}
 	}
 	if (muteki_time == 0)
@@ -178,15 +180,42 @@ void CObjBoss::Action()
 	if (muteki_time <= 0 && awake == true) {
 		time_1++;
 
-		if (10 <= time_1 && time_1 < 150) {
-			m_py += 1;
+		if (10 <= time_1) {
+			if (pl_y+96 <= en_y) {
+				m_py-=2;
+			}
+			else if (pl_y+96 > en_y) {
+				m_py+=2;
+			}
 		}
-		if (150 <= time_1 && time_1 < 160) {
-			m_px += 5;
+		/*
+		if (100 <= time_1 && 0) {//近距離　待機
+			if (pl_x - sl + 256 <= en_x) {
+				m_px += (pl_x - sl + 256 - en_x) / 60;
+			}
+			else if (pl_x - sl + 256 > en_x) {
+				m_px += (pl_x - sl + 256 - en_x) / 60;
+			}
 		}
 
+		if (100 <= time_1 && time_1 < 300) {//遠距離　突進準備
+			if (pl_x - sl + 1536 <= en_x) {
+				m_px += (pl_x - sl + 1536 - en_x) / 90;
+			}
+			else if (pl_x - sl + 1536 > en_x) {
+				m_px += (pl_x - sl + 1536 - en_x) / 90;
+			}
+		}
 
-
+		if (300 <= time_1) {//突進
+			if (pl_x - sl - 1024 <= en_x) {
+				m_px += (pl_x - sl - 1024 - en_x) / 30;
+			}
+			else if (pl_x - sl - 1024 > en_x) {
+				m_px += (pl_x - sl - 1024 - en_x) / 30;
+			}
+			
+		}*/
 
 
 
@@ -206,15 +235,15 @@ void CObjBoss::Action()
 //ドロー
 void CObjBoss::Draw()
 {
-	int AniData[4]=
+	int AniData[4] =
 	{//横・縦
 		0,1,2,3
 	};
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 	RECT_F src;
 	RECT_F dst;
-	src.m_top = 0.0f;
-	src.m_left = AniData[m_ani_frame/2] * 256.0f;
+	src.m_top = 128.0f*form;
+	src.m_left = AniData[m_ani_frame / 2] * 256.0f;
 	src.m_right = src.m_left + 256.0f;
 	src.m_bottom = src.m_top + 256.0f;
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
