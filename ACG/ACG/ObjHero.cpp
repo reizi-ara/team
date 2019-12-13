@@ -61,6 +61,7 @@ void CObjHero::Init()
 	
 
 	Message_flag = false;
+	heal = 0.001f;
 }
 
 //アクション
@@ -69,10 +70,11 @@ void CObjHero::Action()
 	if (g_damage > 0) {
 		CObjEffect* objef = new CObjEffect(m_px, m_py, 2);
 		Objs::InsertObj(objef, OBJ_THORN, 15);
+		heal = 0.001f;
 	}
 	if (g_damage>0&&muteki_time<=0)
 	{
-		if (Input::GetVKey('S')) {
+		if (Input::GetVKey('S') && p_life / p_maxlife < 0.8) {
 			p_life -= g_damage*0.333;
 			Audio::Start(7);//効果音
 		}
@@ -143,9 +145,12 @@ void CObjHero::Action()
 		}
 
 		//キーの入力方向
-		if (Input::GetVKey('S'))//しゃがみ
+		if (Input::GetVKey('S')&&p_life/p_maxlife<0.8 )//しゃがみ
 		{
-			p_life += 0.1;
+			p_life += heal;
+			if(heal>0.1)
+				heal += 0.001;
+			heal+=0.001;
 			m_pose = 2.0f;
 			m_ani_time += 1;
 			if (muteki_time > 0)
@@ -153,6 +158,7 @@ void CObjHero::Action()
 		}
 		else
 		{
+			heal = 0.001f;
 			if (Input::GetVKey('D'))//右に移動
 			{
 				
@@ -316,7 +322,6 @@ void CObjHero::Action()
 
 	CObjMessage* obj = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
 	
-
 }
 
 

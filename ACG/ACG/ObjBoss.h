@@ -53,5 +53,9 @@ private:
 
 
 	int time_1;
+
+	//0’¼—§1:“Ëi2:’¼—§–ÚŒõ
+	int form;
+	
 };
 

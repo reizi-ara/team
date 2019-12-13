@@ -100,4 +100,5 @@ class CObjHero :public CObj
 
 		float sohuran;
 		bool Message_flag;
+		float heal;
 };
