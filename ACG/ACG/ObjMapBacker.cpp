@@ -94,7 +94,7 @@ void CObjMapBacker::Action()
 
 		//CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
 		obj->SetX(30 * 64);
-		obj->SetY(2 * 64);
+		obj->SetY(7 * 64);
 
 		//CObjBlock*objB = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 		block->SetScroll(-73*64);
