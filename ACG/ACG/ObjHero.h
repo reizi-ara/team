@@ -40,7 +40,7 @@ class CObjHero :public CObj
 
 		void GiveSpeed(float speed) { sohuran = speed; }
 		void SetMessageflag(bool att) { Message_flag = att; }
-		bool GetP_MenuFlag() { return p_menuflag; }
+		//bool GetP_MenuFlag() { return p_menuflag; }
 
 	private:
 		float m_px;	//ˆÊ’u
