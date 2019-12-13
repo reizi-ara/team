@@ -33,7 +33,7 @@ class CSceneMain :public CScene
 
 		bool OneRead;
 
-		unique_ptr<wchar_t> p[5];//ステージ情報ポインター
+		unique_ptr<wchar_t> p[10];//ステージ情報ポインター
 
 		void MapRead(int m_chg, int map[MAP_Y][MAP_X], unique_ptr<wchar_t>* p);
 
