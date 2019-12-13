@@ -67,6 +67,7 @@ void CObjEnemy::Init()
 		destryNum = sceneM->GetDS();
 
 	}
+	Delete_flag = false;
 }
 
 //アクション
@@ -215,9 +216,16 @@ void CObjEnemy::Action()
 		en_life -= DE_MAGE;
 	}
 
-	if (en_life <= 0)
+	//消滅エフェクト
+	if (en_life <= 0) {
+		CObjEffect* objef = new CObjEffect(m_px + block->GetScroll(), m_py, 1);
+		Objs::InsertObj(objef, OBJ_THORN, 15);
+		Delete_flag = true;
+	}
+	//消滅都市
+	if (Delete_flag == true)
 	{
-
+		//Delete_flag = false;
 		this->SetStatus(false);
 	}
 

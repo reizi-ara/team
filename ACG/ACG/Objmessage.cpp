@@ -180,5 +180,24 @@ void CObjMessage::Draw()
 	//•`‰æ
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 
+	if (isplayerhit == true)
+	{
+		//Ø‚èŽæ‚èˆÊ’u‚ÌÝ’è
+		src.m_top = 64.0f * 7;
+		src.m_left = 64.0f * 0;
+		src.m_right = 64.0f * 1;
+		src.m_bottom = 64.0f * 8;
+		//xãŠCg’ƒŠÙ->o‘å‰pg’ƒŠÙ
+		//ƒuƒƒbƒNî•ñ‚ðŽ‚Á‚Ä‚­‚é
+		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+
+		//•\Ž¦ˆÊ’u‚ÌÝ’è
+		dst.m_top = -64.0f-48.0f + m_py - size;
+		dst.m_left = 8.0f + m_px + block->GetScroll() - size;
+		dst.m_right = 32.0f+24.0f + m_px + block->GetScroll() + size;
+		dst.m_bottom = -48.0f + m_py + size;
+		//•`‰æ
+		Draw::Draw(6, &src, &dst, c, 0.0f);
+	}
 
 }
