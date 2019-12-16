@@ -58,6 +58,8 @@ void CObjBoss::Init()
 	time_1 = 0;
 
 	form = 0;
+	acmt[0] = 0;
+	acmt[1] = 0;
 }
 
 //アクション
@@ -180,25 +182,71 @@ void CObjBoss::Action()
 	if (muteki_time <= 0 && awake == true) {
 		time_1++;
 
-		if (10 <= time_1) {
-			if (pl_y+96 <= en_y) {
-				m_py-=2;
-			}
-			else if (pl_y+96 > en_y) {
-				m_py+=2;
-			}
+		if (time_1==20) {
+			acmt[0] = 1;
+			acmt[1] = 1;
 		}
-		/*
-		if (100 <= time_1 && 0) {//近距離　待機
-			if (pl_x - sl + 256 <= en_x) {
-				m_px += (pl_x - sl + 256 - en_x) / 60;
+		if (time_1==900) {
+			acmt[0] = 0;
+			acmt[1] = 0;
+		}
+		if (time_1 == 990) {
+			acmt[0] = 0;
+			acmt[1] = 1;
+		}if (time_1 == 1100) {
+			acmt[0] = 1;
+			acmt[1] = 2;
+		}
+		if (time_1 == 1280) {
+			acmt[0] = 0;
+			acmt[1] = 3;
+		}
+		if (time_1 == 1400) {
+			acmt[0] = 0;
+			acmt[1] = 1;
+		}
+		if (time_1 == 1600) {
+			acmt[0] = 1;
+			acmt[1] = 0;
+		}
+		if (time_1 == 1700) {
+			acmt[0] = 0;
+			acmt[1] = 4;
+		}
+		if (time_1 == 1800) {
+			acmt[0] = 1;
+			acmt[1] = 4;
+		}
+
+		if (time_1 == 25600) {
+			acmt[0] = 0;
+			acmt[1] = 0;
+			time_1 = 0;
+		}
+
+
+
+
+
+		if (acmt[0] == 1) {//高さ合わせ
+			if (pl_y + 96 <= en_y) {
+				m_py -= 2;
 			}
-			else if (pl_x - sl + 256 > en_x) {
-				m_px += (pl_x - sl + 256 - en_x) / 60;
+			else if (pl_y + 96 > en_y) {
+				m_py += 2;
 			}
 		}
 
-		if (100 <= time_1 && time_1 < 300) {//遠距離　突進準備
+		if (acmt[1] == 1) {//近距離　待機
+			if (pl_x - sl + 256 <= en_x) {
+				m_px += (pl_x - sl + 256 - en_x) / 130;
+			}
+			else if (pl_x - sl + 256 > en_x) {
+				m_px += (pl_x - sl + 256 - en_x) / 130;
+			}
+		}
+
+		if (acmt[1] == 2) {//遠距離　突進準備
 			if (pl_x - sl + 1536 <= en_x) {
 				m_px += (pl_x - sl + 1536 - en_x) / 90;
 			}
@@ -207,15 +255,22 @@ void CObjBoss::Action()
 			}
 		}
 
-		if (300 <= time_1) {//突進
+		if (acmt[1] == 3) {//突進
 			if (pl_x - sl - 1024 <= en_x) {
 				m_px += (pl_x - sl - 1024 - en_x) / 30;
 			}
 			else if (pl_x - sl - 1024 > en_x) {
 				m_px += (pl_x - sl - 1024 - en_x) / 30;
 			}
-			
-		}*/
+		}
+		if (acmt[1] == 4) {//びむー　待機
+			if (pl_x - sl + 512 <= en_x) {
+				m_px += (pl_x - sl + 512 - en_x) / 130;
+			}
+			else if (pl_x - sl + 512 > en_x) {
+				m_px += (pl_x - sl + 512 - en_x) / 130;
+			}
+		}
 
 
 
@@ -242,7 +297,7 @@ void CObjBoss::Draw()
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 	RECT_F src;
 	RECT_F dst;
-	src.m_top = 128.0f*form;
+	src.m_top = 128.0f * form;
 	src.m_left = AniData[m_ani_frame / 2] * 256.0f;
 	src.m_right = src.m_left + 256.0f;
 	src.m_bottom = src.m_top + 256.0f;
