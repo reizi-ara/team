@@ -65,9 +65,9 @@ void CObjHero::Init()
 //アクション
 void CObjHero::Action()
 {
-	//Rシーンリセット
-	if (Input::GetVKey('R')) {
-		Scene::SetScene(new CSceneMain());
+	if (g_damage > 0) {
+		CObjEffect* objef = new CObjEffect(m_px, m_py, 2);
+		Objs::InsertObj(objef, OBJ_THORN, 15);
 	}
 	if (g_damage>0&&muteki_time<=0)
 	{
@@ -365,6 +365,7 @@ void CObjHero::Draw()
 			else
 			{
 				attack_flag = false;
+				cooltime--;
 			}
 		}
 			if (attack_set == true && wepon_have > 0 && wepon_have != 4)
