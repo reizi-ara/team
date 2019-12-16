@@ -44,7 +44,7 @@ void CObjPrologue::Action()
 	}
 
 	//メッセージ関連
-	if (Input::GetVKey(VK_RETURN) == true && time >= 60)
+	if (Input::GetVKey(VK_RETURN) == true && time >= 30)
 	{
 		one_flag = false;
 		//ReturnKey_flag = true;

@@ -130,6 +130,36 @@ void CSceneMain::Scene()
 		OneRead = false;
 
 	}
+	else if (m_chg == 5 && OneRead == true)
+	{
+		MapRead(m_chg, map2, p);
+		OneRead = false;
+
+	}
+	else if (m_chg == 6 && OneRead == true)
+	{
+		MapRead(m_chg, map2, p);
+		OneRead = false;
+
+	}
+	else if (m_chg == 7 && OneRead == true)
+	{
+		MapRead(m_chg, map2, p);
+		OneRead = false;
+
+	}
+	else if (m_chg == 8 && OneRead == true)
+	{
+		MapRead(m_chg, map2, p);
+		OneRead = false;
+
+	}
+	else if (m_chg == 9 && OneRead == true)
+	{
+		MapRead(m_chg, map2, p);
+		OneRead = false;
+
+	}
 
 }
 

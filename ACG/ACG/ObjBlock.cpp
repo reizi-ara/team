@@ -83,16 +83,41 @@ void CObjBlock::Action()
 
 
 	}
-	else if (m_chg == 4 && One_chg == true)
-	{
-
+	else if (m_chg == 4 && One_chg == true)	{
 		Transfer(map, map2);
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
-
 		One_chg = false;
-
-
+	}
+	else if (m_chg == 5 && One_chg == true) {
+		Transfer(map, map2);
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
+		One_chg = false;
+	}
+	else if (m_chg == 6 && One_chg == true) {
+		Transfer(map, map2);
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
+		One_chg = false;
+	}
+	else if (m_chg == 7 && One_chg == true) {
+		Transfer(map, map2);
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
+		One_chg = false;
+	}
+	else if (m_chg == 8 && One_chg == true) {
+		Transfer(map, map2);
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
+		One_chg = false;
+	}
+	else if (m_chg == 9 && One_chg == true) {
+		Transfer(map, map2);
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
+		One_chg = false;
 	}
 
 	//主人公の位置を取得

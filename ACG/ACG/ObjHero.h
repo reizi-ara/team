@@ -41,6 +41,7 @@ class CObjHero :public CObj
 
 		void GiveSpeed(float speed) { sohuran = speed; }
 		void SetMessageflag(bool att) { Message_flag = att; }
+		//bool GetP_MenuFlag() { return p_menuflag; }
 
 	private:
 		float m_px;	//ˆÊ’u
@@ -97,4 +98,6 @@ class CObjHero :public CObj
 
 		float sohuran;
 		bool Message_flag;
+		float heal;
+		int cooltime;
 };

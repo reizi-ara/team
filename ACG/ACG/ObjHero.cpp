@@ -20,6 +20,7 @@ using namespace GameL;
 //イニシャライズ
 void CObjHero::Init()
 {
+	cooltime = 12;
 	attack_set = false;
 	attack_flag = false;
 	m_px = 70.0f;	//位置
@@ -58,14 +59,15 @@ void CObjHero::Init()
 	
 
 	Message_flag = false;
+	heal = 0.001f;
 }
 
 //アクション
 void CObjHero::Action()
 {
-	if (g_damage > 0) {
-		CObjEffect* objef = new CObjEffect(m_px, m_py, 2);
-		Objs::InsertObj(objef, OBJ_THORN, 15);
+	//Rシーンリセット
+	if (Input::GetVKey('R')) {
+		Scene::SetScene(new CSceneMain());
 	}
 	if (g_damage>0&&muteki_time<=0)
 	{
@@ -93,18 +95,34 @@ void CObjHero::Action()
 
 	if (p_menuflag == false)
 	{
+		
 
+		//damage<-いたい
+		if (g_damage > 0) {
+			heal = 0.001f;
+		}
+		if (g_damage > 0 && muteki_time <= 0)
+		{
+			CObjEffect* objef = new CObjEffect(m_px, m_py, 2);
+			Objs::InsertObj(objef, OBJ_THORN, 15);
+			if (Input::GetVKey('S') && p_life / p_maxlife < 1.0) {
+				p_life -= g_damage * 0.333;
+				Audio::Start(7);//効果音
+			}
+			else {
+				p_life -= g_damage;
+				Audio::Start(7);//効果音
+			}
 
-		//Rシーンリセット
-		if (Input::GetVKey('R')){
-			Scene::SetScene(new CSceneMain());
+			muteki_time = MUTEKITIME;
 		}
-		if (Input::GetVKey('T')){
-			p_life-=2.0f;
+		if (muteki_time > 0)
+		{
+			muteki_time--;
 		}
-		if (Input::GetVKey('H')){
-			p_life+= 2.0f;
-		}
+		g_damage = 0;
+
+		
 
 
 
@@ -134,9 +152,12 @@ void CObjHero::Action()
 		}
 
 		//キーの入力方向
-		if (Input::GetVKey('S'))//しゃがみ
+		if (Input::GetVKey('S')&&p_life/p_maxlife<1.0 )//しゃがみ
 		{
-			p_life += 0.1;
+			p_life += heal;
+			if(heal>0.1)
+				heal += 0.001;
+			heal+=0.001;
 			m_pose = 2.0f;
 			m_ani_time += 1;
 			if (muteki_time > 0)
@@ -144,6 +165,7 @@ void CObjHero::Action()
 		}
 		else
 		{
+			heal = 0.001f;
 			if (Input::GetVKey('D'))//右に移動
 			{
 				
@@ -214,7 +236,6 @@ void CObjHero::Action()
 
 	CObjMessage* obj = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
 	
-
 }
 
 
@@ -329,8 +350,13 @@ void CObjHero::Draw()
 		else {
 			if (Input::GetVKey(VK_RETURN))
 			{
-				if (attack_set == false && attack_flag == false)
+				if (attack_set == false && attack_flag == false&&cooltime<0)
 				{
+					cooltime = 40;
+					if (m_posture == 1.0f)
+						m_vx = 30;
+					if (m_posture == 0.0f)
+						m_vx = -30;
 					m_ani_frame = 0;
 					attack_set = true;
 					attack_flag = true;
@@ -343,6 +369,7 @@ void CObjHero::Draw()
 		}
 			if (attack_set == true && wepon_have > 0 && wepon_have != 4)
 			{
+				muteki_time++;
 				//切り取り位置の設定
 				src.m_top = 0.0f + wepon_have * 64;
 				src.m_left = 0.0f + AniData3[m_ani_frame] * 64;

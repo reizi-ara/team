@@ -58,5 +58,6 @@ private:
 	int MdestryNum;
 
 	bool atk_kb;
+	bool Delete_flag;
 
 };
