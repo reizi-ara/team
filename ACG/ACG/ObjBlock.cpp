@@ -163,6 +163,11 @@ void CObjBlock::Action()
 				Objs::InsertObj(obj37, OBJ_THORN, 10);
 				m_map[i][ex] = 0;
 			}
+			else if (m_map[i][ex] == 39) {//òXêC
+				CObjCandle* obj39 = new CObjCandle(ex * 64.0f, i * 64.0f);
+				Objs::InsertObj(obj39, OBJ_CANDLE, 10);
+				m_map[i][ex] = 0;
+			}
 
 			else if (m_map[i][ex] == 40) {//éüÉ}ÉbÉvà⁄ìÆî‡
 				CObjMapChanger* obj40 = new CObjMapChanger(ex * 64.0f, i * 64.0f, 0);
@@ -175,8 +180,8 @@ void CObjBlock::Action()
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 50) {//ñ{íIÇP
-				CObjMessage* obje = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
-				Objs::InsertObj(obje, OBJ_MESSAGE, 10);
+				CObjMessage* obj50 = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
+				Objs::InsertObj(obj50, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
 

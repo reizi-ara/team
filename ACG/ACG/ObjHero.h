@@ -25,6 +25,7 @@ class CObjHero :public CObj
 		void SetVY(float vy) { m_vy = vy; }
 		void SetVX(float vx) { m_vx = vx; }
 		void SetBT(int t) { m_block_type=t; }
+		void SetMF(bool mf) { p_menuflag = mf; }	//メニューのフラグ変更用
 
 		void SetUp(bool b) { m_hit_up = b; }
 		void SetDown(bool b) { m_hit_down = b; }
@@ -40,7 +41,6 @@ class CObjHero :public CObj
 
 		void GiveSpeed(float speed) { sohuran = speed; }
 		void SetMessageflag(bool att) { Message_flag = att; }
-		bool GetP_MenuFlag() { return p_menuflag; }
 
 	private:
 		float m_px;	//位置
@@ -78,18 +78,15 @@ class CObjHero :public CObj
 		int wepon_have;
 		int wepon_attack;
 
-		//メニュー
-		int lavel_select;	//上下ボタンセレクト用
-		bool lavel_button;//一回発動用
-		bool lavel_button2;//一回発動用
+
 		/*bool lavel_button3;//一回発動用
 		bool lavel_button4;//一回発動用
 		bool lavel_button5;//一回発動用*/
-		bool m_key_flag;
+
 
 		//メニュー展開時の操作フラグ
 		bool p_menuflag;
-		bool p_menu_close;
+		//bool p_menu_close;
 
 		bool attack_set;
 		bool attack_flag;

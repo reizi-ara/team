@@ -112,6 +112,9 @@
     <ClCompile Include="ObjPrologue.cpp">
       <Filter>プロローグ</Filter>
     </ClCompile>
+    <ClCompile Include="ObjCandle.cpp">
+      <Filter>GameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\SetWindow.h">
@@ -224,6 +227,9 @@
     </ClInclude>
     <ClInclude Include="ScenePrologue.h">
       <Filter>プロローグ</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCandle.h">
+      <Filter>GameMain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

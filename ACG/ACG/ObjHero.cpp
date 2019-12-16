@@ -50,9 +50,6 @@ void CObjHero::Init()
 
 	//メニュー展開時の操作フラグ
 	p_menuflag = false;
-	//メニューバー位置
-	lavel_select = 0;
-
 
 	muteki_time = MUTEKITIME/2;
 	overplayerlife = p_life;
@@ -90,13 +87,7 @@ void CObjHero::Action()
 	g_damage = 0;
 
 
-	if (Input::GetVKey('E'))
-	{
-		p_menuflag = true;
-
-		Audio::Stop(0);//メインBGMストップ
-		Audio::Start(2);//メニューBGMスタート
-	}
+	
 
 	
 
@@ -215,100 +206,7 @@ void CObjHero::Action()
 
 
 	}
-	else if (p_menuflag == true)	//メニューテスト
-	{
-				if (Input::GetVKey('S'))
-				{
-					if (lavel_button == true)
-					{
-						lavel_select++;
-
-						lavel_button = false;
-
-						Audio::Start(9);//SE
-
-					}
-				}
-				else
-					lavel_button = true;
-
-				if (Input::GetVKey('W'))
-				{
-					if (lavel_button2 == true)
-					{
-						lavel_select--;
-
-						lavel_button2 = false;
-
-						Audio::Start(9);//SE
-
-					}
-				}
-				else
-					lavel_button2 = true;
-
-
-				if (lavel_select > 5)
-					lavel_select = 0;
-				if (lavel_select < 0)
-					lavel_select = 5;
-
-
-				//エンターキーを押してシーン：ゲームメインに移行する
-				if (Input::GetVKey(VK_RETURN) == true)
-				{
-					if (lavel_select == 0)
-					{
-						Audio::Start(8);//SE
-						Scene::SetScene(new CSceneGameOver());	
-						m_key_flag = false;
-						
-					}
-
-					else if (lavel_select == 1)
-					{
-						Audio::Start(8);//SE
-						Scene::SetScene(new CSceneGameOver());
-						m_key_flag = false;
-					}
-					
-					else if (lavel_select == 2) {
-						Audio::Start(8);//SE
-						Scene::SetScene(new CSceneGameOver());
-						m_key_flag = false;
-					}
-
-					else if (lavel_select == 3) {
-						Audio::Start(8);//SE
-						Scene::SetScene(new CSceneGameOver());
-						m_key_flag = false;
-					}
-
-					else if (lavel_select == 4)
-					{
-						Audio::Start(8);//SE
-						Scene::SetScene(nullptr);
-					}
-
-					else if (lavel_select == 5)
-					{
-						Audio::Start(8);//SE
-						Audio::Stop(2);//メニューBGMストップ
-						Audio::Start(0);//メインBGMスタート
-						p_menuflag = false;
-						
-					}
-
-				}
-				else
-				{
-					m_key_flag = true;
-				}
-		
-				m_vx = 0;
-				m_vy = 0;
-	}
-
+	
 
 	//表示位置の更新
 	m_px += m_vx * sohuran;
@@ -472,6 +370,8 @@ void CObjHero::Draw()
 		}
 	}
 
+
+	/*
 	if (p_menuflag == true)				//メニュー
 	{
 		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
@@ -514,4 +414,5 @@ void CObjHero::Draw()
 		Font::StrDraw(L"ゲーム終了", 50, 300, 32, c);
 		Font::StrDraw(L"戻る", 50, 350, 32, c);
 	}
+	*/
 }

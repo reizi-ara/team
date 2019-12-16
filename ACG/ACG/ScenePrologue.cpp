@@ -43,6 +43,10 @@ void CScenePrologue::InitScene()
 	//âπäyì«Ç›çûÇ›
 	Audio::LoadAudio(0, L"s_end.wav", BACK_MUSIC);
 
+	//SE
+	//Audio::LoadAudio(1, L"s_select.wav", EFFECT);
+	Audio::LoadAudio(2, L"s_ok.wav", EFFECT);
+
 	//É{ÉäÉÖÅ[ÉÄ
 	float v = Audio::VolumeMaster(0);
 	v = Audio::VolumeMaster((1.0 - v));

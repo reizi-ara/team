@@ -20,6 +20,7 @@ enum OBJ_NAME
 	OBJ_MENU,
 
 	OBJ_TUTA,
+	OBJ_CANDLE,
 
 	OBJ_MAPCHANGER,
 	OBJ_MAPBACKER,
@@ -93,6 +94,7 @@ struct UserData
 #include "ObjPrologue.h"
 #include "ObjGameOver.h"
 #include "ObjGameClear.h"
+#include "ObjCandle.h"
 
 //------------------------------------------------
 

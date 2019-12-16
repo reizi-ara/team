@@ -6,6 +6,7 @@
 #include"GameHead.h"
 #include"ObjGameClear.h"
 #include"main.h"
+#include"GameL/Audio.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -49,6 +50,7 @@ void CObjGameClear::Action()
 		//ReturnKey_flag = true;
 		Endnum += 1;		
 		time = 0;
+		Audio::Start(2);//効果音
 	}
 }
 
