@@ -59,7 +59,7 @@ void CObjBoss::Init()
 
 	form = 0;
 	acmt[0] = 0;
-	acmt[1] = 0;
+	acmt[1] = 1;
 }
 
 //アクション
@@ -103,7 +103,13 @@ void CObjBoss::Action()
 		pl_x - sl >= en_x - 88.0f &&
 		pl_y <= en_y - 96.0f &&
 		pl_y >= en_y - 224.0f) {
-		obj->GiveDamageToPlayer(atk / 100);
+		if (form == 1) {
+			obj->GiveDamageToPlayer(atk);
+		}
+		else {
+			obj->GiveDamageToPlayer(atk*0.3);
+
+		}
 		if (atk_kb == false) {
 			if (pl_x - sl <= en_x) {
 				obj->SetVX(-50);
@@ -217,8 +223,12 @@ void CObjBoss::Action()
 			acmt[0] = 1;
 			acmt[1] = 4;
 		}
+		if (time_1 == 2000) {
+			acmt[0] = 0;
+			acmt[1] = 5;
+		}
 
-		if (time_1 == 25600) {
+		if (time_1 == 2560) {
 			acmt[0] = 0;
 			acmt[1] = 0;
 			time_1 = 0;
@@ -238,6 +248,7 @@ void CObjBoss::Action()
 		}
 
 		if (acmt[1] == 1) {//近距離　待機
+			form = 0;
 			if (pl_x - sl + 256 <= en_x) {
 				m_px += (pl_x - sl + 256 - en_x) / 130;
 			}
@@ -247,6 +258,7 @@ void CObjBoss::Action()
 		}
 
 		if (acmt[1] == 2) {//遠距離　突進準備
+			form = 0;
 			if (pl_x - sl + 1536 <= en_x) {
 				m_px += (pl_x - sl + 1536 - en_x) / 90;
 			}
@@ -256,6 +268,7 @@ void CObjBoss::Action()
 		}
 
 		if (acmt[1] == 3) {//突進
+			form = 1;
 			if (pl_x - sl - 1024 <= en_x) {
 				m_px += (pl_x - sl - 1024 - en_x) / 30;
 			}
@@ -264,11 +277,30 @@ void CObjBoss::Action()
 			}
 		}
 		if (acmt[1] == 4) {//びむー　待機
+			form = 2;
 			if (pl_x - sl + 512 <= en_x) {
 				m_px += (pl_x - sl + 512 - en_x) / 130;
 			}
 			else if (pl_x - sl + 512 > en_x) {
 				m_px += (pl_x - sl + 512 - en_x) / 130;
+			}
+		}
+		if (acmt[1] == 5) {//びむー
+			form = 3;
+			if (pl_x - sl + 512 <= en_x) {
+				m_px += (pl_x - sl + 512 - en_x) / 130;
+			}
+			else if (pl_x - sl + 512 > en_x) {
+				m_px += (pl_x - sl + 512 - en_x) / 130;
+			}
+
+			if (pl_x - sl <= en_x + 24.0f &&
+				pl_x - sl >= en_x - 2188.0f &&
+				pl_y <= en_y - 180.0f &&
+				pl_y >= en_y - 190.0f) {
+				obj->GiveDamageToPlayer(atk *1.5f);
+				obj->SetVX(-20);
+				obj->SetVY(5);
 			}
 		}
 
@@ -290,21 +322,81 @@ void CObjBoss::Action()
 //ドロー
 void CObjBoss::Draw()
 {
-	int AniData[4] =
+	int AniData[8] =
 	{//横・縦
-		0,1,2,3
+		0,0,1,1,2,2,3,3
 	};
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 	RECT_F src;
 	RECT_F dst;
-	src.m_top = 128.0f * form;
-	src.m_left = AniData[m_ani_frame / 2] * 256.0f;
-	src.m_right = src.m_left + 256.0f;
-	src.m_bottom = src.m_top + 256.0f;
+
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	dst.m_top = -192.0f + m_py;
-	dst.m_left = (256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
-	dst.m_right = (256.0f - 256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
-	dst.m_bottom = 64.0f + m_py;
-	Draw::Draw(7, &src, &dst, c, 0.0f);
+	if (form == 0||form==2|| form == 3) {
+		src.m_top = 0;
+		src.m_left = AniData[m_ani_frame] * 256.0f;
+		src.m_right = src.m_left + 256.0f;
+		src.m_bottom = src.m_top + 256.0f;
+
+		dst.m_top = -192.0f + m_py;
+		dst.m_left = (256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
+		dst.m_right = (256.0f - 256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
+		dst.m_bottom = 64.0f + m_py;
+		Draw::Draw(7, &src, &dst, c, 0.0f);
+	}
+	if (form == 1) {
+		src.m_top = 256;
+		src.m_left = AniData[m_ani_frame/2] * 512.0f;
+		src.m_right = src.m_left + 512.0f;
+		src.m_bottom = src.m_top + 256.0f;
+
+		dst.m_top = -192.0f + m_py;
+		dst.m_left =			 m_px + block->GetScroll() - 128.0f;
+		dst.m_right = 512.0f  +	m_px + block->GetScroll() - 128.0f;
+		dst.m_bottom = 64.0f + m_py;
+		Draw::Draw(7, &src, &dst, c, 0.0f);
+
+		src.m_top = 512;
+		src.m_left = AniData[m_ani_frame] * 256.0f;
+		src.m_right = src.m_left + 256.0f;
+		src.m_bottom = src.m_top + 256.0f;
+
+		dst.m_top = -192.0f + m_py;
+		dst.m_left = m_px + block->GetScroll() - 128.0f;
+		dst.m_right = 256.0f + m_px + block->GetScroll() - 128.0f;
+		dst.m_bottom = 64.0f + m_py;
+		Draw::Draw(7, &src, &dst, c, 0.0f);
+	}
+	if (form == 2|| form == 3) {
+
+		src.m_top = 768;
+		src.m_left = AniData[m_ani_frame] * 256.0f;
+		src.m_right = src.m_left + 256.0f;
+		src.m_bottom = src.m_top + 128.0f;
+
+		dst.m_top = -192.0f + m_py;
+		dst.m_left = (256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
+		dst.m_right = (256.0f - 256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
+		dst.m_bottom = -64.0f + m_py;
+		Draw::Draw(7, &src, &dst, c, 0.0f);
+
+		src.m_top = 896;
+		src.m_left = 0.0f;
+		src.m_right = src.m_left + 1024.0f;
+		src.m_bottom = src.m_top + 128.0f;
+
+		if (form == 2) {
+			dst.m_top = -120.0f + m_py;
+			dst.m_left = -1500 + m_px + block->GetScroll() - 128.0f;
+			dst.m_right = 128 + m_px + block->GetScroll() - 128.0f;
+			dst.m_bottom = -128.0f + m_py;
+			Draw::Draw(7, &src, &dst, c, 0.0f);
+		}
+		if (form == 3) {
+			dst.m_top = -192.0f + m_py;
+			dst.m_left = -1500 + m_px + block->GetScroll() - 128.0f;
+			dst.m_right = 128 + m_px + block->GetScroll() - 128.0f;
+			dst.m_bottom = -64.0f + m_py;
+			Draw::Draw(7, &src, &dst, c, 0.0f);
+		}
+	}
 }
