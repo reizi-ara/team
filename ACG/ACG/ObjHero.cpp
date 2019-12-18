@@ -65,29 +65,22 @@ void CObjHero::Init()
 //アクション
 void CObjHero::Action()
 {
-	if (g_damage > 0) {
-		CObjEffect* objef = new CObjEffect(m_px, m_py, 2);
-		Objs::InsertObj(objef, OBJ_THORN, 15);
-	}
-	if (g_damage>0&&muteki_time<=0)
-	{
-		if (Input::GetVKey('S')) {
-			p_life -= g_damage*0.333;
-			Audio::Start(7);//効果音
-		}
-		else {
-			p_life -= g_damage;
-			Audio::Start(7);//効果音
-		}
-		
-		muteki_time = MUTEKITIME;
-	}
-	if(muteki_time > 0)
-	{
-		muteki_time--;
-	}
-	g_damage = 0;
 
+	//Rシーンリセット
+	if (Input::GetVKey('R')) {
+		Scene::SetScene(new CSceneMain());
+	}
+	if (Input::GetVKey('T')) {
+		p_life -= 2.0f;
+	}
+	if (Input::GetVKey('H')) {
+		p_life += 2.0f;
+	}
+
+	cooltime--;
+
+
+	
 
 	
 
@@ -365,7 +358,6 @@ void CObjHero::Draw()
 			else
 			{
 				attack_flag = false;
-				cooltime--;
 			}
 		}
 			if (attack_set == true && wepon_have > 0 && wepon_have != 4)
@@ -399,48 +391,5 @@ void CObjHero::Draw()
 	}
 
 
-	/*
-	if (p_menuflag == true)				//メニュー
-	{
-		float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-
-		RECT_F src;//描画元切り取り位置
-		RECT_F dst;//描画先表示位置
-
-		//切り取り位置の設定
-		src.m_top = 0.0f;
-		src.m_left = 0.0f;
-		src.m_right = 910.0f;
-		src.m_bottom = 512.0f;
-
-		//背景の位置を設定し描画
-		dst.m_top = 0.0f;
-		dst.m_left = 0.0f;
-		dst.m_right = WINDOW_SIZE_W;
-		dst.m_bottom = WINDOW_SIZE_H;
-		Draw::Draw(4, &src, &dst, c, 0.0f);
-
-		//強調表示用バー
-		//切り取り位置の設定
-		src.m_top = 64.0f*5;
-		src.m_left = 64.0f * 5;
-		src.m_right = 64.0f * 5+192;
-		src.m_bottom = 64.0f * 5+64;
-
-		//バーの位置を設定し描画
-		dst.m_top = 100.0f + lavel_select * 50;
-		dst.m_left = 250.0f;
-		dst.m_right = 30.0f;
-		dst.m_bottom = 140.0f + lavel_select * 50;
-		Draw::Draw(2, &src, &dst, c, 0.0f);
-
-
-		Font::StrDraw(L"アイテム", 50, 100, 32, c);
-		Font::StrDraw(L"装備", 50, 150, 32, c);
-		Font::StrDraw(L"キャラクター", 50, 200, 32, c);
-		Font::StrDraw(L"セーブ", 50, 250, 32, c);
-		Font::StrDraw(L"ゲーム終了", 50, 300, 32, c);
-		Font::StrDraw(L"戻る", 50, 350, 32, c);
-	}
-	*/
+	
 }
