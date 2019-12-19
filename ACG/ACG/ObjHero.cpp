@@ -99,7 +99,7 @@ void CObjHero::Action()
 			CObjEffect* objef = new CObjEffect(m_px, m_py, 2);
 			Objs::InsertObj(objef, OBJ_THORN, 15);
 			if (Input::GetVKey('S') && p_life / p_maxlife < 1.0) {
-				p_life -= g_damage * 0.333;
+				p_life -= g_damage * 0.8;
 				Audio::Start(7);//Œø‰Ê‰¹
 			}
 			else {
@@ -347,9 +347,9 @@ void CObjHero::Draw()
 				{
 					cooltime = 40;
 					if (m_posture == 1.0f)
-						m_vx = 30;
+						m_vx = 12;
 					if (m_posture == 0.0f)
-						m_vx = -30;
+						m_vx = -12;
 					m_ani_frame = 0;
 					attack_set = true;
 					attack_flag = true;

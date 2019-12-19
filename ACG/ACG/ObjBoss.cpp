@@ -279,19 +279,19 @@ void CObjBoss::Action()
 		if (acmt[1] == 4) {//びむー　待機
 			form = 2;
 			if (pl_x - sl + 512 <= en_x) {
-				m_px += (pl_x - sl + 512 - en_x) / 130;
+				m_px += (pl_x - sl + 512 - en_x) / 20;
 			}
 			else if (pl_x - sl + 512 > en_x) {
-				m_px += (pl_x - sl + 512 - en_x) / 130;
+				m_px += (pl_x - sl + 512 - en_x) / 20;
 			}
 		}
 		if (acmt[1] == 5) {//びむー
 			form = 3;
 			if (pl_x - sl + 512 <= en_x) {
-				m_px += (pl_x - sl + 512 - en_x) / 130;
+				m_px += (pl_x - sl + 512 - en_x) / 20;
 			}
 			else if (pl_x - sl + 512 > en_x) {
-				m_px += (pl_x - sl + 512 - en_x) / 130;
+				m_px += (pl_x - sl + 512 - en_x) / 20;
 			}
 
 			if (pl_x - sl <= en_x + 24.0f &&
@@ -331,7 +331,7 @@ void CObjBoss::Draw()
 	RECT_F dst;
 
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	if (form == 0||form==2|| form == 3) {
+	if (form == 0) {
 		src.m_top = 0;
 		src.m_left = AniData[m_ani_frame] * 256.0f;
 		src.m_right = src.m_left + 256.0f;
@@ -340,6 +340,18 @@ void CObjBoss::Draw()
 		dst.m_top = -192.0f + m_py;
 		dst.m_left = (256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
 		dst.m_right = (256.0f - 256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
+		dst.m_bottom = 64.0f + m_py;
+		Draw::Draw(7, &src, &dst, c, 0.0f);
+	}
+	if (form == 2 || form == 3) {
+		src.m_top = 0;
+		src.m_left = AniData[m_ani_frame] * 256.0f;
+		src.m_right = src.m_left + 256.0f;
+		src.m_bottom = src.m_top + 256.0f;
+
+		dst.m_top = -192.0f + m_py;
+		dst.m_left = m_px + block->GetScroll() - 128.0f;
+		dst.m_right = 256.0f + m_px + block->GetScroll() - 128.0f;
 		dst.m_bottom = 64.0f + m_py;
 		Draw::Draw(7, &src, &dst, c, 0.0f);
 	}
@@ -374,8 +386,8 @@ void CObjBoss::Draw()
 		src.m_bottom = src.m_top + 128.0f;
 
 		dst.m_top = -192.0f + m_py;
-		dst.m_left = (256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
-		dst.m_right = (256.0f - 256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
+		dst.m_left =  m_px + block->GetScroll() - 128.0f;
+		dst.m_right = 256.0f + m_px + block->GetScroll() - 128.0f;
 		dst.m_bottom = -64.0f + m_py;
 		Draw::Draw(7, &src, &dst, c, 0.0f);
 
