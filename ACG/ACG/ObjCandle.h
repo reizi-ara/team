@@ -37,10 +37,6 @@ private:
 	int lavel_select;	//上下ボタンセレクト用
 	bool lavel_button;//一回発動用
 	bool lavel_button2;//一回発動用
-	bool m_key_flag;
-
-	bool oneET_flag;
-	bool oneET_flag2;
 
 	//メニュー展開時の操作フラグ
 	bool p_menuflag;
@@ -48,11 +44,12 @@ private:
 
 
 
+
 	//削除用
 	int destryNum;
 	int MdestryNum;
 
-	int time;
+	int time, times;
 	int Unfold;
 
 };

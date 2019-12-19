@@ -190,7 +190,7 @@ void CObjBlock::Action()
 			}
 			else if (m_map[i][ex] == 39) {//˜XC
 				CObjCandle* obj39 = new CObjCandle(ex * 64.0f, i * 64.0f);
-				Objs::InsertObj(obj39, OBJ_CANDLE, 10);
+				Objs::InsertObj(obj39, OBJ_CANDLE, 99);
 				m_map[i][ex] = 0;
 			}
 
@@ -348,8 +348,8 @@ void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[],int s)
 void CObjBlock::Draw()
 {
 	//•`‰æƒJƒ‰[î•ñ
-	float c[4]  = { 1.0f,1.0f,1.0f,1.0f };
-	float cr[4] = { 0.7f,0.7f,0.7f,1.0f };
+	float c[4] = { 0.5f,0.5f,0.5f,1.0f };
+	float cr[4] = { 0.3f,0.3f,0.3f,1.0f };
 
 	RECT_F src;//•`‰æŒ³Ø‚èæ‚èˆÊ’u
 	RECT_F dst;//•`‰ææ•\¦ˆÊ’u

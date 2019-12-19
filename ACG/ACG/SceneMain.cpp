@@ -64,7 +64,7 @@ void CSceneMain::InitScene()
 
 	//主人公オブジェクトの作成
 	CObjHero*obj = new CObjHero();
-	Objs::InsertObj(obj, OBJ_HERO, 10);
+	Objs::InsertObj(obj, OBJ_HERO, 50);
 
 	//blockオブジェクト作成
 	CObjBlock*objb = new CObjBlock(map2);

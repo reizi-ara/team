@@ -75,11 +75,6 @@ void CObjMessage::Init()
 void CObjMessage::Action()
 {
 
-	//通常速度
-	m_ani_max_time = 8;//アニメーション間隔幅
-
-
-
 	//当たり判定
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
