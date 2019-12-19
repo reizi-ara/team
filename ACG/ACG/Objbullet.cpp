@@ -5,97 +5,66 @@
 #include"main.h"
 using namespace GameL;
 using namespace std;
-/*
+
 #define A_MODE 1
 #define HIT_L 16.0f
 //A_MODE 0:三角関数関数使用 1:三角関数関数不使用？
-CObjBullet::CObjBullet(int s)
+CObjBullet::CObjBullet(float x, float y,  float a,float s)
 {
+	m_px = x;	//位置
+	m_py = y;
+	atk = a;
 	speed = s;
 }
 void CObjBullet::Init()
 {
-	CObjEnemy* enm = (CObjEnemy*)Objs::GetObj(OBJ_ENEMY);
-	CObjHero* ply = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	if (enm == nullptr)
-		return;
-	if (ply == nullptr)
-		return;
-
-	pos_x = enm->GetEX();
-	pos_y = enm->GetEY();
-	angle = 0.0f;
-	her_x = ply->GetHX();
-	her_y = ply->GetHY();
-	time_D = 0;
-
-	if (A_MODE == 0)
-	{
-		angle = atan2(her_y - pos_y, her_x - pos_x);
-
-
-
-		vec_x = cos(angle);
-		vec_y = sin(angle);
-	}
-	else if (A_MODE == 1)
-	{
-		length = sqrt(pow((her_x - pos_x), 2) + pow((her_y - pos_y), 2));
-		//斜辺
-
-		vec_x = (her_x - pos_x) / length;
-		vec_y = (her_y - pos_y) / length;
-	}
-
-
-
-	hit_len = HIT_L;
+	m_vx = 0;// -speed;
+	m_vy=2;
+	frameQ=0;
+	
 }
-
 void CObjBullet::Action()
 {
+	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	float pl_x = obj->GetX();
+	float pl_y = obj->GetY();
+	float sl = block->GetScroll();
 
-	CObjHero* ply1 = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	her_x = ply1->GetHX();
-	her_y = ply1->GetHY();
-
-
-	if (pos_x + 16.0f <= her_x + 16.0f + hit_len &&
-		pos_x + 16.0f > her_x + 16.0f - hit_len &&
-		pos_y + 16.0f <= her_y + 16.0f + hit_len &&
-		pos_y + 16.0f > her_y + 16.0f - hit_len)
-	{
-		this->SetStatus(false);
+	if (pl_x - sl <= m_px + 48.0f &&
+		pl_x - sl >= m_px -0.0f &&
+		pl_y <= m_py + 48.0f &&
+		pl_y >= m_py - 0.0f) {
+		obj->GiveDamageToPlayer(atk);
 	}
 
 
+	//表示位置の更新
+	m_px += m_vx;
+	m_py += m_vy;
 
-	pos_x += vec_x * speed;
-	pos_y += vec_y * speed;
-
-
-	if (time_D > 600)
-		this->SetStatus(false);
-	time_D++;
+	frameQ++;
 }
 
-void CObjball::Draw()
+void CObjBullet::Draw()
 {
 	float c[4] = { 1.0f ,1.0f ,1.0f ,1.0f };
 	RECT_F src;
 	RECT_F dst;
 
-	src.m_top = 0.0f;
-	src.m_left = 64.0f;
-	src.m_right = 32.0f + src.m_left;
-	src.m_bottom = 32.0f + src.m_top;
 
-	dst.m_top = 0.0f + pos_y;
-	dst.m_left = 0.0f + pos_x;
-	dst.m_right = 32.0f + dst.m_left;
-	dst.m_bottom = 32.0f + dst.m_top;
+	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+
+	src.m_top = 196.0f;
+	src.m_left = 64.0f*(frameQ%4);
+	src.m_right = 64.0f + src.m_left;
+	src.m_bottom = 64.0f + src.m_top;
+
+	dst.m_top = 0.0f + m_py;
+	dst.m_left = 0.0f + m_px+block->GetScroll(); 
+	dst.m_right = 64.0f + dst.m_left;
+	dst.m_bottom = 64.0f + dst.m_top;
 
 	Draw::Draw(0, &src, &dst, c, 0.0f);
 
 }
-*/

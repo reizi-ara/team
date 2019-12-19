@@ -235,7 +235,11 @@ void CObjBoss::Action()
 		}
 
 
-
+		if (time_1 % 30==0)/////////////////////////////////////////////////////////
+		{
+			CObjBullet* objbt = new CObjBullet(300, 0, 20, 6);
+			Objs::InsertObj(objbt, OBJ_ENEMY, 10);
+		}
 
 
 		if (acmt[0] == 1) {//çÇÇ≥çáÇÌÇπ

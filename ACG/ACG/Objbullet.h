@@ -6,25 +6,17 @@ using namespace GameL;
 class CObjBullet :public CObj
 {
 public:
-	CObjBullet(int s);
+	CObjBullet(float x, float y, float a,float s);
 	~CObjBullet() {};
 	void Init();
 	void Action();
 	void Draw();
 private:
-	float pos_x;
-	float pos_y;
+	float m_px;	//位置
+	float m_py;
+	float m_vx; //移動ベクトル
+	float m_vy;
+	int atk;//攻撃力
 	float speed;
-	float angle;
-	float length;
-
-	float vec_x;
-	float vec_y;
-
-	float her_x;
-	float her_y;
-
-	float hit_len;
-
-	int time_D;
+	int frameQ;
 };
