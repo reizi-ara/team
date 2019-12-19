@@ -61,6 +61,8 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"splite5.png", 5, TEX_SIZE_1024);
 	Draw::LoadImageW(L"splite7.png", 7, TEX_SIZE_1024);
 
+	Draw::LoadImageW(L"kuro.png", 88, TEX_SIZE_1024);
+
 
 	//主人公オブジェクトの作成
 	CObjHero*obj = new CObjHero();

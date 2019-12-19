@@ -348,7 +348,7 @@ void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[],int s)
 void CObjBlock::Draw()
 {
 	//•`‰æƒJƒ‰[î•ñ
-	float c[4] = { 0.5f,0.5f,0.5f,1.0f };
+	float c[4]  = { 0.5f,0.5f,0.5f,1.0f };
 	float cr[4] = { 0.3f,0.3f,0.3f,1.0f };
 
 	RECT_F src;//•`‰æŒ³Ø‚èæ‚èˆÊ’u
@@ -365,9 +365,6 @@ void CObjBlock::Draw()
 	dst.m_right = WINDOW_SIZE_W;
 	dst.m_bottom = WINDOW_SIZE_H;
 	Draw::Draw(5, &src, &dst, c, 0.0f);
-
-
-
 
 	for (int i = 0; i < 10; i++)
 	{
