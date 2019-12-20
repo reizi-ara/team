@@ -208,6 +208,51 @@ void CObjBlock::Action()
 				Objs::InsertObj(obj50, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
+			else if (m_map[i][ex] == 51) {//ñ{íIÇP
+				CObjMessage* obj51 = new CObjMessage(ex * 64.0f, i * 64.0f, 1);
+				Objs::InsertObj(obj51, OBJ_MESSAGE, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 52) {//ñ{íIÇP
+				CObjMessage* obj52 = new CObjMessage(ex * 64.0f, i * 64.0f, 2);
+				Objs::InsertObj(obj52, OBJ_MESSAGE, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 53) {//ñ{íIÇP
+				CObjMessage* obj53 = new CObjMessage(ex * 64.0f, i * 64.0f, 3);
+				Objs::InsertObj(obj53, OBJ_MESSAGE, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 54) {//ñ{íIÇP
+				CObjMessage* obj54 = new CObjMessage(ex * 64.0f, i * 64.0f, 4);
+				Objs::InsertObj(obj54, OBJ_MESSAGE, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 55) {//ñ{íIÇP
+				CObjMessage* obj55 = new CObjMessage(ex * 64.0f, i * 64.0f, 5);
+				Objs::InsertObj(obj55, OBJ_MESSAGE, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 56) {//ñ{íIÇP
+				CObjMessage* obj56 = new CObjMessage(ex * 64.0f, i * 64.0f, 6);
+				Objs::InsertObj(obj56, OBJ_MESSAGE, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 57) {//ñ{íIÇP
+				CObjMessage* obj57 = new CObjMessage(ex * 64.0f, i * 64.0f, 7);
+				Objs::InsertObj(obj57, OBJ_MESSAGE, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 58) {//ñ{íIÇP
+				CObjMessage* obj58 = new CObjMessage(ex * 64.0f, i * 64.0f, 8);
+				Objs::InsertObj(obj58, OBJ_MESSAGE, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 59) {//ñ{íIÇP
+			CObjMessage* obj59 = new CObjMessage(ex * 64.0f, i * 64.0f, 9);
+			Objs::InsertObj(obj59, OBJ_MESSAGE, 10);
+			m_map[i][ex] = 0;
+			}
 
 
 		}
@@ -344,8 +389,8 @@ void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[],int s)
 void CObjBlock::Draw()
 {
 	//ï`âÊÉJÉâÅ[èÓïÒ
-	float c[4]  = { 0.5f,0.5f,0.5f,1.0f };
-	float cr[4] = { 0.3f,0.3f,0.3f,1.0f };
+	float c[4]  = { 0.7f,0.7f,0.7f,1.0f };
+	float cr[4] = { 0.4f,0.4f,0.4f,1.0f };
 
 	RECT_F src;//ï`âÊå≥êÿÇËéÊÇËà íu
 	RECT_F dst;//ï`âÊêÊï\é¶à íu

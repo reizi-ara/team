@@ -115,6 +115,9 @@
     <ClCompile Include="ObjCandle.cpp">
       <Filter>GameMain</Filter>
     </ClCompile>
+    <ClCompile Include="Objbullet.cpp">
+      <Filter>GameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\SetWindow.h">
@@ -229,6 +232,9 @@
       <Filter>プロローグ</Filter>
     </ClInclude>
     <ClInclude Include="ObjCandle.h">
+      <Filter>GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="Objbullet.h">
       <Filter>GameMain</Filter>
     </ClInclude>
   </ItemGroup>

@@ -95,6 +95,7 @@ struct UserData
 #include "ObjGameOver.h"
 #include "ObjGameClear.h"
 #include "ObjCandle.h"
+#include"Objbullet.h"
 
 //------------------------------------------------
 

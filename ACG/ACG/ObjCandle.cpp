@@ -131,10 +131,10 @@ void CObjCandle::Action()
 			lavel_button2 = true;
 
 
-		if (lavel_select > 5)
+		if (lavel_select > 3)
 			lavel_select = 0;
 		if (lavel_select < 0)
-			lavel_select = 5;
+			lavel_select = 3;
 
 
 		//エンターキーを押してシーン：ゲームメインに移行する
@@ -152,30 +152,18 @@ void CObjCandle::Action()
 					if (lavel_select == 0) {
 						p_menu_close = false;
 						Audio::Start(8);//SE
-						Scene::SetScene(new CSceneGameOver());
 					}
 					else if (lavel_select == 1) {
 						p_menu_close = false;
 						Audio::Start(8);//SE
-						Scene::SetScene(new CSceneGameOver());
+						//Scene::SetScene(new CSceneGameOver());
 					}
 					else if (lavel_select == 2) {
-
-						p_menu_close = false;
-						Audio::Start(8);//SE
-						Scene::SetScene(new CSceneGameOver());
-					}
-					else if (lavel_select == 3) {
-						p_menu_close = false;
-						Audio::Start(8);//SE
-						Scene::SetScene(new CSceneGameOver());
-					}
-					else if (lavel_select == 4) {
 						p_menu_close = false;
 						Audio::Start(8);//SE
 						Scene::SetScene(nullptr);
 					}
-					else if (lavel_select == 5) {
+					else if (lavel_select == 3) {
 						p_menu_close = false;
 						time = 0;
 						Audio::Start(8);//SE
@@ -223,7 +211,7 @@ void CObjCandle::Action()
 void CObjCandle::Draw()
 {
 
-	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+	float c[4] = { 0.8f,0.8f,0.8f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
@@ -279,12 +267,14 @@ void CObjCandle::Draw()
 		Draw::Draw(2, &src, &dst, c, 0.0f);
 
 
-		Font::StrDraw(L"アイテム", 50, 100, 32, c);
-		Font::StrDraw(L"装備", 50, 150, 32, c);
-		Font::StrDraw(L"キャラクター", 50, 200, 32, c);
-		Font::StrDraw(L"セーブ", 50, 250, 32, c);
-		Font::StrDraw(L"ゲーム終了", 50, 300, 32, c);
-		Font::StrDraw(L"戻る", 50, 350, 32, c);
+		Font::StrDraw(L"クレジット", 50, 100, 32, c);
+		Font::StrDraw(L"オプション", 50, 150, 32, c);
+		Font::StrDraw(L"ゲーム終了", 50, 200, 32, c);
+		Font::StrDraw(L"戻る", 50, 250, 32, c);
 	
+
+		if (lavel_select == 0) {
+			Font::StrDraw(L"クレジット一覧", 690, 50, 32, c);
+		}
 	}
 }

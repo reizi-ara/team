@@ -288,7 +288,7 @@ void CObjEnemy::Draw()
 		0,1,2,3,4,5,6,7
 	};
 	//描画カラー情報
-	float c[4] = { 0.7f,0.7f,0.7f,1.0f };
+	float c[4] = { 0.75f,0.75f,0.75f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置

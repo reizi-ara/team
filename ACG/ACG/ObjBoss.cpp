@@ -57,9 +57,12 @@ void CObjBoss::Init()
 
 	time_1 = 0;
 
+	time_2 = 0;
 	form = 0;
 	acmt[0] = 0;
 	acmt[1] = 1;
+	bulletQ = 0;
+	bulletA = 0;
 }
 
 //アクション
@@ -196,6 +199,10 @@ void CObjBoss::Action()
 			acmt[0] = 1;
 			acmt[1] = 1;
 		}
+		if (time_1 == 200) {
+
+			bulletQ = 1;
+		}
 		if (time_1==900) {
 			acmt[0] = 0;
 			acmt[1] = 0;
@@ -203,12 +210,17 @@ void CObjBoss::Action()
 		if (time_1 == 990) {
 			acmt[0] = 0;
 			acmt[1] = 1;
-		}if (time_1 == 1100) {
+			bulletQ = 0;
+		}
+		if (time_1 == 1100) {
 			acmt[0] = 1;
 			acmt[1] = 2;
 		}
-		if (time_1 == 1280) {
+		if (time_1 == 1200) {
 			acmt[0] = 0;
+		}
+		if (time_1 == 1280) {
+			acmt[0] = 1;
 			acmt[1] = 3;
 		}
 		if (time_1 == 1400) {
@@ -223,30 +235,61 @@ void CObjBoss::Action()
 			acmt[0] = 0;
 			acmt[1] = 4;
 		}
-		if (time_1 == 1800) {
+		if (time_1 == 1750) {
 			acmt[0] = 1;
 			acmt[1] = 4;
 		}
-		if (time_1 == 2000) {
+		if (time_1 == 1800) {
 			acmt[0] = 0;
 			acmt[1] = 5;
 		}
+		if (time_1 == 1900) {
+			acmt[0] = 0;
+			acmt[1] = 1;
+		}
+		if (time_1 == 2000) {
+			acmt[0] = 0;
+			acmt[1] = 1;
+			bulletQ = 2;
+		}
+		
+
 
 		if (time_1 == 2560) {
 			acmt[0] = 0;
 			acmt[1] = 0;
 			time_1 = 0;
+			bulletQ = 0;
 		}
 
+		if (bulletQ == 1) {
+			if (time_1 % 120 == 0) {
+				for (int i = 0; i < 8; i++) {
+					CObjBullet* objbt = new CObjBullet(100 - sl + i * 200 + (time_1 % 100), 0, 20, 3);
+					Objs::InsertObj(objbt, OBJ_ENEMY, 10);
+				}
+				bulletA = 1;
+				time_2 = 0;
+			}
+		}
 
+		if (bulletQ == 2) {
+			if (time_1 % 5 == 0&&time_1%100<20) {
+				for (int i = 0; i < 6; i++) {
+					CObjBullet* objbt = new CObjBullet(100 - sl + i * 250 + (time_1 % 100), 0, 20, 10);
+					Objs::InsertObj(objbt, OBJ_ENEMY, 10);
+				}
 
-
+				bulletA = 1;
+				time_2 = 0;
+			}
+		}
 
 		if (acmt[0] == 1) {//高さ合わせ
-			if (pl_y + 96 <= en_y) {
+			if (pl_y + 128 <= en_y) {
 				m_py -= 2;
 			}
-			else if (pl_y + 96 > en_y) {
+			else if (pl_y + 128 > en_y) {
 				m_py += 2;
 			}
 		}
@@ -283,44 +326,40 @@ void CObjBoss::Action()
 		if (acmt[1] == 4) {//びむー　待機
 			form = 2;
 			if (pl_x - sl + 512 <= en_x) {
-				m_px += (pl_x - sl + 512 - en_x) / 130;
+				m_px += (pl_x - sl + 512 - en_x) / 20;
 			}
 			else if (pl_x - sl + 512 > en_x) {
-				m_px += (pl_x - sl + 512 - en_x) / 130;
+				m_px += (pl_x - sl + 512 - en_x) / 20;
 			}
 		}
 		if (acmt[1] == 5) {//びむー
 			form = 3;
 			if (pl_x - sl + 512 <= en_x) {
-				m_px += (pl_x - sl + 512 - en_x) / 130;
+				m_px += (pl_x - sl + 512 - en_x) / 20;
 			}
 			else if (pl_x - sl + 512 > en_x) {
-				m_px += (pl_x - sl + 512 - en_x) / 130;
+				m_px += (pl_x - sl + 512 - en_x) / 20;
 			}
+			if (Input::GetVKey('S') == false) {
 
-			if (pl_x - sl <= en_x + 24.0f &&
-				pl_x - sl >= en_x - 2188.0f &&
-				pl_y <= en_y - 180.0f &&
-				pl_y >= en_y - 190.0f) {
-				obj->GiveDamageToPlayer(atk *1.5f);
-				obj->SetVX(-20);
-				obj->SetVY(5);
+				if (pl_x - sl <= en_x + 24.0f &&
+					pl_x - sl >= en_x - 2188.0f &&
+					pl_y <= en_y - 140.0f &&
+					pl_y >= en_y - 200.0f) {
+					obj->GiveDamageToPlayer(atk * 1.5f);
+					obj->SetVX(-20);
+					obj->SetVY(5);
+				}
 			}
 		}
 
 
 
-
-
-
-
-
-
-
-
-
-
 	}
+
+	time_2++;
+	if (bulletA == true && time_2 > 8)
+		bulletA = false;
 }
 
 //ドロー
@@ -330,12 +369,12 @@ void CObjBoss::Draw()
 	{//横・縦
 		0,0,1,1,2,2,3,3
 	};
-	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+	float c[4] = { 0.8f,0.8f,0.8f,1.0f };
 	RECT_F src;
 	RECT_F dst;
 
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	if (form == 0||form==2|| form == 3) {
+	if (form == 0) {
 		src.m_top = 0;
 		src.m_left = AniData[m_ani_frame] * 256.0f;
 		src.m_right = src.m_left + 256.0f;
@@ -344,6 +383,18 @@ void CObjBoss::Draw()
 		dst.m_top = -192.0f + m_py;
 		dst.m_left = (256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
 		dst.m_right = (256.0f - 256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
+		dst.m_bottom = 64.0f + m_py;
+		Draw::Draw(7, &src, &dst, c, 0.0f);
+	}
+	if (form == 2 || form == 3) {
+		src.m_top = 0;
+		src.m_left = AniData[m_ani_frame] * 256.0f;
+		src.m_right = src.m_left + 256.0f;
+		src.m_bottom = src.m_top + 256.0f;
+
+		dst.m_top = -192.0f + m_py;
+		dst.m_left = m_px + block->GetScroll() - 128.0f;
+		dst.m_right = 256.0f + m_px + block->GetScroll() - 128.0f;
 		dst.m_bottom = 64.0f + m_py;
 		Draw::Draw(7, &src, &dst, c, 0.0f);
 	}
@@ -378,8 +429,8 @@ void CObjBoss::Draw()
 		src.m_bottom = src.m_top + 128.0f;
 
 		dst.m_top = -192.0f + m_py;
-		dst.m_left = (256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
-		dst.m_right = (256.0f - 256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
+		dst.m_left =  m_px + block->GetScroll() - 128.0f;
+		dst.m_right = 256.0f + m_px + block->GetScroll() - 128.0f;
 		dst.m_bottom = -64.0f + m_py;
 		Draw::Draw(7, &src, &dst, c, 0.0f);
 
@@ -402,5 +453,18 @@ void CObjBoss::Draw()
 			dst.m_bottom = -64.0f + m_py;
 			Draw::Draw(7, &src, &dst, c, 0.0f);
 		}
+	}
+
+	if (bulletA == true) {
+		src.m_top = 768;
+		src.m_left = AniData[m_ani_frame] * 256.0f;
+		src.m_right = src.m_left + 256.0f;
+		src.m_bottom = src.m_top + 128.0f;
+
+		dst.m_top = -192.0f + m_py;
+		dst.m_left = m_px + block->GetScroll() - 128.0f;
+		dst.m_right = 256.0f + m_px + block->GetScroll() - 128.0f;
+		dst.m_bottom = -64.0f + m_py;
+		Draw::Draw(7, &src, &dst, c, 0.0f);
 	}
 }
