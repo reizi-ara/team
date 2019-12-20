@@ -16,5 +16,7 @@ public:
 
 private:
 	bool m_key_flag;
+
+	int time;
 };
 

@@ -14,23 +14,28 @@ using namespace GameL;
 void CObjGameOver::Init()
 {
 	m_key_flag = false;
+	time = 0;
 }
 //アクション
 void CObjGameOver::Action()
 {
-	//エンターキーを押してシーン：ゲームタイトルに移行する
-	if (Input::GetVKey(VK_RETURN) == true)
+	time++;
+	if (time >= 120)
 	{
-		if (m_key_flag == true)
+		//エンターキーを押してシーン：ゲームタイトルに移行する
+		if (Input::GetVKey(VK_RETURN) == true)
 		{
-			m_key_flag = false;
-			Scene::SetScene(new CSceneGameStart());
-			
+			if (m_key_flag == true)
+			{
+				m_key_flag = false;
+				Scene::SetScene(new CSceneGameStart());
+
+			}
 		}
-	}
-	else
-	{
-		m_key_flag = true;
+		else
+		{
+			m_key_flag = true;
+		}
 	}
 }
 

@@ -10,6 +10,7 @@
 #include "ObjEnemy.h"
 #include "ObjMapChanger.h"
 #include "ObjMapBacker.h"
+#include "GameL/Audio.h"
 
 #define MUTEKI 20;
 #define DE_MAGE 50;//hidame
@@ -214,6 +215,11 @@ void CObjEnemy::Action()
 	{
 		muteki_time = MUTEKI;
 		en_life -= DE_MAGE;
+
+		CObjEffect* objef = new CObjEffect(m_px+ block->GetScroll(), m_py, 2);
+		Objs::InsertObj(objef, OBJ_THORN, 15);
+		
+		Audio::Start(7);//効果音
 	}
 
 	//消滅エフェクト

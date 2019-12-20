@@ -353,6 +353,8 @@ void CObjHero::Draw()
 					m_ani_frame = 0;
 					attack_set = true;
 					attack_flag = true;
+
+					Audio::Start(13);//Œø‰Ê‰¹
 				}
 			}
 			else
