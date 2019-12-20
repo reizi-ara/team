@@ -209,47 +209,47 @@ void CObjBlock::Action()
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 51) {//–{’I‚P
-				CObjMessage* obj51 = new CObjMessage(ex * 64.0f, i * 64.0f, 1);
+				CObjMessage* obj51 = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obj51, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 52) {//–{’I‚P
-				CObjMessage* obj52 = new CObjMessage(ex * 64.0f, i * 64.0f, 2);
+				CObjMessage* obj52 = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obj52, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 53) {//–{’I‚P
-				CObjMessage* obj53 = new CObjMessage(ex * 64.0f, i * 64.0f, 3);
+				CObjMessage* obj53 = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obj53, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 54) {//–{’I‚P
-				CObjMessage* obj54 = new CObjMessage(ex * 64.0f, i * 64.0f, 4);
+				CObjMessage* obj54 = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obj54, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 55) {//–{’I‚P
-				CObjMessage* obj55 = new CObjMessage(ex * 64.0f, i * 64.0f, 5);
+				CObjMessage* obj55 = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obj55, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 56) {//–{’I‚P
-				CObjMessage* obj56 = new CObjMessage(ex * 64.0f, i * 64.0f, 6);
+				CObjMessage* obj56 = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obj56, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 57) {//–{’I‚P
-				CObjMessage* obj57 = new CObjMessage(ex * 64.0f, i * 64.0f, 7);
+				CObjMessage* obj57 = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obj57, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 58) {//–{’I‚P
-				CObjMessage* obj58 = new CObjMessage(ex * 64.0f, i * 64.0f, 8);
+				CObjMessage* obj58 = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obj58, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 59) {//–{’I‚P
-			CObjMessage* obj59 = new CObjMessage(ex * 64.0f, i * 64.0f, 9);
+			CObjMessage* obj59 = new CObjMessage(ex * 64.0f, i * 64.0f, 0);
 			Objs::InsertObj(obj59, OBJ_MESSAGE, 10);
 			m_map[i][ex] = 0;
 			}
