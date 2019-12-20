@@ -54,6 +54,7 @@ private:
 
 	float Damage;
 	int time;
+	int times;
 
 	//íœ—p
 	int destryNum;

@@ -129,12 +129,16 @@ void CObjBoss::Action()
 	CSceneMain* sceneM = (CSceneMain*)Scene::GetScene();
 	MdestryNum = sceneM->GetDS();
 	if (destryNum != MdestryNum) {
+		Audio::Stop(1);//効果音ストップ
+		Audio::Start(0);//効果音スタート
 		this->SetStatus(false);
 	}
 
 	//プレイヤー勝利
 	if (en_life <= 0)
 	{
+		Audio::Stop(0);//効果音ストップ
+		Audio::Start(1);//効果音スタート
 		this->SetStatus(false);
 	}
 	if (en_life <= 0)

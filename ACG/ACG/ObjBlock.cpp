@@ -169,10 +169,9 @@ void CObjBlock::Action()
 			}
 			else if (m_map[i][ex] == 27) {//boss
 				CObjBoss* obj27 = new CObjBoss(ex * 64.0f, i * 64.0f, 250, 50);
-				Objs::InsertObj(obj27, OBJ_ENEMY, 10);
+				Objs::InsertObj(obj27, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
-
 			else if (m_map[i][ex] == 30) {//触腕
 				CObjhand* obj30 = new CObjhand(ex * 64.0f, i * 64.0f, 0, 15);
 				Objs::InsertObj(obj30, OBJ_HAND, 10);
@@ -214,9 +213,6 @@ void CObjBlock::Action()
 		}
 	}
 }
-
-
-
 
 //BlockHit関数
 //引数1　float*　ｘ　：判定を行うobjectのX位置

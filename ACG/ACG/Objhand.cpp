@@ -9,6 +9,7 @@
 
 #include "GameHead.h"
 #include "Objhand.h"
+#include "GameL/Audio.h"
 
 #define LIFE 80;
 //使用するネームスペースdayo
@@ -56,6 +57,7 @@ void CObjhand::Init()
 	isplayerhit = false;
 
 	time = 0;
+	times = 0;
 
 	//削除用
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
@@ -95,6 +97,12 @@ void CObjhand::Action()
 	{
 		//接触時
 		isplayerhit = true;
+		times++;
+		if (times >= 60)
+		{
+			Audio::Start(12);//SE
+			times = 0;
+		}
 	}
 	else
 	{
@@ -118,6 +126,7 @@ void CObjhand::Action()
 		}
 		isplayerhit = false;
 	}
+	
 
 
 

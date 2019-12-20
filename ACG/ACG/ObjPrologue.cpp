@@ -36,7 +36,6 @@ void CObjPrologue::Action()
 
 			}
 		}
-
 		else
 		{
 			m_key_flag = true;
@@ -44,10 +43,9 @@ void CObjPrologue::Action()
 	}
 
 	//メッセージ関連
-	if (Input::GetVKey(VK_RETURN) == true && time >= 30)
+	if (Input::GetVKey(VK_RETURN) == true && time >= 30 && Endnum < 3)
 	{
 		one_flag = false;
-		//ReturnKey_flag = true;
 		Endnum += 1;
 		time = 0;
 		Audio::Start(2);//効果音
@@ -108,7 +106,7 @@ void CObjPrologue::Draw()
 	else if (Endnum == 2)
 	{
 		//Font::StrDraw(L"", 150, 550, 25, c);
-		Font::StrDraw(L"そして僕達もその中の一部だった。", 250, 600, 25, c);
+		Font::StrDraw(L"そして僕も…その中の一人だった。", 250, 600, 25, c);
 		//Font::StrDraw(L"", 150, 650, 25, c);
 		//Font::StrDraw(L"著者：田幡", 750, 675, 20, c);
 	}

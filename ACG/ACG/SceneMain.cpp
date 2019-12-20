@@ -66,7 +66,7 @@ void CSceneMain::InitScene()
 
 	//主人公オブジェクトの作成
 	CObjHero*obj = new CObjHero();
-	Objs::InsertObj(obj, OBJ_HERO, 50);
+	Objs::InsertObj(obj, OBJ_HERO, 14);
 
 	//blockオブジェクト作成
 	CObjBlock*objb = new CObjBlock(map2);
@@ -89,6 +89,8 @@ void CSceneMain::InitScene()
 	Audio::LoadAudio(9, L"s_select.wav", EFFECT);//セレクトSE
 	Audio::LoadAudio(10, L"s_book_open.wav", EFFECT);//本開け
 	Audio::LoadAudio(11, L"s_book_close.wav", EFFECT);//本閉じ
+	Audio::LoadAudio(12, L"s_chicken.wav", EFFECT);//手のSE
+
 
 
 	//ボリューム
