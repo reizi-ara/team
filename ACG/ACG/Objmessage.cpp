@@ -104,7 +104,7 @@ void CObjMessage::Action()
 
 	}
 
-	CObjMessage2* obje = new CObjMessage2(64.0f, 64.0f, type);
+	CObjMessage2* obje = new CObjMessage2(64.0f, 64.0f,type);
 	CObjMessage2* objM = (CObjMessage2*)Objs::GetObj(OBJ_MESSAGE2);
 	
 	
