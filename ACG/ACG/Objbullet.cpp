@@ -19,7 +19,7 @@ CObjBullet::CObjBullet(float x, float y,  float a,float s)
 void CObjBullet::Init()
 {
 	m_vx = 0;// -speed;
-	m_vy=2;
+	m_vy=speed;
 	frameQ=0;
 	
 }
@@ -32,16 +32,19 @@ void CObjBullet::Action()
 	float sl = block->GetScroll();
 
 	if (pl_x - sl <= m_px + 48.0f &&
-		pl_x - sl >= m_px -0.0f &&
+		pl_x - sl >= m_px -48.0f &&
 		pl_y <= m_py + 48.0f &&
-		pl_y >= m_py - 0.0f) {
+		pl_y >= m_py - 48.0f) {
 		obj->GiveDamageToPlayer(atk);
 	}
 
 
 	//表示位置の更新
 	m_px += m_vx;
-	m_py += m_vy;
+	if (frameQ > 20) {
+		m_py += m_vy;
+		m_vy += 0.2;
+	}
 
 	frameQ++;
 }
