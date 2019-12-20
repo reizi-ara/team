@@ -393,8 +393,8 @@ void CObjBlock::BlockDraw(float x, float y, RECT_F* dst, float c[],int s)
 void CObjBlock::Draw()
 {
 	//描画カラー情報
-	float c[4]  = { 0.5f,0.5f,0.5f,1.0f };
-	float cr[4] = { 0.3f,0.3f,0.3f,1.0f };
+	float c[4]  = { 0.7f,0.7f,0.7f,1.0f };
+	float cr[4] = { 0.4f,0.4f,0.4f,1.0f };
 
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
