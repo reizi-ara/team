@@ -330,7 +330,7 @@ void CObjBoss::Draw()
 	{//â°ÅEèc
 		0,0,1,1,2,2,3,3
 	};
-	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+	float c[4] = { 0.8f,0.8f,0.8f,1.0f };
 	RECT_F src;
 	RECT_F dst;
 
