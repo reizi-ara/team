@@ -47,6 +47,9 @@ void CObjBullet::Action()
 	}
 
 	frameQ++;
+
+	if (frameQ > 500)
+		this->SetStatus(false);
 }
 
 void CObjBullet::Draw()
