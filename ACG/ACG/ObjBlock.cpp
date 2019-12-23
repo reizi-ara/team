@@ -249,7 +249,7 @@ void CObjBlock::Action()
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 59) {//–{’I‚P
-				CObjMessage* obj59 = new CObjMessage(ex * 64.0f, i * 64.0f, 910);
+				CObjMessage* obj59 = new CObjMessage(ex * 64.0f, i * 64.0f, 10);
 				Objs::InsertObj(obj59, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
