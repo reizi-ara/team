@@ -20,7 +20,7 @@ using namespace GameL;
 //イニシャライズ
 void CObjHero::Init()
 {
-	cooltime = 12;
+	cooltime = 0;
 	attack_set = false;
 	attack_flag = false;
 	m_px = 70.0f;	//位置
@@ -55,8 +55,10 @@ void CObjHero::Init()
 	muteki_time = MUTEKITIME/2;
 	overplayerlife = p_life;
 	g_damage = 0;
+	v_damage = 0;
 	sohuran = 1;
 	
+	d_mode = false;
 
 	Message_flag = false;
 	heal = 0.001f;
@@ -67,6 +69,9 @@ void CObjHero::Action()
 {
 
 	//Rシーンリセット
+	if (Input::GetVKey('Y')) {
+		d_mode = true;
+	}
 	if (Input::GetVKey('R')) {
 		Scene::SetScene(new CSceneMain());
 	}
@@ -76,6 +81,9 @@ void CObjHero::Action()
 	if (Input::GetVKey('H')) {
 		p_life += 2.0f;
 	}
+	if (d_mode == true){
+		p_life += 2.0f;
+	}
 
 	cooltime--;
 
@@ -83,8 +91,16 @@ void CObjHero::Action()
 	
 
 	
-
-	
+	if (p_life < v_damage)
+	{
+		v_damage -= (v_damage - p_life) / 60;
+	}
+	else if (p_life > v_damage)
+	{
+		v_damage = p_life;
+		if (v_damage > p_maxlife)
+			v_damage = p_maxlife;
+	}
 
 	if (p_menuflag == false)
 	{
@@ -92,7 +108,7 @@ void CObjHero::Action()
 
 		//damage<-いたい
 		if (g_damage > 0) {
-			heal = 0.001f;
+			heal = 0.001f;//healpowerreset
 		}
 		if (g_damage > 0 && muteki_time <= 0)
 		{
@@ -130,7 +146,7 @@ void CObjHero::Action()
 		//Wでジャンプ
 		if (Input::GetVKey('W'))
 			if (m_hit_down)
-				m_vy = -15;
+				m_vy = -15-d_mode*5;
 
 
 		if (Input::GetVKey(VK_SHIFT))
@@ -163,7 +179,7 @@ void CObjHero::Action()
 			{
 				
 				
-				m_vx += m_speed_power;
+				m_vx += m_speed_power+d_mode;
 				m_posture = 1.0f;
 				m_pose = 1.0f;
 				m_ani_time += 1;
@@ -172,7 +188,7 @@ void CObjHero::Action()
 			{
 				
 
-				m_vx -= m_speed_power;
+				m_vx -= m_speed_power+ d_mode;
 				m_posture = 0.0f;
 				m_pose = 1.0f;
 				m_ani_time += 1;
@@ -264,7 +280,9 @@ void CObjHero::Draw()
 	
 	//描画カラー情報
 	float c[4] = { 0.75f,0.75f,0.75f,1.0f };
+	float d[4] = { 0.35f,0.35f,0.35f,1.0f };
 
+	float cd[4] = { 0.55f,0.55f,0.55f,(muteki_time/180.0f)-0.2f };
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 	if (p_menuflag == false)
@@ -314,7 +332,30 @@ void CObjHero::Draw()
 		//描画
 		Draw::Draw(0, &src, &dst, c, 0.0f);
 
+		//damage
+		src.m_top = 128.0f;
+		src.m_left = 64.0f;
+		src.m_right = 64.0f + src.m_left;
+		src.m_bottom = 64.0f + src.m_top;
+		dst.m_top = 0;
+		dst.m_left = 0;
+		dst.m_right = 1280;
+		dst.m_bottom = 720;
+		Draw::Draw(0, &src, &dst, cd, 0.0f);
 
+
+
+
+		//表示位置の設定//late bar
+		src.m_top = 128.0f;
+		src.m_left = 64.0f * 1;
+		src.m_right = 64.0f + src.m_left;
+		src.m_bottom = 64.0f + src.m_top;
+		dst.m_top = 24.0f;
+		dst.m_left = 16.0f;
+		dst.m_right = (256.0f - 16.0f) * (v_damage / p_maxlife) + dst.m_left;
+		dst.m_bottom = 32.0f + dst.m_top;
+		Draw::Draw(0, &src, &dst, d, 0.0f);
 		//体力バー
 		if (p_life / p_maxlife > 0.5)//ao
 		{
@@ -347,7 +388,7 @@ void CObjHero::Draw()
 		//描画
 		if (p_life > 0)
 			Draw::Draw(0, &src, &dst, c, 0.0f);
-
+		
 
 
 		wepon_have = 5;//仮置き

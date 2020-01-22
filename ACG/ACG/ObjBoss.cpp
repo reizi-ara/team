@@ -344,8 +344,8 @@ void CObjBoss::Action()
 
 				if (pl_x - sl <= en_x + 24.0f &&
 					pl_x - sl >= en_x - 2188.0f &&
-					pl_y <= en_y - 140.0f &&
-					pl_y >= en_y - 200.0f) {
+					pl_y <= en_y - 96.0f &&
+					pl_y >= en_y - 300.0f) {/////////////////////////////////////
 					obj->GiveDamageToPlayer(atk * 1.5f);
 					obj->SetVX(-20);
 					obj->SetVY(5);

@@ -110,5 +110,13 @@ void CObjMessage2::Draw()
 			Font::StrDraw(L"何か分かったことがあればこのメモに記そうと思う。", 150, 600, 25, c);
 			Font::StrDraw(L"著者：田幡", 750, 675, 20, c);
 		}
-	
+		else if (type == 3) {
+			Font::StrDraw(L"Los!Los!Los!", 150, 550, 25, c);
+		}
+		else if (type == 4) {
+			Font::StrDraw(L"→↓↑→→↓→→↑↑↓↓←→←→", 150, 550, 25, c);
+		}
+		else if (type == 5) {
+			Font::StrDraw(L"ボス没す", 150, 550, 25, c);
+		}
 }

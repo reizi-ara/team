@@ -264,7 +264,8 @@ void CObjCandle::Draw()
 		dst.m_left = 250.0f;
 		dst.m_right = 30.0f;
 		dst.m_bottom = 140.0f + lavel_select * 50;
-		Draw::Draw(2, &src, &dst, c, 0.0f);
+		//Draw::Draw(2, &src, &dst, c, 0.0f); 
+		Font::StrDraw(L"←", 220, 90 + lavel_select * 50,50,c);
 
 
 		Font::StrDraw(L"クレジット", 50, 100, 32, c);
@@ -275,6 +276,12 @@ void CObjCandle::Draw()
 
 		if (lavel_select == 0) {
 			Font::StrDraw(L"クレジット一覧", 690, 50, 32, c);
+		}
+		if (lavel_select == 1) {
+			Font::StrDraw(L" オプション", 690, 50, 32, c);
+		}
+		if (lavel_select == 2) {
+			Font::StrDraw(L" ゲーム終了", 690, 50, 32, c);
 		}
 	}
 }

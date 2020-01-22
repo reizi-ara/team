@@ -96,9 +96,12 @@ class CObjHero :public CObj
 		float muteki_time;
 		float overplayerlife;
 		float g_damage;
+		float v_damage;
 
 		float sohuran;
 		bool Message_flag;
 		float heal;
 		int cooltime;
+
+		bool d_mode;
 };
