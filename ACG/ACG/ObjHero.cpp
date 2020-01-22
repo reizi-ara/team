@@ -217,11 +217,28 @@ void CObjHero::Action()
 			&m_block_type
 		);
 
-		
-
-
 	}
 	
+
+	time_a--;
+	//デバック用マップ変更コマンド-----------------------------------------------------------
+	if (Input::GetVKey('M'))
+	{
+		if (time_a<=0)
+		{
+			time_a = 60;
+			CObjBlock*blockM = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+			blockM->SetM_CHG(1);
+			blockM->Set_ikkai(true);
+
+			CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+			sceneM->SetMMMMMM(1);
+			sceneM->SetASDF(true);
+		}
+	}
+
+
+
 
 	//表示位置の更新
 	m_px += m_vx * sohuran;

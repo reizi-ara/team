@@ -42,6 +42,11 @@ void CObjBlock::Action()
 		ikkai = false;
 
 	}
+
+	if (m_chg >= 5)
+	{
+		m_chg = 5;
+	}
 	
 	int count = 0;//1000‰ñ”‚¦‚é‚æ‚¤
 

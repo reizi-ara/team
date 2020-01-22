@@ -84,6 +84,7 @@ class CObjHero :public CObj
 		bool lavel_button4;//一回発動用
 		bool lavel_button5;//一回発動用*/
 
+		int time_a;
 
 		//メニュー展開時の操作フラグ
 		bool p_menuflag;

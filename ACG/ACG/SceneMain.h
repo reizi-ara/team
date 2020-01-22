@@ -21,9 +21,9 @@ class CSceneMain :public CScene
 		int* GetM1() { return &map2[0][0]; }//マップ情報２を送る関数？
 		int GetDS() { return m_chg; }
 		int GetONEs() { return One_chg; }
-		void SetMMMMMM (int a) { m_chg += a; }
 
-		void SetASDF(bool h) { OneRead = h; }
+		void SetMMMMMM (int a) { m_chg += a; }	//マップ変更用数字を足す関数
+		void SetASDF(bool h) { OneRead = h; }	//マップを読み込むフラグ
 	
 	private:
 		int m_chg;	//マップチェンジ

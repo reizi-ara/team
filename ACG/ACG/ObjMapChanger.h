@@ -47,6 +47,9 @@ private:
 
 	bool mmmm;
 
+	//
+	int time_a;	//製作者マップ変更コマンドの関数
+
 	//削除用
 	int destryNum;
 	int MdestryNum;

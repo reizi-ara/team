@@ -78,12 +78,13 @@ void CObjMapChanger::Action()
 	float en_y = m_py + 32.0f;
 	
 	if (pl_x - sl <= en_x + hit_length &&
-	pl_x - sl >= en_x - hit_length &&
+		pl_x - sl >= en_x - hit_length &&
 		pl_y <= en_y + hit_length &&
-		pl_y >= en_y - hit_length
-		&& m_OneChg == false)
+		pl_y >= en_y - hit_length)
+		//|| Input::GetVKey('M') && m_OneChg == false)
 	{//ÚGŽž
 
+		time_a = 60;
 		Audio::Start(6);//Œø‰Ê‰¹
 
 		isplayerhit = true;
@@ -102,7 +103,7 @@ void CObjMapChanger::Action()
 		sceneM->SetMMMMMM(m_change);
 		sceneM->SetASDF(m_OneChg);
 
-		
+
 
 	}
 	else
