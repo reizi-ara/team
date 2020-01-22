@@ -97,7 +97,7 @@ void CObjMessage::Action()
 		isplayerhit = true;
 		obj->SetMessageflag(isplayerhit);
 	}
-	else
+	else 
 	{
 		isplayerhit = false;
 		obj->SetMessageflag(isplayerhit);
