@@ -37,9 +37,6 @@
     <ClCompile Include="ObjBlock.cpp">
       <Filter>GameMain</Filter>
     </ClCompile>
-    <ClCompile Include="ObjEnemy.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
     <ClCompile Include="Objhand.cpp">
       <Filter>GameMain</Filter>
     </ClCompile>
@@ -94,9 +91,6 @@
     <ClCompile Include="GameL\SceneObjManager.cpp">
       <Filter>リソースファイル</Filter>
     </ClCompile>
-    <ClCompile Include="ObjBoss.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
     <ClCompile Include="ObjEffect.cpp">
       <Filter>GameMain</Filter>
     </ClCompile>
@@ -117,6 +111,21 @@
     </ClCompile>
     <ClCompile Include="Objbullet.cpp">
       <Filter>GameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjBoss.cpp">
+      <Filter>GameMain\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjDog.cpp">
+      <Filter>GameMain\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjEnemy.cpp">
+      <Filter>GameMain\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjEye.cpp">
+      <Filter>GameMain\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjCactus.cpp">
+      <Filter>GameMain\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,9 +163,6 @@
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
     <ClInclude Include="ObjBlock.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjEnemy.h">
       <Filter>GameMain</Filter>
     </ClInclude>
     <ClInclude Include="Objhand.h">
@@ -222,9 +228,6 @@
     <ClInclude Include="ObjGameClear.h">
       <Filter>GameClear</Filter>
     </ClInclude>
-    <ClInclude Include="ObjBoss.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
     <ClInclude Include="ObjPrologue.h">
       <Filter>プロローグ</Filter>
     </ClInclude>
@@ -236,6 +239,21 @@
     </ClInclude>
     <ClInclude Include="Objbullet.h">
       <Filter>GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjBoss.h">
+      <Filter>GameMain\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjDog.h">
+      <Filter>GameMain\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjEnemy.h">
+      <Filter>GameMain\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjEye.h">
+      <Filter>GameMain\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCactus.h">
+      <Filter>GameMain\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +283,9 @@
     </Filter>
     <Filter Include="プロローグ">
       <UniqueIdentifier>{305f1e12-4022-4b7d-bceb-5aacd96dec4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameMain\Enemies">
+      <UniqueIdentifier>{c6fe699a-d082-4eeb-ac19-2e583c304b3d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

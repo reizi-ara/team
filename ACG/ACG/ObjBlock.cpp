@@ -158,13 +158,13 @@ void CObjBlock::Action()
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 21) {//“G2(Jump
-				CObjEnemy* obj21 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 2);
-				Objs::InsertObj(obj21, OBJ_ENEMY, 10);
+				CObjEye* obj21 = new CObjEye(ex * 64.0f, i * 64.0f, 170, 30, 2);
+				Objs::InsertObj(obj21, OBJ_EYE, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 22) {//“G3
-				CObjEnemy* obj22 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 3);
-				Objs::InsertObj(obj22, OBJ_ENEMY, 10);
+			else if (m_map[i][ex] == 22) {//“G3(‚í‚ñ‚í‚ñ‚¨
+				CObjDog* obj22 = new CObjDog(ex * 64.0f, i * 64.0f, 170, 30, 3);
+				Objs::InsertObj(obj22, OBJ_DOG, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 23) {//“G4
