@@ -94,7 +94,7 @@ void CObjBlock::Action()
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
 		One_chg = false;
 	}
-	else if (m_chg == 5 && One_chg == true) {
+	/*else if (m_chg == 5 && One_chg == true) {
 		Transfer(map, map2);
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
@@ -123,7 +123,7 @@ void CObjBlock::Action()
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
 		One_chg = false;
-	}
+	}*/
 
 	//主人公の位置を取得
 	CObjHero*hero = (CObjHero*)Objs::GetObj(OBJ_HERO);

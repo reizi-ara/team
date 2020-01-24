@@ -55,6 +55,9 @@ void CObjMessage::Init()
 	isplayerhit = false;
 	Message_flag =0;
 
+	//エネミーストップ変数
+	stopE = true;
+
 	//削除用
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 	if (sceneM == nullptr)
@@ -127,6 +130,8 @@ void CObjMessage::Action()
 			obj->SetVX(0.0f);
 			obj->SetVY(0.0f);
 			Message_flag = 1;
+
+			stopE = false;
 		}
 	}
 

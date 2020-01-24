@@ -16,7 +16,11 @@ public:
 	void Draw();	//ドロー
 
 	float GetVx() { return m_vx; }
+	
 	bool Getwindow_flag() { return isplayerhit; }
+	int GetStopE() { return stopE; }
+
+	void SetStopE(int a) { stopE = a; }
 	void Toarrivewindow(int a) { Unfold =a; }
 
 private:
@@ -63,6 +67,9 @@ private:
 
 	int time;
 	int Unfold;
+
+	//エネミーを動かんくするための変数
+	bool stopE;
 
 };
 

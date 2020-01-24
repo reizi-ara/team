@@ -139,7 +139,7 @@ void CSceneMain::Scene()
 		OneRead = false;
 
 	}
-	else if (m_chg == 5 && OneRead == true)
+	/*else if (m_chg == 5 && OneRead == true)
 	{
 		MapRead(m_chg, map2, p);
 		OneRead = false;
@@ -168,7 +168,7 @@ void CSceneMain::Scene()
 		MapRead(m_chg, map2, p);
 		OneRead = false;
 
-	}
+	}*/
 
 }
 

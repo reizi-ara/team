@@ -62,6 +62,11 @@ void CObjHero::Init()
 
 	Message_flag = false;
 	heal = 0.001f;
+
+	//デバックコマンド
+	MAXMap = 1;
+
+
 }
 
 //アクション
@@ -238,22 +243,57 @@ void CObjHero::Action()
 
 	time_a--;
 	//デバック用マップ変更コマンド-----------------------------------------------------------
-	if (Input::GetVKey('M'))
+	if (MAXMap < 5)
 	{
-		if (time_a<=0)
+		if (Input::GetVKey('M'))
 		{
-			time_a = 60;
-			CObjBlock*blockM = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-			blockM->SetM_CHG(1);
-			blockM->Set_ikkai(true);
+			if (time_a <= 0)
+			{
+				MAXMap++;
 
-			CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
-			sceneM->SetMMMMMM(1);
-			sceneM->SetASDF(true);
+				CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+				obj->SetX(6 * 64);
+				obj->SetY(7 * 64);
+
+				time_a = 60;
+				CObjBlock*blockM = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+				blockM->SetScroll(5);
+				blockM->SetM_CHG(1);
+				blockM->Set_ikkai(true);
+
+				CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+				sceneM->SetMMMMMM(1);
+				sceneM->SetASDF(true);
+			}
 		}
+		
 	}
 
+	if (MAXMap > 0)
+	{
+		if (Input::GetVKey('N'))
+		{
+			if (time_a <= 0)
+			{
+				MAXMap--;
 
+				CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+				obj->SetX(30 * 64);
+				obj->SetY(7 * 64);
+
+				time_a = 60;
+				CObjBlock*blockM = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+				blockM->SetScroll(-73 * 64);
+				blockM->SetM_CHG(-1);
+				blockM->Set_ikkai(true);
+
+				CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+				sceneM->SetMMMMMM(-1);
+				sceneM->SetASDF(true);
+			}
+		}
+	}
+	//---------------------------------------------------------------------------------------------------
 
 
 	//表示位置の更新
