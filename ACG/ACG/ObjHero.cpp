@@ -251,8 +251,13 @@ void CObjHero::Action()
 			{
 				MAXMap++;
 
+				CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+				obj->SetX(6 * 64);
+				obj->SetY(7 * 64);
+
 				time_a = 60;
 				CObjBlock*blockM = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+				blockM->SetScroll(5);
 				blockM->SetM_CHG(1);
 				blockM->Set_ikkai(true);
 
@@ -272,8 +277,13 @@ void CObjHero::Action()
 			{
 				MAXMap--;
 
+				CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+				obj->SetX(30 * 64);
+				obj->SetY(7 * 64);
+
 				time_a = 60;
 				CObjBlock*blockM = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+				blockM->SetScroll(-73 * 64);
 				blockM->SetM_CHG(-1);
 				blockM->Set_ikkai(true);
 
@@ -283,7 +293,7 @@ void CObjHero::Action()
 			}
 		}
 	}
-
+	//---------------------------------------------------------------------------------------------------
 
 
 	//表示位置の更新
