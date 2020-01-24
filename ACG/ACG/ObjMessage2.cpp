@@ -68,9 +68,11 @@ void CObjMessage2::Action()
 			CObjMessage* objM = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
 
 			objM->Toarrivewindow(0);
+			objM->SetStopE(true);//メッセージのやつをtrueにしてエネミーが動くようにする処理
+
 
 			Audio::Start(11);//本閉じSE
-			
+
 			this->SetStatus(false);
 			
 	}
