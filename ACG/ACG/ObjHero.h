@@ -86,6 +86,9 @@ class CObjHero :public CObj
 
 		int time_a;
 
+		//Mコマンドマップ限界数用
+		int MAXMap;
+
 		//メニュー展開時の操作フラグ
 		bool p_menuflag;
 		//bool p_menu_close;
