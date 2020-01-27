@@ -276,12 +276,18 @@ void CObjCandle::Draw()
 
 		if (lavel_select == 0) {
 			Font::StrDraw(L"クレジット一覧", 690, 50, 32, c);
+			Font::StrDraw(L"総合ディレクター:永原 大暉", 350, 120, 29, c);
+			Font::StrDraw(L"ゲームプランナー:畠 将仁", 350, 160, 29, c);
+			Font::StrDraw(L"ゲームプログラマー:荒巻 佑真", 350, 200, 29, c);
+			Font::StrDraw(L"ゲームデザイナー:田幡 俊幸", 350, 240, 29, c);
+			Font::StrDraw(L"アシスタントディレクター:岡田 悠樹", 350, 280, 29, c);
 		}
 		if (lavel_select == 1) {
 			Font::StrDraw(L" オプション", 690, 50, 32, c);
 		}
 		if (lavel_select == 2) {
 			Font::StrDraw(L" ゲーム終了", 690, 50, 32, c);
+			Font::StrDraw(L"ゲームを終了してタブを閉じます。", 450, 300, 40, c);
 		}
 	}
 }
