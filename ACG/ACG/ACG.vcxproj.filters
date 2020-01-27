@@ -115,16 +115,7 @@
     <ClCompile Include="ObjBoss.cpp">
       <Filter>GameMain\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="ObjDog.cpp">
-      <Filter>GameMain\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="ObjEnemy.cpp">
-      <Filter>GameMain\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjEye.cpp">
-      <Filter>GameMain\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjCactus.cpp">
       <Filter>GameMain\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
@@ -243,16 +234,7 @@
     <ClInclude Include="ObjBoss.h">
       <Filter>GameMain\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="ObjDog.h">
-      <Filter>GameMain\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="ObjEnemy.h">
-      <Filter>GameMain\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjEye.h">
-      <Filter>GameMain\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjCactus.h">
       <Filter>GameMain\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
