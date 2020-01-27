@@ -154,22 +154,22 @@ void CObjBlock::Action()
 			}
 			else if (m_map[i][ex] == 20) {//“G1(PJ
 				CObjEnemy* obj20 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 1);
-				Objs::InsertObj(obj20, OBJ_ENEMY, 10);
+				Objs::InsertObj(obj20, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 21) {//“G2(Jump
 				CObjEnemy* obj21 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 2);
-				Objs::InsertObj(obj21, OBJ_ENEMY, 10);
+				Objs::InsertObj(obj21, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 22) {//“G3
 				CObjEnemy* obj22 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 3);
-				Objs::InsertObj(obj22, OBJ_ENEMY, 10);
+				Objs::InsertObj(obj22, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 23) {//“G4
 				CObjEnemy* obj23 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 4);
-				Objs::InsertObj(obj23, OBJ_ENEMY, 10);
+				Objs::InsertObj(obj23, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 27) {//boss
