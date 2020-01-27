@@ -30,6 +30,8 @@ CObjBoss::CObjBoss(float x, float y, float l, float a)
 //イニシャライズ
 void CObjBoss::Init()
 {
+
+	dy_time=0;
 	Audio::Stop(0);//効果音ストップ
 	Audio::Start(1);//効果音スタート
 
@@ -136,16 +138,32 @@ void CObjBoss::Action()
 		Audio::Start(0);//効果音スタート
 		this->SetStatus(false);
 	}
+	if (Input::GetVKey('L')) {
+		en_life -= 5.0f;
+	}
 
 	//プレイヤー勝利
 	if (en_life <= 0)
 	{
 		Audio::Stop(0);//効果音ストップ
 		Audio::Start(1);//効果音スタート
+		
+		dy_time++; 
+		time_1 = 0;
+		if (dy_time < 180) {
+			CObjEffect* objef = new CObjEffect(m_px + block->GetScroll() - 
+				((dy_time * 77) % 64) * (dy_time % 2 * 2 - 1),
+				m_py - ((dy_time * 137) % 128) * (dy_time % 2 * 2 - 1)-64,
+				(dy_time % 2+1));
+			Objs::InsertObj(objef, OBJ_THORN, 15);
+		}
+	}
+	if (dy_time>200) {
+		
+
+		Scene::SetScene(new CSceneGameClear());
 		this->SetStatus(false);
 	}
-	if (en_life <= 0)
-		Scene::SetScene(new CSceneGameClear());
 
 	//表示位置の更新
 	m_px += m_vx;

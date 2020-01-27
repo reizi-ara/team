@@ -62,5 +62,8 @@ private:
 
 	int bulletQ;
 	bool bulletA;
+
+
+	int dy_time;
 };
 
