@@ -111,6 +111,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Objbullet.cpp" />
+    <ClCompile Include="ObjCactus.cpp" />
     <ClCompile Include="ObjCandle.cpp" />
     <ClCompile Include="GameL\Audio.cpp" />
     <ClCompile Include="GameL\DirectXDevice.cpp" />
@@ -128,7 +129,9 @@
     <ClCompile Include="ObjBoss.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="ObjDog.cpp" />
     <ClCompile Include="ObjEffect.cpp" />
+    <ClCompile Include="ObjEye.cpp" />
     <ClCompile Include="ObjGameCleare.cpp" />
     <ClCompile Include="ObjMapBacker.cpp" />
     <ClCompile Include="ObjGameOption.cpp" />
@@ -154,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Objbullet.h" />
+    <ClInclude Include="ObjCactus.h" />
     <ClInclude Include="ObjCandle.h" />
     <ClInclude Include="GameHead.h" />
     <ClInclude Include="GameL\Audio.h" />
@@ -168,7 +172,9 @@
     <ClInclude Include="GameL\UserData.h" />
     <ClInclude Include="GameL\WinInputs.h" />
     <ClInclude Include="ObjBoss.h" />
+    <ClInclude Include="ObjDog.h" />
     <ClInclude Include="ObjEffect.h" />
+    <ClInclude Include="ObjEye.h" />
     <ClInclude Include="ObjGameClear.h" />
     <ClInclude Include="ObjMapBacker.h" />
     <ClInclude Include="ObjGameOption.h" />

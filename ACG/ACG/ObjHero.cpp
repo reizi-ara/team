@@ -77,6 +77,9 @@ void CObjHero::Action()
 	if (Input::GetVKey('Y')) {
 		d_mode = true;
 	}
+	if (Input::GetVKey('U')) {
+		d_mode =false;
+	}
 	if (Input::GetVKey('R')) {
 		Scene::SetScene(new CSceneMain());
 	}
@@ -443,7 +446,7 @@ void CObjHero::Draw()
 			{
 				if (attack_set == false && attack_flag == false&&cooltime<0)
 				{
-					cooltime = 40;
+					cooltime = 40-d_mode*30;
 					if (m_posture == 1.0f)
 						m_vx = 12;
 					if (m_posture == 0.0f)
