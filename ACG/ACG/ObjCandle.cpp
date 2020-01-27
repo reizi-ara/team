@@ -52,6 +52,7 @@ void CObjCandle::Init()
 	time = 0;
 
 	Unfold = 0;
+	stopD = true;
 }
 
 //アクション
@@ -86,6 +87,8 @@ void CObjCandle::Action()
 
 			Audio::Stop(0);//メインBGMストップ
 			Audio::Start(2);//メニューBGMスタート
+			stopD = false;
+			
 		}
 
 	}
@@ -169,6 +172,7 @@ void CObjCandle::Action()
 						Audio::Start(8);//SE
 						Audio::Stop(2);//メニューBGMストップ
 						Audio::Start(0);//メインBGMスタート
+						stopD = true;
 
 
 						lavel_select = 0;

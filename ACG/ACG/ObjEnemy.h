@@ -62,5 +62,5 @@ private:
 
 	//Ž~‚ß‚éƒtƒ‰ƒO
 	int stopF;
-
+	int stopM;
 };
