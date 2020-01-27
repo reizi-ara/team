@@ -157,17 +157,17 @@ void CObjBlock::Action()
 				Objs::InsertObj(obj20, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 21) {//ìG2(Jump
-				CObjEye* obj21 = new CObjEye(ex * 64.0f, i * 64.0f, 170, 30, 2);
-				Objs::InsertObj(obj21, OBJ_EYE, 10);
+			else if (m_map[i][ex] == 21) {//ìG2ñ⁄
+				CObjEnemy* obj21 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 2);
+				Objs::InsertObj(obj21, OBJ_ENEMY, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 22) {//ìG3(ÇÌÇÒÇÌÇÒÇ®
-				CObjDog* obj22 = new CObjDog(ex * 64.0f, i * 64.0f, 170, 30, 3);
-				Objs::InsertObj(obj22, OBJ_DOG, 10);
+				CObjEnemy* obj22 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 3);
+				Objs::InsertObj(obj22, OBJ_ENEMY, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 23) {//ìG4
+			else if (m_map[i][ex] == 23) {//ÉTÉ{ÉeÉìÉ_Å[
 				CObjEnemy* obj23 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 4);
 				Objs::InsertObj(obj23, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;

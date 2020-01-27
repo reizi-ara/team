@@ -10,9 +10,6 @@ enum OBJ_NAME
 	OBJ_BLOCK,
 	OBJ_TIME,
 	OBJ_ENEMY,
-	OBJ_EYE,
-	OBJ_DOG,
-	OBJ_CACTUS,
 	
 
 	OBJ_GAME_START,
@@ -88,9 +85,6 @@ struct UserData
 
 #include "ObjHero.h"
 #include "ObjEnemy.h"
-#include "ObjEye.h"
-#include "ObjDog.h"
-#include "ObjCactus.h"
 #include "Objhand.h"
 #include "ObjBoss.h"
 #include "ObjThorn.h"

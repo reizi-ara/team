@@ -37,9 +37,6 @@
     <ClCompile Include="ObjBlock.cpp">
       <Filter>GameMain</Filter>
     </ClCompile>
-    <ClCompile Include="Objhand.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
     <ClCompile Include="ObjHero.cpp">
       <Filter>GameMain</Filter>
     </ClCompile>
@@ -49,13 +46,7 @@
     <ClCompile Include="ObjMessage2.cpp">
       <Filter>GameMain</Filter>
     </ClCompile>
-    <ClCompile Include="ObjThorn.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
     <ClCompile Include="ObjTime.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjTuta.cpp">
       <Filter>GameMain</Filter>
     </ClCompile>
     <ClCompile Include="SceneMain.cpp">
@@ -115,17 +106,17 @@
     <ClCompile Include="ObjBoss.cpp">
       <Filter>GameMain\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="ObjDog.cpp">
-      <Filter>GameMain\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="ObjEnemy.cpp">
       <Filter>GameMain\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="ObjEye.cpp">
-      <Filter>GameMain\Enemies</Filter>
+    <ClCompile Include="Objhand.cpp">
+      <Filter>GameMain\ギミック関連</Filter>
     </ClCompile>
-    <ClCompile Include="ObjCactus.cpp">
-      <Filter>GameMain\Enemies</Filter>
+    <ClCompile Include="ObjThorn.cpp">
+      <Filter>GameMain\ギミック関連</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjTuta.cpp">
+      <Filter>GameMain\ギミック関連</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -165,9 +156,6 @@
     <ClInclude Include="ObjBlock.h">
       <Filter>GameMain</Filter>
     </ClInclude>
-    <ClInclude Include="Objhand.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
     <ClInclude Include="ObjHero.h">
       <Filter>GameMain</Filter>
     </ClInclude>
@@ -177,13 +165,7 @@
     <ClInclude Include="ObjMessage2.h">
       <Filter>GameMain</Filter>
     </ClInclude>
-    <ClInclude Include="ObjThorn.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
     <ClInclude Include="ObjTime.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjTuta.h">
       <Filter>GameMain</Filter>
     </ClInclude>
     <ClInclude Include="SceneMain.h">
@@ -243,17 +225,17 @@
     <ClInclude Include="ObjBoss.h">
       <Filter>GameMain\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="ObjDog.h">
-      <Filter>GameMain\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="ObjEnemy.h">
       <Filter>GameMain\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="ObjEye.h">
-      <Filter>GameMain\Enemies</Filter>
+    <ClInclude Include="Objhand.h">
+      <Filter>GameMain\ギミック関連</Filter>
     </ClInclude>
-    <ClInclude Include="ObjCactus.h">
-      <Filter>GameMain\Enemies</Filter>
+    <ClInclude Include="ObjThorn.h">
+      <Filter>GameMain\ギミック関連</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjTuta.h">
+      <Filter>GameMain\ギミック関連</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +268,9 @@
     </Filter>
     <Filter Include="GameMain\Enemies">
       <UniqueIdentifier>{c6fe699a-d082-4eeb-ac19-2e583c304b3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameMain\ギミック関連">
+      <UniqueIdentifier>{4b9fabe2-7a7a-438c-b4a9-f40ca4f720d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
