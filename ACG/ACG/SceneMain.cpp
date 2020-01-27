@@ -104,6 +104,11 @@ void CSceneMain::InitScene()
 //実行中メソッド
 void CSceneMain::Scene()
 {
+	if (m_chg >= 5)
+	{
+		m_chg = 5;
+	}
+
 	//マップ読み込み
 	if (m_chg == 0 && OneRead == true)
 	{
@@ -134,7 +139,7 @@ void CSceneMain::Scene()
 		OneRead = false;
 
 	}
-	else if (m_chg == 5 && OneRead == true)
+	/*else if (m_chg == 5 && OneRead == true)
 	{
 		MapRead(m_chg, map2, p);
 		OneRead = false;
@@ -163,7 +168,7 @@ void CSceneMain::Scene()
 		MapRead(m_chg, map2, p);
 		OneRead = false;
 
-	}
+	}*/
 
 }
 

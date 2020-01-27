@@ -42,6 +42,11 @@ void CObjBlock::Action()
 		ikkai = false;
 
 	}
+
+	if (m_chg >= 5)
+	{
+		m_chg = 5;
+	}
 	
 	int count = 0;//1000回数えるよう
 
@@ -89,7 +94,7 @@ void CObjBlock::Action()
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
 		One_chg = false;
 	}
-	else if (m_chg == 5 && One_chg == true) {
+	/*else if (m_chg == 5 && One_chg == true) {
 		Transfer(map, map2);
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
@@ -118,7 +123,7 @@ void CObjBlock::Action()
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
 		One_chg = false;
-	}
+	}*/
 
 	//主人公の位置を取得
 	CObjHero*hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
@@ -153,13 +158,13 @@ void CObjBlock::Action()
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 21) {//敵2(Jump
-				CObjEnemy* obj21 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 2);
-				Objs::InsertObj(obj21, OBJ_ENEMY, 10);
+				CObjEye* obj21 = new CObjEye(ex * 64.0f, i * 64.0f, 170, 30, 2);
+				Objs::InsertObj(obj21, OBJ_EYE, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 22) {//敵3
-				CObjEnemy* obj22 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 3);
-				Objs::InsertObj(obj22, OBJ_ENEMY, 10);
+			else if (m_map[i][ex] == 22) {//敵3(わんわんお
+				CObjDog* obj22 = new CObjDog(ex * 64.0f, i * 64.0f, 170, 30, 3);
+				Objs::InsertObj(obj22, OBJ_DOG, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 23) {//敵4

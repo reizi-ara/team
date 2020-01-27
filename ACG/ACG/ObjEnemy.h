@@ -60,4 +60,7 @@ private:
 	bool atk_kb;
 	bool Delete_flag;
 
+	//Ž~‚ß‚éƒtƒ‰ƒO
+	int stopF;
+
 };

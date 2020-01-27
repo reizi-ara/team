@@ -1,27 +1,22 @@
 #pragma once
-//使用するヘッダーファイル
+//使用するヘッダー
 #include "GameL\SceneObjManager.h"
 
 //使用するネームスペース
 using namespace GameL;
 
-//シーン：ゲームタイトル
-class CObjMessage : public CObj
+//オブジェクト：敵
+class CObjEye :public CObj
 {
 public:
-	CObjMessage(float x, float y, float t);
-	~CObjMessage() {};
+	CObjEye(float x, float y, float l, float a, float t);
+	~CObjEye() {};
 	void Init();	//イニシャライズ
 	void Action();  //アクション
 	void Draw();	//ドロー
 
 	float GetVx() { return m_vx; }
-	
-	bool Getwindow_flag() { return isplayerhit; }
-	int GetStopE() { return stopE; }
 
-	void SetStopE(int a) { stopE = a; }
-	void Toarrivewindow(int a) { Unfold =a; }
 
 private:
 	float m_px;	//位置
@@ -49,27 +44,21 @@ private:
 	bool m_move;
 
 	float en_life;
+	float atk;
+	int type_n;
 
-	int hit_length;
-	int sarch_length;
+	int muteki_time;
 
-	int size;
-	int awake;
-	int type;
-	bool isplayerhit;
-	int Message_flag;
+	bool awake;
 
-
-
-	//削除用
-	int destryNum;
-	int MdestryNum;
+	bool dir_act;
 
 	int time;
-	int Unfold;
+	int destryNum;//削除用
+	int MdestryNum;
 
-	//エネミーを動かんくするための変数
-	bool stopE;
+	bool atk_kb;
+	bool Delete_flag;
 
 };
 
