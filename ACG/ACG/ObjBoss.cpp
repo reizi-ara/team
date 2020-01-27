@@ -276,7 +276,7 @@ void CObjBoss::Action()
 		if (time_1 == 2560) {
 			acmt[0] = 0;
 			acmt[1] = 0;
-			time_1 = 0;
+			time_1 = 900;
 			bulletQ = 0;
 		}
 

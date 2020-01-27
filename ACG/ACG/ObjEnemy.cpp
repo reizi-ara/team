@@ -79,7 +79,7 @@ void CObjEnemy::Action()
 {
 	CObjMessage* objM = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
 	CObjCandle* objC = (CObjCandle*)Objs::GetObj(OBJ_CANDLE);
-	if (objM == NULL)
+	if (objM == NULL|| objC == NULL)
 	{
 		;
 	}
@@ -89,9 +89,7 @@ void CObjEnemy::Action()
 		stopM = objC->GetStopD();
 	}
 	
-	if (stopF == true)
-	{
-		if (stopM == true)
+	if (stopF == true&&stopM == true)
 		{
 
 			//—‰º
@@ -322,7 +320,7 @@ void CObjEnemy::Action()
 				this->SetStatus(false);
 			}
 
-		}
+		
 
 	}
 
