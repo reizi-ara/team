@@ -71,233 +71,256 @@ void CObjEnemy::Init()
 	Delete_flag = false;
 
 	stopF = true;
+	stopM = true;
 }
 
 //アクション
 void CObjEnemy::Action()
 {
 	CObjMessage* objM = (CObjMessage*)Objs::GetObj(OBJ_MESSAGE);
-	if (objM == NULL)
+	CObjCandle* objC = (CObjCandle*)Objs::GetObj(OBJ_CANDLE);
+	if (objM == NULL|| objC == NULL)
 	{
 		;
 	}
 	else
 	{
 		stopF = objM->GetStopE();
+		stopM = objC->GetStopD();
 	}
 	
-	if (stopF == true)
-	{
-
-		//落下
-		if (m_py > 1000.0f)
+	if (stopF == true&&stopM == true)
 		{
-			this->SetStatus(false);
-		}
 
-		//通常速度
-		m_ani_max_time = 4;//アニメーション間隔幅
+			//落下
+			if (m_py > 1000.0f)
+			{
+				this->SetStatus(false);
+			}
 
-
-		//方向
-		if (m_move == false)
-		{
-			m_vx += m_speed_power;
-			m_posture = 1.0f;
-			m_ani_time += 2;
-		}
-
-		else if (m_move == true)
-		{
-			m_vx -= m_speed_power;
-			m_posture = 0.0f;
-			m_ani_time += 2;
-		}
-
-		if (m_ani_time > m_ani_max_time)
-		{
-			m_ani_frame += 1;
-			m_ani_time = 0;
-		}
-
-		if (m_ani_frame == 8)
-		{
-			m_ani_frame = 0;
-		}
+			//通常速度
+			m_ani_max_time = 4;//アニメーション間隔幅
 
 
+			//方向
+			if (m_move == false)
+			{
+				m_vx += m_speed_power;
+				m_posture = 1.0f;
+				m_ani_time += 2;
+			}
 
-		//摩擦
-		m_vx += -(m_vx*0.098);
+			else if (m_move == true)
+			{
+				m_vx -= m_speed_power;
+				m_posture = 0.0f;
+				m_ani_time += 2;
+			}
 
-		//自由落下運動
-		m_vy += 1.8 / (4.0f);
+			if (m_ani_time > m_ani_max_time)
+			{
+				m_ani_frame += 1;
+				m_ani_time = 0;
+			}
 
-		//ブロックタイプ検知用の変数がないためのダミー
-		int d;
-		//ブロックとの当たり判定実行
-		CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-		pb->BlockHit(&m_px, &m_py, false,
-			&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
-			&d
-		);
-
-		//表示位置の更新
-		m_px += m_vx;
-		m_py += m_vy;
-
-		//ブロック情報を持ってくる
-		CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+			if (m_ani_frame == 8)
+			{
+				m_ani_frame = 0;
+			}
 
 
-		//座標
-		CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
-		float pl_x = obj->GetX();
-		float pl_y = obj->GetY();
-		pl_x += 32.0f;
-		pl_y += 32.0f;
-		CObjBlock* block3 = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-		float sl = block3->GetScroll();
-		float en_x = m_px + 32.0f;
-		float en_y = m_py + 32.0f;
-		if (type_n == 2 || type_n == 3 || type_n == 4)
-		{
-			time++;
-			if (time % (80 + type_n * 20) == 0)
-				m_vy = -(10 + (type_n - 2));
-			if (time > (80 + type_n * 20))
-				time = 0;
-		}
-		//ブロック衝突で向き変更
-		if (m_hit_left == true)
-			m_move = true;
-		if (m_hit_right == true)
-			m_move = false;
-		if (pl_x - sl <= en_x - 48.0f * 6)
-			m_move = true;
-		if (pl_x - sl >= en_x + 48.0f * 6)
-			m_move = false;
 
-		if (dir_act == m_move)
-		{
-		}
-		else
-		{
-			dir_act = m_move;
-			m_speed_power = 0.0f;
-		}
-		//与ダメージ
-		if (pl_x - sl <= en_x + 48.0f&&
-			pl_x - sl >= en_x - 48.0f &&
-			pl_y <= en_y + 48.0f&&
-			pl_y >= en_y - 48.0f&&
-			m_vx != 0)
-		{
-			obj->GiveDamageToPlayer(atk);
-			if (atk_kb == false)
+			//摩擦
+			m_vx += -(m_vx*0.098);
+
+			//自由落下運動
+			m_vy += 1.8 / (4.0f);
+
+			//ブロックタイプ検知用の変数がないためのダミー
+			int d;
+			//ブロックとの当たり判定実行
+			CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+			pb->BlockHit(&m_px, &m_py, false,
+				&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
+				&d
+			);
+
+			//表示位置の更新
+			m_px += m_vx;
+			m_py += m_vy;
+
+			//ブロック情報を持ってくる
+			CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+
+
+			//座標
+			CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
+			float pl_x = obj->GetX();
+			float pl_y = obj->GetY();
+			pl_x += 32.0f;
+			pl_y += 32.0f;
+			CObjBlock* block3 = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+			float sl = block3->GetScroll();
+			float en_x = m_px + 32.0f;
+			float en_y = m_py + 32.0f;
+			//タイプによって敵の動きを変更するとこ
+			if (type_n == 3 || type_n == 4)
+			{
+				time++;
+				if (time % (80 + type_n * 20) == 0)
+					m_vy = -(10 + (type_n - 2));
+				if (time > (80 + type_n * 20))
+					time = 0;
+			}
+
+			//目の挙動のとこ
+			if (type_n == 2){
+				time++;
+				//トリッキーに動くやつ
+				if (time >= 120)
+				{
+					m_vx = 0;
+				}
+				if (time == 360)
+				{
+					time = 0;
+				}
+			}
+
+
+
+			//ブロック衝突で向き変更
+			if (m_hit_left == true)
+				m_move = true;
+			if (m_hit_right == true)
+				m_move = false;
+			if (pl_x - sl <= en_x - 48.0f * 6)
+				m_move = true;
+			if (pl_x - sl >= en_x + 48.0f * 6)
+				m_move = false;
+
+			if (dir_act == m_move)
+			{
+			}
+			else
+			{
+				dir_act = m_move;
+				m_speed_power = 0.0f;
+			}
+			//与ダメージ
+			if (pl_x - sl <= en_x + 48.0f&&
+				pl_x - sl >= en_x - 48.0f &&
+				pl_y <= en_y + 48.0f&&
+				pl_y >= en_y - 48.0f&&
+				m_vx != 0)
+			{
+				obj->GiveDamageToPlayer(atk);
+				if (atk_kb == false)
+				{
+					if (pl_x - sl <= en_x)
+					{
+						obj->SetVX(-10);
+					}
+
+					else if (pl_x - sl > en_x)
+					{
+						obj->SetVX(10);
+					}
+				}
+				atk_kb = true;
+
+
+
+			}
+			else
+			{
+				atk_kb = false;
+			}
+
+
+
+			muteki_time--;
+			//被攻撃
+
+			if (pl_x - sl <= en_x + SIZE - 40.0f * (obj->Getposture() * 2 - 1) &&
+				pl_x - sl >= en_x - SIZE - 40.0f * (obj->Getposture() * 2 - 1) &&
+				pl_y <= en_y + 80.0f &&
+				pl_y >= en_y - 80.0f&&
+				obj->Getattack() > 0 &&
+				obj->Getattack() != 4 &&
+				muteki_time <= 0)
+			{
+				muteki_time = MUTEKI;
+				en_life -= DE_MAGE;
+
+				CObjEffect* objef = new CObjEffect(m_px + block->GetScroll(), m_py, 2);
+				Objs::InsertObj(objef, OBJ_THORN, 15);
+
+				Audio::Start(7);//効果音
+			}
+
+			//消滅エフェクト
+			if (en_life <= 0) {
+				CObjEffect* objef = new CObjEffect(m_px + block->GetScroll(), m_py, 1);
+				Objs::InsertObj(objef, OBJ_THORN, 15);
+				Delete_flag = true;
+			}
+			//消滅都市
+			if (Delete_flag == true)
+			{
+				//Delete_flag = false;
+				this->SetStatus(false);
+			}
+
+			//起動
+			if (pl_x - sl <= en_x + 48.0f + SARCH &&
+				pl_x - sl >= en_x - 48.0f - SARCH &&
+				awake == false)
+			{
+				awake = true;
+			}
+
+			if (muteki_time > 0 && awake == true)
 			{
 				if (pl_x - sl <= en_x)
 				{
-					obj->SetVX(-10);
+					m_vx = +m_speed_power * 10;
+					//obj->SetVX(10);
 				}
 
 				else if (pl_x - sl > en_x)
 				{
-					obj->SetVX(10);
+					m_vx = -m_speed_power * 10;
+					//obj->SetVX(-10);
 				}
 			}
-			atk_kb = true;
+			if (muteki_time == 0)
+				m_speed_power = 0;
 
-
-
-		}
-		else
-		{
-			atk_kb = false;
-		}
-
-
-
-		muteki_time--;
-		//被攻撃
-
-		if (pl_x - sl <= en_x + SIZE - 40.0f * (obj->Getposture() * 2 - 1) &&
-			pl_x - sl >= en_x - SIZE - 40.0f * (obj->Getposture() * 2 - 1) &&
-			pl_y <= en_y + 80.0f &&
-			pl_y >= en_y - 80.0f&&
-			obj->Getattack() > 0 &&
-			obj->Getattack() != 4 &&
-			muteki_time <= 0)
-		{
-			muteki_time = MUTEKI;
-			en_life -= DE_MAGE;
-
-			CObjEffect* objef = new CObjEffect(m_px + block->GetScroll(), m_py, 2);
-			Objs::InsertObj(objef, OBJ_THORN, 15);
-
-			Audio::Start(7);//効果音
-		}
-
-		//消滅エフェクト
-		if (en_life <= 0) {
-			CObjEffect* objef = new CObjEffect(m_px + block->GetScroll(), m_py, 1);
-			Objs::InsertObj(objef, OBJ_THORN, 15);
-			Delete_flag = true;
-		}
-		//消滅都市
-		if (Delete_flag == true)
-		{
-			//Delete_flag = false;
-			this->SetStatus(false);
-		}
-
-		//起動
-		if (pl_x - sl <= en_x + 48.0f + SARCH &&
-			pl_x - sl >= en_x - 48.0f - SARCH &&
-			awake == false)
-		{
-			awake = true;
-		}
-
-		if (muteki_time > 0 && awake == true)
-		{
-			if (pl_x - sl <= en_x)
+			if (muteki_time <= 0 && awake == true)
 			{
-				m_vx = +m_speed_power * 10;
-				//obj->SetVX(10);
+				m_speed_power += 0.011f;
+			}
+			if (m_speed_power > 1.6f)
+				m_speed_power = 1.6f;
+
+
+
+			if (m_speed_power > 3.0f)
+				m_speed_power = 3.0f;
+
+
+
+			//削除用処理
+			CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+			MdestryNum = sceneM->GetDS();
+
+			if (destryNum != MdestryNum)
+			{
+				this->SetStatus(false);
 			}
 
-			else if (pl_x - sl > en_x)
-			{
-				m_vx = -m_speed_power * 10;
-				//obj->SetVX(-10);
-			}
-		}
-		if (muteki_time == 0)
-			m_speed_power = 0;
-
-		if (muteki_time <= 0 && awake == true)
-		{
-			m_speed_power += 0.011f;
-		}
-		if (m_speed_power > 1.6f)
-			m_speed_power = 1.6f;
-
-
-
-		if (m_speed_power > 3.0f)
-			m_speed_power = 3.0f;
-
-
-
-		//削除用処理
-		CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
-		MdestryNum = sceneM->GetDS();
-
-		if (destryNum != MdestryNum)
-		{
-			this->SetStatus(false);
-		}
+		
 
 	}
 

@@ -16,6 +16,7 @@ public:
 	void Action();  //アクション
 	void Draw();	//ドロー
 
+	int GetStopD() { return stopD; }
 	
 
 private:
@@ -45,12 +46,16 @@ private:
 
 
 
+
+
 	//削除用
 	int destryNum;
 	int MdestryNum;
 
 	int time, times;
 	int Unfold;
+
+	int stopD;
 
 };
 

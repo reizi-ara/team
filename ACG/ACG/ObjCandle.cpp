@@ -52,6 +52,7 @@ void CObjCandle::Init()
 	time = 0;
 
 	Unfold = 0;
+	stopD = true;
 }
 
 //アクション
@@ -77,8 +78,10 @@ void CObjCandle::Action()
 		pl_y >= en_y - hit_length)
 	{//接触時
 		isplayerhit = true;
-
-
+		if (Input::GetVKey(VK_RETURN) == true) {
+			obj->PlayerHeal();
+		}
+		/*
 		if (Input::GetVKey(VK_RETURN) == true && menu_flag == false)
 		{
 			menu_flag = true;
@@ -86,7 +89,10 @@ void CObjCandle::Action()
 
 			Audio::Stop(0);//メインBGMストップ
 			Audio::Start(2);//メニューBGMスタート
+			stopD = false;
+			
 		}
+		*/
 
 	}
 	else
@@ -169,6 +175,7 @@ void CObjCandle::Action()
 						Audio::Start(8);//SE
 						Audio::Stop(2);//メニューBGMストップ
 						Audio::Start(0);//メインBGMスタート
+						stopD = true;
 
 
 						lavel_select = 0;
