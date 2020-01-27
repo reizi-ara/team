@@ -157,7 +157,7 @@ void CObjBlock::Action()
 				Objs::InsertObj(obj20, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 21) {//敵2(Jump
+			else if (m_map[i][ex] == 21) {//敵2目
 				CObjEnemy* obj21 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 2);
 				Objs::InsertObj(obj21, OBJ_ENEMY, 10);
 				m_map[i][ex] = 0;
@@ -167,7 +167,7 @@ void CObjBlock::Action()
 				Objs::InsertObj(obj22, OBJ_ENEMY, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 23) {//敵4
+			else if (m_map[i][ex] == 23) {//サボテンダー
 				CObjEnemy* obj23 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 4);
 				Objs::InsertObj(obj23, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
