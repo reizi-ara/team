@@ -24,7 +24,7 @@ CObjBoss::CObjBoss(float x, float y, float l, float a)
 	m_px = x;	//位置
 	m_py = y - 500;
 	en_life = l;
-	atk = a;
+	atk = a*0.8;
 }
 
 //イニシャライズ
