@@ -66,7 +66,7 @@ void CObjHero::Init()
 	//デバックコマンド
 	MAXMap = 1;
 
-	p_life = p_maxlife * 0.55f;
+	p_life = p_maxlife;
 }
 
 //アクション

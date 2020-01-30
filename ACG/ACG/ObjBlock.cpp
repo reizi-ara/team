@@ -152,23 +152,23 @@ void CObjBlock::Action()
 			if (m_map[i][ex] == 0) {
 				;
 			}
-			else if (m_map[i][ex] == 20) {//ìG1(PJ
-				CObjEnemy* obj20 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 1);
+			else if (m_map[i][ex] == 20) {//ìG1(PJ-xyhat
+				CObjEnemy* obj20 = new CObjEnemy(ex * 64.0f, i * 64.0f, 30, 20, 1);
 				Objs::InsertObj(obj20, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 21) {//ìG2ñ⁄
-				CObjEnemy* obj21 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 2);
+				CObjEnemy* obj21 = new CObjEnemy(ex * 64.0f, i * 64.0f, 30, 20, 2);
 				Objs::InsertObj(obj21, OBJ_ENEMY, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 22) {//ìG3(ÇÌÇÒÇÌÇÒÇ®
-				CObjEnemy* obj22 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 3);
+				CObjEnemy* obj22 = new CObjEnemy(ex * 64.0f, i * 64.0f, 50, 45, 3);
 				Objs::InsertObj(obj22, OBJ_ENEMY, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 23) {//ÉTÉ{ÉeÉìÉ_Å[
-				CObjEnemy* obj23 = new CObjEnemy(ex * 64.0f, i * 64.0f, 170, 30, 4);
+				CObjEnemy* obj23 = new CObjEnemy(ex * 64.0f, i * 64.0f, 60, 35, 4);
 				Objs::InsertObj(obj23, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
