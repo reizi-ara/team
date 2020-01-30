@@ -110,6 +110,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ObjEndingDoor.cpp" />
     <ClCompile Include="Objbullet.cpp" />
     <ClCompile Include="ObjCandle.cpp" />
     <ClCompile Include="GameL\Audio.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="ScenePrologue.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ObjEndingDoor.h" />
     <ClInclude Include="Objbullet.h" />
     <ClInclude Include="ObjCandle.h" />
     <ClInclude Include="GameHead.h" />

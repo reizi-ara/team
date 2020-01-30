@@ -118,6 +118,9 @@
     <ClCompile Include="ObjTuta.cpp">
       <Filter>GameMain\ギミック関連</Filter>
     </ClCompile>
+    <ClCompile Include="ObjEndingDoor.cpp">
+      <Filter>Map関係</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\SetWindow.h">
@@ -236,6 +239,9 @@
     </ClInclude>
     <ClInclude Include="ObjTuta.h">
       <Filter>GameMain\ギミック関連</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjEndingDoor.h">
+      <Filter>Map関係</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

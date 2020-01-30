@@ -172,6 +172,16 @@ void CObjBlock::Action()
 				Objs::InsertObj(obj23, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
+			else if (m_map[i][ex] == 25) {//item:hp*0.5
+				CObjEnemy* obj25 = new CObjEnemy(ex * 64.0f, i * 64.0f, 60, 10, 5);
+				Objs::InsertObj(obj25, OBJ_ENEMY, 11);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 26) {//item
+				CObjEnemy* obj26 = new CObjEnemy(ex * 64.0f, i * 64.0f, 200, 10, 5);
+				Objs::InsertObj(obj26, OBJ_ENEMY, 11);
+				m_map[i][ex] = 0;
+			}
 			else if (m_map[i][ex] == 27) {//boss
 				CObjBoss* obj27 = new CObjBoss(ex * 64.0f, i * 64.0f, 250, 50);
 				Objs::InsertObj(obj27, OBJ_ENEMY, 11);
@@ -206,6 +216,11 @@ void CObjBlock::Action()
 			else if (m_map[i][ex] == 41) {//次マップ移動扉
 				CObjMapBacker* obj41 = new CObjMapBacker(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obj41, OBJ_MAPBACKER, 10);
+				m_map[i][ex] = 0;
+			}
+			else if (m_map[i][ex] == 42) {//エンディング扉
+				CObjEndingDoor* obj42 = new CObjEndingDoor(ex * 64.0f, i * 64.0f, 0);
+				Objs::InsertObj(obj42, OBJ_ENDING_DOOR, 10);
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 50) {//本棚1
