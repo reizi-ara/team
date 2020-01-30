@@ -131,6 +131,6 @@ void CObjMessage2::Draw()
 			Font::StrDraw(L"ÇªÇ±ÇÁÇÃâªÇØï®Ç∆ÇÕà·Ç¢Ç∑Ç¨ÇÈ", 150, 575, 25, c);
 			Font::StrDraw(L"âΩÇ»ÇÒÇæÇ†ÇÃåıÇÕ", 150, 600, 25, c);
 			Font::StrDraw(L"ìzÇ≥Ç¶ì|ÇπÇÍÇŒ...", 150, 625, 25, c);
-			Font::StrDraw(L"T.B.T", 950, 675, 20, c);
+			Font::StrDraw(L"TÅEVÅET", 950, 675, 20, c);
 		}
 }
