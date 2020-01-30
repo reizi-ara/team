@@ -25,6 +25,7 @@ enum OBJ_NAME
 
 	OBJ_MAPCHANGER,
 	OBJ_MAPBACKER,
+	OBJ_ENDING_DOOR,
 
 	OBJ_HAND,
 	OBJ_THORN,
@@ -82,6 +83,7 @@ struct UserData
 #include "ObjEffect.h"
 #include "Objmessage.h"
 #include "ObjMessage2.h"
+#include "ObjEndingDoor.h"
 
 #include "ObjHero.h"
 #include "ObjEnemy.h"
