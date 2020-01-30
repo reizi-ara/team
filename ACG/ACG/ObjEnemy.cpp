@@ -13,7 +13,7 @@
 #include "GameL/Audio.h"
 
 #define MUTEKI 20;
-#define DE_MAGE 50;//hidame
+#define DE_MAGE 10;//hidame
 #define SARCH 64*4
 #define SIZE 64*1
 
@@ -277,7 +277,7 @@ void CObjEnemy::Action()
 			CObjEffect* objef = new CObjEffect(m_px + block->GetScroll(), m_py, 1);
 			Objs::InsertObj(objef, OBJ_THORN, 15);
 			if (type_n != 5) {
-				CObjEnemy* obj25 = new CObjEnemy(m_px, m_py, atk*2/3, 10, 5);
+				CObjEnemy* obj25 = new CObjEnemy(m_px, m_py, atk*1.4, 10, 5);
 				Objs::InsertObj(obj25, OBJ_ENEMY, 11);
 			}
 

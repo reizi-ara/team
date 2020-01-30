@@ -41,4 +41,9 @@ private:
 	int awake;
 	int type;
 	bool isplayerhit;
+
+	//íœ—p
+	int destryNum;
+	int MdestryNum;
+
 };
