@@ -93,6 +93,7 @@ void CObjMapChanger::Action()
 		CObjHero*obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
 		obj->SetX(6 * 64);
 		obj->SetY(7 * 64);
+		obj->SetMAPMaxControl(-1);
 
 		CObjBlock*objB = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 		objB->SetScroll(5);

@@ -44,6 +44,9 @@ class CObjHero :public CObj
 		void SetMessageflag(bool att) { Message_flag = att; }
 		//bool GetP_MenuFlag() { return p_menuflag; }
 
+		//作者コマンドのマップ移動時におかしくならんようにするやつ
+		void SetMAPMaxControl(int MapNum) { MAXMap += MapNum; }
+
 	private:
 		float m_px;	//位置
 		float m_py;
