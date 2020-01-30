@@ -34,24 +34,6 @@
     <ClCompile Include="GameL\MultiThread.cpp">
       <Filter>リソースファイル</Filter>
     </ClCompile>
-    <ClCompile Include="ObjBlock.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjHero.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="Objmessage.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjMessage2.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjTime.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneMain.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
     <ClCompile Include="ObjGameOption.cpp">
       <Filter>GameOption</Filter>
     </ClCompile>
@@ -82,9 +64,6 @@
     <ClCompile Include="GameL\SceneObjManager.cpp">
       <Filter>リソースファイル</Filter>
     </ClCompile>
-    <ClCompile Include="ObjEffect.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
     <ClCompile Include="SceneGameClear.cpp">
       <Filter>GameClear</Filter>
     </ClCompile>
@@ -96,12 +75,6 @@
     </ClCompile>
     <ClCompile Include="ObjPrologue.cpp">
       <Filter>プロローグ</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjCandle.cpp">
-      <Filter>GameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="Objbullet.cpp">
-      <Filter>GameMain</Filter>
     </ClCompile>
     <ClCompile Include="ObjBoss.cpp">
       <Filter>GameMain\Enemies</Filter>
@@ -117,6 +90,33 @@
     </ClCompile>
     <ClCompile Include="ObjTuta.cpp">
       <Filter>GameMain\ギミック関連</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjBlock.cpp">
+      <Filter>GameMain\STAGES</Filter>
+    </ClCompile>
+    <ClCompile Include="Objbullet.cpp">
+      <Filter>GameMain\STAGES</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjCandle.cpp">
+      <Filter>GameMain\STAGES</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjEffect.cpp">
+      <Filter>GameMain\STAGES</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjHero.cpp">
+      <Filter>GameMain\STAGES</Filter>
+    </ClCompile>
+    <ClCompile Include="Objmessage.cpp">
+      <Filter>GameMain\STAGES</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMessage2.cpp">
+      <Filter>GameMain\STAGES</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjTime.cpp">
+      <Filter>GameMain\STAGES</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>GameMain\STAGES</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,24 +153,6 @@
     <ClInclude Include="main.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ObjBlock.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjHero.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
-    <ClInclude Include="Objmessage.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjMessage2.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjTime.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneMain.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
     <ClInclude Include="ObjGameOption.h">
       <Filter>GameOption</Filter>
     </ClInclude>
@@ -201,9 +183,6 @@
     <ClInclude Include="GameL\SceneObjManager.h">
       <Filter>リソースファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ObjEffect.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
     <ClInclude Include="SceneGameClear.h">
       <Filter>GameClear</Filter>
     </ClInclude>
@@ -215,12 +194,6 @@
     </ClInclude>
     <ClInclude Include="ScenePrologue.h">
       <Filter>プロローグ</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjCandle.h">
-      <Filter>GameMain</Filter>
-    </ClInclude>
-    <ClInclude Include="Objbullet.h">
-      <Filter>GameMain</Filter>
     </ClInclude>
     <ClInclude Include="ObjBoss.h">
       <Filter>GameMain\Enemies</Filter>
@@ -236,6 +209,33 @@
     </ClInclude>
     <ClInclude Include="ObjTuta.h">
       <Filter>GameMain\ギミック関連</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjBlock.h">
+      <Filter>GameMain\STAGES</Filter>
+    </ClInclude>
+    <ClInclude Include="Objbullet.h">
+      <Filter>GameMain\STAGES</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCandle.h">
+      <Filter>GameMain\STAGES</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjEffect.h">
+      <Filter>GameMain\STAGES</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjHero.h">
+      <Filter>GameMain\STAGES</Filter>
+    </ClInclude>
+    <ClInclude Include="Objmessage.h">
+      <Filter>GameMain\STAGES</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMessage2.h">
+      <Filter>GameMain\STAGES</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjTime.h">
+      <Filter>GameMain\STAGES</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMain.h">
+      <Filter>GameMain\STAGES</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -271,6 +271,9 @@
     </Filter>
     <Filter Include="GameMain\ギミック関連">
       <UniqueIdentifier>{4b9fabe2-7a7a-438c-b4a9-f40ca4f720d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameMain\STAGES">
+      <UniqueIdentifier>{02330863-4bd0-499a-9606-314038bb97ae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -81,7 +81,7 @@ void CObjCandle::Action()
 		if (Input::GetVKey(VK_RETURN) == true) {
 			obj->PlayerHeal();
 		}
-		/*
+		
 		if (Input::GetVKey(VK_RETURN) == true && menu_flag == false)
 		{
 			menu_flag = true;
@@ -92,7 +92,7 @@ void CObjCandle::Action()
 			stopD = false;
 			
 		}
-		*/
+		
 
 	}
 	else
