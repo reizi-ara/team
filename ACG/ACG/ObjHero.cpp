@@ -15,7 +15,7 @@
 using namespace GameL;
 
 #define PLAYERLIFE 100
-#define MUTEKITIME 120
+#define MUTEKITIME 60
 
 //イニシャライズ
 void CObjHero::Init()
@@ -266,7 +266,7 @@ void CObjHero::Action()
 				obj->SetX(6 * 64);
 				obj->SetY(7 * 64);
 
-				time_a = 60;
+				time_a = 30;
 				CObjBlock*blockM = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 				blockM->SetScroll(5);
 				blockM->SetM_CHG(1);
@@ -292,7 +292,7 @@ void CObjHero::Action()
 				obj->SetX(30 * 64);
 				obj->SetY(7 * 64);
 
-				time_a = 60;
+				time_a = 30;
 				CObjBlock*blockM = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 				blockM->SetScroll(-73 * 64);
 				blockM->SetM_CHG(-1);

@@ -218,6 +218,11 @@ void CObjBlock::Action()
 				Objs::InsertObj(obj41, OBJ_MAPBACKER, 10);
 				m_map[i][ex] = 0;
 			}
+			else if (m_map[i][ex] == 42) {//エンディング扉
+				CObjEndingDoor* obj42 = new CObjEndingDoor(ex * 64.0f, i * 64.0f, 0);
+				Objs::InsertObj(obj42, OBJ_ENDING_DOOR, 10);
+				m_map[i][ex] = 0;
+			}
 			else if (m_map[i][ex] == 50) {//本棚1
 				CObjMessage* obj50 = new CObjMessage(ex * 64.0f, i * 64.0f, 1);
 				Objs::InsertObj(obj50, OBJ_MESSAGE, 10);
