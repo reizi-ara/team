@@ -23,7 +23,7 @@ CObjBoss::CObjBoss(float x, float y, float l, float a)
 {
 	m_px = x;	//ˆÊ’u
 	m_py = y - 500;
-	en_life = l;
+	en_life = l*1.6;
 	atk = a*0.8;
 }
 
@@ -257,11 +257,11 @@ void CObjBoss::Action()
 			acmt[0] = 1;
 			acmt[1] = 4;
 		}
-		if (time_1 == 1800) {
+		if (time_1 == 1850) {
 			acmt[0] = 0;
 			acmt[1] = 5;
 		}
-		if (time_1 == 1900) {
+		if (time_1 == 1920) {
 			acmt[0] = 0;
 			acmt[1] = 1;
 		}
@@ -362,8 +362,8 @@ void CObjBoss::Action()
 
 				if (pl_x - sl <= en_x + 24.0f &&
 					pl_x - sl >= en_x - 2188.0f &&
-					pl_y <= en_y - 96.0f &&
-					pl_y >= en_y - 300.0f) {/////////////////////////////////////
+					pl_y <= en_y - 110.0f &&
+					pl_y >= en_y - 165.0f) {/////////////////////////////////////
 					obj->GiveDamageToPlayer(atk * 1.5f);
 					obj->SetVX(-20);
 					obj->SetVY(5);
