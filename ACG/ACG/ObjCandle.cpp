@@ -282,19 +282,29 @@ void CObjCandle::Draw()
 	
 
 		if (lavel_select == 0) {
-			Font::StrDraw(L"クレジット一覧", 690, 50, 32, c);
-			Font::StrDraw(L"総合ディレクター:永原 大暉", 350, 120, 29, c);
-			Font::StrDraw(L"ゲームプランナー:畠 将仁", 350, 160, 29, c);
-			Font::StrDraw(L"ゲームプログラマー:荒巻 佑真", 350, 200, 29, c);
-			Font::StrDraw(L"ゲームデザイナー:田幡 俊幸", 350, 240, 29, c);
-			Font::StrDraw(L"アシスタントディレクター:岡田 悠樹", 350, 280, 29, c);
+			Font::StrDraw(L"クレジット一覧", 690, 40, 32, c);
+			Font::StrDraw(L"製作者", 350, 70, 20, c);
+			Font::StrDraw(L"総合ディレクター:永原 大暉", 350, 100, 27, c);
+			Font::StrDraw(L"ゲームプランナー:畠 将仁", 350, 135, 27, c);
+			Font::StrDraw(L"ゲームプログラマー:荒巻 佑真", 350, 170, 27, c);
+			Font::StrDraw(L"ゲームデザイナー:田幡 俊幸", 350, 205, 27, c);
+			Font::StrDraw(L"アシスタントディレクター:岡田 悠樹", 350, 240, 27, c);
+			Font::StrDraw(L"BGM・効果音", 350, 300, 20, c);
+			Font::StrDraw(L"効果音ラボ→https://soundeffect-lab.info/", 350, 330, 27, c);
+			Font::StrDraw(L"Wingless Seraph→https://wingless-seraph.net/", 350, 365, 27, c);
+			Font::StrDraw(L"無料効果音→https://taira-komori.jpn.org/index.html", 350, 400, 27, c);
+			Font::StrDraw(L"魔王魂→https://maoudamashii.jokersounds.com/", 350, 435, 27, c);
+			Font::StrDraw(L"効果音辞典→https://sounddictionary.info/", 350, 470, 27, c);
+			Font::StrDraw(L"G-Sound→https://g-miya.net/index.html", 350, 505, 27, c);
+			Font::StrDraw(L"くらげ工匠→http://www.kurage-kosho.info/index.html", 350, 540, 27, c);
+			Font::StrDraw(L"ノスタルジア→http://nostalgiamusic.info/index.html", 350, 575, 27, c);
 		}
 		if (lavel_select == 1) {
-			Font::StrDraw(L" オプション", 690, 50, 32, c);
+			Font::StrDraw(L" オプション", 690, 40, 32, c);
 		}
 		if (lavel_select == 2) {
-			Font::StrDraw(L" ゲーム終了", 690, 50, 32, c);
-			Font::StrDraw(L"ゲームを終了してタブを閉じます。", 450, 300, 40, c);
+			Font::StrDraw(L" ゲーム終了", 690, 40, 32, c);
+			Font::StrDraw(L"ゲームを終了してタブを閉じます。", 450, 300, 45, c);
 		}
 	}
 }
