@@ -91,7 +91,7 @@ void CObjEndingDoor::Action()
 
 
 
-
+	//ボス討伐でドアに当たるとクリア画面へ。
 	if (isplayerhit == true && DoorSystem == 2)
 	{
 		Scene::SetScene(new CSceneGameClear());
@@ -120,6 +120,7 @@ void CObjEndingDoor::Draw()
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
+	//閉じる
 	if (DoorSystem == 1)
 	{
 		//切り取り位置の設定
@@ -140,7 +141,7 @@ void CObjEndingDoor::Draw()
 		//描画
 		Draw::Draw(8, &src, &dst, c, 0.0f);
 	}
-
+	//開く
 	if (DoorSystem == 2)
 	{
 		//切り取り位置の設定
