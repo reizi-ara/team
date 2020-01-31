@@ -76,12 +76,13 @@ void CObjMapChanger::Action()
 	float sl = block3->GetScroll();
 	float en_x = m_px + 32.0f;
 	float en_y = m_py + 32.0f;
-	
+
+	CSceneMain* sceneM = (CSceneMain*)Scene::GetScene();
 	if (pl_x - sl <= en_x + hit_length &&
 		pl_x - sl >= en_x - hit_length &&
 		pl_y <= en_y + hit_length &&
-		pl_y >= en_y - hit_length)
-		//|| Input::GetVKey('M') && m_OneChg == false)
+		pl_y >= en_y - hit_length&&
+		sceneM->CheckMassageActivate())
 	{//ÚGŽž
 
 		time_a = 60;
@@ -120,7 +121,6 @@ void CObjMapChanger::Action()
 
 
 		//íœ—pˆ—
-	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 	MdestryNum = sceneM->GetDS();
 
 	if (destryNum != MdestryNum)

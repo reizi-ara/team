@@ -78,9 +78,7 @@ void CObjCandle::Action()
 		pl_y >= en_y - hit_length)
 	{//ÚGŽž
 		isplayerhit = true;
-		if (Input::GetVKey(VK_RETURN) == true) {
 			obj->PlayerHeal();
-		}
 		
 		if (Input::GetVKey(VK_RETURN) == true && menu_flag == false)
 		{

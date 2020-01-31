@@ -125,6 +125,8 @@ void CObjMessage::Action()
 	{
 		if (Input::GetVKey(VK_RETURN) == true)
 		{
+			CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
+			sceneM->MassageActivate();
 			Objs::InsertObj(obje, OBJ_MESSAGE2, 15);
 
 			obj->SetVX(0.0f);
