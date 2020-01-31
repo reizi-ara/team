@@ -42,6 +42,8 @@ void CObjEndingDoor::Init()
 	size = 0;
 	isplayerhit = false;
 
+	DoorSystem = 1;
+
 	//削除用
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
 	if (sceneM == nullptr)
@@ -90,9 +92,10 @@ void CObjEndingDoor::Action()
 
 
 
-
-
-
+	if (isplayerhit == true && DoorSystem == 2)
+	{
+		Scene::SetScene(new CSceneGameClear());
+	}
 
 
 		//削除用処理
@@ -117,21 +120,47 @@ void CObjEndingDoor::Draw()
 	RECT_F src;//描画元切り取り位置
 	RECT_F dst;//描画先表示位置
 
-	//切り取り位置の設定
-	src.m_top = 0.0f;
-	src.m_left = 0.0f;
-	src.m_right = 128.0f;
-	src.m_bottom = 128.0f;
+	if (DoorSystem == 1)
+	{
+		//切り取り位置の設定
+		src.m_top = 0.0f;
+		src.m_left = 0.0f;
+		src.m_right = 128.0f;
+		src.m_bottom = 128.0f;
 
-	//ブロック情報を持ってくる
-	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+		//ブロック情報を持ってくる
+		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
-	//表示位置の設定
-	dst.m_top = -32.0f + m_py - size;
-	dst.m_left = -64.0f + m_px + block->GetScroll() - size;
-	dst.m_right = 64.0f + m_px + block->GetScroll() + size;
-	dst.m_bottom = 64.0f + m_py + size;
+		//表示位置の設定
+		dst.m_top = -32.0f + m_py - size;
+		dst.m_left = -64.0f + m_px + block->GetScroll() - size;
+		dst.m_right = 64.0f + m_px + block->GetScroll() + size;
+		dst.m_bottom = 64.0f + m_py + size;
 
-	//描画
-	Draw::Draw(0, &src, &dst, c, 0.0f);
+		//描画
+		Draw::Draw(8, &src, &dst, c, 0.0f);
+	}
+
+	if (DoorSystem == 2)
+	{
+		//切り取り位置の設定
+		src.m_top = 0.0f;
+		src.m_left = 128.0f;
+		src.m_right = 128.0f * 2;
+		src.m_bottom = 128.0f;
+
+		//ブロック情報を持ってくる
+		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+
+		//表示位置の設定
+		dst.m_top = -32.0f + m_py - size;
+		dst.m_left = -64.0f + m_px + block->GetScroll() - size;
+		dst.m_right = 64.0f + m_px + block->GetScroll() + size;
+		dst.m_bottom = 64.0f + m_py + size;
+
+		//描画
+		Draw::Draw(8, &src, &dst, c, 0.0f);
+	}
+
+
 }
