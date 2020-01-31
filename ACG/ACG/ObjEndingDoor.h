@@ -18,6 +18,8 @@ public:
 
 	float GetVx() { return m_vx; }
 
+	void DoorSystemPG(int dead) { DoorSystem = dead; }
+
 private:
 	float m_px;	//位置
 	float m_py;
@@ -27,6 +29,8 @@ private:
 
 	float p_x;
 	float p_y;
+
+	int DoorSystem;//ドア開閉用変数:2開く、1閉ざす
 
 	 //blockとの衝突状態確認用
 	bool m_hit_up;

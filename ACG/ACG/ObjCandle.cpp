@@ -305,4 +305,25 @@ void CObjCandle::Draw()
 			Font::StrDraw(L"ゲームを終了してタブを閉じます。", 450, 300, 45, c);
 		}
 	}
+
+	//ビックリマークを出す処理
+	if (isplayerhit == true)
+	{
+		//切り取り位置の設定
+		src.m_top = 64.0f * 7;
+		src.m_left = 64.0f * 0;
+		src.m_right = 64.0f * 1;
+		src.m_bottom = 64.0f * 8;
+		//x上海紅茶館->o大英紅茶館
+		//ブロック情報を持ってくる
+		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+
+		//表示位置の設定
+		dst.m_top = -32.0f - 48.0f + m_py - size;
+		dst.m_left = 8.0f + m_px + block->GetScroll() - size;
+		dst.m_right = 32.0f + 24.0f + m_px + block->GetScroll() + size;
+		dst.m_bottom = -12.0f + m_py + size;
+		//描画
+		Draw::Draw(6, &src, &dst, c, 0.0f);
+	}
 }
