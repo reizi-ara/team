@@ -23,7 +23,7 @@ CObjBoss::CObjBoss(float x, float y, float l, float a)
 {
 	m_px = x;	//ˆÊ’u
 	m_py = y - 500;
-	en_life = l*1.6;
+	en_life = l*1.2;
 	atk = a*0.8;
 }
 

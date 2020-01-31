@@ -25,7 +25,7 @@ void CObjGameClear::Action()
 {
 	time++;
 	//エンターキーを押してシーン：ゲームタイトルに移行する
-	if (Endnum >= 2)
+	if (Endnum >= 4)
 	{
 		if (Input::GetVKey(VK_RETURN) == true)
 		{
@@ -90,24 +90,30 @@ void CObjGameClear::Draw()
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 	if (Endnum == 0)
 	{
-		Font::StrDraw(L"この不気味な洋館に迷い込んで数日が経った。", 150, 550, 25, c);
-		Font::StrDraw(L"もしかすると私以外に迷い込んだ人間がいるかもしれない。", 150, 575, 25, c);
-		Font::StrDraw(L"何か分かったことがあればこのメモに記そうと思う。", 150, 600, 25, c);
-		Font::StrDraw(L"著者：田幡", 750, 675, 20, c);
+		Font::StrDraw(L"「ここは...外？」", 150, 550, 25, c);
+		Font::StrDraw(L"「何とか外に出られたようだ。」", 150, 575, 25, c);
+		Font::StrDraw(L"「館や化け物は何だったんだろう」", 150, 600, 25, c);
 	}
 	else if (Endnum == 1)
 	{
-		Font::StrDraw(L"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 150, 550, 25, c);
-		Font::StrDraw(L"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 150, 575, 25, c);
-		Font::StrDraw(L"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 150, 600, 25, c);
-		Font::StrDraw(L"著者：田幡", 750, 675, 20, c);
+		Font::StrDraw(L"後日その館を調べるために向かったところ", 150, 550, 25, c);
+		Font::StrDraw(L"その館は跡形もなかった", 150, 575, 25, c);
+		Font::StrDraw(L"街の噂も嘘のように聞こえてこず", 150, 600, 25, c);
+		Font::StrDraw(L"みんなも噂のことを忘れていた", 150, 625, 25, c);
 	}
 	else if (Endnum == 2)
 	{
-		Font::StrDraw(L"b", 150, 550, 25, c);
-		Font::StrDraw(L"b", 150, 575, 25, c);
-		Font::StrDraw(L"b", 150, 600, 25, c);
-		Font::StrDraw(L"著者：田幡", 750, 675, 20, c);
+		Font::StrDraw(L"ただ、あの館がなくなった気がしなかった", 150, 550, 25, c);
+		Font::StrDraw(L"まだどこかにあるような気がして心配だったが", 150, 575, 25, c);
+		Font::StrDraw(L"そのうち忘れていった", 150, 600, 25, c);
+	}
+	else if (Endnum == 3)
+	{
+		Font::StrDraw(L"～END～", (WINDOW_SIZE_W/2)-50, 600, 25, c);
+	}
+	else if (Endnum == 4)
+	{
+		Font::StrDraw(L"ねえ、ある館の噂って知ってる？...", 400, 600, 25, c);
 	}
 }
 

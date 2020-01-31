@@ -66,7 +66,7 @@ void CObjHero::Init()
 	//デバックコマンド
 	MAXMap = 1;
 
-	p_life = p_maxlife * 0.55f;
+	p_life = p_maxlife;
 }
 
 //アクション
@@ -152,19 +152,19 @@ void CObjHero::Action()
 		}
 
 		//Wでジャンプ
-		if (Input::GetVKey('W'))
+		if (Input::GetVKey('W')|| Input::GetVKey(VK_SPACE) || Input::GetVKey(VK_UP))
 			if (m_hit_down)
 				m_vy = -15-d_mode*5;
 
 
 		if (Input::GetVKey(VK_SHIFT))
 		{//Shiftで速度アップ
-			m_speed_power = 1.4f;
+			m_speed_power = 1.6f;
 			m_ani_max_time = 2;
 		}
 		else
 		{//通常速度
-			m_speed_power = 0.8f;
+			m_speed_power = 1.2f;
 			m_ani_max_time = 4;
 		}
 
@@ -180,18 +180,21 @@ void CObjHero::Action()
 			if (muteki_time > 0)
 				muteki_time += 0.5;
 		}*/
-		if (Input::GetVKey('S')&&m_hit_down==false)//しゃがみ
+		if (Input::GetVKey('S') || Input::GetVKey(VK_DOWN) )//しゃがみ
 		{
-			m_vy = 25;
-			m_pose = 2.0f;
-			m_ani_time += 1;
-			if (muteki_time > 0)
-				muteki_time += 0.05;
+			if (m_hit_down == false)
+			{
+				m_vy = 25;
+				m_pose = 2.0f;
+				m_ani_time += 1;
+				if (muteki_time > 0)
+					muteki_time += 0.05;
+			}
 		}
 		//else
 		{
 			heal = 0.001f;
-			if (Input::GetVKey('D'))//右に移動
+			if (Input::GetVKey('D') || Input::GetVKey(VK_RIGHT))//右に移動
 			{
 				
 				
@@ -200,7 +203,7 @@ void CObjHero::Action()
 				m_pose = 1.0f;
 				m_ani_time += 1;
 			}
-			else if (Input::GetVKey('A'))//左に移動
+			else if (Input::GetVKey('A') || Input::GetVKey(VK_LEFT))//左に移動
 			{
 				
 
