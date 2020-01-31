@@ -286,7 +286,7 @@ void CObjCandle::Draw()
 			Font::StrDraw(L"ゲームプランナー:畠 将仁", 350, 135, 27, c);
 			Font::StrDraw(L"ゲームプログラマー:荒巻 佑真", 350, 170, 27, c);
 			Font::StrDraw(L"ゲームデザイナー:田幡 俊幸", 350, 205, 27, c);
-			Font::StrDraw(L"アシスタントディレクター:岡田 悠樹", 350, 240, 27, c);
+			Font::StrDraw(L"アシスタント:岡田 悠樹", 350, 240, 27, c);
 			Font::StrDraw(L"BGM・効果音", 350, 300, 20, c);
 			Font::StrDraw(L"効果音ラボ→https://soundeffect-lab.info/", 350, 330, 27, c);
 			Font::StrDraw(L"Wingless Seraph→https://wingless-seraph.net/", 350, 365, 27, c);
