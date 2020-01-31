@@ -78,9 +78,7 @@ void CObjCandle::Action()
 		pl_y >= en_y - hit_length)
 	{//接触時
 		isplayerhit = true;
-		if (Input::GetVKey(VK_RETURN) == true) {
 			obj->PlayerHeal();
-		}
 		
 		if (Input::GetVKey(VK_RETURN) == true && menu_flag == false)
 		{
@@ -307,4 +305,5 @@ void CObjCandle::Draw()
 			Font::StrDraw(L"ゲームを終了してタブを閉じます。", 450, 300, 45, c);
 		}
 	}
+
 }
