@@ -133,7 +133,7 @@ void CObjEndingDoor::Draw()
 		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 		//表示位置の設定
-		dst.m_top = -32.0f + m_py - size;
+		dst.m_top = -64.0f + m_py - size;
 		dst.m_left = -64.0f + m_px + block->GetScroll() - size;
 		dst.m_right = 64.0f + m_px + block->GetScroll() + size;
 		dst.m_bottom = 64.0f + m_py + size;
@@ -154,7 +154,7 @@ void CObjEndingDoor::Draw()
 		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 		//表示位置の設定
-		dst.m_top = -32.0f + m_py - size;
+		dst.m_top = -64.0f + m_py - size;
 		dst.m_left = -64.0f + m_px + block->GetScroll() - size;
 		dst.m_right = 64.0f + m_px + block->GetScroll() + size;
 		dst.m_bottom = 64.0f + m_py + size;

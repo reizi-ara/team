@@ -95,8 +95,8 @@ void CObjGameOption::Draw()
 	//Ø‚èæ‚èˆÊ’u‚Ìİ’è
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
-	src.m_right = 960.0f;
-	src.m_bottom = 450.0f;
+	src.m_right = 128.0f*7;
+	src.m_bottom = 128.0f*3;
 
 	//”wŒi‚ÌˆÊ’u‚ğİ’è‚µ•`‰æ
 	dst.m_top = 0.0f;
