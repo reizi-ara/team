@@ -160,8 +160,10 @@ void CObjBoss::Action()
 	}
 	if (dy_time>200) {
 		
+		//Scene::SetScene(new CSceneGameClear());
+		CObjEndingDoor* EndDoor = (CObjEndingDoor*)Objs::GetObj(OBJ_ENDING_DOOR);
+		EndDoor->DoorSystemPG(2);//ƒhƒA‚ª‚Q‚ÅŠJ‚­‚Ì‚Å2‚ğ
 
-		Scene::SetScene(new CSceneGameClear());
 		this->SetStatus(false);
 	}
 

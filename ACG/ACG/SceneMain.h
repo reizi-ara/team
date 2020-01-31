@@ -25,6 +25,8 @@ class CSceneMain :public CScene
 		void SetMMMMMM (int a) { m_chg += a; }	//マップ変更用数字を足す関数
 		void SetASDF(bool h) { OneRead = h; }	//マップを読み込むフラグ
 	
+		void MassageActivate() { map_score = m_chg; }
+		bool CheckMassageActivate() { if (m_chg <= map_score) { return true; } else { return false; } }
 	private:
 		int m_chg;	//マップチェンジ
 		int One_chg;//一回処理用
@@ -32,6 +34,8 @@ class CSceneMain :public CScene
 		int map2[10][100];	//マップ情報２
 
 		bool OneRead;
+
+		int map_score;
 
 		unique_ptr<wchar_t> p[10];//ステージ情報ポインター
 

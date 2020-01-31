@@ -24,7 +24,7 @@ void CObjHero::Init()
 	attack_set = false;
 	attack_flag = false;
 	m_px = 70.0f;	//位置
-	m_py = 64.0f;
+	m_py = 64.0f*8;
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 1.0f; 

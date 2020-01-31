@@ -33,7 +33,7 @@ class CObjHero :public CObj
 		void SetRight(bool b) { m_hit_right = b; }
 
 		void GiveDamageToPlayer(float damage) { g_damage= damage;  }
-		void PlayerHeal() { if (p_life < 50) { p_life = 60; } }
+		void PlayerHeal() { if (p_life < 60) { p_life += 5; } }
 		void PlayerHealMini() {  p_life += 0.5f; }
 		int Getwepon() { return wepon_have; }
 		int Getposture() { return m_posture; }
