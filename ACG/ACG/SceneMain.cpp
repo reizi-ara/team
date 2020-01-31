@@ -33,7 +33,7 @@ void CSceneMain::InitScene()
 {
 	OneRead = false;
 	m_chg = 0;
-
+	map_score = -1;
 	//外部データの読み込み(ステージ情報）
 	//unique_ptr<wchar_t> p;//ステージ情報ポインター
 	int size;			 //ステージ情報の大きさ
