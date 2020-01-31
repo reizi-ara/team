@@ -277,7 +277,7 @@ void CObjCandle::Draw()
 
 		Font::StrDraw(L"クレジット", 50, 100, 32, c);
 		Font::StrDraw(L"オプション", 50, 150, 32, c);
-		Font::StrDraw(L"ゲーム終了", 50, 200, 32, c);
+		Font::StrDraw(L"タイトルへ", 50, 200, 32, c);
 		Font::StrDraw(L"戻る", 50, 250, 32, c);
 	
 
@@ -303,8 +303,7 @@ void CObjCandle::Draw()
 			Font::StrDraw(L" オプション", 690, 40, 32, c);
 		}
 		if (lavel_select == 2) {
-			Font::StrDraw(L" ゲーム終了", 690, 40, 32, c);
-			Font::StrDraw(L"ゲームを終了してタブを閉じます。", 450, 300, 45, c);
+			Font::StrDraw(L"ゲームを終了してタイトルに戻ります。", 400, 300, 45, c);
 		}
 	}
 }
