@@ -26,7 +26,7 @@ class CSceneMain :public CScene
 		void SetASDF(bool h) { OneRead = h; }	//マップを読み込むフラグ
 	
 		void MassageActivate() { map_score = m_chg; }
-		bool CheckMassageActivate() { if (m_chg == map_score) { return true; } else { return false; } }
+		bool CheckMassageActivate() { if (m_chg <= map_score) { return true; } else { return false; } }
 	private:
 		int m_chg;	//マップチェンジ
 		int One_chg;//一回処理用
