@@ -182,7 +182,8 @@ void CObjMessage::Draw()
 	//•`‰æ
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 
-	if (isplayerhit == true)
+	CSceneMain* sceneM = (CSceneMain*)Scene::GetScene();
+	if (sceneM->CheckMassageActivate()==0)
 	{
 		//Ø‚èæ‚èˆÊ’u‚Ìİ’è
 		src.m_top = 64.0f * 7;
