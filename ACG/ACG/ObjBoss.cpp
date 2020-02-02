@@ -145,8 +145,7 @@ void CObjBoss::Action()
 	//プレイヤー勝利
 	if (en_life <= 0)
 	{
-		Audio::Stop(0);//効果音ストップ
-		Audio::Start(1);//効果音スタート
+		
 		
 		dy_time++; 
 		time_1 = 0;
@@ -160,7 +159,8 @@ void CObjBoss::Action()
 	}
 	if (dy_time>200) {
 		
-		//Scene::SetScene(new CSceneGameClear());
+		Audio::Stop(1);//効果音ストップ
+		//Audio::Start(0);//効果音スタート 要らんかもしれんからコメントアウト。
 		CObjEndingDoor* EndDoor = (CObjEndingDoor*)Objs::GetObj(OBJ_ENDING_DOOR);
 		EndDoor->DoorSystemPG(2);//ドアが２で開くので2を
 

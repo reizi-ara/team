@@ -56,10 +56,10 @@ void CObjGameStart::Action()
 		lavel_button2 = true;
 
 
-	if (lavel_select > 2)
+	if (lavel_select > 1)
 		lavel_select = 0;
 	if (lavel_select < 0)
-		lavel_select = 2;
+		lavel_select = 1;
 
 
 	//エンターキーを押してシーン：ゲームメインに移行する
@@ -75,13 +75,13 @@ void CObjGameStart::Action()
 
 			}
 
-			else if (lavel_select == 1)
+			/*else if (lavel_select == 1)
 			{
 				m_key_flag = false;
 				Scene::SetScene(new CSceneGameOption());
 
-			}
-			else if (lavel_select == 2)
+			}*/
+			else if (lavel_select == 1)
 			{
 				Scene::SetScene(nullptr);
 			}
@@ -128,15 +128,17 @@ void CObjGameStart::Draw()
 	src.m_bottom = 64.0f;
 
 	//背景の位置を設定し描画
-	dst.m_top = WINDOW_SIZE_H / 2;
+	dst.m_top = WINDOW_SIZE_H / 2+80;
 	dst.m_left = WINDOW_SIZE_W / 2 - 150;
 	dst.m_right = WINDOW_SIZE_W / 2 + 150;
-	dst.m_bottom = WINDOW_SIZE_H / 2 + 80;
+	dst.m_bottom = WINDOW_SIZE_H / 2 + 160;
 	if (lavel_select == 0)
 		Draw::Draw(6, &src, &dst, c, 0.0f);
 	else
 		Draw::Draw(6, &src, &dst, b, 0.0f);
 
+
+	/*
 	//オプションボタン
 	//切り取り位置の設定
 	src.m_top = 64.0f * 3;
@@ -153,6 +155,7 @@ void CObjGameStart::Draw()
 		Draw::Draw(6, &src, &dst, c, 0.0f);
 	else
 		Draw::Draw(6, &src, &dst, b, 0.0f);
+	*/
 
 	//ゲーム終了ボタン
 	//切り取り位置の設定
@@ -166,7 +169,7 @@ void CObjGameStart::Draw()
 	dst.m_left = WINDOW_SIZE_W / 2 - 150;
 	dst.m_right = WINDOW_SIZE_W / 2 + 150;
 	dst.m_bottom = WINDOW_SIZE_H / 2 + 240;
-	if (lavel_select == 2)
+	if (lavel_select == 1)
 		Draw::Draw(6, &src, &dst, c, 0.0f);
 	else
 		Draw::Draw(6, &src, &dst, b, 0.0f);

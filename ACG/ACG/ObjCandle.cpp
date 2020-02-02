@@ -135,10 +135,10 @@ void CObjCandle::Action()
 			lavel_button2 = true;
 
 
-		if (lavel_select > 3)
+		if (lavel_select > 2)
 			lavel_select = 0;
 		if (lavel_select < 0)
-			lavel_select = 3;
+			lavel_select = 2;
 
 
 		//エンターキーを押してシーン：ゲームメインに移行する
@@ -160,14 +160,9 @@ void CObjCandle::Action()
 					else if (lavel_select == 1) {
 						p_menu_close = false;
 						Audio::Start(8);//SE
-						//Scene::SetScene(new CSceneGameOver());
-					}
-					else if (lavel_select == 2) {
-						p_menu_close = false;
-						Audio::Start(8);//SE
 						Scene::SetScene(nullptr);
 					}
-					else if (lavel_select == 3) {
+					else if (lavel_select == 2) {
 						p_menu_close = false;
 						time = 0;
 						Audio::Start(8);//SE
@@ -274,9 +269,9 @@ void CObjCandle::Draw()
 
 
 		Font::StrDraw(L"クレジット", 50, 100, 32, c);
-		Font::StrDraw(L"オプション", 50, 150, 32, c);
-		Font::StrDraw(L"タイトルへ", 50, 200, 32, c);
-		Font::StrDraw(L"戻る", 50, 250, 32, c);
+		Font::StrDraw(L"タイトルへ", 50, 150, 32, c);
+		Font::StrDraw(L"戻る", 50, 200, 32, c);
+		//Font::StrDraw(L"", 50, 250, 32, c);
 	
 
 		if (lavel_select == 0) {
@@ -298,10 +293,10 @@ void CObjCandle::Draw()
 			Font::StrDraw(L"ノスタルジア→http://nostalgiamusic.info/index.html", 350, 575, 27, c);
 		}
 		if (lavel_select == 1) {
-			Font::StrDraw(L" オプション", 690, 40, 32, c);
+			Font::StrDraw(L"ゲームを終了してタイトルに戻ります。", 400, 300, 45, c);
 		}
 		if (lavel_select == 2) {
-			Font::StrDraw(L"ゲームを終了してタイトルに戻ります。", 400, 300, 45, c);
+			Font::StrDraw(L"ゲーム画面へ戻ります。", 400, 300, 45, c);
 		}
 	}
 
