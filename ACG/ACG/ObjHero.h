@@ -39,6 +39,7 @@ class CObjHero :public CObj
 		int Getposture() { return m_posture; }
 		int Getpose() { return m_pose; }
 		int Getattack() { return wepon_attack; }
+		int Getmutekitime() { return muteki_time; }
 
 		void GiveSpeed(float speed) { sohuran = speed; }
 		void SetMessageflag(bool att) { Message_flag = att; }
