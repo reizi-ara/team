@@ -160,7 +160,7 @@ void CObjCandle::Action()
 					else if (lavel_select == 1) {
 						p_menu_close = false;
 						Audio::Start(8);//SE
-						Scene::SetScene(nullptr);
+						Scene::SetScene(new CSceneGameStart());
 					}
 					else if (lavel_select == 2) {
 						p_menu_close = false;
