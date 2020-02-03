@@ -63,6 +63,8 @@ void CObjHero::Init()
 	Message_flag = false;
 	heal = 0.001f;
 
+	Fall_Deth_time = 0;
+
 	//デバックコマンド
 	MAXMap = 1;
 
@@ -149,6 +151,15 @@ void CObjHero::Action()
 		if (p_life <= 0)
 		{
 			Scene::SetScene(new CSceneGameOver());
+		}
+		//画面外で死亡
+		if (m_py >= WINDOW_SIZE_H)
+		{
+			Fall_Deth_time++;
+			if (Fall_Deth_time >= 60)
+			{
+				p_life--;
+			}
 		}
 
 		//Wでジャンプ
@@ -359,7 +370,7 @@ void CObjHero::Draw()
 		//切り取り位置の設定
 
 
-	   //表示位置の設定
+	    //表示位置の設定
 		dst.m_top = 0.0f + m_py - 16.0f;
 		dst.m_left = (64.0f*m_posture) + m_px;
 		dst.m_right = (64 - 64.0f*m_posture) + m_px;

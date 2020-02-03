@@ -113,4 +113,6 @@ class CObjHero :public CObj
 
 
 		bool d_mode;
+
+		int Fall_Deth_time;
 };
