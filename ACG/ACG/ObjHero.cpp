@@ -64,6 +64,7 @@ void CObjHero::Init()
 	heal = 0.001f;
 
 	Fall_Deth_time = 0;
+	Deth_time = 0;
 
 	//デバックコマンド
 	MAXMap = 1;
@@ -150,7 +151,16 @@ void CObjHero::Action()
 		//HP0以下でゲームオーバへ移行
 		if (p_life <= 0)
 		{
-			Scene::SetScene(new CSceneGameOver());
+			Deth_time++;
+			if (Deth_time % 10 == 0)
+			{
+				CObjEffect* objef = new CObjEffect(m_px, m_py, 1);
+				Objs::InsertObj(objef, OBJ_THORN, 15);
+			}
+			if (Deth_time >= 120)
+			{
+				Scene::SetScene(new CSceneGameOver());
+			}
 		}
 		//画面外で死亡
 		if (m_py >= WINDOW_SIZE_H)
@@ -161,77 +171,78 @@ void CObjHero::Action()
 				p_life--;
 			}
 		}
-
-		//Wでジャンプ
-		if (Input::GetVKey('W')|| Input::GetVKey(VK_SPACE) || Input::GetVKey(VK_UP))
-			if (m_hit_down)
-				m_vy = -15-d_mode*5;
-
-
-		if (Input::GetVKey(VK_SHIFT))
-		{//Shiftで速度アップ
-			m_speed_power = 1.6f;
-			m_ani_max_time = 2;
-		}
-		else
-		{//通常速度
-			m_speed_power = 1.2f;
-			m_ani_max_time = 4;
-		}
-
-		//キーの入力方向
-		/*if (Input::GetVKey('S')&&p_life/p_maxlife<1.0 )//しゃがみ
+		if (p_life > 0)
 		{
-			p_life += heal;
-			if(heal>0.1)
-				heal += 0.001;
-			heal+=0.001;
-			m_pose = 2.0f;
-			m_ani_time += 1;
-			if (muteki_time > 0)
-				muteki_time += 0.5;
-		}*/
-		if (Input::GetVKey('S') || Input::GetVKey(VK_DOWN) )//しゃがみ
-		{
-			if (m_hit_down == false)
+			//Wでジャンプ
+			if (Input::GetVKey('W') || Input::GetVKey(VK_SPACE) || Input::GetVKey(VK_UP))
+				if (m_hit_down)
+					m_vy = -15 - d_mode * 5;
+
+
+			if (Input::GetVKey(VK_SHIFT))
+			{//Shiftで速度アップ
+				m_speed_power = 1.6f;
+				m_ani_max_time = 2;
+			}
+			else
+			{//通常速度
+				m_speed_power = 1.2f;
+				m_ani_max_time = 4;
+			}
+
+			//キーの入力方向
+			/*if (Input::GetVKey('S')&&p_life/p_maxlife<1.0 )//しゃがみ
 			{
-				m_vy = 25;
+				p_life += heal;
+				if(heal>0.1)
+					heal += 0.001;
+				heal+=0.001;
 				m_pose = 2.0f;
 				m_ani_time += 1;
 				if (muteki_time > 0)
-					muteki_time += 0.05;
-			}
-		}
-		//else
-		{
-			heal = 0.001f;
-			if (Input::GetVKey('D') || Input::GetVKey(VK_RIGHT))//右に移動
+					muteki_time += 0.5;
+			}*/
+			if (Input::GetVKey('S') || Input::GetVKey(VK_DOWN))//しゃがみ
 			{
-				
-				
-				m_vx += m_speed_power+d_mode;
-				m_posture = 1.0f;
-				m_pose = 1.0f;
-				m_ani_time += 1;
+				if (m_hit_down == false)
+				{
+					m_vy = 25;
+					m_pose = 2.0f;
+					m_ani_time += 1;
+					if (muteki_time > 0)
+						muteki_time += 0.05;
+				}
 			}
-			else if (Input::GetVKey('A') || Input::GetVKey(VK_LEFT))//左に移動
+			//else
 			{
-				
+				heal = 0.001f;
+				if (Input::GetVKey('D') || Input::GetVKey(VK_RIGHT))//右に移動
+				{
 
-				m_vx -= m_speed_power+ d_mode;
-				m_posture = 0.0f;
-				m_pose = 1.0f;
-				m_ani_time += 1;
-			}
-			else
-			{
-				//m_ani_frame = 1;//キー入力がない場合は静止フレームにする
-				m_ani_time += 1;
-				m_pose = 0.0f;
-			}
-		}
 
-		
+					m_vx += m_speed_power + d_mode;
+					m_posture = 1.0f;
+					m_pose = 1.0f;
+					m_ani_time += 1;
+				}
+				else if (Input::GetVKey('A') || Input::GetVKey(VK_LEFT))//左に移動
+				{
+
+
+					m_vx -= m_speed_power + d_mode;
+					m_posture = 0.0f;
+					m_pose = 1.0f;
+					m_ani_time += 1;
+				}
+				else
+				{
+					//m_ani_frame = 1;//キー入力がない場合は静止フレームにする
+					m_ani_time += 1;
+					m_pose = 0.0f;
+				}
+			}
+
+		}
 		
 
 
