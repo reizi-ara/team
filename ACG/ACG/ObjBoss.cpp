@@ -115,12 +115,12 @@ void CObjBoss::Action()
 			obj->GiveDamageToPlayer(atk*0.3);
 
 		}
-		if (atk_kb == false) {
+		if (atk_kb == false){//&&obj->Getmutekitime()<=0) {
 			if (pl_x - sl <= en_x) {
-				obj->SetVX(-50);
+				obj->SetVX(-35);
 			}
 			else if (pl_x - sl > en_x) {
-				obj->SetVX(50);
+				obj->SetVX(35);
 			}
 		}
 		atk_kb = true;
@@ -199,7 +199,7 @@ void CObjBoss::Action()
 		m_ani_frame = 0;
 	}
 
-	//ノックバック
+	//ノックバックh
 	muteki_time--;
 	if (muteki_time > 0 && awake == true) {
 		if (pl_x - sl <= en_x) {

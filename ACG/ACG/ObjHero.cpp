@@ -319,7 +319,8 @@ void CObjHero::Action()
 
 				time_a = 30;
 				CObjBlock*blockM = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-				blockM->SetScroll(-73 * 64);
+
+
 				blockM->SetM_CHG(-1);
 				blockM->Set_ikkai(true);
 
