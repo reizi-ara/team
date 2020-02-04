@@ -65,5 +65,6 @@ private:
 
 
 	int dy_time;
+	float damagecolortime;
 };
 

@@ -65,6 +65,7 @@ void CObjBoss::Init()
 	acmt[1] = 1;
 	bulletQ = 0;
 	bulletA = 0;
+	damagecolortime = 10;
 }
 
 //アクション
@@ -101,6 +102,7 @@ void CObjBoss::Action()
 		muteki_time <= 0) {
 		muteki_time = MUTEKI;
 		en_life -= DE_MAGE;
+		damagecolortime = 0;
 	}
 
 	//与攻撃
@@ -380,6 +382,8 @@ void CObjBoss::Action()
 	time_2++;
 	if (bulletA == true && time_2 > 8)
 		bulletA = false;
+	if(damagecolortime<10)
+		damagecolortime++;
 }
 
 //ドロー
@@ -389,7 +393,7 @@ void CObjBoss::Draw()
 	{//横・縦
 		0,0,1,1,2,2,3,3
 	};
-	float c[4] = { 0.8f,0.8f,0.8f,1.0f };
+	float c[4] = { 0.8f ,0.8f* damagecolortime*0.1,0.8f* damagecolortime*0.1,1.0f };
 	RECT_F src;
 	RECT_F dst;
 
