@@ -188,7 +188,7 @@ void CObjBlock::Action()
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 30) {//êGòr
-				CObjhand* obj30 = new CObjhand(ex * 64.0f, i * 64.0f, 0, 15);
+				CObjhand* obj30 = new CObjhand(ex * 64.0f, i * 64.0f, 0, 7);
 				Objs::InsertObj(obj30, OBJ_HAND, 10);
 				m_map[i][ex] = 0;
 			}
