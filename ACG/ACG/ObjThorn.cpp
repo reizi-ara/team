@@ -173,7 +173,7 @@ void CObjThorn::Action()
 	{
 		m_ani_frame = 0;
 		Revival_time++;
-		if (Revival_time > 90)
+		if (Revival_time > 240)
 		{
 			en_life = LIFE;
 			Revival_time = 0;
