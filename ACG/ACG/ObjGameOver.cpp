@@ -6,6 +6,7 @@
 #include"GameHead.h"
 #include"ObjGameStart.h"
 #include"main.h"
+#include "MacroManagement.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -14,13 +15,13 @@ using namespace GameL;
 void CObjGameOver::Init()
 {
 	m_key_flag = false;
-	time = 0;
+	time = TIME_INI;
 }
 //アクション
 void CObjGameOver::Action()
 {
 	time++;
-	if (time >= 120)
+	if (time >= TIME_DELAY_GO)
 	{
 		//エンターキーを押してシーン：ゲームタイトルに移行する
 		if (Input::GetVKey(VK_RETURN) == true)

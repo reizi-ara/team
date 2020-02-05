@@ -84,6 +84,7 @@ struct UserData
 #include "Objmessage.h"
 #include "ObjMessage2.h"
 #include "ObjEndingDoor.h"
+#include "ObjCandle.h"
 
 #include "ObjHero.h"
 #include "ObjEnemy.h"
@@ -91,14 +92,15 @@ struct UserData
 #include "ObjBoss.h"
 #include "ObjThorn.h"
 #include "ObjTuta.h"
+#include "Objbullet.h"
 
 #include "ObjGameStart.h"
 #include "ObjGameOption.h"
 #include "ObjPrologue.h"
 #include "ObjGameOver.h"
 #include "ObjGameClear.h"
-#include "ObjCandle.h"
-#include"Objbullet.h"
+
+#include "MacroManagement.h"
 
 //------------------------------------------------
 

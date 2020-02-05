@@ -11,6 +11,7 @@
 #include "ObjMapChanger.h"
 #include "ObjMapBacker.h"
 #include "GameL/Audio.h"
+#include "MacroManagement.h"
 
 #define MUTEKI 8;
 #define DE_MAGE 10;//hidame

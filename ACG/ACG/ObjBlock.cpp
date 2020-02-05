@@ -10,6 +10,7 @@
 #include "main.h"
 #include "ObjMapChanger.h"
 #include "ObjMapBacker.h"
+#include "MacroManagement.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -219,7 +220,7 @@ void CObjBlock::Action()
 				m_map[i][ex] = 0;
 			}
 			else if (m_map[i][ex] == 42) {//エンディング扉
-				CObjEndingDoor* obj42 = new CObjEndingDoor(ex * 64.0f, i * 64.0f, 0);
+				CObjEndingDoor* obj42 = new CObjEndingDoor(ex * 64.0f, i * 64.0f);
 				Objs::InsertObj(obj42, OBJ_ENDING_DOOR, 10);
 				m_map[i][ex] = 0;
 			}

@@ -10,6 +10,8 @@
 #include "GameHead.h"
 #include "Objmessage.h"
 #include "main.h"
+#include "MacroManagement.h"
+
 
 #define LIFE 80;
 //使用するネームスペースdayo
@@ -69,7 +71,7 @@ void CObjMessage::Init()
 		destryNum = sceneM->GetDS();
 
 	}
-	time = 0;
+	time = TIME_INI;
 
 	Unfold = 0;
 }
@@ -111,11 +113,11 @@ void CObjMessage::Action()
 	CObjMessage2* objM = (CObjMessage2*)Objs::GetObj(OBJ_MESSAGE2);
 	
 	
-	if (Unfold==0&&time < 30)
+	if (Unfold==0&&time < TIME_DELAY)
 	{
 		time++;
 	}
-	if (time >= 30)
+	if (time >= TIME_DELAY)
 	{
 		Message_flag = 0;
 		Unfold = 1;

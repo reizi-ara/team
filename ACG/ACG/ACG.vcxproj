@@ -154,6 +154,7 @@
     <ClCompile Include="ScenePrologue.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MacroManagement.h" />
     <ClInclude Include="ObjEndingDoor.h" />
     <ClInclude Include="Objbullet.h" />
     <ClInclude Include="ObjCandle.h" />

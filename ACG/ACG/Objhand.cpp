@@ -10,6 +10,7 @@
 #include "GameHead.h"
 #include "Objhand.h"
 #include "GameL/Audio.h"
+#include "MacroManagement.h"
 
 #define LIFE 80;
 //使用するネームスペースdayo
@@ -56,7 +57,7 @@ void CObjhand::Init()
 	size = 0;
 	isplayerhit = false;
 
-	time = 0;
+	time = TIME_INI;
 	times = 0;
 
 	//削除用

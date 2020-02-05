@@ -8,6 +8,7 @@
 #include"main.h"
 #include"ObjGameStart.h"
 #include"GameL/Audio.h"
+#include "MacroManagement.h"
 
 #define SERECT_MIN_OP (0)
 #define SERECT_MAX_OP (0)

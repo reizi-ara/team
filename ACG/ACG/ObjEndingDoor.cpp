@@ -8,41 +8,26 @@
 
 #include "GameHead.h"
 #include "ObjEndingDoor.h"
+#include "MacroManagement.h"
 
-#define LIFE 80;
 //使用するネームスペースdayo
 using namespace GameL;
 
-CObjEndingDoor::CObjEndingDoor(float x, float y, float t)
+CObjEndingDoor::CObjEndingDoor(float x, float y)
 {
 	m_px = x;	//位置
 	m_py = y;
-
-	type = t;
 }
 
 //イニシャライズ
 void CObjEndingDoor::Init()
 {
-	m_vx = 0.0f;	//移動ベクトル
-	m_vy = 0.0f;
-	m_posture = 1.0f; //右向き0.0ｆ　左向き1.0ｆ
-
-	//blockとの衝突確認用
-	m_hit_up = false;
-	m_hit_down = false;
-	m_hit_left = false;
-	m_hit_right = false;
-
-	float p_x = 0;
-	float p_y = 0;
-
-	hit_length = 64.0f;
+	hit_length = END_DOOR_HIT_LENGTH;
 
 	size = 0;
 	isplayerhit = false;
 
-	DoorSystem = 1;
+	DoorSystem = END_DOOR_SISTEM_CLOSE;
 
 	//削除用
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
@@ -73,6 +58,7 @@ void CObjEndingDoor::Action()
 
 	CObjBlock* block3 = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	float sl = block3->GetScroll();
+
 	float en_x = m_px + 32.0f;
 	float en_y = m_py + 32.0f;
 
@@ -92,7 +78,7 @@ void CObjEndingDoor::Action()
 
 
 	//ボス討伐でドアに当たるとクリア画面へ。
-	if (isplayerhit == true && DoorSystem == 2)
+	if (isplayerhit == true && DoorSystem == END_DOOR_SISTEM_OPEN)
 	{
 		Scene::SetScene(new CSceneGameClear());
 	}
@@ -124,19 +110,19 @@ void CObjEndingDoor::Draw()
 	if (DoorSystem == 1)
 	{
 		//切り取り位置の設定
-		src.m_top = 0.0f;
-		src.m_left = 0.0f;
-		src.m_right = 128.0f;
-		src.m_bottom = 128.0f;
+		src.m_top = END_DOOR_CUT_TOP;
+		src.m_left = END_DOOR_CUT_LEFT;
+		src.m_right = END_DOOR_CUT_RIGHT;
+		src.m_bottom = END_DOOR_CUT_BOTTOM;
 
 		//ブロック情報を持ってくる
 		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 		//表示位置の設定
-		dst.m_top = -64.0f + m_py - size;
-		dst.m_left = -64.0f + m_px + block->GetScroll() - size;
-		dst.m_right = 64.0f + m_px + block->GetScroll() + size;
-		dst.m_bottom = 64.0f + m_py + size;
+		dst.m_top = -END_DOOR_PUT_TOP + m_py - size;
+		dst.m_left = -END_DOOR_PUT_LEFT + m_px + block->GetScroll() - size;
+		dst.m_right = END_DOOR_PUT_RIGHT + m_px + block->GetScroll() + size;
+		dst.m_bottom = END_DOOR_PUT_BOTTOM + m_py + size;
 
 		//描画
 		Draw::Draw(8, &src, &dst, c, 0.0f);
