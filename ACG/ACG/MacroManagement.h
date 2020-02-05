@@ -21,8 +21,10 @@
 
 #define TIME_DELAY 30		//遅延処理(主にENTERキー遅延)
 #define TIME_DELAY_GO 120   //GAMEOVER遅延
-#define MAP_X (100)
-#define MAP_Y (10)
+
+
+#define MAP_X (100)			//マップ横
+#define MAP_Y (10)			//マップ縦
 
 
 
