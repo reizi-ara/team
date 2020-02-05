@@ -1,6 +1,8 @@
 #include "GameL\DrawTexTure.h"
 #include "GameHead.h"
 #include"ObjEffect.h"
+
+#include "MacroManagement.h"
 using namespace GameL;
 
 CObjEffect::CObjEffect(float x, float y, float t)
@@ -13,7 +15,7 @@ CObjEffect::CObjEffect(float x, float y, float t)
 //イニシャライズ
 void CObjEffect::Init()
 {
-	time = 0;
+	time = TIME_INI;
 }
 
 //アクション

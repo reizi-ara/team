@@ -11,6 +11,7 @@
 #include "ObjMapChanger.h"
 #include "ObjMapBacker.h"
 #include "GameL/Audio.h"
+#include "MacroManagement.h"
 
 #define MUTEKI 20;
 #define DE_MAGE 10;//hidame
@@ -54,7 +55,7 @@ void CObjEnemy::Init()
 
 	float p_x = 0;
 	float p_y = 0;
-	time = 0;
+	time = TIME_INI;
 
 	muteki_time = MUTEKI;
 
@@ -188,7 +189,7 @@ void CObjEnemy::Action()
 			}
 			if (time == 360)
 			{
-				time = 0;
+				time = TIME_INI;
 			}
 		}
 

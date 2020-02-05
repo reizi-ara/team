@@ -13,6 +13,8 @@
 #include "GameL/Audio.h"
 #include "GameL/UserData.h"
 
+#include "MacroManagement.h"
+
 //使用するネームスペースdayo
 using namespace GameL;
 

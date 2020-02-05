@@ -8,6 +8,7 @@
 
 #include "GameHead.h"
 #include "ObjEndingDoor.h"
+#include "MacroManagement.h"
 
 //使用するネームスペースdayo
 using namespace GameL;
