@@ -1,12 +1,10 @@
 #pragma once
 //使用するヘッダーファイル
 #include "GameL\SceneManager.h"
+#include "MacroManagement.h"
 
 //使用するネームスペース
 using namespace GameL;
-
-#define MAP_X (100)
-#define MAP_Y (10)
 
 //シーン：メイン
 class CSceneMain :public CScene
@@ -22,8 +20,10 @@ class CSceneMain :public CScene
 		int GetDS() { return m_chg; }
 		int GetONEs() { return One_chg; }
 
-		void SetMMMMMM (int a) { m_chg += a; }	//マップ変更用数字を足す関数
-		void SetASDF(bool h) { OneRead = h; }	//マップを読み込むフラグ
+		//マップ変更用数字を足す関数
+		void SetMMMMMM (int a) { m_chg += a; }	
+		//マップを読み込むフラグ
+		void SetASDF(bool h) { OneRead = h; }	
 	
 		void MassageActivate() { map_score = m_chg; }
 		bool CheckMassageActivate() { if (m_chg <= map_score) { return true; } else { return false; } }
