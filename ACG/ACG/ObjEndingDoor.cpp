@@ -9,7 +9,6 @@
 #include "GameHead.h"
 #include "ObjEndingDoor.h"
 
-#define LIFE 80;
 //使用するネームスペースdayo
 using namespace GameL;
 
@@ -24,15 +23,6 @@ CObjEndingDoor::CObjEndingDoor(float x, float y, float t)
 //イニシャライズ
 void CObjEndingDoor::Init()
 {
-	m_vx = 0.0f;	//移動ベクトル
-	m_vy = 0.0f;
-	m_posture = 1.0f; //右向き0.0ｆ　左向き1.0ｆ
-
-	//blockとの衝突確認用
-	m_hit_up = false;
-	m_hit_down = false;
-	m_hit_left = false;
-	m_hit_right = false;
 
 	float p_x = 0;
 	float p_y = 0;
