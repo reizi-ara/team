@@ -9,6 +9,7 @@
 
 #include "GameHead.h"
 #include "ObjThorn.h"
+#include "MacroManagement.h"
 
 #define LIFE 90
 #define SIZE 64*1
@@ -64,7 +65,7 @@ void CObjThorn::Init()
 
 	muteki_time = 0;
 
-	time = 0;
+	time = TIME_INI;
 	Revival_time = 0;
 
 	ani_slowBack = 0;

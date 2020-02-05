@@ -10,6 +10,7 @@
 #include "main.h"
 #include "ObjMapChanger.h"
 #include "ObjMapBacker.h"
+#include "MacroManagement.h"
 
 //使用するネームスペース
 using namespace GameL;

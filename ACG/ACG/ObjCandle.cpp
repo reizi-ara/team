@@ -12,6 +12,7 @@
 #include "ObjCandle.h"
 #include "main.h"
 #include "GameL/Audio.h"
+#include "MacroManagement.h"
 
 #define LIFE 80;
 //使用するネームスペースdayo
@@ -36,7 +37,7 @@ void CObjCandle::Init()
 
 	p_menu_close = false;
 
-	lavel_select = 0;
+	lavel_select = LAVEL_TOP;
 
 	//削除用
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
@@ -49,7 +50,7 @@ void CObjCandle::Init()
 		destryNum = sceneM->GetDS();
 
 	}
-	time = 0;
+	time = TIME_INI;
 
 	Unfold = 0;
 	stopD = true;
@@ -135,17 +136,17 @@ void CObjCandle::Action()
 			lavel_button2 = true;
 
 
-		if (lavel_select > 2)
-			lavel_select = 0;
-		if (lavel_select < 0)
-			lavel_select = 2;
+		if (lavel_select > LAVEL_BOT_M)
+			lavel_select = LAVEL_TOP;
+		if (lavel_select < LAVEL_TOP)
+			lavel_select = LAVEL_BOT_M;
 
 
 		//エンターキーを押してシーン：ゲームメインに移行する
 		if (menu_flag)
 		{
 			time++;
-			if (time >= 30)
+			if (time >= TIME_DELAY)
 			{
 				if (Input::GetVKey(VK_RETURN))
 				{
@@ -153,16 +154,16 @@ void CObjCandle::Action()
 				}
 				else if(p_menu_close)
 				{
-					if (lavel_select == 0) {
+					if (lavel_select == LAVEL_TOP) {
 						p_menu_close = false;
 						Audio::Start(8);//SE
 					}
-					else if (lavel_select == 1) {
+					else if (lavel_select == LAVEL_MID_M) {
 						p_menu_close = false;
 						Audio::Start(8);//SE
 						Scene::SetScene(new CSceneGameStart());
 					}
-					else if (lavel_select == 2) {
+					else if (lavel_select == LAVEL_BOT_M) {
 						p_menu_close = false;
 						time = 0;
 						Audio::Start(8);//SE
@@ -171,7 +172,7 @@ void CObjCandle::Action()
 						stopD = true;
 
 
-						lavel_select = 0;
+						lavel_select = LAVEL_TOP;
 
 						menu_flag = false;
 						obj->SetMF(menu_flag);	//主人公の動き制限用のフラグ送り
@@ -274,7 +275,7 @@ void CObjCandle::Draw()
 		//Font::StrDraw(L"", 50, 250, 32, c);
 	
 
-		if (lavel_select == 0) {
+		if (lavel_select == LAVEL_TOP) {
 			Font::StrDraw(L"クレジット一覧", 690, 40, 32, c);
 			Font::StrDraw(L"製作者", 350, 70, 20, c);
 			Font::StrDraw(L"総合ディレクター:永原 大暉", 350, 100, 27, c);
@@ -292,10 +293,10 @@ void CObjCandle::Draw()
 			Font::StrDraw(L"くらげ工匠→http://www.kurage-kosho.info/index.html", 350, 540, 27, c);
 			Font::StrDraw(L"ノスタルジア→http://nostalgiamusic.info/index.html", 350, 575, 27, c);
 		}
-		if (lavel_select == 1) {
+		if (lavel_select == LAVEL_MID_M) {
 			Font::StrDraw(L"ゲームを終了してタイトルに戻ります。", 400, 300, 45, c);
 		}
-		if (lavel_select == 2) {
+		if (lavel_select == LAVEL_BOT_M) {
 			Font::StrDraw(L"ゲーム画面へ戻ります。", 400, 300, 45, c);
 		}
 	}

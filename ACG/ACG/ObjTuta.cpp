@@ -9,6 +9,7 @@
 
 #include "GameHead.h"
 #include "ObjTuta.h"
+#include "MacroManagement.h"
 
 #define LIFE 80;
 //使用するネームスペースdayo

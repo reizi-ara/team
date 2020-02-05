@@ -8,6 +8,8 @@
 #include"main.h"
 #include"GameL/Audio.h"
 
+#include "MacroManagement.h"
+
 //使用するネームスペース
 using namespace GameL;
 
@@ -16,7 +18,7 @@ void CObjPrologue::Init()
 {
 	m_key_flag = false;
 	ReturnKey_flag = false;
-	time = 0;
+	time = TIME_INI;
 	Endnum = 0;
 	one_flag = true;
 }
@@ -43,11 +45,11 @@ void CObjPrologue::Action()
 	}
 
 	//メッセージ関連
-	if (Input::GetVKey(VK_RETURN) == true && time >= 30 && Endnum < 3)
+	if (Input::GetVKey(VK_RETURN) == true && time >= TIME_DELAY && Endnum < 3)
 	{
 		one_flag = false;
 		Endnum += 1;
-		time = 0;
+		time = TIME_INI;
 		Audio::Start(2);//効果音
 	}
 }

@@ -3,6 +3,8 @@
 #include"ObjBullet.h"
 #include"GameHead.h"
 #include"main.h"
+#include"MacroManagement.h"
+
 using namespace GameL;
 using namespace std;
 

@@ -10,6 +10,7 @@
 #include "ObjHero.h"
 #include "main.h"
 #include "GameL/Audio.h"
+#include "MacroManagement.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -283,7 +284,7 @@ void CObjHero::Action()
 	{
 		if (Input::GetVKey('M'))
 		{
-			if (time_a <= 0)
+			if (time_a <= TIME_INI)
 			{
 				MAXMap++;
 
@@ -309,7 +310,7 @@ void CObjHero::Action()
 	{
 		if (Input::GetVKey('N'))
 		{
-			if (time_a <= 0)
+			if (time_a <= TIME_INI)
 			{
 				MAXMap--;
 

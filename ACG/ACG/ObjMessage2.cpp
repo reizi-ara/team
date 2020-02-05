@@ -12,6 +12,7 @@
 #include "Objmessage2.h"
 #include "main.h"
 #include "GameL/Audio.h"
+#include "MacroManagement.h"
 
 #define LIFE 80;
 //使用するネームスペースdayo
@@ -52,13 +53,13 @@ void CObjMessage2::Init()
 
 	float p_x = 0;
 	float p_y = 0;
-	time = 0;
+	time = TIME_INI;
 }
 
 //アクション
 void CObjMessage2::Action()
 {
-	if (time < 30)
+	if (time < TIME_DELAY)
 		time++;
 	if (Input::GetVKey(VK_RETURN)&& time >= 30 ||
 		Input::GetVKey('W')||

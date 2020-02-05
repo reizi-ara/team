@@ -9,6 +9,7 @@
 #include"ObjGameStart.h"
 #include"main.h"
 #include"GameL/Audio.h"
+#include"MacroManagement.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -17,7 +18,7 @@ using namespace GameL;
 void CObjGameStart::Init()
 {
 	m_key_flag = false;
-	lavel_select = 0;
+	lavel_select = LAVEL_TOP;
 	lavel_button = true;
 	lavel_button2 = true;
 }
@@ -56,10 +57,10 @@ void CObjGameStart::Action()
 		lavel_button2 = true;
 
 
-	if (lavel_select > 1)
-		lavel_select = 0;
-	if (lavel_select < 0)
-		lavel_select = 1;
+	if (lavel_select > LAVEL_BOT_T)
+		lavel_select = LAVEL_TOP;
+	if (lavel_select < LAVEL_TOP)
+		lavel_select = LAVEL_BOT_T;
 
 
 	//エンターキーを押してシーン：ゲームメインに移行する
@@ -68,7 +69,7 @@ void CObjGameStart::Action()
 		Audio::Start(2);//効果音
 		if (m_key_flag == true)
 		{
-			if (lavel_select == 0)
+			if (lavel_select == LAVEL_TOP)
 			{
 				m_key_flag = false;
 				Scene::SetScene(new CScenePrologue());
@@ -81,7 +82,7 @@ void CObjGameStart::Action()
 				Scene::SetScene(new CSceneGameOption());
 
 			}*/
-			else if (lavel_select == 1)
+			else if (lavel_select == LAVEL_BOT_T)
 			{
 				Scene::SetScene(nullptr);
 			}
@@ -132,7 +133,7 @@ void CObjGameStart::Draw()
 	dst.m_left = WINDOW_SIZE_W / 2 - 150;
 	dst.m_right = WINDOW_SIZE_W / 2 + 150;
 	dst.m_bottom = WINDOW_SIZE_H / 2 + 160;
-	if (lavel_select == 0)
+	if (lavel_select == LAVEL_TOP)
 		Draw::Draw(6, &src, &dst, c, 0.0f);
 	else
 		Draw::Draw(6, &src, &dst, b, 0.0f);
@@ -169,7 +170,7 @@ void CObjGameStart::Draw()
 	dst.m_left = WINDOW_SIZE_W / 2 - 150;
 	dst.m_right = WINDOW_SIZE_W / 2 + 150;
 	dst.m_bottom = WINDOW_SIZE_H / 2 + 240;
-	if (lavel_select == 1)
+	if (lavel_select == LAVEL_BOT_T)
 		Draw::Draw(6, &src, &dst, c, 0.0f);
 	else
 		Draw::Draw(6, &src, &dst, b, 0.0f);
