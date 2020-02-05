@@ -155,7 +155,7 @@ void CObjBoss::Action()
 			CObjEffect* objef = new CObjEffect(m_px + block->GetScroll() - 
 				((dy_time * 77) % 64) * (dy_time % 2 * 2 - 1),
 				m_py - ((dy_time * 137) % 128) * (dy_time % 2 * 2 - 1)-64,
-				(dy_time % 2+1));
+				1);
 			Objs::InsertObj(objef, OBJ_THORN, 15);
 		}
 	}
