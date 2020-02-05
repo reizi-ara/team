@@ -23,10 +23,10 @@ using namespace GameL;
 
 CObjEnemy::CObjEnemy(float x, float y, float l, float a, float t)
 {
-	m_px = x;	//位置
-	m_py = y;
-	en_life = l;
-	atk = a * 2 / 3;
+	m_px = x;			//位置
+	m_py = y;			//位置
+	en_life = l;		//敵体力
+	atk = a * 2 / 3;	
 	type_n = t;
 }
 
@@ -183,11 +183,11 @@ void CObjEnemy::Action()
 		if (type_n == 2) {
 			time++;
 			//トリッキーに動くやつ
-			if (time >= 120)
+			if (time >= TIME_SLOW_EE)
 			{
 				m_vx = 0;
 			}
-			if (time == 360)
+			if (time == TIME_RUSH_EE)
 			{
 				time = TIME_INI;
 			}
