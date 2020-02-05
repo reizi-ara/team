@@ -243,7 +243,6 @@
     <ClInclude Include="ObjEndingDoor.h">
       <Filter>Map関係</Filter>
     </ClInclude>
-    <ClInclude Include="MacroManagment.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="リソースファイル">
