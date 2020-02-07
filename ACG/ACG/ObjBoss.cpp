@@ -38,7 +38,6 @@ void CObjBoss::Init()
 	awake = false;//起動確認
 	m_vx = 0.0f;	//移動ベクトル
 	m_vy = 0.0f;
-	m_posture = 1.0f;	//向き/右向き0.0ｆ　左向き1.0ｆ
 	m_move = true;		//同義、要修正↑統合
 	dir_act = m_move;	//向き変更検知用
 
@@ -59,13 +58,14 @@ void CObjBoss::Init()
 
 	dy_time = 0;//消去猶予時間
 
-	form = 0;//要整理
+	damagecolortime = 10;//被ダメージ表現時間
+
+	form = 0;//要整理.姿勢と攻撃手段
 	acmt[0] = 0;
 	acmt[1] = 1;
 	bulletQ = 0;
 	bulletA = 0;
 
-	damagecolortime = 10;//被ダメージ表現時間
 
 
 
@@ -185,11 +185,11 @@ void CObjBoss::Action()
 
 	//アニメーション
 	if (m_move == false) {//向き
-		m_posture = 1.0f;
+		m_move = true;
 		m_ani_time += 2;
 	}
 	else if (m_move == true) {
-		m_posture = 0.0f;
+		m_move = false;
 		m_ani_time += 2;
 	}
 	if (m_ani_time > 8) {
@@ -404,8 +404,8 @@ void CObjBoss::Draw()
 		src.m_bottom = src.m_top + 256.0f;
 
 		dst.m_top = -192.0f + m_py;
-		dst.m_left = (256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
-		dst.m_right = (256.0f - 256.0f * m_posture) + m_px + block->GetScroll() - 128.0f;
+		dst.m_left = (256.0f * m_move) + m_px + block->GetScroll() - 128.0f;
+		dst.m_right = (256.0f - 256.0f * m_move) + m_px + block->GetScroll() - 128.0f;
 		dst.m_bottom = 64.0f + m_py;
 		Draw::Draw(7, &src, &dst, c, 0.0f);
 	}
