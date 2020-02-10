@@ -106,16 +106,16 @@ void CObjGameStart::Draw()
 
 	//背景
 	//切り取り位置の設定
-	src.m_top = 0.0f;
-	src.m_left = 0.0f;
-	src.m_right = 910;
-	src.m_bottom = 512;
+	src.m_top	= START_CUT_TOP;
+	src.m_left	= START_CUT_LEFT;
+	src.m_right = START_CUT_RIGHT;
+	src.m_bottom= START_CUT_BOTTOM;
 
 	//背景の位置を設定し描画
-	dst.m_top = 0.0f;
-	dst.m_left = 0.0f;
+	dst.m_top	= 0.0f;
+	dst.m_left	= 0.0f;
 	dst.m_right = WINDOW_SIZE_W;
-	dst.m_bottom = WINDOW_SIZE_H;
+	dst.m_bottom= WINDOW_SIZE_H;
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 
 
@@ -123,16 +123,16 @@ void CObjGameStart::Draw()
 
 	//スタートボタン
 	//切り取り位置の設定
-	src.m_top = 0.0f;
-	src.m_left = 64.0f*4;
-	src.m_right = 64.0f * 8;
-	src.m_bottom = 64.0f;
+	src.m_top	= START_BUTTON_CUT_TOP;
+	src.m_left	= START_BUTTON_CUT_LEFT  * START_BUTTON_LEFT_EXP;
+	src.m_right = START_BUTTON_CUT_RIGHT * START_BUTTON_RIGHT_EXP;
+	src.m_bottom= START_BUTTON_CUT_BOTTOM;
 
 	//背景の位置を設定し描画
-	dst.m_top = WINDOW_SIZE_H / 2+80;
-	dst.m_left = WINDOW_SIZE_W / 2 - 150;
-	dst.m_right = WINDOW_SIZE_W / 2 + 150;
-	dst.m_bottom = WINDOW_SIZE_H / 2 + 160;
+	dst.m_top	= WINDOW_SIZE_H / 2	+ START_POS_TOP;
+	dst.m_left	= WINDOW_SIZE_W / 2 - START_POS_LEFT;
+	dst.m_right = WINDOW_SIZE_W / 2 + START_POS_RIGHT;
+	dst.m_bottom= WINDOW_SIZE_H / 2 + START_POS_BOTTOM;
 	if (lavel_select == LAVEL_TOP)
 		Draw::Draw(6, &src, &dst, c, 0.0f);
 	else
@@ -160,16 +160,16 @@ void CObjGameStart::Draw()
 
 	//ゲーム終了ボタン
 	//切り取り位置の設定
-	src.m_top = 0.0f;
-	src.m_left = 0.0f;
-	src.m_right = 64.0f * 4;
-	src.m_bottom = 64.0f;
+	src.m_top	= END_BUTTON_CUT_TOP;
+	src.m_left	= END_BUTTON_CUT_LEFT;
+	src.m_right = END_BUTTON_CUT_RIGHT * END_BUTTOM_RIGHT_EXP;
+	src.m_bottom= END_BUTTON_CUT_BOTTOM;
 
 	//背景の位置を設定し描画
-	dst.m_top = WINDOW_SIZE_H / 2 + 160;
-	dst.m_left = WINDOW_SIZE_W / 2 - 150;
-	dst.m_right = WINDOW_SIZE_W / 2 + 150;
-	dst.m_bottom = WINDOW_SIZE_H / 2 + 240;
+	dst.m_top	= WINDOW_SIZE_H / 2 + END_POS_TOP;
+	dst.m_left	= WINDOW_SIZE_W / 2 - END_POS_LEFT;
+	dst.m_right = WINDOW_SIZE_W / 2 + END_POS_RIGHT;
+	dst.m_bottom= WINDOW_SIZE_H / 2 + END_POS_BOTTOM;
 	if (lavel_select == LAVEL_BOT_T)
 		Draw::Draw(6, &src, &dst, c, 0.0f);
 	else

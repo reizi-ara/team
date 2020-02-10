@@ -15,8 +15,37 @@
 
 #define LAVEL_BOT_T 1		//タイトルラベルの一番下(ゲーム終了)
 
+#define START_CUT_TOP		0.0f	//タイトル画像切り取り上
+#define START_CUT_LEFT		0.0f	//タイトル画像切り取り左
+#define START_CUT_RIGHT		910.0f  //タイトル画像切り取り右
+#define START_CUT_BOTTOM	512.0f	//タイトル画像切り取り下
+
+#define START_BUTTON_CUT_TOP	0.0f	//ボタン切り取り上
+#define START_BUTTON_CUT_LEFT	64.0f	//ボタン切り取り左
+#define START_BUTTON_CUT_RIGHT	64.0f	//ボタン切り取り右
+#define START_BUTTON_CUT_BOTTOM	64.0f	//ボタン切り取り下
+
+#define END_BUTTON_CUT_TOP		0.0f	//ボタン切り取り上
+#define END_BUTTON_CUT_LEFT		0.0f	//ボタン切り取り左
+#define END_BUTTON_CUT_RIGHT	64.0f	//ボタン切り取り右
+#define END_BUTTON_CUT_BOTTOM	64.0f	//ボタン切り取り下
+
+#define START_BUTTON_LEFT_EXP	4		//start左拡大
+#define START_BUTTON_RIGHT_EXP	8		//start右拡大
+
+#define END_BUTTOM_RIGHT_EXP	4		//end右拡大
+
+#define START_POS_TOP		 80		//ボタン描画上調整
+#define START_POS_LEFT		150		//ボタン描画左調整
+#define START_POS_RIGHT		150		//ボタン描画右調整
+#define START_POS_BOTTOM	160		//ボタン描画下調整
+#define END_POS_TOP			160		//エンドボタン描画上調整
+#define END_POS_LEFT		150		//エンドボタン描画左調整
+#define END_POS_RIGHT		150		//エンドボタン描画右調整
+#define END_POS_BOTTOM		240		//エンドボタン描画下調整
+
 //遅延処理マクロ--------------------------------
-#define TIME_INI    0		//初期値 0
+#define TIME_INI     0		//初期値 0
 #define TIME_INI_HM  0		//HEROマップデバッグ初期値
 
 #define TIME_DELAY 30		//遅延処理(主にENTERキー遅延)
