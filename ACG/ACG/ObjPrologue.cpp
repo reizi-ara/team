@@ -93,10 +93,6 @@ void CObjPrologue::Draw()
 		Font::StrDraw(L"白上市この街に最近不思議なことが起こった。", 150, 550, 25, c);
 		Font::StrDraw(L"なぜか急に古びた洋館が建っていたのだ、", 150, 575, 25, c);
 		Font::StrDraw(L"そんなことがあったもんだから街では、", 150, 600, 25, c);
-		//Font::StrDraw(L"そういった噂が流れていた。", 150, 625, 25, c);
-		//Font::StrDraw(L"", 150, 650, 25, c);
-
-	
 	}
 	else if (Endnum == 1)
 	{
@@ -107,10 +103,7 @@ void CObjPrologue::Draw()
 	}
 	else if (Endnum == 2)
 	{
-		//Font::StrDraw(L"", 150, 550, 25, c);
 		Font::StrDraw(L"そして僕も…その中の一人だった。", 250, 600, 25, c);
-		//Font::StrDraw(L"", 150, 650, 25, c);
-		//Font::StrDraw(L"著者：田幡", 750, 675, 20, c);
 	}
 }
 

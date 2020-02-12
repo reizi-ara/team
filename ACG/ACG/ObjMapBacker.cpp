@@ -71,14 +71,14 @@ void CObjMapBacker::Action()
 	//“–‚½‚è”»’è
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	float sl = block->GetScroll();
-	float en_x = m_px + 32.0f;
-	float en_y = m_py + 32.0f;
+	float en_x = m_px + HIT_AREA_X;
+	float en_y = m_py + HIT_AREA_Y;
 
 	CObjHero* obj = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	float pl_x = obj->GetX();
 	float pl_y = obj->GetY();
-	pl_x += 32.0f;
-	pl_y += 32.0f;
+	pl_x += HIT_AREA_X;
+	pl_y += HIT_AREA_Y;
 
 	
 

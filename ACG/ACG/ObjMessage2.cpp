@@ -102,36 +102,36 @@ void CObjMessage2::Draw()
 		Draw::Draw(2, &src, &dst, c, 0.0f);
 
 		if (type == 1) {
-			Font::StrDraw(L"――この不気味な洋館に迷い込んで何日が経っただろうか？", 150, 550, 25, c);
-			Font::StrDraw(L"探索で解った事はメモに記していく。後に役立てば良いのだが...", 150, 575, 25, c); 
-			Font::StrDraw(L"もしかすると私以外に迷い込んだ人間がいるかもしれない。", 150, 600, 25, c);
+			Font::StrDraw(L"――この不気味な洋館に迷い込んで何日が経っただろうか？",		MESSAGE_SENTENCE_W, MESSAGE_SENTENCE1_H, MESSAGE_SENTENCE_SIZE, c);
+			Font::StrDraw(L"探索で解った事はメモに記していく。後に役立てば良いのだが...",	MESSAGE_SENTENCE_W, MESSAGE_SENTENCE2_H, MESSAGE_SENTENCE_SIZE, c);
+			Font::StrDraw(L"もしかすると私以外に迷い込んだ人間がいるかもしれない。",		MESSAGE_SENTENCE_W, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);
 			Font::StrDraw(L"T・B・T", 750, 675, 20, c);
 		}
 		else if (type == 2) {
-			Font::StrDraw(L"この洋館には得体の知れない『何か』が徘徊しているようだ。", 150, 550, 25, c);
-			Font::StrDraw(L"こちらを見つけたと思えば一直線に追い掛け回してくる。", 150, 575, 25, c);
-			Font::StrDraw(L"だが、抵抗はできる。何か金属製のもので叩くかすれば対処は可能だ。", 150, 600, 25, c);
-			Font::StrDraw(L"それと、明るいところには寄り付かない傾向があるようだ。", 150, 625, 25, c);
-			Font::StrDraw(L"――所々にあるロウソクの明かりでやり過ごせるだろうか...？", 150, 650, 25, c);
+			Font::StrDraw(L"この洋館には得体の知れない『何か』が徘徊しているようだ。",			MESSAGE_SENTENCE_W, MESSAGE_SENTENCE1_H, MESSAGE_SENTENCE_SIZE, c);
+			Font::StrDraw(L"こちらを見つけたと思えば一直線に追い掛け回してくる。",				MESSAGE_SENTENCE_W, MESSAGE_SENTENCE2_H, MESSAGE_SENTENCE_SIZE, c);
+			Font::StrDraw(L"だが、抵抗はできる。何か金属製のもので叩くかすれば対処は可能だ。",  MESSAGE_SENTENCE_W, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);
+			Font::StrDraw(L"それと、明るいところには寄り付かない傾向があるようだ。",			MESSAGE_SENTENCE_W, MESSAGE_SENTENCE4_H, MESSAGE_SENTENCE_SIZE, c);
+			Font::StrDraw(L"――所々にあるロウソクの明かりでやり過ごせるだろうか...？",			MESSAGE_SENTENCE_W, MESSAGE_SENTENCE5_H, MESSAGE_SENTENCE_SIZE, c);
 			Font::StrDraw(L"T・B・T", 950, 675, 20, c);
 		}
 		else if (type == 3) {
-			Font::StrDraw(L"未だ脱出の糸口は見つけられない。", 150, 550, 25, c);//ままだが、ここでのやり方も慣れてきた
-			Font::StrDraw(L"今はまだ食料や水分はある。問題は屋敷の全貌が分からないことだ。", 150, 575, 25, c);
-			Font::StrDraw(L"化け物どもが多く、探索にとても時間がかかってしまう。出口は何処だ...", 150, 600, 25, c);//油断しないようにしなければ。
+			Font::StrDraw(L"未だ脱出の糸口は見つけられない。",									  MESSAGE_SENTENCE_W, MESSAGE_SENTENCE1_H, MESSAGE_SENTENCE_SIZE, c);//ままだが、ここでのやり方も慣れてきた
+			Font::StrDraw(L"今はまだ食料や水分はある。問題は屋敷の全貌が分からないことだ。",	  MESSAGE_SENTENCE_W, MESSAGE_SENTENCE2_H, MESSAGE_SENTENCE_SIZE, c);
+			Font::StrDraw(L"化け物どもが多く、探索にとても時間がかかってしまう。出口は何処だ...", MESSAGE_SENTENCE_W, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);//油断しないようにしなければ。
 			Font::StrDraw(L"T・B・T", 950, 675, 20, c);
 		}
 		else if (type == 4) {
-			Font::StrDraw(L"遂に最後の空白が埋まった！", 150, 550, 25, c);
-			Font::StrDraw(L"もうそこらの化け物どもは余裕で撃退出来る、", 150, 575, 25, c);
-			Font::StrDraw(L"脱出はすぐそこだ！", 150, 600, 25, c);
+			Font::StrDraw(L"遂に最後の空白が埋まった！",					MESSAGE_SENTENCE_W, MESSAGE_SENTENCE1_H, MESSAGE_SENTENCE_SIZE, c);
+			Font::StrDraw(L"もうそこらの化け物どもは余裕で撃退出来る、",	MESSAGE_SENTENCE_W, MESSAGE_SENTENCE2_H, MESSAGE_SENTENCE_SIZE, c);
+			Font::StrDraw(L"脱出はすぐそこだ！",							MESSAGE_SENTENCE_W, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);
 			Font::StrDraw(L"T・B・T", 950, 675, 20, c);
 		}
 		else if (type == 5) {
-			Font::StrDraw(L"無理だ奴を倒すのは、", 150, 550, 25, c);
-			Font::StrDraw(L"そこらの化け物とは違いすぎる", 150, 575, 25, c);
-			Font::StrDraw(L"何なんだあの光は", 150, 600, 25, c);
-			Font::StrDraw(L"奴さえ倒せれば...", 150, 625, 25, c);
+			Font::StrDraw(L"無理だ奴を倒すのは、",			MESSAGE_SENTENCE_W, MESSAGE_SENTENCE1_H, MESSAGE_SENTENCE_SIZE, c);
+			Font::StrDraw(L"そこらの化け物とは違いすぎる",	MESSAGE_SENTENCE_W, MESSAGE_SENTENCE2_H, MESSAGE_SENTENCE_SIZE, c);
+			Font::StrDraw(L"何なんだあの光は",				MESSAGE_SENTENCE_W, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);
+			Font::StrDraw(L"奴さえ倒せれば...",				MESSAGE_SENTENCE_W, MESSAGE_SENTENCE4_H, MESSAGE_SENTENCE_SIZE, c);
 			Font::StrDraw(L"T・V・T", 950, 675, 20, c);
 		}
 }
