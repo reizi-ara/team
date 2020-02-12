@@ -51,19 +51,19 @@ void CSceneMain::InitScene()
 
 	//グラフィック読み込み
 
-	Draw::LoadImageW(L"splite0.png", 0, TEX_SIZE_512);
-	Draw::LoadImageW(L"splite1.png", 1, TEX_SIZE_512);
-	Draw::LoadImageW(L"splite2.png", 2, TEX_SIZE_512);
-	Draw::LoadImageW(L"splite6.png", 6, TEX_SIZE_512);
+	Draw::LoadImageW(L"splite0.png", SPLITE_NUMBER_0, TEX_SIZE_512);
+	Draw::LoadImageW(L"splite1.png", SPLITE_NUMBER_1, TEX_SIZE_512);
+	Draw::LoadImageW(L"splite2.png", SPLITE_NUMBER_2, TEX_SIZE_512);
+	Draw::LoadImageW(L"splite6.png", SPLITE_NUMBER_6, TEX_SIZE_512);
 	
 	//910:512*
-	Draw::LoadImageW(L"splite3.png", 3, TEX_SIZE_1024);
-	Draw::LoadImageW(L"splite4.png", 4, TEX_SIZE_1024);
-	Draw::LoadImageW(L"splite5.png", 5, TEX_SIZE_1024);
-	Draw::LoadImageW(L"splite7.png", 7, TEX_SIZE_1024);
-	Draw::LoadImageW(L"splite8.png", 8, TEX_SIZE_1024);
+	Draw::LoadImageW(L"splite3.png", SPLITE_NUMBER_3, TEX_SIZE_1024);
+	Draw::LoadImageW(L"splite4.png", SPLITE_NUMBER_4, TEX_SIZE_1024);
+	Draw::LoadImageW(L"splite5.png", SPLITE_NUMBER_5, TEX_SIZE_1024);
+	Draw::LoadImageW(L"splite7.png", SPLITE_NUMBER_7, TEX_SIZE_1024);
+	Draw::LoadImageW(L"splite8.png", SPLITE_NUMBER_8, TEX_SIZE_1024);
 
-	Draw::LoadImageW(L"kuro.png", 88, TEX_SIZE_1024);
+	//Draw::LoadImageW(L"kuro.png", 88, TEX_SIZE_1024);
 
 
 	//主人公オブジェクトの作成

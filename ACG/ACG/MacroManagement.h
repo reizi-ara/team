@@ -9,15 +9,15 @@
 #define MAP_NUMBER_5 4
 
 //グラフィック読み込み番号
-#define SPLITE_NUMBER_1
-#define SPLITE_NUMBER_2
-#define SPLITE_NUMBER_6
-#define SPLITE_NUMBER_3
-#define SPLITE_NUMBER_4
-#define SPLITE_NUMBER_5
-#define SPLITE_NUMBER_7
-#define SPLITE_NUMBER_8
-#define SPLITE_NUMBER_9
+#define SPLITE_NUMBER_0 0
+#define SPLITE_NUMBER_1 1
+#define SPLITE_NUMBER_2 2
+#define SPLITE_NUMBER_3 3
+#define SPLITE_NUMBER_4 4
+#define SPLITE_NUMBER_5 5
+#define SPLITE_NUMBER_6 6
+#define SPLITE_NUMBER_7 7
+#define SPLITE_NUMBER_8 8
 
 
 //BGM
