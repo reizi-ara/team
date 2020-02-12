@@ -1,6 +1,26 @@
 #pragma once
 
 //シーンメインマクロ郡----------------------------------
+//マップ番号
+#define MAP_NUMBER_1 0
+#define MAP_NUMBER_2 1
+#define MAP_NUMBER_3 2
+#define MAP_NUMBER_4 3
+#define MAP_NUMBER_5 4
+
+//グラフィック読み込み番号
+#define SPLITE_NUMBER_1
+#define SPLITE_NUMBER_2
+#define SPLITE_NUMBER_6
+#define SPLITE_NUMBER_3
+#define SPLITE_NUMBER_4
+#define SPLITE_NUMBER_5
+#define SPLITE_NUMBER_7
+#define SPLITE_NUMBER_8
+#define SPLITE_NUMBER_9
+
+
+//BGM
 #define SCENE_MAIN_BGM_MAINSTAGE	0	//メインBGM
 #define SCENE_MAIN_BGM_BOSS			1	//ボスBGM
 #define SCENE_MAIN_BGM_MENU			2	//メニューBGM
