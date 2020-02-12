@@ -110,17 +110,17 @@ void CObjEndingDoor::Draw()
 	if (DoorSystem == 1)
 	{
 		//切り取り位置の設定
-		src.m_top = END_DOOR_CUT_TOP;
-		src.m_left = END_DOOR_CUT_LEFT;
-		src.m_right = END_DOOR_CUT_RIGHT;
-		src.m_bottom = END_DOOR_CUT_BOTTOM;
+		src.m_top = END_DOOR_CLOSE_CUT_TOP;
+		src.m_left = END_DOOR_CLOSE_CUT_LEFT;
+		src.m_right = END_DOOR_CLOSE_CUT_RIGHT;
+		src.m_bottom = END_DOOR_CLOSE_CUT_BOTTOM;
 
 		//ブロック情報を持ってくる
 		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 		//表示位置の設定
-		dst.m_top = -END_DOOR_PUT_TOP + m_py - size;
-		dst.m_left = -END_DOOR_PUT_LEFT + m_px + block->GetScroll() - size;
+		dst.m_top = END_DOOR_PUT_TOP + m_py - size;
+		dst.m_left = END_DOOR_PUT_LEFT + m_px + block->GetScroll() - size;
 		dst.m_right = END_DOOR_PUT_RIGHT + m_px + block->GetScroll() + size;
 		dst.m_bottom = END_DOOR_PUT_BOTTOM + m_py + size;
 
@@ -131,19 +131,19 @@ void CObjEndingDoor::Draw()
 	if (DoorSystem == 2)
 	{
 		//切り取り位置の設定
-		src.m_top = 0.0f;
-		src.m_left = 128.0f;
-		src.m_right = 128.0f * 2;
-		src.m_bottom = 128.0f;
+		src.m_top = END_DOOR_OPEN_CUT_TOP;
+		src.m_left = END_DOOR_OPEN_CUT_LEFT;
+		src.m_right = END_DOOR_OPEN_CUT_RIGHT;
+		src.m_bottom = END_DOOR_OPEN_CUT_BOTTOM;
 
 		//ブロック情報を持ってくる
 		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 		//表示位置の設定
-		dst.m_top = -64.0f + m_py - size;
-		dst.m_left = -64.0f + m_px + block->GetScroll() - size;
-		dst.m_right = 64.0f + m_px + block->GetScroll() + size;
-		dst.m_bottom = 64.0f + m_py + size;
+		dst.m_top = -END_DOOR_PUT_TOP + m_py - size;
+		dst.m_left = -END_DOOR_PUT_LEFT + m_px + block->GetScroll() - size;
+		dst.m_right = END_DOOR_PUT_RIGHT + m_px + block->GetScroll() + size;
+		dst.m_bottom = END_DOOR_PUT_BOTTOM + m_py + size;
 
 		//描画
 		Draw::Draw(8, &src, &dst, c, 0.0f);

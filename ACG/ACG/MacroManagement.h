@@ -1,6 +1,22 @@
 #pragma once
 
-#define OWATA //後で消す。
+//シーンメインマクロ郡----------------------------------
+#define SCENE_MAIN_BGM_MAINSTAGE	0	//メインBGM
+#define SCENE_MAIN_BGM_BOSS			1	//ボスBGM
+#define SCENE_MAIN_BGM_MENU			2	//メニューBGM
+
+#define SCENE_MAIN_SE_WALK			5	//歩き、走りSE
+#define SCENE_MAIN_SE_DOOR			6	//ドアSE
+#define SCENE_MAIN_SE_DAMEGE		7	//ダメージSE
+#define SCENE_MAIN_SE_DECIDE		8	//決定SE
+#define SCENE_MAIN_SE_SELECT		9	//セレクトSE
+#define SCENE_MAIN_SE_BOOK_OPEN		10	//本棚開きSE
+#define SCENE_MAIN_SE_BOOK_CLOSE	11	//本棚閉じSE
+#define SCENE_MAIN_SE_HAND			12	//手SEとダメージ
+#define SCENE_MAIN_SE_ATTACK		13	//攻撃SE
+
+
+
 
 //敵マクロ-------------------------------------
 #define TIME_SLOW_EE 120	//目玉の待機時間
@@ -121,11 +137,19 @@
 #define END_DOOR_SISTEM_CLOSE 1
 #define END_DOOR_SISTEM_OPEN 2
 
-#define END_DOOR_CUT_TOP 0.0f
-#define END_DOOR_CUT_LEFT 0.0f
-#define END_DOOR_CUT_RIGHT 128.0f
-#define END_DOOR_CUT_BOTTOM 128.0f
+//END扉閉じ切り取り位置
+#define END_DOOR_CLOSE_CUT_TOP 0.0f
+#define END_DOOR_CLOSE_CUT_LEFT 0.0f
+#define END_DOOR_CLOSE_CUT_RIGHT 128.0f
+#define END_DOOR_CLOSE_CUT_BOTTOM 128.0f
 
+//END扉開き切り取り位置
+#define END_DOOR_OPEN_CUT_TOP 0.0f
+#define END_DOOR_OPEN_CUT_LEFT 128.0f
+#define END_DOOR_OPEN_CUT_RIGHT 128.0f*2
+#define END_DOOR_OPEN_CUT_BOTTOM 128.0f
+
+//END扉表示位置
 #define END_DOOR_PUT_TOP -64.0f
 #define END_DOOR_PUT_LEFT -64.0f
 #define END_DOOR_PUT_RIGHT 64.0f

@@ -15,6 +15,7 @@ using namespace GameL;
 //使用するヘッダー
 #include "SceneMain.h"
 #include "GameHead.h"
+#include "MacroManagement.h"
 
 //コンストラクタ
 CSceneMain::CSceneMain()
@@ -78,20 +79,20 @@ void CSceneMain::InitScene()
 
 	//音楽読み込み
 	//BGM群
-	Audio::LoadAudio(0, L"s_mainstage.wav", BACK_MUSIC);//メインBGM
-	Audio::LoadAudio(1, L"s_Boss.wav", BACK_MUSIC);//ボスのBGM
-	Audio::LoadAudio(2, L"s_menu.wav", BACK_MUSIC);//メニューのBGM
+	Audio::LoadAudio(SCENE_MAIN_BGM_MAINSTAGE, L"s_mainstage.wav", BACK_MUSIC);//メインBGM
+	Audio::LoadAudio(SCENE_MAIN_BGM_BOSS, L"s_Boss.wav", BACK_MUSIC);//ボスのBGM
+	Audio::LoadAudio(SCENE_MAIN_BGM_MENU, L"s_menu.wav", BACK_MUSIC);//メニューのBGM
 
 	//SE群
-	Audio::LoadAudio(5, L"s_walk.wav", EFFECT);//歩きと走りSE
-	Audio::LoadAudio(6, L"s_door.wav", EFFECT);//ドアSE
-	Audio::LoadAudio(7, L"s_attack.wav", EFFECT);//敵ダメージ時SE
-	Audio::LoadAudio(8, L"s_ok.wav", EFFECT);//決定SE
-	Audio::LoadAudio(9, L"s_select.wav", EFFECT);//セレクトSE
-	Audio::LoadAudio(10, L"s_book_open.wav", EFFECT);//本開け
-	Audio::LoadAudio(11, L"s_book_close.wav", EFFECT);//本閉じ
-	Audio::LoadAudio(12, L"s_chickens.wav", EFFECT);//手のSE,とダメージ
-	Audio::LoadAudio(13, L"s_attackA.wav", EFFECT);//攻撃「のSE
+	Audio::LoadAudio(SCENE_MAIN_SE_WALK, L"s_walk.wav", EFFECT);//歩きと走りSE
+	Audio::LoadAudio(SCENE_MAIN_SE_DOOR, L"s_door.wav", EFFECT);//ドアSE
+	Audio::LoadAudio(SCENE_MAIN_SE_DAMEGE, L"s_attack.wav", EFFECT);//攻撃SE
+	Audio::LoadAudio(SCENE_MAIN_SE_DECIDE, L"s_ok.wav", EFFECT);//決定SE
+	Audio::LoadAudio(SCENE_MAIN_SE_SELECT, L"s_select.wav", EFFECT);//セレクトSE
+	Audio::LoadAudio(SCENE_MAIN_SE_BOOK_OPEN, L"s_book_open.wav", EFFECT);//本開け
+	Audio::LoadAudio(SCENE_MAIN_SE_BOOK_CLOSE, L"s_book_close.wav", EFFECT);//本閉じ
+	Audio::LoadAudio(SCENE_MAIN_SE_HAND, L"s_chickens.wav", EFFECT);//手のSEとダメージ
+	Audio::LoadAudio(SCENE_MAIN_SE_ATTACK, L"s_damage.wav", EFFECT);//攻撃ヒット時SE
 
 
 	//ボリューム
@@ -105,7 +106,7 @@ void CSceneMain::InitScene()
 //実行中メソッド
 void CSceneMain::Scene()
 {
-	if (m_chg >= 5)
+	if (m_chg > 6)
 	{
 		m_chg = 5;
 	}
