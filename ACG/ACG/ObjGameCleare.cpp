@@ -77,10 +77,10 @@ void CObjGameClear::Draw()
 	Draw::Draw(8, &src, &dst, c, 0.0f);
 
 	//切り取り位置の設定
-	src.m_top = 64.0f * 6;
-	src.m_left = 64.0f * 0;
-	src.m_right = 64.0f * 8;
-	src.m_bottom = 64.0f * 8;
+	src.m_top	= MESSAGE_CUT_TOP;
+	src.m_left	= MESSAGE_CUT_LEFT;
+	src.m_right = MESSAGE_CUT_RIGHT;
+	src.m_bottom= MESSAGE_CUT_BOTTOM;
 
 	//背景の位置を設定し描画
 	dst.m_top = WINDOW_SIZE_H * 0.7;
@@ -90,30 +90,30 @@ void CObjGameClear::Draw()
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 	if (Endnum == 0)
 	{
-		Font::StrDraw(L"「ここは...外？」", 150, 550, 25, c);
-		Font::StrDraw(L"「何とか外に出られたようだ。」", 150, 575, 25, c);
-		Font::StrDraw(L"「館や化け物は何だったんだろう」", 150, 600, 25, c);
+		Font::StrDraw(L"「ここは...外？」",					MESSAGE_SENTENCE_W, MESSAGE_SENTENCE1_H, MESSAGE_SENTENCE_SIZE, c);
+		Font::StrDraw(L"「何とか外に出られたようだ。」",	MESSAGE_SENTENCE_W, MESSAGE_SENTENCE2_H, MESSAGE_SENTENCE_SIZE, c);
+		Font::StrDraw(L"「館や化け物は何だったんだろう」",	MESSAGE_SENTENCE_W, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);
 	}
 	else if (Endnum == 1)
 	{
-		Font::StrDraw(L"後日その館を調べるために向かったところ", 150, 550, 25, c);
-		Font::StrDraw(L"その館は跡形もなかった", 150, 575, 25, c);
-		Font::StrDraw(L"街の噂も嘘のように聞こえてこず", 150, 600, 25, c);
-		Font::StrDraw(L"みんなも噂のことを忘れていた", 150, 625, 25, c);
+		Font::StrDraw(L"後日その館を調べるために向かったところ", MESSAGE_SENTENCE_W, MESSAGE_SENTENCE1_H, MESSAGE_SENTENCE_SIZE, c);
+		Font::StrDraw(L"その館は跡形もなかった",				 MESSAGE_SENTENCE_W, MESSAGE_SENTENCE2_H, MESSAGE_SENTENCE_SIZE, c);
+		Font::StrDraw(L"街の噂も嘘のように聞こえてこず",		 MESSAGE_SENTENCE_W, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);
+		Font::StrDraw(L"みんなも噂のことを忘れていた",			 MESSAGE_SENTENCE_W, MESSAGE_SENTENCE4_H, MESSAGE_SENTENCE_SIZE, c);
 	}
 	else if (Endnum == 2)
 	{
-		Font::StrDraw(L"ただ、あの館がなくなった気がしなかった", 150, 550, 25, c);
-		Font::StrDraw(L"まだどこかにあるような気がして心配だったが", 150, 575, 25, c);
-		Font::StrDraw(L"そのうち忘れていった", 150, 600, 25, c);
+		Font::StrDraw(L"ただ、あの館がなくなった気がしなかった",	 MESSAGE_SENTENCE_W, MESSAGE_SENTENCE1_H, MESSAGE_SENTENCE_SIZE, c);
+		Font::StrDraw(L"まだどこかにあるような気がして心配だったが", MESSAGE_SENTENCE_W, MESSAGE_SENTENCE2_H, MESSAGE_SENTENCE_SIZE, c);
+		Font::StrDraw(L"そのうち忘れていった",						 MESSAGE_SENTENCE_W, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);
 	}
 	else if (Endnum == 3)
 	{
-		Font::StrDraw(L"～END～", (WINDOW_SIZE_W/2)-50, 600, 25, c);
+		Font::StrDraw(L"～END～", (WINDOW_SIZE_W/2)-50, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);
 	}
 	else if (Endnum == 4)
 	{
-		Font::StrDraw(L"ねえ、ある館の噂って知ってる？...", 400, 600, 25, c);
+		Font::StrDraw(L"ねえ、ある館の噂って知ってる？...", 400, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);
 	}
 }
 

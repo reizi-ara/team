@@ -171,7 +171,14 @@
 #define MESSAGE_CUT_RIGHT		64.0f*8		//メッセージウィンドウ切り取り右
 #define MESSAGE_CUT_BOTTOM		64.0f*8		//メッセージウィンドウ切り取り下
 
+#define MESSAGE_SENTENCE_W		150			//メッセージ行頭横軸
+#define MESSAGE_SENTENCE1_H		550			//メッセージ1行目縦軸
+#define MESSAGE_SENTENCE2_H		575			//メッセージ2行目縦軸
+#define MESSAGE_SENTENCE3_H		600			//メッセージ3行目縦軸
+#define MESSAGE_SENTENCE4_H		625			//メッセージ4行目縦軸
+#define MESSAGE_SENTENCE5_H		650			//メッセージ5行目縦軸
 
+#define MESSAGE_SENTENCE_SIZE	25			//メッセージ文字サイズ
 //_____________________________________________
 
 
