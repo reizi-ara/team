@@ -57,10 +57,10 @@ void CObjGameStart::Action()
 		lavel_button2 = true;
 
 
-	if (lavel_select > LAVEL_BOT_T)
+	if (lavel_select > LAVEL_BOT_TITLE)
 		lavel_select = LAVEL_TOP;
 	if (lavel_select < LAVEL_TOP)
-		lavel_select = LAVEL_BOT_T;
+		lavel_select = LAVEL_BOT_TITLE;
 
 
 	//ƒGƒ“ƒ^[ƒL[‚ð‰Ÿ‚µ‚ÄƒV[ƒ“FƒQ[ƒ€ƒƒCƒ“‚ÉˆÚs‚·‚é
@@ -82,7 +82,7 @@ void CObjGameStart::Action()
 				Scene::SetScene(new CSceneGameOption());
 
 			}*/
-			else if (lavel_select == LAVEL_BOT_T)
+			else if (lavel_select == LAVEL_BOT_TITLE)
 			{
 				Scene::SetScene(nullptr);
 			}
@@ -106,10 +106,10 @@ void CObjGameStart::Draw()
 
 	//”wŒi
 	//Ø‚èŽæ‚èˆÊ’u‚ÌÝ’è
-	src.m_top	= START_CUT_TOP;
-	src.m_left	= START_CUT_LEFT;
-	src.m_right = START_CUT_RIGHT;
-	src.m_bottom= START_CUT_BOTTOM;
+	src.m_top	= START_BACK_CUT_TOP;
+	src.m_left	= START_BACK_CUT_LEFT;
+	src.m_right = START_BACK_CUT_RIGHT;
+	src.m_bottom= START_BACK_CUT_BOTTOM;
 
 	//”wŒi‚ÌˆÊ’u‚ðÝ’è‚µ•`‰æ
 	dst.m_top	= 0.0f;
@@ -129,10 +129,10 @@ void CObjGameStart::Draw()
 	src.m_bottom= START_BUTTON_CUT_BOTTOM;
 
 	//”wŒi‚ÌˆÊ’u‚ðÝ’è‚µ•`‰æ
-	dst.m_top	= WINDOW_SIZE_H / 2	+ START_POS_TOP;
-	dst.m_left	= WINDOW_SIZE_W / 2 - START_POS_LEFT;
-	dst.m_right = WINDOW_SIZE_W / 2 + START_POS_RIGHT;
-	dst.m_bottom= WINDOW_SIZE_H / 2 + START_POS_BOTTOM;
+	dst.m_top	= WINDOW_SIZE_H / 2	+ START_POS_PUT_TOP;
+	dst.m_left	= WINDOW_SIZE_W / 2 - START_POS_PUT_LEFT;
+	dst.m_right = WINDOW_SIZE_W / 2 + START_POS_PUT_RIGHT;
+	dst.m_bottom= WINDOW_SIZE_H / 2 + START_POS_PUT_BOTTOM;
 	if (lavel_select == LAVEL_TOP)
 		Draw::Draw(6, &src, &dst, c, 0.0f);
 	else
@@ -166,11 +166,11 @@ void CObjGameStart::Draw()
 	src.m_bottom= END_BUTTON_CUT_BOTTOM;
 
 	//”wŒi‚ÌˆÊ’u‚ðÝ’è‚µ•`‰æ
-	dst.m_top	= WINDOW_SIZE_H / 2 + END_POS_TOP;
-	dst.m_left	= WINDOW_SIZE_W / 2 - END_POS_LEFT;
-	dst.m_right = WINDOW_SIZE_W / 2 + END_POS_RIGHT;
-	dst.m_bottom= WINDOW_SIZE_H / 2 + END_POS_BOTTOM;
-	if (lavel_select == LAVEL_BOT_T)
+	dst.m_top	= WINDOW_SIZE_H / 2 + END_POS_PUT_TOP;
+	dst.m_left	= WINDOW_SIZE_W / 2 - END_POS_PUT_LEFT;
+	dst.m_right = WINDOW_SIZE_W / 2 + END_POS_PUT_RIGHT;
+	dst.m_bottom= WINDOW_SIZE_H / 2 + END_POS_PUT_BOTTOM;
+	if (lavel_select == LAVEL_BOT_TITLE)
 		Draw::Draw(6, &src, &dst, c, 0.0f);
 	else
 		Draw::Draw(6, &src, &dst, b, 0.0f);

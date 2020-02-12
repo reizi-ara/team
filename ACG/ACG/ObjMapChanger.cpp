@@ -30,9 +30,9 @@ CObjMapChanger::CObjMapChanger(float x, float y,float t)
 void CObjMapChanger::Init()
 {
 	//blockとの衝突確認用
-	m_hit_up = false;
-	m_hit_down = false;
-	m_hit_left = false;
+	m_hit_up	= false;
+	m_hit_down	= false;
+	m_hit_left	= false;
 	m_hit_right = false;
 
 	float p_x = 0;
@@ -46,7 +46,7 @@ void CObjMapChanger::Init()
 	m_OneChg = false;
 	m_change = 1;
 
-	mmmm = false;
+	mmmm	= false;
 
 	//削除用
 	CSceneMain*sceneM = (CSceneMain*)Scene::GetScene();
