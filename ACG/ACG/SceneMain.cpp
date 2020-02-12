@@ -39,10 +39,10 @@ void CSceneMain::InitScene()
 	//unique_ptr<wchar_t> p;//ステージ情報ポインター
 	int size;			 //ステージ情報の大きさ
 	p[MAP_NUMBER_1] = Save::ExternalDataOpen(L"map_0.csv", &size);//外部データ読み込み
-	p[MAP_NUMBER_1] = Save::ExternalDataOpen(L"map_1.csv", &size);//外部データ読み込み
-	p[MAP_NUMBER_1] = Save::ExternalDataOpen(L"map_2.csv", &size);//外部データ読み込み
-	p[MAP_NUMBER_1] = Save::ExternalDataOpen(L"map_3.csv", &size);//外部データ読み込み
-	p[MAP_NUMBER_1] = Save::ExternalDataOpen(L"map_4.csv", &size);//外部データ読み込み
+	p[MAP_NUMBER_2] = Save::ExternalDataOpen(L"map_1.csv", &size);//外部データ読み込み
+	p[MAP_NUMBER_3] = Save::ExternalDataOpen(L"map_2.csv", &size);//外部データ読み込み
+	p[MAP_NUMBER_4] = Save::ExternalDataOpen(L"map_3.csv", &size);//外部データ読み込み
+	p[MAP_NUMBER_5] = Save::ExternalDataOpen(L"map_4.csv", &size);//外部データ読み込み
 
 	MapRead(m_chg, map2, p);//マップロード関数？
 
