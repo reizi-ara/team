@@ -91,8 +91,8 @@ void CSceneMain::InitScene()
 	Audio::LoadAudio(SCENE_MAIN_SE_SELECT, L"s_select.wav", EFFECT);//セレクトSE
 	Audio::LoadAudio(SCENE_MAIN_SE_BOOK_OPEN, L"s_book_open.wav", EFFECT);//本開け
 	Audio::LoadAudio(SCENE_MAIN_SE_BOOK_CLOSE, L"s_book_close.wav", EFFECT);//本閉じ
-	Audio::LoadAudio(SCENE_MAIN_SE_HAND, L"s_hand.wav", EFFECT);//手のSE
-	Audio::LoadAudio(SCENE_MAIN_SE_ATTACK, L"s_attack.wav", EFFECT);//アタックのSE
+	Audio::LoadAudio(SCENE_MAIN_SE_HAND, L"s_hand.wav", EFFECT);//手のSEとダメージ
+	Audio::LoadAudio(SCENE_MAIN_SE_ATTACK, L"s_attack.wav", EFFECT);//攻撃のSE
 
 
 	//ボリューム
