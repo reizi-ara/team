@@ -91,7 +91,7 @@ void CSceneMain::InitScene()
 	Audio::LoadAudio(10, L"s_book_open.wav", EFFECT);//本開け
 	Audio::LoadAudio(11, L"s_book_close.wav", EFFECT);//本閉じ
 	Audio::LoadAudio(12, L"s_chicken.wav", EFFECT);//手のSE
-	Audio::LoadAudio(13, L"s_attackA.wav", EFFECT);//手のSE
+	Audio::LoadAudio(13, L"s_attackA.wav", EFFECT);//攻撃「のSE
 
 
 	//ボリューム

@@ -53,15 +53,17 @@ private:
 
 
 	int time_1;
-	int time_2;
 
 	//0:’¼—§1:“Ëi2:’¼—§–ÚŒõ
 	int form;
-	//0:‚‚³‡‚í‚¹‚é‚©n/y-0/1;1:s“®”Ô†
-	int acmt[2];
 
-	int bulletQ;
-	bool bulletA;
+	//0:‚‚³‡‚í‚¹‚é‚©? n/y=0/1
+	bool stalk_high;
+	//1:s“®”Ô†
+	char atkaction;
+		
+
+	int bulletQ;//’Êí’e§Œä
 
 
 	int dy_time;

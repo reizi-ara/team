@@ -71,3 +71,24 @@
 #define END_DOOR_PUT_LEFT -64.0f
 #define END_DOOR_PUT_RIGHT 64.0f
 #define END_DOOR_PUT_BOTTOM 64.0f
+
+//Boss_____________________________________________
+
+#define BOSSMUTEKI 10;//被攻撃時無敵時間
+#define PASSIVE_DAMAGE 10;//共通被ダメージ
+#define SARCH 400//感知範囲、起動
+
+#define OBJ64OFSET_CENTER 32.0f//６４サイズオブジェクト中心
+
+
+
+
+//_____________________________________________
+
+
+
+
+
+
+
+

@@ -163,12 +163,12 @@ void CObjBlock::Action()
 				Objs::InsertObj(obj21, OBJ_ENEMY, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 22) {//敵3(わんわんお
+			else if (m_map[i][ex] == 22) {//敵3(inu
 				CObjEnemy* obj22 = new CObjEnemy(ex * 64.0f, i * 64.0f, 50, 45, 3);
 				Objs::InsertObj(obj22, OBJ_ENEMY, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 23) {//サボテンダー
+			else if (m_map[i][ex] == 23) {//緑の
 				CObjEnemy* obj23 = new CObjEnemy(ex * 64.0f, i * 64.0f, 60, 35, 4);
 				Objs::InsertObj(obj23, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
