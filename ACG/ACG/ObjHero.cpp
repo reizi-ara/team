@@ -67,7 +67,7 @@ void CObjHero::Init()
 	Fall_Deth_time = 0;
 	Deth_time = 0;
 
-	//デバックコマンド
+	//デバック_マップ変更コマンド
 	MAXMap = 1;
 
 	p_life = p_maxlife;
@@ -88,13 +88,13 @@ void CObjHero::Action()
 		Scene::SetScene(new CSceneMain());
 	}
 	if (Input::GetVKey('T')) {
-		p_life -= 2.0f;
+		p_life -= 1.0f;
 	}
 	if (Input::GetVKey('H')) {
-		p_life += 2.0f;
+		p_life += 1.0f;
 	}
 	if (d_mode == true){
-		p_life += 2.0f;
+		p_life += 0.5f;
 	}
 
 	cooltime--;
@@ -128,11 +128,11 @@ void CObjHero::Action()
 			Objs::InsertObj(objef, OBJ_THORN, 15);
 			if (Input::GetVKey('S') && m_hit_down == false) {
 				p_life -= g_damage * 0.5;
-				Audio::Start(7);//効果音
+				Audio::Start(10);//効果音
 			}
 			else {
 				p_life -= g_damage;
-				Audio::Start(7);//効果音
+				Audio::Start(12);//効果音
 			}
 
 			muteki_time = MUTEKITIME;
@@ -491,7 +491,7 @@ void CObjHero::Draw()
 					attack_set = true;
 					attack_flag = true;
 
-					Audio::Start(13);//効果音
+					Audio::Start(7);//効果音
 				}
 			}
 			else

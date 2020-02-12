@@ -15,8 +15,8 @@
 
 #define MUTEKI 20;
 #define DE_MAGE 10;//hidame
-#define SARCH 64*4
-#define SIZE 64*1
+#define SARCH 256
+#define SIZE 64
 
 //使用するネームスペースdayo
 using namespace GameL;
@@ -262,7 +262,7 @@ void CObjEnemy::Action()
 			pl_y >= en_y - 80.0f &&
 			obj->Getattack() > 0 &&
 			obj->Getattack() != 4 &&
-			muteki_time <= 0)
+			muteki_time <= 0&&type_n!=5)
 		{
 			muteki_time = MUTEKI;
 			en_life -= DE_MAGE;
@@ -270,7 +270,8 @@ void CObjEnemy::Action()
 			CObjEffect* objef = new CObjEffect(m_px + block->GetScroll(), m_py, 2);
 			Objs::InsertObj(objef, OBJ_THORN, 15);
 
-			Audio::Start(7);//効果音
+
+			Audio::Start(13);//効果音
 		}
 
 		//消滅エフェクト

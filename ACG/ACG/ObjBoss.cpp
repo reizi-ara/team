@@ -13,9 +13,7 @@
 #include "GameL/Audio.h"
 #include "MacroManagement.h"
 
-#define MUTEKI 8;
-#define DE_MAGE 10;//hidame
-#define SARCH 400
+
 
 //使用するネームスペースdayo
 using namespace GameL;
@@ -48,23 +46,21 @@ void CObjBoss::Init()
 
 
 
-	muteki_time = MUTEKI;
+	muteki_time = BOSSMUTEKI;
 
 
 
 	time_1 = 0;//起動からの時間
 
-	time_2 = 0;//弾発射間隔制御時間
 
 	dy_time = 0;//消去猶予時間
 
 	damagecolortime = 10;//被ダメージ表現時間
 
 	form = 0;//要整理.姿勢と攻撃手段
-	acmt[0] = 0;
-	acmt[1] = 1;
+	stalk_high = 0;
+	atkaction = 1;
 	bulletQ = 0;
-	bulletA = 0;
 
 
 
@@ -77,14 +73,14 @@ void CObjBoss::Init()
 //アクション
 void CObjBoss::Action()
 {
-	//ブロック・判定
+	//ブロック・判定,中心設定
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	float pl_x = hero->GetX() - block->GetScroll()+32.0f;
-	float pl_y = hero->GetY() + 32.0f;
+	float pl_x = hero->GetX() - block->GetScroll()+ OBJ64OFSET_CENTER;
+	float pl_y = hero->GetY() + OBJ64OFSET_CENTER;
 	float sl = block->GetScroll();
-	float en_x = m_px + 32.0f;
-	float en_y = m_py + 32.0f;
+	float en_x = m_px + OBJ64OFSET_CENTER;
+	float en_y = m_py + OBJ64OFSET_CENTER;
 
 	//移動力減衰
 	m_vx *= 0.8f;
@@ -100,9 +96,11 @@ void CObjBoss::Action()
 		pl_x >= en_x - 88 - (32 * (hero->Getposture() * 2 - 1)) &&
 		pl_y <= en_y - 96.0f && pl_y >= en_y - 220.0f &&
 		hero->Getattack() > 0 && muteki_time <= 0) {
-		muteki_time = MUTEKI;
-		en_life -= DE_MAGE;
+		muteki_time = BOSSMUTEKI;
+		en_life -= PASSIVE_DAMAGE;
 		damagecolortime = 0;
+
+		Audio::Start(13);//効果音
 	}
 
 	//与攻撃
@@ -217,68 +215,68 @@ void CObjBoss::Action()
 		time_1++;
 
 		if (time_1 == 20) {
-			acmt[0] = 1;
-			acmt[1] = 1;
+			stalk_high = 1;
+			atkaction = 1;
 		}
 		if (time_1 == 200) {
 
 			bulletQ = 1;
 		}
 		if (time_1 == 900) {
-			acmt[0] = 0;
-			acmt[1] = 0;
+			stalk_high = 0;
+			atkaction = 0;
 		}
 		if (time_1 == 990) {
-			acmt[0] = 0;
-			acmt[1] = 1;
+			stalk_high = 0;
+			atkaction = 1;
 			bulletQ = 0;
 		}
 		if (time_1 == 1100) {
-			acmt[0] = 1;
-			acmt[1] = 2;
+			stalk_high = 1;
+			atkaction = 2;
 		}
 		if (time_1 == 1200) {
-			acmt[0] = 0;
+			stalk_high = 0;
 		}
 		if (time_1 == 1280) {
-			acmt[0] = 1;
-			acmt[1] = 3;
+			stalk_high = 1;
+			atkaction = 3;
 		}
 		if (time_1 == 1400) {
-			acmt[0] = 0;
-			acmt[1] = 1;
+			stalk_high = 0;
+			atkaction = 1;
 		}
 		if (time_1 == 1600) {
-			acmt[0] = 1;
-			acmt[1] = 0;
+			stalk_high = 1;
+			atkaction = 0;
 		}
 		if (time_1 == 1700) {
-			acmt[0] = 0;
-			acmt[1] = 4;
+			stalk_high = 0;
+			atkaction = 4;
 		}
 		if (time_1 == 1750) {
-			acmt[0] = 1;
-			acmt[1] = 4;
+			stalk_high = 1;
+			atkaction = 4;
 		}
 		if (time_1 == 1850) {
-			acmt[0] = 0;
-			acmt[1] = 5;
+			stalk_high = 0;
+			atkaction = 5;
 		}
 		if (time_1 == 1920) {
-			acmt[0] = 0;
-			acmt[1] = 1;
+			stalk_high = 0;
+			atkaction = 1;
 		}
 		if (time_1 == 2000) {
-			acmt[0] = 0;
-			acmt[1] = 1;
+			stalk_high = 0;
+			atkaction = 1;
 			bulletQ = 2;
 		}
 
 
 
 		if (time_1 == 2560) {
-			acmt[0] = 0;
-			acmt[1] = 0;
+			stalk_high = 0;
+			atkaction = 0;
 			time_1 = 900;
 			bulletQ = 0;
 		}
@@ -289,8 +287,6 @@ void CObjBoss::Action()
 					CObjBullet* objbt = new CObjBullet(100 - sl + i * 200 + (time_1 % 100), 0, 20, 3);
 					Objs::InsertObj(objbt, OBJ_ENEMY, 10);
 				}
-				bulletA = 1;
-				time_2 = 0;
 			}
 		}
 
@@ -300,13 +296,10 @@ void CObjBoss::Action()
 					CObjBullet* objbt = new CObjBullet(100 - sl + i * 250 + (time_1 % 100), 0, 20, 10);
 					Objs::InsertObj(objbt, OBJ_ENEMY, 10);
 				}
-
-				bulletA = 1;
-				time_2 = 0;
 			}
 		}
 
-		if (acmt[0] == 1) {//高さ合わせ
+		if (stalk_high == 1) {//高さ合わせ
 			if (pl_y + 128 <= en_y) {
 				m_py -= 2;
 			}
@@ -315,7 +308,7 @@ void CObjBoss::Action()
 			}
 		}
 
-		if (acmt[1] == 1) {//近距離　待機
+		if (atkaction == 1) {//近距離　待機
 			form = 0;
 			if (pl_x+ 256 <= en_x) {
 				m_px += (pl_x+ 256 - en_x) / 130;
@@ -325,7 +318,7 @@ void CObjBoss::Action()
 			}
 		}
 
-		if (acmt[1] == 2) {//遠距離　突進準備
+		if (atkaction == 2) {//遠距離　突進準備
 			form = 0;
 			if (pl_x+ 1536 <= en_x) {
 				m_px += (pl_x+ 1536 - en_x) / 90;
@@ -335,7 +328,7 @@ void CObjBoss::Action()
 			}
 		}
 
-		if (acmt[1] == 3) {//突進
+		if (atkaction == 3) {//突進
 			form = 1;
 			if (pl_x- 1024 <= en_x) {
 				m_px += (pl_x- 1024 - en_x) / 30;
@@ -344,7 +337,7 @@ void CObjBoss::Action()
 				m_px += (pl_x - 1024 - en_x) / 30;
 			}
 		}
-		if (acmt[1] == 4) {//びむー　待機
+		if (atkaction == 4) {//予告線
 			form = 2;
 			if (pl_x + 512 <= en_x) {
 				m_px += (pl_x + 512 - en_x) / 20;
@@ -353,7 +346,7 @@ void CObjBoss::Action()
 				m_px += (pl_x + 512 - en_x) / 20;
 			}
 		}
-		if (acmt[1] == 5) {//びむー
+		if (atkaction == 5) {//ビーム攻撃
 			form = 3;
 			if (pl_x + 512 <= en_x) {
 				m_px += (pl_x  + 512 - en_x) / 20;
@@ -378,9 +371,6 @@ void CObjBoss::Action()
 
 	}
 
-	time_2++;
-	if (bulletA == true && time_2 > 8)
-		bulletA = false;
 	if (damagecolortime < 10)
 		damagecolortime++;
 }
@@ -478,16 +468,5 @@ void CObjBoss::Draw()
 		}
 	}
 
-	if (bulletA == true) {
-		src.m_top = 768;
-		src.m_left = AniData[m_ani_frame] * 256.0f;
-		src.m_right = src.m_left + 256.0f;
-		src.m_bottom = src.m_top + 128.0f;
 
-		dst.m_top = -192.0f + m_py;
-		dst.m_left = m_px + block->GetScroll() - 128.0f;
-		dst.m_right = 256.0f + m_px + block->GetScroll() - 128.0f;
-		dst.m_bottom = -64.0f + m_py;
-		Draw::Draw(7, &src, &dst, c, 0.0f);
-	}
 }
