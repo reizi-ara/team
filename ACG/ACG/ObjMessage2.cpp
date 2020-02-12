@@ -89,16 +89,16 @@ void CObjMessage2::Draw()
 		RECT_F dst;//描画先表示位置
 
 		//切り取り位置の設定
-		src.m_top = 64.0f * 6;
-		src.m_left = 64.0f * 0;
-		src.m_right = 64.0f * 8;
-		src.m_bottom = 64.0f * 8;
+		src.m_top	= MESSAGE_CUT_TOP;
+		src.m_left	= MESSAGE_CUT_LEFT;
+		src.m_right = MESSAGE_CUT_RIGHT;
+		src.m_bottom= MESSAGE_CUT_BOTTOM;
 
 		//背景の位置を設定し描画
-		dst.m_top = WINDOW_SIZE_H * 0.7;
-		dst.m_left = 0.0f;
+		dst.m_top	= WINDOW_SIZE_H * 0.7;
+		dst.m_left	= 0.0f;
 		dst.m_right = WINDOW_SIZE_W;
-		dst.m_bottom = WINDOW_SIZE_H;
+		dst.m_bottom= WINDOW_SIZE_H;
 		Draw::Draw(2, &src, &dst, c, 0.0f);
 
 		if (type == 1) {

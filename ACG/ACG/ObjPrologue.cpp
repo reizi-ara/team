@@ -77,10 +77,10 @@ void CObjPrologue::Draw()
 	Draw::Draw(8, &src, &dst, c, 0.0f);
 
 	//Ø‚èæ‚èˆÊ’u‚Ìİ’è
-	src.m_top = 64.0f * 6;
-	src.m_left = 64.0f * 0;
-	src.m_right = 64.0f * 8;
-	src.m_bottom = 64.0f * 8;
+	src.m_top	= MESSAGE_CUT_TOP;
+	src.m_left	= MESSAGE_CUT_LEFT;
+	src.m_right = MESSAGE_CUT_RIGHT;
+	src.m_bottom= MESSAGE_CUT_BOTTOM;
 
 	//”wŒi‚ÌˆÊ’u‚ğİ’è‚µ•`‰æ
 	dst.m_top = WINDOW_SIZE_H * 0.7;
