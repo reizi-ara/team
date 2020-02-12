@@ -23,6 +23,12 @@
 #define TIME_RUSH_EE 360	//目玉の突撃時間
 
 
+//ロウソク-------------------------
+#define CANDLE_CUT_TOP		64.0f * 4	//ロウソク切り取り上
+#define CANDLE_CUT_LEFT		64.0f * 5	//ロウソク切り取り左
+#define CANDLE_CUT_RIGHT	64.0f * 6	//ロウソク切り取り右
+#define CANDLE_CUT_BOTTOM	64.0f * 5	//ロウソク切り取り下
+
 //タイトルandメニュー関連-----------------------
 #define LAVEL_TOP   0		//ラベルの一番上(クレジットorスタート)
 
@@ -65,8 +71,51 @@
 #define MENU_BACK_CUT_RIGHT		910.0f  //メニュー画像切り取り右
 #define MENU_BACK_CUT_BOTTOM	512.0f	//メニュー画像切り取り下
 
-#define MENU_BACK_PUT_TOP		0,0f	//メニュー背景描画上
+#define MENU_BACK_PUT_TOP		0.0f	//メニュー背景描画上
 #define MENU_BACK_PUT_LEFT		0.0f	//メニュー背景描画左
+
+#define MENU_BAR_W				220		//メニュー矢印横軸
+#define MENU_BAR_H				90		//メニュー矢印縦軸
+
+#define MENU_BAR_MOVE			50		//メニューバー移動幅
+#define MENU_BAR_SIZE			50		//メニューバーサイズ
+
+#define MENU_LAVEL_W			50		//メニューラベル行頭横軸
+#define MENU_LAVEL_CREDIT_H		100		//「クレジット」縦軸
+#define MENU_LAVEL_ESC_H		150		//「タイトルへ」縦軸
+#define MENU_LAVEL_BACK_H		200		//「戻る」縦軸
+#define MENU_LAVEL_SIZE			32		//メニューラベルサイズ
+
+#define MENU_CREDIT_CON_HEAD_W	690		//「クレジット一覧」横軸
+#define MENU_CREDIT_CON_HEAD_H	40		//「クレジット一覧」縦軸
+#define MENU_CREDIT_CON_HEAD_SIZE	32	//「クレジット一覧」サイズ
+
+#define MENU_CREDIT_CON_W		350		//クレジット中身行頭横軸
+#define MENU_CREATOR_H			70		//「制作者」縦軸
+#define MENU_MEMBER1_H			100		//メンバー縦軸
+#define MENU_MEMBER2_H			135		//メンバー縦軸
+#define MENU_MEMBER3_H			170		//メンバー縦軸
+#define MENU_MEMBER4_H			205		//メンバー縦軸
+#define MENU_MEMBER5_H			240		//メンバー縦軸
+
+#define MENU_OFFER_H			300		//「BGM・効果音」縦軸
+#define MENU_URL1_H				330		//url縦軸
+#define MENU_URL2_H				365		//url縦軸
+#define MENU_URL3_H				400		//url縦軸
+#define MENU_URL4_H				435		//url縦軸
+#define MENU_URL5_H				470		//url縦軸
+#define MENU_URL6_H				505		//url縦軸
+#define MENU_URL7_H				540		//url縦軸
+#define MENU_URL8_H				575		//url縦軸
+#define MENU_URL9_H				330		//url縦軸
+
+#define MENU_CON_GENRE_SIZE		20		//クレジット中身ジャンルサイズ
+#define MENU_CREDIT_CON_SIZE	27		//クレジット中身サイズ
+
+#define MENU_CON_TXT_W			400		//メニューテキスト縦軸
+#define MENU_CON_TXT_H			300		//メニューテキスト横軸
+#define MENU_CON_TXT_SIZE		45		//メニューテキストサイズ
+
 
 //遅延処理マクロ--------------------------------
 #define TIME_INI     0		//初期値 0

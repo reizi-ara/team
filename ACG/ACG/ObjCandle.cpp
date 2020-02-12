@@ -220,10 +220,10 @@ void CObjCandle::Draw()
 	if (menu_flag == false)
 	{
 		//切り取り位置の設定
-		src.m_top	= 64.0f * 4;
-		src.m_left	= 64.0f * 5;
-		src.m_right = 64.0f * 6;
-		src.m_bottom= 64.0f * 5;
+		src.m_top = CANDLE_CUT_TOP;
+		src.m_left = CANDLE_CUT_LEFT;
+		src.m_right = CANDLE_CUT_RIGHT;
+		src.m_bottom= CANDLE_CUT_BOTTOM;
 		//x上海紅茶館->o大英紅茶館
 		//ブロック情報を持ってくる
 		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
@@ -247,8 +247,8 @@ void CObjCandle::Draw()
 		src.m_bottom= MENU_BACK_CUT_BOTTOM;
 
 		//背景の位置を設定し描画
-		dst.m_top	= 0.0f;
-		dst.m_left	= 0.0f;
+		dst.m_top	= MENU_BACK_PUT_TOP;
+		dst.m_left	= MENU_BACK_PUT_LEFT;
 		dst.m_right = WINDOW_SIZE_W;
 		dst.m_bottom= WINDOW_SIZE_H;
 		Draw::Draw(4, &src, &dst, c, 0.0f);
@@ -258,46 +258,48 @@ void CObjCandle::Draw()
 		/*src.m_top	= 64.0f * 5;
 		src.m_left	= 64.0f * 5;
 		src.m_right = 64.0f * 5 + 192;
-		src.m_bottom= 64.0f * 5 + 64;*/
+		src.m_bottom= 64.0f * 5 + 64;
 
 		//バーの位置を設定し描画
-		dst.m_top	= 100.0f + lavel_select * 50;
-		dst.m_left	= 250.0f;
-		dst.m_right = 30.0f;
-		dst.m_bottom= 140.0f + lavel_select * 50;
-		//Draw::Draw(2, &src, &dst, c, 0.0f); 
-		Font::StrDraw(L"←", 220, 90 + lavel_select * 50,50,c);
+		dst.m_top	= MENU_BAR_PUT_TOP + lavel_select * 188;
+		dst.m_left	= MENU_BAR_PUT_LEFT;
+		dst.m_right = MENU_BAR_PUT_RIGHT;
+		dst.m_bottom= MENU_BAR_PUT_BOTTOM + lavel_select * 50;
+		Draw::Draw(2, &src, &dst, c, 0.0f); */
+
+		//メニューバー
+		Font::StrDraw(L"←", MENU_BAR_W, MENU_BAR_H + lavel_select * MENU_BAR_MOVE,MENU_BAR_SIZE,c);
 
 
-		Font::StrDraw(L"クレジット", 50, 100, 32, c);
-		Font::StrDraw(L"タイトルへ", 50, 150, 32, c);
-		Font::StrDraw(L"戻る", 50, 200, 32, c);
+		Font::StrDraw(L"クレジット", MENU_LAVEL_W, MENU_LAVEL_CREDIT_H, MENU_LAVEL_SIZE, c);
+		Font::StrDraw(L"タイトルへ", MENU_LAVEL_W, MENU_LAVEL_ESC_H, MENU_LAVEL_SIZE, c);
+		Font::StrDraw(L"戻る",		 MENU_LAVEL_W, MENU_LAVEL_BACK_H, MENU_LAVEL_SIZE, c);
 		//Font::StrDraw(L"", 50, 250, 32, c);
 	
 
 		if (lavel_select == LAVEL_TOP) {
-			Font::StrDraw(L"クレジット一覧", 690, 40, 32, c);
-			Font::StrDraw(L"製作者", 350, 70, 20, c);
-			Font::StrDraw(L"総合ディレクター:永原 大暉", 350, 100, 27, c);
-			Font::StrDraw(L"ゲームプランナー:畠 将仁", 350, 135, 27, c);
-			Font::StrDraw(L"ゲームプログラマー:荒巻 佑真", 350, 170, 27, c);
-			Font::StrDraw(L"ゲームデザイナー:田幡 俊幸", 350, 205, 27, c);
-			Font::StrDraw(L"アシスタント:岡田 悠樹", 350, 240, 27, c);
-			Font::StrDraw(L"BGM・効果音", 350, 300, 20, c);
-			Font::StrDraw(L"効果音ラボ→https://soundeffect-lab.info/", 350, 330, 27, c);
-			Font::StrDraw(L"Wingless Seraph→https://wingless-seraph.net/", 350, 365, 27, c);
-			Font::StrDraw(L"無料効果音→https://taira-komori.jpn.org/index.html", 350, 400, 27, c);
-			Font::StrDraw(L"魔王魂→https://maoudamashii.jokersounds.com/", 350, 435, 27, c);
-			Font::StrDraw(L"効果音辞典→https://sounddictionary.info/", 350, 470, 27, c);
-			Font::StrDraw(L"G-Sound→https://g-miya.net/index.html", 350, 505, 27, c);
-			Font::StrDraw(L"くらげ工匠→http://www.kurage-kosho.info/index.html", 350, 540, 27, c);
-			Font::StrDraw(L"ノスタルジア→http://nostalgiamusic.info/index.html", 350, 575, 27, c);
+			Font::StrDraw(L"クレジット一覧",				MENU_CREDIT_CON_HEAD_W, MENU_CREDIT_CON_HEAD_H, MENU_CREDIT_CON_HEAD_SIZE, c);
+			Font::StrDraw(L"制作者",						MENU_CREDIT_CON_W, MENU_CREATOR_H, MENU_CON_GENRE_SIZE, c);
+			Font::StrDraw(L"総合ディレクター:永原 大暉",	MENU_CREDIT_CON_W, MENU_MEMBER1_H, MENU_CREDIT_CON_SIZE, c);
+			Font::StrDraw(L"ゲームプランナー:畠 将仁",		MENU_CREDIT_CON_W, MENU_MEMBER2_H, MENU_CREDIT_CON_SIZE, c);
+			Font::StrDraw(L"ゲームプログラマー:荒巻 佑真",	MENU_CREDIT_CON_W, MENU_MEMBER3_H, MENU_CREDIT_CON_SIZE, c);
+			Font::StrDraw(L"ゲームデザイナー:田幡 俊幸",	MENU_CREDIT_CON_W, MENU_MEMBER4_H, MENU_CREDIT_CON_SIZE, c);
+			Font::StrDraw(L"アシスタント:岡田 悠樹",		MENU_CREDIT_CON_W, MENU_MEMBER5_H, MENU_CREDIT_CON_SIZE, c);
+			Font::StrDraw(L"BGM・効果音",					MENU_CREDIT_CON_W, MENU_OFFER_H, MENU_CON_GENRE_SIZE, c);
+			Font::StrDraw(L"効果音ラボ→https://soundeffect-lab.info/",				MENU_CREDIT_CON_W, MENU_URL1_H, MENU_CREDIT_CON_SIZE, c);
+			Font::StrDraw(L"Wingless Seraph→https://wingless-seraph.net/",			MENU_CREDIT_CON_W, MENU_URL2_H, MENU_CREDIT_CON_SIZE, c);
+			Font::StrDraw(L"無料効果音→https://taira-komori.jpn.org/index.html",	MENU_CREDIT_CON_W, MENU_URL3_H, MENU_CREDIT_CON_SIZE, c);
+			Font::StrDraw(L"魔王魂→https://maoudamashii.jokersounds.com/",			MENU_CREDIT_CON_W, MENU_URL4_H, MENU_CREDIT_CON_SIZE, c);
+			Font::StrDraw(L"効果音辞典→https://sounddictionary.info/",				MENU_CREDIT_CON_W, MENU_URL5_H, MENU_CREDIT_CON_SIZE, c);
+			Font::StrDraw(L"G-Sound→https://g-miya.net/index.html",				MENU_CREDIT_CON_W, MENU_URL6_H, MENU_CREDIT_CON_SIZE, c);
+			Font::StrDraw(L"くらげ工匠→http://www.kurage-kosho.info/index.html",	MENU_CREDIT_CON_W, MENU_URL7_H, MENU_CREDIT_CON_SIZE, c);
+			Font::StrDraw(L"ノスタルジア→http://nostalgiamusic.info/index.html",	MENU_CREDIT_CON_W, MENU_URL8_H, MENU_CREDIT_CON_SIZE, c);
 		}
 		if (lavel_select == LAVEL_MID_MENU) {
-			Font::StrDraw(L"ゲームを終了してタイトルに戻ります。", 400, 300, 45, c);
+			Font::StrDraw(L"ゲームを終了してタイトルに戻ります。",	MENU_CON_TXT_W, MENU_CON_TXT_H, MENU_CON_TXT_SIZE, c);
 		}
 		if (lavel_select == LAVEL_BOT_MENU) {
-			Font::StrDraw(L"ゲーム画面へ戻ります。", 400, 300, 45, c);
+			Font::StrDraw(L"ゲーム画面へ戻ります。",				MENU_CON_TXT_W, MENU_CON_TXT_H, MENU_CON_TXT_SIZE, c);
 		}
 	}
 
