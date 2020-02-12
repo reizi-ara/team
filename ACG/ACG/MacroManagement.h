@@ -1,6 +1,26 @@
 #pragma once
 
 //シーンメインマクロ郡----------------------------------
+//マップ番号
+#define MAP_NUMBER_1 0
+#define MAP_NUMBER_2 1
+#define MAP_NUMBER_3 2
+#define MAP_NUMBER_4 3
+#define MAP_NUMBER_5 4
+
+//グラフィック読み込み番号
+#define SPLITE_NUMBER_1
+#define SPLITE_NUMBER_2
+#define SPLITE_NUMBER_6
+#define SPLITE_NUMBER_3
+#define SPLITE_NUMBER_4
+#define SPLITE_NUMBER_5
+#define SPLITE_NUMBER_7
+#define SPLITE_NUMBER_8
+#define SPLITE_NUMBER_9
+
+
+//BGM
 #define SCENE_MAIN_BGM_MAINSTAGE	0	//メインBGM
 #define SCENE_MAIN_BGM_BOSS			1	//ボスBGM
 #define SCENE_MAIN_BGM_MENU			2	//メニューBGM
@@ -171,7 +191,14 @@
 #define MESSAGE_CUT_RIGHT		64.0f*8		//メッセージウィンドウ切り取り右
 #define MESSAGE_CUT_BOTTOM		64.0f*8		//メッセージウィンドウ切り取り下
 
+#define MESSAGE_SENTENCE_W		150			//メッセージ行頭横軸
+#define MESSAGE_SENTENCE1_H		550			//メッセージ1行目縦軸
+#define MESSAGE_SENTENCE2_H		575			//メッセージ2行目縦軸
+#define MESSAGE_SENTENCE3_H		600			//メッセージ3行目縦軸
+#define MESSAGE_SENTENCE4_H		625			//メッセージ4行目縦軸
+#define MESSAGE_SENTENCE5_H		650			//メッセージ5行目縦軸
 
+#define MESSAGE_SENTENCE_SIZE	25			//メッセージ文字サイズ
 //_____________________________________________
 
 //接触時当たり判定
