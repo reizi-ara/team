@@ -136,10 +136,10 @@ void CObjCandle::Action()
 			lavel_button2 = true;
 
 
-		if (lavel_select > LAVEL_BOT_M)
+		if (lavel_select > LAVEL_BOT_MENU)
 			lavel_select = LAVEL_TOP;
 		if (lavel_select < LAVEL_TOP)
-			lavel_select = LAVEL_BOT_M;
+			lavel_select = LAVEL_BOT_MENU;
 
 
 		//エンターキーを押してシーン：ゲームメインに移行する
@@ -158,12 +158,12 @@ void CObjCandle::Action()
 						p_menu_close = false;
 						Audio::Start(8);//SE
 					}
-					else if (lavel_select == LAVEL_MID_M) {
+					else if (lavel_select == LAVEL_MID_MENU) {
 						p_menu_close = false;
 						Audio::Start(8);//SE
 						Scene::SetScene(new CSceneGameStart());
 					}
-					else if (lavel_select == LAVEL_BOT_M) {
+					else if (lavel_select == LAVEL_BOT_MENU) {
 						p_menu_close = false;
 						time = 0;
 						Audio::Start(8);//SE
@@ -220,19 +220,19 @@ void CObjCandle::Draw()
 	if (menu_flag == false)
 	{
 		//切り取り位置の設定
-		src.m_top = 64.0f * 4;
-		src.m_left = 64.0f * 5;
+		src.m_top	= 64.0f * 4;
+		src.m_left	= 64.0f * 5;
 		src.m_right = 64.0f * 6;
-		src.m_bottom = 64.0f * 5;
+		src.m_bottom= 64.0f * 5;
 		//x上海紅茶館->o大英紅茶館
 		//ブロック情報を持ってくる
 		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 		//表示位置の設定
-		dst.m_top = -16.0f + m_py - size;
-		dst.m_left = 0.0f - 16.0f + m_px + block->GetScroll() - size;
+		dst.m_top	= -16.0f + m_py - size;
+		dst.m_left	=  0.0f - 16.0f + m_px + block->GetScroll() - size;
 		dst.m_right = 64.0f + 16.0f + m_px + block->GetScroll() + size;
-		dst.m_bottom = 64.0f + m_py + size;
+		dst.m_bottom= 64.0f + m_py + size;
 
 		//描画
 		Draw::Draw(2, &src, &dst, c, 0.0f);
@@ -241,30 +241,30 @@ void CObjCandle::Draw()
 	if (menu_flag)
 	{
 		//切り取り位置の設定
-		src.m_top = 0.0f;
-		src.m_left = 0.0f;
-		src.m_right = 910.0f;
-		src.m_bottom = 512.0f;
+		src.m_top	= MENU_BACK_CUT_TOP;
+		src.m_left	= MENU_BACK_CUT_LEFT;
+		src.m_right = MENU_BACK_CUT_RIGHT;
+		src.m_bottom= MENU_BACK_CUT_BOTTOM;
 
 		//背景の位置を設定し描画
-		dst.m_top = 0.0f;
-		dst.m_left = 0.0f;
+		dst.m_top	= 0.0f;
+		dst.m_left	= 0.0f;
 		dst.m_right = WINDOW_SIZE_W;
-		dst.m_bottom = WINDOW_SIZE_H;
+		dst.m_bottom= WINDOW_SIZE_H;
 		Draw::Draw(4, &src, &dst, c, 0.0f);
 
 		//強調表示用バー
 		//切り取り位置の設定
-		src.m_top = 64.0f * 5;
-		src.m_left = 64.0f * 5;
+		/*src.m_top	= 64.0f * 5;
+		src.m_left	= 64.0f * 5;
 		src.m_right = 64.0f * 5 + 192;
-		src.m_bottom = 64.0f * 5 + 64;
+		src.m_bottom= 64.0f * 5 + 64;*/
 
 		//バーの位置を設定し描画
-		dst.m_top = 100.0f + lavel_select * 50;
-		dst.m_left = 250.0f;
+		dst.m_top	= 100.0f + lavel_select * 50;
+		dst.m_left	= 250.0f;
 		dst.m_right = 30.0f;
-		dst.m_bottom = 140.0f + lavel_select * 50;
+		dst.m_bottom= 140.0f + lavel_select * 50;
 		//Draw::Draw(2, &src, &dst, c, 0.0f); 
 		Font::StrDraw(L"←", 220, 90 + lavel_select * 50,50,c);
 
@@ -293,10 +293,10 @@ void CObjCandle::Draw()
 			Font::StrDraw(L"くらげ工匠→http://www.kurage-kosho.info/index.html", 350, 540, 27, c);
 			Font::StrDraw(L"ノスタルジア→http://nostalgiamusic.info/index.html", 350, 575, 27, c);
 		}
-		if (lavel_select == LAVEL_MID_M) {
+		if (lavel_select == LAVEL_MID_MENU) {
 			Font::StrDraw(L"ゲームを終了してタイトルに戻ります。", 400, 300, 45, c);
 		}
-		if (lavel_select == LAVEL_BOT_M) {
+		if (lavel_select == LAVEL_BOT_MENU) {
 			Font::StrDraw(L"ゲーム画面へ戻ります。", 400, 300, 45, c);
 		}
 	}
