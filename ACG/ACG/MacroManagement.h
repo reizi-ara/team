@@ -12,7 +12,7 @@
 #define SCENE_MAIN_SE_SELECT		9	//セレクトSE
 #define SCENE_MAIN_SE_BOOK_OPEN		10	//本棚開きSE
 #define SCENE_MAIN_SE_BOOK_CLOSE	11	//本棚閉じSE
-#define SCENE_MAIN_SE_HAND			12	//手SE
+#define SCENE_MAIN_SE_HAND			12	//手SEとダメージ
 #define SCENE_MAIN_SE_ATTACK		13	//攻撃SE
 
 

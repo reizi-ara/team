@@ -86,13 +86,13 @@ void CSceneMain::InitScene()
 	//SE群
 	Audio::LoadAudio(SCENE_MAIN_SE_WALK, L"s_walk.wav", EFFECT);//歩きと走りSE
 	Audio::LoadAudio(SCENE_MAIN_SE_DOOR, L"s_door.wav", EFFECT);//ドアSE
-	Audio::LoadAudio(SCENE_MAIN_SE_DAMEGE, L"s_damage.wav", EFFECT);//敵ダメージ時SE
+	Audio::LoadAudio(SCENE_MAIN_SE_DAMEGE, L"s_attack.wav", EFFECT);//攻撃SE
 	Audio::LoadAudio(SCENE_MAIN_SE_DECIDE, L"s_ok.wav", EFFECT);//決定SE
 	Audio::LoadAudio(SCENE_MAIN_SE_SELECT, L"s_select.wav", EFFECT);//セレクトSE
 	Audio::LoadAudio(SCENE_MAIN_SE_BOOK_OPEN, L"s_book_open.wav", EFFECT);//本開け
 	Audio::LoadAudio(SCENE_MAIN_SE_BOOK_CLOSE, L"s_book_close.wav", EFFECT);//本閉じ
-	Audio::LoadAudio(SCENE_MAIN_SE_HAND, L"s_hand.wav", EFFECT);//手のSEとダメージ
-	Audio::LoadAudio(SCENE_MAIN_SE_ATTACK, L"s_attack.wav", EFFECT);//攻撃のSE
+	Audio::LoadAudio(SCENE_MAIN_SE_HAND, L"s_chickens.wav", EFFECT);//手のSEとダメージ
+	Audio::LoadAudio(SCENE_MAIN_SE_ATTACK, L"s_damage.wav", EFFECT);//攻撃ヒット時SE
 
 
 	//ボリューム
