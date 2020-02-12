@@ -124,8 +124,8 @@ void CObjGameStart::Draw()
 	//スタートボタン
 	//切り取り位置の設定
 	src.m_top	= START_BUTTON_CUT_TOP;
-	src.m_left	= START_BUTTON_CUT_LEFT  * START_BUTTON_LEFT_EXP;
-	src.m_right = START_BUTTON_CUT_RIGHT * START_BUTTON_RIGHT_EXP;
+	src.m_left	= START_BUTTON_CUT_LEFT;
+	src.m_right = START_BUTTON_CUT_RIGHT;
 	src.m_bottom= START_BUTTON_CUT_BOTTOM;
 
 	//背景の位置を設定し描画
@@ -162,7 +162,7 @@ void CObjGameStart::Draw()
 	//切り取り位置の設定
 	src.m_top	= END_BUTTON_CUT_TOP;
 	src.m_left	= END_BUTTON_CUT_LEFT;
-	src.m_right = END_BUTTON_CUT_RIGHT * END_BUTTOM_RIGHT_EXP;
+	src.m_right = END_BUTTON_CUT_RIGHT;
 	src.m_bottom= END_BUTTON_CUT_BOTTOM;
 
 	//背景の位置を設定し描画

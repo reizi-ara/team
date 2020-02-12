@@ -220,8 +220,8 @@ void CObjCandle::Draw()
 	if (menu_flag == false)
 	{
 		//Ø‚èŽæ‚èˆÊ’u‚ÌÝ’è
-		src.m_top = CANDLE_CUT_TOP;
-		src.m_left = CANDLE_CUT_LEFT;
+		src.m_top	= CANDLE_CUT_TOP;
+		src.m_left	= CANDLE_CUT_LEFT;
 		src.m_right = CANDLE_CUT_RIGHT;
 		src.m_bottom= CANDLE_CUT_BOTTOM;
 		//xãŠCg’ƒŠÙ->o‘å‰pg’ƒŠÙ
@@ -229,10 +229,10 @@ void CObjCandle::Draw()
 		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 		//•\Ž¦ˆÊ’u‚ÌÝ’è
-		dst.m_top	= -16.0f + m_py - size;
-		dst.m_left	=  0.0f - 16.0f + m_px + block->GetScroll() - size;
-		dst.m_right = 64.0f + 16.0f + m_px + block->GetScroll() + size;
-		dst.m_bottom= 64.0f + m_py + size;
+		dst.m_top	= CANDLE_PUT_TOP	+ m_py - size;
+		dst.m_left	= CANDLE_PUT_LEFT	+ m_px + block->GetScroll() - size;
+		dst.m_right = CANDLE_PUT_RIGHT	+ m_px + block->GetScroll() + size;
+		dst.m_bottom= CANDLE_PUT_BOTTOM + m_py + size;
 
 		//•`‰æ
 		Draw::Draw(2, &src, &dst, c, 0.0f);

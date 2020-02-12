@@ -13,6 +13,13 @@
 #define CANDLE_CUT_RIGHT	64.0f * 6	//ロウソク切り取り右
 #define CANDLE_CUT_BOTTOM	64.0f * 5	//ロウソク切り取り下
 
+#define CANDLE_PUT_TOP		-16.0f			//ロウソク描画上
+#define CANDLE_PUT_LEFT		 0.0f - 16.0f	//ロウソク描画左
+#define CANDLE_PUT_RIGHT	64.0f + 16.0f	//ロウソク描画右
+#define CANDLE_PUT_BOTTOM	64.0f			//ロウソク描画下
+
+
+
 //タイトルandメニュー関連-----------------------
 #define LAVEL_TOP   0		//ラベルの一番上(クレジットorスタート)
 
@@ -27,19 +34,14 @@
 #define START_BACK_CUT_BOTTOM	512.0f	//タイトル画像切り取り下
 
 #define START_BUTTON_CUT_TOP	0.0f	//ボタン切り取り上
-#define START_BUTTON_CUT_LEFT	64.0f	//ボタン切り取り左
-#define START_BUTTON_CUT_RIGHT	64.0f	//ボタン切り取り右
+#define START_BUTTON_CUT_LEFT	64.0f*4	//ボタン切り取り左
+#define START_BUTTON_CUT_RIGHT	64.0f*8	//ボタン切り取り右
 #define START_BUTTON_CUT_BOTTOM	64.0f	//ボタン切り取り下
 
 #define END_BUTTON_CUT_TOP		0.0f	//ボタン切り取り上
 #define END_BUTTON_CUT_LEFT		0.0f	//ボタン切り取り左
-#define END_BUTTON_CUT_RIGHT	64.0f	//ボタン切り取り右
+#define END_BUTTON_CUT_RIGHT	64.0f*4	//ボタン切り取り右
 #define END_BUTTON_CUT_BOTTOM	64.0f	//ボタン切り取り下
-
-#define START_BUTTON_LEFT_EXP	4		//start左拡大
-#define START_BUTTON_RIGHT_EXP	8		//start右拡大
-
-#define END_BUTTOM_RIGHT_EXP	4		//end右拡大
 
 #define START_POS_PUT_TOP		 80		//ボタン描画上調整
 #define START_POS_PUT_LEFT		150		//ボタン描画左調整
@@ -138,6 +140,12 @@
 #define OBJ64OFSET_CENTER 32.0f//６４サイズオブジェクト中心
 
 
+
+//メッセージウィンドウ-----------------------
+#define MESSAGE_CUT_TOP			64.0f*6		//メッセージウィンドウ切り取り上
+#define MESSAGE_CUT_LEFT		64.0f*0		//メッセージウィンドウ切り取り左
+#define MESSAGE_CUT_RIGHT		64.0f*8		//メッセージウィンドウ切り取り右
+#define MESSAGE_CUT_BOTTOM		64.0f*8		//メッセージウィンドウ切り取り下
 
 
 //_____________________________________________
