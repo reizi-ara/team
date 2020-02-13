@@ -107,7 +107,7 @@ void CObjEndingDoor::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//閉じる
-	if (DoorSystem == 1)
+	if (DoorSystem == END_DOOR_SISTEM_CLOSE)
 	{
 		//切り取り位置の設定
 		src.m_top = END_DOOR_CLOSE_CUT_TOP;
@@ -125,10 +125,10 @@ void CObjEndingDoor::Draw()
 		dst.m_bottom = END_DOOR_PUT_BOTTOM + m_py + size;
 
 		//描画
-		Draw::Draw(8, &src, &dst, c, 0.0f);
+		Draw::Draw(SPLITE_NUMBER_8, &src, &dst, c, 0.0f);
 	}
 	//開く
-	if (DoorSystem == 2)
+	if (DoorSystem == END_DOOR_SISTEM_OPEN)
 	{
 		//切り取り位置の設定
 		src.m_top = END_DOOR_OPEN_CUT_TOP;
@@ -140,13 +140,13 @@ void CObjEndingDoor::Draw()
 		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 		//表示位置の設定
-		dst.m_top = -END_DOOR_PUT_TOP + m_py - size;
-		dst.m_left = -END_DOOR_PUT_LEFT + m_px + block->GetScroll() - size;
+		dst.m_top = END_DOOR_PUT_TOP + m_py - size;
+		dst.m_left = END_DOOR_PUT_LEFT + m_px + block->GetScroll() - size;
 		dst.m_right = END_DOOR_PUT_RIGHT + m_px + block->GetScroll() + size;
 		dst.m_bottom = END_DOOR_PUT_BOTTOM + m_py + size;
 
 		//描画
-		Draw::Draw(8, &src, &dst, c, 0.0f);
+		Draw::Draw(SPLITE_NUMBER_8, &src, &dst, c, 0.0f);
 	}
 
 

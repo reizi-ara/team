@@ -50,7 +50,6 @@ void CSceneMain::InitScene()
 	Font::SetStrTex(L"0123456789分秒");
 
 	//グラフィック読み込み
-
 	Draw::LoadImageW(L"splite0.png", SPLITE_NUMBER_0, TEX_SIZE_512);
 	Draw::LoadImageW(L"splite1.png", SPLITE_NUMBER_1, TEX_SIZE_512);
 	Draw::LoadImageW(L"splite2.png", SPLITE_NUMBER_2, TEX_SIZE_512);
@@ -100,86 +99,58 @@ void CSceneMain::InitScene()
 	v = Audio::VolumeMaster((1.0 - v));
 
 	//音楽スタート
-	Audio::Start(0);
+	Audio::Start(SCENE_MAIN_BGM_MAINSTAGE);
 }
 
 //実行中メソッド
 void CSceneMain::Scene()
 {
-	if (m_chg > 6)
+
+	//マップの数を超えると強制的に最後のマップに戻す
+	if (m_chg > MAP_NULL_NUMBER)
 	{
-		m_chg = 5;
+		m_chg = MAP_NUMBER_5;
 	}
 
 	//マップ読み込み
-	if (m_chg == 0 && OneRead == true)
+	if (m_chg == MAP_NUMBER_1 && OneRead == true)
 	{
 		MapRead(m_chg, map2, p);
 		OneRead = false;
 
 	}
-	else if (m_chg == 1 && OneRead == true)
+	else if (m_chg == MAP_NUMBER_2 && OneRead == true)
 	{
 		MapRead(m_chg, map2, p);
 		OneRead = false;
 
 	}
-	else if (m_chg == 2 && OneRead == true)
+	else if (m_chg == MAP_NUMBER_3 && OneRead == true)
 	{
 		MapRead(m_chg, map2, p);
 		OneRead = false;
 	}
-	if (m_chg == 3 && OneRead == true)
+	if (m_chg == MAP_NUMBER_4 && OneRead == true)
 	{
 		MapRead(m_chg, map2, p);
 		OneRead = false;
 
 	}
-	else if (m_chg == 4 && OneRead == true)
+	else if (m_chg == MAP_NUMBER_5 && OneRead == true)
 	{
 		MapRead(m_chg, map2, p);
 		OneRead = false;
 
 	}
-	/*else if (m_chg == 5 && OneRead == true)
-	{
-		MapRead(m_chg, map2, p);
-		OneRead = false;
-
-	}
-	else if (m_chg == 6 && OneRead == true)
-	{
-		MapRead(m_chg, map2, p);
-		OneRead = false;
-
-	}
-	else if (m_chg == 7 && OneRead == true)
-	{
-		MapRead(m_chg, map2, p);
-		OneRead = false;
-
-	}
-	else if (m_chg == 8 && OneRead == true)
-	{
-		MapRead(m_chg, map2, p);
-		OneRead = false;
-
-	}
-	else if (m_chg == 9 && OneRead == true)
-	{
-		MapRead(m_chg, map2, p);
-		OneRead = false;
-
-	}*/
 
 }
 
 void CSceneMain::MapRead(int m_chg, int map[MAP_Y][MAP_X], unique_ptr<wchar_t>* p)
 {
-	int count = 1;
-	for (int i = 0; i < MAP_Y; i++)
+	int count = SCENE_MAIN_MAP_READ_COUNT;
+	for (int i = SCENE_MAIN_MAP_READ_NEW_Y; i < MAP_Y; i++)
 	{
-		for (int j = 0; j < MAP_X; j++)
+		for (int j = SCENE_MAIN_MAP_READ_NEW_X; j < MAP_X; j++)
 		{
 			int w = 0;
 			swscanf_s(&p[m_chg].get()[count], L"%d", &w);
