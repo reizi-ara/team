@@ -42,8 +42,24 @@
 #define SCENE_MAIN_MAP_READ_INITIAL_X 0	//X初期値
 
 //敵マクロ-------------------------------------
+#define ENEMY_PJ_TYPE		1	//パンジャン
+#define ENEMY_EYE_TYPE		2	//目タイプ
+#define ENEMY_DOG_TYPE		3	//犬タイプ
+#define ENEMY_GREEN_TYPE	4	//サボテンタイプ
+#define ENEMY_HEAL_TYPE		5	//回復タイプ
+
+
 #define TIME_SLOW_EE 120	//目玉の待機時間
 #define TIME_RUSH_EE 360	//目玉の突撃時間
+
+
+//Boss_____________________________________________
+
+#define BOSSMUTEKI 10;//被攻撃時無敵時間
+#define PASSIVE_DAMAGE 10;//共通被ダメージ
+#define SARCH 400//感知範囲、起動
+
+#define OBJ64OFSET_CENTER 32.0f//６４サイズオブジェクト中心
 
 
 //ロウソク-------------------------
@@ -178,15 +194,11 @@
 #define END_DOOR_PUT_RIGHT 64.0f
 #define END_DOOR_PUT_BOTTOM 64.0f
 
-//Boss_____________________________________________
-
-#define BOSSMUTEKI 10;//被攻撃時無敵時間
-#define PASSIVE_DAMAGE 10;//共通被ダメージ
-#define SARCH 400//感知範囲、起動
-
-#define OBJ64OFSET_CENTER 32.0f//６４サイズオブジェクト中心
 
 
+//ゲームクリア-------------------------------
+#define GAME_CLEAR_CUT_RIGHT	128*7		//ゲームクリア背景切り取り右
+#define GAME_CLEAR_CUT_BOTTOM	1024/2		//ゲームクリア背景切り取り下
 
 //メッセージウィンドウ-----------------------
 #define MESSAGE_CUT_TOP			64.0f*6		//メッセージウィンドウ切り取り上
