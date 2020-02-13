@@ -148,9 +148,9 @@ void CSceneMain::Scene()
 void CSceneMain::MapRead(int m_chg, int map[MAP_Y][MAP_X], unique_ptr<wchar_t>* p)
 {
 	int count = SCENE_MAIN_MAP_READ_COUNT;
-	for (int i = SCENE_MAIN_MAP_READ_NEW_Y; i < MAP_Y; i++)
+	for (int i = SCENE_MAIN_MAP_READ_INITIAL_Y; i < MAP_Y; i++)
 	{
-		for (int j = SCENE_MAIN_MAP_READ_NEW_X; j < MAP_X; j++)
+		for (int j = SCENE_MAIN_MAP_READ_INITIAL_X; j < MAP_X; j++)
 		{
 			int w = 0;
 			swscanf_s(&p[m_chg].get()[count], L"%d", &w);
