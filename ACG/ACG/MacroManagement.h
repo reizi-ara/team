@@ -8,6 +8,8 @@
 #define MAP_NUMBER_4 3
 #define MAP_NUMBER_5 4
 
+#define MAP_NULL_NUMBER 5	//マップが無くなる数字
+
 //グラフィック読み込み番号
 #define SPLITE_NUMBER_0 0
 #define SPLITE_NUMBER_1 1
@@ -18,7 +20,6 @@
 #define SPLITE_NUMBER_6 6
 #define SPLITE_NUMBER_7 7
 #define SPLITE_NUMBER_8 8
-
 
 //BGM
 #define SCENE_MAIN_BGM_MAINSTAGE	0	//メインBGM
@@ -35,7 +36,10 @@
 #define SCENE_MAIN_SE_HAND			12	//手SEとダメージ
 #define SCENE_MAIN_SE_ATTACK		13	//攻撃SE
 
-
+//MapRead関数で使うマクロ
+#define SCENE_MAIN_MAP_READ_COUNT 1
+#define SCENE_MAIN_MAP_READ_NEW_Y 0
+#define SCENE_MAIN_MAP_READ_NEW_X 0
 
 
 //敵マクロ-------------------------------------
