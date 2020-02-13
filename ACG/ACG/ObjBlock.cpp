@@ -44,14 +44,14 @@ void CObjBlock::Action()
 
 	}
 
-	if (m_chg >= 5)
+	if (m_chg > MAP_NULL_NUMBER)
 	{
-		m_chg = 5;
+		m_chg = MAP_NUMBER_5;
 	}
 	
 	int count = 0;//1000回数えるよう
 
-	if (m_chg == 0 && One_chg == true)
+	if (m_chg == MAP_NUMBER_1 && One_chg == true)
 	{
 		Transfer(map, map2);
 		//マップデータをコピー
@@ -59,16 +59,7 @@ void CObjBlock::Action()
 		One_chg = false;
 
 	}
-	else if (m_chg == 1&&One_chg==true)
-	{
-		Transfer(map, map2);
-		//マップデータをコピー
-		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
-		
-		One_chg = false;
-
-	}
-	else if (m_chg == 2 && One_chg == true)
+	else if (m_chg == MAP_NUMBER_2 &&One_chg==true)
 	{
 		Transfer(map, map2);
 		//マップデータをコピー
@@ -76,9 +67,18 @@ void CObjBlock::Action()
 		
 		One_chg = false;
 
+	}
+	else if (m_chg == MAP_NUMBER_3 && One_chg == true)
+	{
+		Transfer(map, map2);
+		//マップデータをコピー
+		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
+		
+		One_chg = false;
+
 
 	}
-	else if (m_chg == 3 && One_chg == true)
+	else if (m_chg == MAP_NUMBER_4 && One_chg == true)
 	{
 
 		Transfer(map, map2);
@@ -89,37 +89,13 @@ void CObjBlock::Action()
 
 
 	}
-	else if (m_chg == 4 && One_chg == true)	{
+	else if (m_chg == MAP_NUMBER_5 && One_chg == true)	{
 		Transfer(map, map2);
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int)*(MAP_Y * MAP_X));
 		One_chg = false;
 	}
 	/*else if (m_chg == 5 && One_chg == true) {
-		Transfer(map, map2);
-		//マップデータをコピー
-		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
-		One_chg = false;
-	}
-	else if (m_chg == 6 && One_chg == true) {
-		Transfer(map, map2);
-		//マップデータをコピー
-		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
-		One_chg = false;
-	}
-	else if (m_chg == 7 && One_chg == true) {
-		Transfer(map, map2);
-		//マップデータをコピー
-		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
-		One_chg = false;
-	}
-	else if (m_chg == 8 && One_chg == true) {
-		Transfer(map, map2);
-		//マップデータをコピー
-		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
-		One_chg = false;
-	}
-	else if (m_chg == 9 && One_chg == true) {
 		Transfer(map, map2);
 		//マップデータをコピー
 		memcpy(m_map, map, sizeof(int) * (MAP_Y * MAP_X));
@@ -132,120 +108,120 @@ void CObjBlock::Action()
 	float hy = hero->GetY();
 
 	//後方スクロールライン
-	if (hx < WINDOW_SIZE_W /7*1.6f)
+	if (hx < WINDOW_SIZE_W / BLOOK_BACK_SCROLL_LINE)
 	{
-		hero->SetX(WINDOW_SIZE_W / 7 * 1.6f);				//主人公はラインを超えないようにする
+		hero->SetX(WINDOW_SIZE_W / BLOOK_BACK_SCROLL_LINE);				//主人公はラインを超えないようにする
 		m_scroll -= hero->GetVX();  //主人公が本来動くべき分の値をm_scrollに加える
 	}
 
 	//前方スクロール
-	if (hx > WINDOW_SIZE_W / 7 * 4.0f)
+	if (hx > WINDOW_SIZE_W / BLOOK_PREVIOUS_SCROLL_LINE)
 	{
-		hero->SetX(WINDOW_SIZE_W / 7 * 4.0f);//主人公はラインを超えないようにする
+		hero->SetX(WINDOW_SIZE_W / BLOOK_PREVIOUS_SCROLL_LINE);//主人公はラインを超えないようにする
 		m_scroll -= hero->GetVX();//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
 	
 	//敵出現ラインの列を検索
-	for (int ex = 0; ex < MAP_X; ex++) {
-		for (int i = 0; i < MAP_Y; i++)
+	for (int ex = SCENE_MAIN_MAP_READ_INITIAL_X; ex < MAP_X; ex++) {
+		for (int i = SCENE_MAIN_MAP_READ_INITIAL_Y; i < MAP_Y; i++)
 		{
-			if (m_map[i][ex] == 0) {
+			if (m_map[i][ex] == BLOOK_NULL_NUMBER) {
 				;
 			}
-			else if (m_map[i][ex] == 20) {//敵1(PJ-xyhat
-				CObjEnemy* obj20 = new CObjEnemy(ex * 64.0f, i * 64.0f, 30, 20, 1);
+			else if (m_map[i][ex] == BLOOK_ENEMY_PJ_NUMBER) {//敵1(PJ-xyhat
+				CObjEnemy* obj20 = new CObjEnemy(ex * 64.0f, i * 64.0f, 30, 20, ENEMY_PJ_TYPE);
 				Objs::InsertObj(obj20, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 21) {//敵2目
-				CObjEnemy* obj21 = new CObjEnemy(ex * 64.0f, i * 64.0f, 30, 20, 2);
+			else if (m_map[i][ex] == BLOOK_ENEMY_EYE_NUMBER) {//敵2目
+				CObjEnemy* obj21 = new CObjEnemy(ex * 64.0f, i * 64.0f, 30, 20, ENEMY_EYE_TYPE);
 				Objs::InsertObj(obj21, OBJ_ENEMY, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 22) {//敵3(inu
-				CObjEnemy* obj22 = new CObjEnemy(ex * 64.0f, i * 64.0f, 50, 45, 3);
+			else if (m_map[i][ex] == BLOOK_ENEMY_DOC_NUMBER) {//敵3(inu
+				CObjEnemy* obj22 = new CObjEnemy(ex * 64.0f, i * 64.0f, 50, 45, ENEMY_DOG_TYPE);
 				Objs::InsertObj(obj22, OBJ_ENEMY, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 23) {//緑の
-				CObjEnemy* obj23 = new CObjEnemy(ex * 64.0f, i * 64.0f, 60, 35, 4);
+			else if (m_map[i][ex] == BLOOK_ENEMY_CACTUS_NUMBER) {//緑の
+				CObjEnemy* obj23 = new CObjEnemy(ex * 64.0f, i * 64.0f, 60, 35, ENEMY_GREEN_TYPE);
 				Objs::InsertObj(obj23, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 25) {//item:hp*0.5
-				CObjEnemy* obj25 = new CObjEnemy(ex * 64.0f, i * 64.0f, 60, 10, 5);
+			else if (m_map[i][ex] == BLOOK_ITEM_HEAL_NUMBER) {//item:hp*0.5
+				CObjEnemy* obj25 = new CObjEnemy(ex * 64.0f, i * 64.0f, 60, 10, ENEMY_HEAL_TYPE);
 				Objs::InsertObj(obj25, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 26) {//item
-				CObjEnemy* obj26 = new CObjEnemy(ex * 64.0f, i * 64.0f, 200, 10, 5);
+			else if (m_map[i][ex] == BLOOK_ITEM_BIGHEAL_NUMBER) {//item
+				CObjEnemy* obj26 = new CObjEnemy(ex * 64.0f, i * 64.0f, 200, 10, ENEMY_HEAL_TYPE);
 				Objs::InsertObj(obj26, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 27) {//boss
+			else if (m_map[i][ex] == BLOOK_ENEMY_BOSS_NUMBER) {//boss
 				CObjBoss* obj27 = new CObjBoss(ex * 64.0f, i * 64.0f, 300, 50);
 				Objs::InsertObj(obj27, OBJ_ENEMY, 11);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 30) {//触腕
+			else if (m_map[i][ex] == BLOCK_TRAP_HAND_NUMBER) {//触腕
 				CObjhand* obj30 = new CObjhand(ex * 64.0f, i * 64.0f, 0, 7);
 				Objs::InsertObj(obj30, OBJ_HAND, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 33) {//蔦3
+			else if (m_map[i][ex] == BLOCK_TRAP_THORN3_NUMBER) {//蔦3
 				CObjThorn* obj33 = new CObjThorn(ex * 64.0f, i * 64.0f, 0.0f, 0.1f, 3);
 				Objs::InsertObj(obj33, OBJ_THORN, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 37) {//蔦7
+			else if (m_map[i][ex] == BLOCK_TRAP_THORN7_NUMBER) {//蔦7
 				CObjThorn* obj37 = new CObjThorn(ex * 64.0f, i * 64.0f, 0.0f, 0.1f, 7);
 				Objs::InsertObj(obj37, OBJ_THORN, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 39) {//蝋燭
+			else if (m_map[i][ex] == BLOCK_OBJ_CANDLE_NUMBER) {//蝋燭
 				CObjCandle* obj39 = new CObjCandle(ex * 64.0f, i * 64.0f);
 				Objs::InsertObj(obj39, OBJ_CANDLE, 99);
 				m_map[i][ex] = 0;
 			}
 
-			else if (m_map[i][ex] == 40) {//次マップ移動扉
+			else if (m_map[i][ex] == BLOCK_OBJ_NEXT_DOOR_NUMBER) {//次マップ移動扉
 				CObjMapChanger* obj40 = new CObjMapChanger(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obj40, OBJ_MAPCHANGER, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 41) {//次マップ移動扉
+			else if (m_map[i][ex] == BLOCK_OBJ_BACK_DOOR_NUMBER) {//次マップ移動扉
 				CObjMapBacker* obj41 = new CObjMapBacker(ex * 64.0f, i * 64.0f, 0);
 				Objs::InsertObj(obj41, OBJ_MAPBACKER, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 42) {//エンディング扉
+			else if (m_map[i][ex] == BLOCK_OBJ_END_DOOR_NUMBER) {//エンディング扉
 				CObjEndingDoor* obj42 = new CObjEndingDoor(ex * 64.0f, i * 64.0f);
 				Objs::InsertObj(obj42, OBJ_ENDING_DOOR, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 50) {//本棚1
-				CObjMessage* obj50 = new CObjMessage(ex * 64.0f, i * 64.0f, 1);
+			else if (m_map[i][ex] == BLOCK_OBJ_BOOK1_NUMBER) {//本棚1
+				CObjMessage* obj50 = new CObjMessage(ex * 64.0f, i * 64.0f, BLOCK_BOOK_TYPE1);
 				Objs::InsertObj(obj50, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 51) {//本棚2				
-				CObjMessage* obj51 = new CObjMessage(ex * 64.0f, i * 64.0f, 2);
+			else if (m_map[i][ex] == BLOCK_OBJ_BOOK2_NUMBER) {//本棚2				
+				CObjMessage* obj51 = new CObjMessage(ex * 64.0f, i * 64.0f, BLOCK_BOOK_TYPE2);
 				Objs::InsertObj(obj51, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 52) {//本棚3
-				CObjMessage* obj52 = new CObjMessage(ex * 64.0f, i * 64.0f, 3);
+			else if (m_map[i][ex] == BLOCK_OBJ_BOOK3_NUMBER) {//本棚3
+				CObjMessage* obj52 = new CObjMessage(ex * 64.0f, i * 64.0f, BLOCK_BOOK_TYPE3);
 				Objs::InsertObj(obj52, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 53) {//本棚4
-				CObjMessage* obj53 = new CObjMessage(ex * 64.0f, i * 64.0f, 4);
+			else if (m_map[i][ex] == BLOCK_OBJ_BOOK4_NUMBER) {//本棚4
+				CObjMessage* obj53 = new CObjMessage(ex * 64.0f, i * 64.0f, BLOCK_BOOK_TYPE4);
 				Objs::InsertObj(obj53, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
-			else if (m_map[i][ex] == 54) {//本棚5
-				CObjMessage* obj54 = new CObjMessage(ex * 64.0f, i * 64.0f, 5);
+			else if (m_map[i][ex] == BLOCK_OBJ_BOOK5_NUMBER) {//本棚5
+				CObjMessage* obj54 = new CObjMessage(ex * 64.0f, i * 64.0f, BLOCK_BOOK_TYPE5);
 				Objs::InsertObj(obj54, OBJ_MESSAGE, 10);
 				m_map[i][ex] = 0;
 			}
@@ -401,9 +377,9 @@ void CObjBlock::Draw()
 	dst.m_bottom = WINDOW_SIZE_H;
 	Draw::Draw(5, &src, &dst, c, 0.0f);
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < MAP_Y; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		for (int j = 0; j < MAP_X; j++)
 		{
 			if (m_map[i][j] > 0)
 			{

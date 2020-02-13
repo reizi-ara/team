@@ -41,6 +41,49 @@
 #define SCENE_MAIN_MAP_READ_INITIAL_Y 0	//Y初期値
 #define SCENE_MAIN_MAP_READ_INITIAL_X 0	//X初期値
 
+//ブロックマクロ群-----------------------------------------
+#define BLOOK_BACK_SCROLL_LINE		7*1.6f		//後方スクロールライン 
+#define BLOOK_PREVIOUS_SCROLL_LINE	7*4.0f		//前方スクロールライン 
+
+//空白
+#define BLOOK_NULL_NUMBER 0
+
+//エネミー
+#define BLOOK_ENEMY_PJ_NUMBER		20			//パンジャンドラム
+#define BLOOK_ENEMY_EYE_NUMBER		21			//目
+#define BLOOK_ENEMY_DOC_NUMBER		22			//犬
+#define BLOOK_ENEMY_CACTUS_NUMBER	23			//サボテン
+
+//アイテム
+#define BLOOK_ITEM_HEAL_NUMBER		25			//回復
+#define BLOOK_ITEM_BIGHEAL_NUMBER	26			//大回復
+
+//ボス
+#define BLOOK_ENEMY_BOSS_NUMBER		27			//ボス
+
+//トラップ
+#define BLOCK_TRAP_HAND_NUMBER		30			//手
+#define BLOCK_TRAP_THORN3_NUMBER	31			//ツタ3
+#define BLOCK_TRAP_THORN7_NUMBER	32			//ツタ7
+
+//置物、その他
+#define BLOCK_OBJ_CANDLE_NUMBER		39			//キャンドル
+#define BLOCK_OBJ_NEXT_DOOR_NUMBER	40			//ドア進み
+#define BLOCK_OBJ_BACK_DOOR_NUMBER	41			//ドア戻り
+#define BLOCK_OBJ_END_DOOR_NUMBER	42			//ドアEND
+#define BLOCK_OBJ_BOOK1_NUMBER		50			//本棚1
+#define BLOCK_OBJ_BOOK2_NUMBER		51			//本棚2
+#define BLOCK_OBJ_BOOK3_NUMBER		52			//本棚3
+#define BLOCK_OBJ_BOOK4_NUMBER		53			//本棚4
+#define BLOCK_OBJ_BOOK5_NUMBER		54			//本棚5
+
+//本棚タイプ
+#define BLOCK_BOOK_TYPE1 1
+#define BLOCK_BOOK_TYPE2 2
+#define BLOCK_BOOK_TYPE3 3
+#define BLOCK_BOOK_TYPE4 4
+#define BLOCK_BOOK_TYPE5 5
+
 //敵マクロ-------------------------------------
 #define ENEMY_PJ_TYPE		1	//パンジャン
 #define ENEMY_EYE_TYPE		2	//目タイプ
