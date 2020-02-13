@@ -37,10 +37,9 @@
 #define SCENE_MAIN_SE_ATTACK		13	//攻撃SE
 
 //MapRead関数で使うマクロ
-#define SCENE_MAIN_MAP_READ_COUNT 1
-#define SCENE_MAIN_MAP_READ_NEW_Y 0
-#define SCENE_MAIN_MAP_READ_NEW_X 0
-
+#define SCENE_MAIN_MAP_READ_COUNT 1		//MapReadカウント初期値
+#define SCENE_MAIN_MAP_READ_INITIAL_Y 0	//Y初期値
+#define SCENE_MAIN_MAP_READ_INITIAL_X 0	//X初期値
 
 //敵マクロ-------------------------------------
 #define ENEMY_PJ_TYPE		1	//パンジャン
