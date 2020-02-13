@@ -146,7 +146,7 @@ void CObjEnemy::Action()
 			&d
 		);
 
-		if (type_n == 5)//item move
+		if (type_n == ENEMY_HEAL_TYPE)//item move
 		{
 			m_vx = 0;
 			m_vy = 0;
@@ -170,7 +170,7 @@ void CObjEnemy::Action()
 		float en_x = m_px + 32.0f;
 		float en_y = m_py + 32.0f;
 		//タイプによって敵の動きを変更するとこ
-		if (type_n == 3 || type_n == 4)
+		if (type_n == ENEMY_DOG_TYPE || type_n == ENEMY_GREEN_TYPE)
 		{
 			time++;
 			if (time % (80 + type_n * 20) == 0)
@@ -180,7 +180,7 @@ void CObjEnemy::Action()
 		}
 
 		//目の挙動のとこ
-		if (type_n == 2) {
+		if (type_n == ENEMY_EYE_TYPE) {
 			time++;
 			//トリッキーに動くやつ
 			if (time >= TIME_SLOW_EE)
@@ -219,7 +219,7 @@ void CObjEnemy::Action()
 			pl_y <= en_y + 48.0f &&
 			pl_y >= en_y - 48.0f )
 		{
-			if (type_n != 5)
+			if (type_n != ENEMY_HEAL_TYPE)
 			{
 
 				obj->GiveDamageToPlayer(atk);
@@ -238,7 +238,7 @@ void CObjEnemy::Action()
 				atk_kb = true;
 
 			}
-			else if (type_n == 5)
+			else if (type_n == ENEMY_HEAL_TYPE)
 			{
 				obj->PlayerHealMini();
 				en_life-=1;
@@ -278,7 +278,7 @@ void CObjEnemy::Action()
 		if (en_life <= 0) {
 			CObjEffect* objef = new CObjEffect(m_px + block->GetScroll(), m_py, 1);
 			Objs::InsertObj(objef, OBJ_THORN, 15);
-			if (type_n != 5) {
+			if (type_n != ENEMY_HEAL_TYPE) {
 				CObjEnemy* obj25 = new CObjEnemy(m_px, m_py, atk*1.4, 10, 5);
 				Objs::InsertObj(obj25, OBJ_ENEMY, 11);
 			}
@@ -376,7 +376,7 @@ void CObjEnemy::Draw()
 	dst.m_bottom = 64.0f + m_py;
 
 	//描画
-	if (type_n != 5)
+	if (type_n != ENEMY_HEAL_TYPE)
 	{
 		Draw::Draw(1, &src, &dst, c, 0.0f);
 	}

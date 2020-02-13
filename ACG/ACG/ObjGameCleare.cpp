@@ -44,7 +44,7 @@ void CObjGameClear::Action()
 	}
 
 	//メッセージ関連
-	if (Input::GetVKey(VK_RETURN) == true&&time>=30)
+	if (Input::GetVKey(VK_RETURN) == true&&time>=TIME_DELAY)
 	{
 		one_flag = false;
 		//ReturnKey_flag = true;
@@ -64,16 +64,16 @@ void CObjGameClear::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top = 0.0f;
-	src.m_left = 0.0f;
-	src.m_right = 128*7;
-	src.m_bottom = 1024/2;
+	src.m_top	= 0.0f;
+	src.m_left	= 0.0f;
+	src.m_right = GAME_CLEAR_CUT_RIGHT;
+	src.m_bottom= GAME_CLEAR_CUT_BOTTOM;
 
 	//背景1の位置を設定し描画
-	dst.m_top = 0.0f;
-	dst.m_left = 0.0f;
+	dst.m_top	= 0.0f;
+	dst.m_left	= 0.0f;
 	dst.m_right = WINDOW_SIZE_W;
-	dst.m_bottom = WINDOW_SIZE_H;
+	dst.m_bottom= WINDOW_SIZE_H;
 	Draw::Draw(8, &src, &dst, c, 0.0f);
 
 	//切り取り位置の設定
@@ -117,4 +117,3 @@ void CObjGameClear::Draw()
 	}
 }
 
-//test
