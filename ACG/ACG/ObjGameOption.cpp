@@ -19,9 +19,9 @@ using namespace GameL;
 //イニシャライズ
 void CObjGameOption::Init()
 {
-	m_key_flag = false;
-	lavel_option = true;
-	lavel_option2 = true;
+	m_key_flag		= false;
+	lavel_option	= true;
+	lavel_option2	= true;
 	lavel_select_op = SERECT_MIN_OP;
 }
 
@@ -94,32 +94,32 @@ void CObjGameOption::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top = 0.0f;
-	src.m_left = 0.0f;
+	src.m_top	= 0.0f;
+	src.m_left	= 0.0f;
 	src.m_right = 128.0f*7;
-	src.m_bottom = 128.0f*3;
+	src.m_bottom= 128.0f*3;
 
 	//背景の位置を設定し描画
-	dst.m_top = 0.0f;
-	dst.m_left = 0.0f;
+	dst.m_top	= 0.0f;
+	dst.m_left	= 0.0f;
 	dst.m_right = WINDOW_SIZE_W;
-	dst.m_bottom = WINDOW_SIZE_H;
+	dst.m_bottom= WINDOW_SIZE_H;
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 
 
 
 	//戻るボタン
 	//切り取り位置の設定
-	src.m_top = 64.0f;
-	src.m_left = 0.0f;
+	src.m_top	= 64.0f;
+	src.m_left	= 0.0f;
 	src.m_right = 64.0f * 4;
-	src.m_bottom = 64.0f * 2;
+	src.m_bottom= 64.0f * 2;
 
 	//バーの位置を設定し描画
-	dst.m_top = WINDOW_SIZE_H / 2;
-	dst.m_left = WINDOW_SIZE_W / 2 - 150;
+	dst.m_top	= WINDOW_SIZE_H / 2;
+	dst.m_left	= WINDOW_SIZE_W / 2 - 150;
 	dst.m_right = WINDOW_SIZE_W / 2 + 150;
-	dst.m_bottom = WINDOW_SIZE_H / 2 + 80;
+	dst.m_bottom= WINDOW_SIZE_H / 2 + 80;
 	Draw::Draw(6, &src, &dst, c, 0.0f);
 
 

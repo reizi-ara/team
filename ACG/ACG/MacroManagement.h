@@ -201,6 +201,12 @@
 #define GAME_CLEAR_CUT_RIGHT	128*7		//ゲームクリア背景切り取り右
 #define GAME_CLEAR_CUT_BOTTOM	1024/2		//ゲームクリア背景切り取り下
 
+//ゲームオーバー-----------------------------
+#define GAME_OVER_CUT_TOP		512.0f		//ゲームオーバー背景切り取り上
+
+#define GAME_OVER_CUT_RIGHT		910.0f		//ゲームオーバー背景切り取り右
+#define GAME_OVER_CUT_BOTTOM	1024.0f		//ゲームオーバー背景切り取り下
+
 //メッセージウィンドウ-----------------------
 #define MESSAGE_CUT_TOP			64.0f*6		//メッセージウィンドウ切り取り上
 #define MESSAGE_CUT_LEFT		64.0f*0		//メッセージウィンドウ切り取り左
@@ -213,6 +219,8 @@
 #define MESSAGE_SENTENCE3_H		600			//メッセージ3行目縦軸
 #define MESSAGE_SENTENCE4_H		625			//メッセージ4行目縦軸
 #define MESSAGE_SENTENCE5_H		650			//メッセージ5行目縦軸
+
+#define MESSAGE_PRO_SENTENCE_W	250			//プロローグメッセ
 
 #define MESSAGE_SENTENCE_SIZE	25			//メッセージ文字サイズ
 //_____________________________________________

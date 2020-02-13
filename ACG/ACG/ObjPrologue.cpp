@@ -64,16 +64,16 @@ void CObjPrologue::Draw()
 	RECT_F dst;//描画先表示位置
 
 	//切り取り位置の設定
-	src.m_top = 0.0f;
-	src.m_left = 0.0f;
-	src.m_right = 128 * 7;
-	src.m_bottom = 1024 / 2;
+	src.m_top	= 0.0f;
+	src.m_left	= 0.0f;
+	src.m_right = GAME_CLEAR_CUT_RIGHT;
+	src.m_bottom= GAME_CLEAR_CUT_BOTTOM;
 
 	//背景1の位置を設定し描画
-	dst.m_top = 0.0f;
-	dst.m_left = 0.0f;
+	dst.m_top	= 0.0f;
+	dst.m_left	= 0.0f;
 	dst.m_right = WINDOW_SIZE_W;
-	dst.m_bottom = WINDOW_SIZE_H;
+	dst.m_bottom= WINDOW_SIZE_H;
 	Draw::Draw(8, &src, &dst, c, 0.0f);
 
 	//切り取り位置の設定
@@ -83,27 +83,27 @@ void CObjPrologue::Draw()
 	src.m_bottom= MESSAGE_CUT_BOTTOM;
 
 	//背景の位置を設定し描画
-	dst.m_top = WINDOW_SIZE_H * 0.7;
-	dst.m_left = 0.0f;
+	dst.m_top	= WINDOW_SIZE_H * 0.7;
+	dst.m_left	= 0.0f;
 	dst.m_right = WINDOW_SIZE_W;
-	dst.m_bottom = WINDOW_SIZE_H;
+	dst.m_bottom= WINDOW_SIZE_H;
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 	if (Endnum == 0)
 	{
-		Font::StrDraw(L"白上市この街に最近不思議なことが起こった。", 150, 550, 25, c);
-		Font::StrDraw(L"なぜか急に古びた洋館が建っていたのだ、", 150, 575, 25, c);
-		Font::StrDraw(L"そんなことがあったもんだから街では、", 150, 600, 25, c);
+		Font::StrDraw(L"白上市この街に最近不思議なことが起こった。", MESSAGE_SENTENCE_W, MESSAGE_SENTENCE1_H, MESSAGE_SENTENCE_SIZE, c);
+		Font::StrDraw(L"なぜか急に古びた洋館が建っていたのだ、",	 MESSAGE_SENTENCE_W, MESSAGE_SENTENCE2_H, MESSAGE_SENTENCE_SIZE, c);
+		Font::StrDraw(L"そんなことがあったもんだから街では、",		 MESSAGE_SENTENCE_W, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);
 	}
 	else if (Endnum == 1)
 	{
-		Font::StrDraw(L"「あの洋館には化け物が出る」とか", 150, 550, 25, c);
-		Font::StrDraw(L"「あの洋館の中は実は異空間だ」とか", 150, 575, 25, c);
-		Font::StrDraw(L"そんな噂が流れているせいで洋館に訪れる人は多かった。", 150, 650, 25, c);
+		Font::StrDraw(L"「あの洋館には化け物が出る」とか",			 MESSAGE_SENTENCE_W, MESSAGE_SENTENCE1_H, MESSAGE_SENTENCE_SIZE, c);
+		Font::StrDraw(L"「あの洋館の中は実は異空間だ」とか",		 MESSAGE_SENTENCE_W, MESSAGE_SENTENCE2_H, MESSAGE_SENTENCE_SIZE, c);
+		Font::StrDraw(L"そんな噂が流れているせいで洋館に訪れる人は多かった。", MESSAGE_SENTENCE_W, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);
 
 	}
 	else if (Endnum == 2)
 	{
-		Font::StrDraw(L"そして僕も…その中の一人だった。", 250, 600, 25, c);
+		Font::StrDraw(L"そして僕も…その中の一人だった。", MESSAGE_PRO_SENTENCE_W, MESSAGE_SENTENCE3_H, MESSAGE_SENTENCE_SIZE, c);
 	}
 }
 
