@@ -61,7 +61,7 @@ void CObjMessage2::Action()
 {
 	if (time < TIME_DELAY)
 		time++;
-	if (Input::GetVKey(VK_RETURN)&& time >= 30 ||
+	if (Input::GetVKey(VK_RETURN)&& time >= TIME_DELAY ||
 		Input::GetVKey('W')||
 		Input::GetVKey('A')||
 		Input::GetVKey('D'))
