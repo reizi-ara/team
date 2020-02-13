@@ -117,3 +117,4 @@ void CObjGameClear::Draw()
 	}
 }
 
+//test
