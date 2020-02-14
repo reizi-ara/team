@@ -63,8 +63,8 @@
 
 //トラップ
 #define BLOCK_TRAP_HAND_NUMBER		30			//手
-#define BLOCK_TRAP_THORN3_NUMBER	31			//ツタ3
-#define BLOCK_TRAP_THORN7_NUMBER	32			//ツタ7
+#define BLOCK_TRAP_THORN3_NUMBER	33			//ツタ3
+#define BLOCK_TRAP_THORN7_NUMBER	37			//ツタ7
 
 //置物、その他
 #define BLOCK_OBJ_CANDLE_NUMBER		39			//キャンドル
