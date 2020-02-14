@@ -128,7 +128,7 @@ void CObjHero::Action()
 			Objs::InsertObj(objef, OBJ_THORN, 15);
 			if (Input::GetVKey('S') && m_hit_down == false) {
 				p_life -= g_damage * 0.5;
-				Audio::Start(10);//Œø‰Ê‰¹
+				Audio::Start(12);//Œø‰Ê‰¹
 			}
 			else {
 				p_life -= g_damage;
