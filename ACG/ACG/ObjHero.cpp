@@ -192,17 +192,6 @@ void CObjHero::Action()
 			}
 
 			//ƒL[‚Ì“ü—Í•ûŒü
-			/*if (Input::GetVKey('S')&&p_life/p_maxlife<1.0 )//‚µ‚á‚ª‚İ
-			{
-				p_life += heal;
-				if(heal>0.1)
-					heal += 0.001;
-				heal+=0.001;
-				m_pose = 2.0f;
-				m_ani_time += 1;
-				if (muteki_time > 0)
-					muteki_time += 0.5;
-			}*/
 			if (Input::GetVKey('S') || Input::GetVKey(VK_DOWN))//‚µ‚á‚ª‚İ
 			{
 				if (m_hit_down == false)

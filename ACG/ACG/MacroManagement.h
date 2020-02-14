@@ -49,7 +49,7 @@
 #define BLOOK_NULL_NUMBER 0
 
 //エネミー
-#define BLOOK_ENEMY_PJ_NUMBER		20			//パンジャンドラム
+#define BLOOK_ENEMY_PJ_NUMBER		20			//サークル
 #define BLOOK_ENEMY_EYE_NUMBER		21			//目
 #define BLOOK_ENEMY_DOC_NUMBER		22			//犬
 #define BLOOK_ENEMY_CACTUS_NUMBER	23			//サボテン

@@ -15,7 +15,7 @@
 
 
 
-//使用するネームスペースdayo
+//使用するネームスペース
 using namespace GameL;
 
 CObjBoss::CObjBoss(float x, float y, float l, float a)
@@ -148,7 +148,7 @@ void CObjBoss::Action()
 
 		dy_time++;
 		time_1 = 0;
-		if (dy_time < 180) {
+		if (dy_time < 180) {//エフェクト発生
 			CObjEffect* objef = new CObjEffect(m_px + block->GetScroll() -
 				((dy_time * 77) % 64) * (dy_time % 2 * 2 - 1),
 				m_py - ((dy_time * 137) % 128) * (dy_time % 2 * 2 - 1) - 64,
@@ -307,7 +307,7 @@ void CObjBoss::Action()
 				m_py += 2;
 			}
 		}
-
+		//行動___________________________________
 		if (atkaction == 1) {//近距離　待機
 			form = 0;
 			if (pl_x+ 256 <= en_x) {
